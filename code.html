@@ -1,0 +1,1061 @@
+<!DOCTYPE html>
+
+<html class="dark scroll-smooth" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>From Clicks to Code: Mastering AWS Infrastructure | AWS SBG MHSSCE</title>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&amp;family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<style>
+    @font-face {
+      font-family: 'Amazon Ember';
+      src: local('Amazon Ember'), local('AmazonEmber-Regular'), local('AmazonEmber');
+      font-weight: 400;
+      font-style: normal;
+    }
+    @font-face {
+      font-family: 'Amazon Ember';
+      src: local('Amazon Ember Medium'), local('AmazonEmber-Medium');
+      font-weight: 500;
+      font-style: normal;
+    }
+    @font-face {
+      font-family: 'Amazon Ember';
+      src: local('Amazon Ember Bold'), local('AmazonEmber-Bold');
+      font-weight: 700;
+      font-style: normal;
+    }
+    
+    :root {
+      --brand-green: #00d26a;
+      --brand-green-glow: rgba(0, 210, 106, 0.4);
+      --surface-dark: #0f131d;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: "Amazon Ember", Inter, system-ui, -apple-system, sans-serif;
+      background-color: #0a0e18;
+      color: #dfe2f1;
+      overflow-x: hidden;
+      selection-background-color: #00d26a;
+      selection-color: #00210b;
+    }
+
+    /* Video Frame Gridlines & Scanlines */
+    .cinema-grid {
+      background-size: 40px 40px;
+      background-image: 
+        linear-gradient(to right, rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+    }
+    .cinema-scanlines {
+      background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.02), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.02));
+      background-size: 100% 3px, 6px 100%;
+      pointer-events: none;
+    }
+
+    /* Ambient dynamic glows */
+    .hero-glow-green {
+      background: radial-gradient(circle at 50% 40%, rgba(0, 210, 106, 0.22) 0%, rgba(56, 189, 248, 0.06) 45%, rgba(15, 19, 29, 0) 72%);
+    }
+
+    /* Kinetic Circuit Connector Line Animation */
+    @keyframes circuitPulse {
+      0% { transform: scaleX(0); opacity: 0.2; }
+      50% { transform: scaleX(1); opacity: 1; }
+      100% { transform: scaleX(1); opacity: 0.7; }
+    }
+    .circuit-pulse {
+      animation: circuitPulse 1.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      transform-origin: left center;
+    }
+
+    @keyframes badgePop {
+      0% { transform: scale(0.65) translateY(18px); opacity: 0; filter: blur(8px); }
+      70% { transform: scale(1.08) translateY(-2px); opacity: 1; filter: blur(0); }
+      100% { transform: scale(1) translateY(0); opacity: 1; }
+    }
+    .badge-pop-left {
+      animation: badgePop 1s cubic-bezier(0.34, 1.56, 0.64, 1) forwards 0.2s;
+    }
+    .badge-pop-right {
+      animation: badgePop 1s cubic-bezier(0.34, 1.56, 0.64, 1) forwards 0.45s;
+    }
+
+    @keyframes textCinematicReveal {
+      0% { opacity: 0; transform: translateY(28px) scale(0.97); filter: blur(6px); }
+      100% { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
+    }
+    .hero-title-reveal {
+      animation: textCinematicReveal 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards 0.65s;
+    }
+    .hero-meta-reveal {
+      animation: textCinematicReveal 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards 0.9s;
+    }
+
+    /* Scene Active Styling */
+    .scene-card.active {
+      border-color: rgba(0, 210, 106, 0.85);
+      background: linear-gradient(135deg, rgba(28, 31, 42, 0.95) 0%, rgba(23, 27, 38, 0.98) 100%);
+      box-shadow: 0 0 35px rgba(0, 210, 106, 0.22), inset 0 0 18px rgba(0, 210, 106, 0.08);
+    }
+
+    /* Film Playback Timeline Waypoint */
+    .timeline-scrub-point.active {
+      background-color: #00d26a;
+      box-shadow: 0 0 16px #00d26a;
+      transform: scale(1.2);
+    }
+  </style>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            background: "#0f131d",
+            surface: "#0f131d",
+            "surface-dim": "#0f131d",
+            "surface-dark": "#0B0F19",
+            "surface-container-lowest": "#0a0e18",
+            "surface-container-low": "#171b26",
+            "surface-container": "#1c1f2a",
+            "surface-container-high": "#262a35",
+            "surface-container-highest": "#313540",
+            "surface-bright": "#353944",
+            "on-surface": "#dfe2f1",
+            "on-surface-variant": "#8e95a5",
+            primary: "#00d26a",
+            "primary-container": "#005426",
+            secondary: "#38bdf8",
+            "border-subtle": "rgba(255, 255, 255, 0.08)",
+            "border-prominent": "rgba(0, 210, 106, 0.35)"
+          },
+          fontFamily: {
+            body: ["Amazon Ember", "Inter", "system-ui", "sans-serif"],
+            mono: ["JetBrains Mono", "monospace"]
+          }
+        }
+      }
+    };
+  </script>
+</head>
+<body class="bg-[#0a0e18] text-[#dfe2f1] font-body antialiased selection:bg-primary selection:text-[#00210b]">
+<!-- TOP CINEMATIC HUD & FLOATING NAVIGATION -->
+<header class="fixed top-0 left-0 right-0 z-50 bg-[#0a0e18]/80 backdrop-blur-2xl border-b border-white/5 transition-all">
+<div class="h-16 max-w-7xl mx-auto px-5 sm:px-8 flex items-center justify-between gap-4">
+<!-- Brand Connection HUD: AWS SBG MHSSCE × AWS -->
+<a class="flex items-center gap-3.5 group" href="#cinema-hero">
+<div class="relative w-9 h-9 rounded-lg bg-surface-container-high border border-primary/40 p-1 flex items-center justify-center overflow-hidden group-hover:border-primary transition-all shadow-[0_0_12px_rgba(0,210,106,0.25)]">
+<img alt="AWS SBG MHSSCE Logo" class="w-full h-full object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBePuDsKqgMqwfss81OM7AZJsy2IV5af9v2Fg2vIfL4zGJESzPVOkuPys7-9t5yg6K0wa3BAgQfVswxe8ZoQxhz98Mko-3ti2LLF8Y-dRZglxYXCJDgjxopNE3osPI71QTpeu1bWkiYHRc_YAbY3RFSivYWm5jmYjUgXMaqRZ72WRc19HK5fD6fgT3p8RzeRXW-c-Jb_yOQEx4kK_gRCT16wwO7Co66bJJWdmJ2uwlq9NN8jcRALC7ng90rANt5DsXnfA"/>
+</div>
+<span class="text-white/30 text-xs font-mono">✕</span>
+<div class="h-6 w-auto flex items-center brightness-125 opacity-90 group-hover:opacity-100 transition-opacity">
+<img alt="AWS Logo" class="h-5 w-auto object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD6iK1ZDGM6r8EyMr8fNFcIRUCHco4izuryIK9hWgEbIK-tYDlnwcuz1ZzoUIDGzxT7ZuCxowOoEUyaENuEb9IIWI748JnJ937depL4RHrftERdfsE35n10yck0H6InXvlU2_0kdRORRdeU9rO-75rvGQr7P47I170jEthOt7rrVDqkdwZnfIKC7WVdxgH6GDAVYL3PtapgxgAns1bRjvy11N_JHr_bfmE4P3Ir2VuR-HQcQmwvuWZJzHOTfULI_K_I2Q"/>
+</div>
+<div class="hidden sm:flex flex-col ml-1 border-l border-white/10 pl-3">
+<div class="flex items-center gap-1.5">
+<span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>
+<span class="font-mono text-[10px] uppercase tracking-wider text-primary font-bold leading-tight">MHSSCE CHAPTER</span>
+</div>
+<span class="text-[11px] text-white/90 font-medium tracking-tight">Interactive Keynote Sprint</span>
+</div>
+</a>
+<!-- Telemetry Reel Ticker & Quick Nav -->
+<nav class="hidden md:flex items-center gap-7 text-xs font-mono text-on-surface-variant">
+<a class="hover:text-primary transition-colors flex items-center gap-1.5" href="#story-pipeline">
+<span class="text-primary font-bold">01.</span> Story Scenes
+        </a>
+<a class="hover:text-primary transition-colors flex items-center gap-1.5" href="#speaker">
+<span class="text-secondary font-bold">02.</span> Keynote
+        </a>
+<a class="hover:text-primary transition-colors flex items-center gap-1.5" href="#lab-timeline">
+<span class="text-primary font-bold">03.</span> Schedule
+        </a>
+<a class="hover:text-primary transition-colors flex items-center gap-1.5" href="#faq">
+<span class="text-on-surface-variant/80 font-bold">04.</span> Intel &amp; FAQ
+        </a>
+</nav>
+<!-- Rec Status & RSVP -->
+<div class="flex items-center gap-3">
+<div class="hidden xl:flex items-center gap-2 px-3 py-1 rounded-full bg-surface-container-low/80 border border-white/10 font-mono text-[11px] text-white/70">
+<span class="w-2 h-2 rounded-full bg-red-500 animate-ping"></span>
+<span class="text-red-400 font-bold">LIVE BROADCAST</span>
+<span class="text-white/20">|</span>
+<span>SEPT 24 • 09:30 IST</span>
+</div>
+<a class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-primary hover:bg-[#34e284] text-[#00210b] font-bold text-xs font-mono tracking-wide shadow-[0_0_20px_rgba(0,210,106,0.4)] hover:shadow-[0_0_30px_rgba(0,210,106,0.7)] transition-all transform hover:-translate-y-0.5" href="https://www.meetup.com" rel="noopener noreferrer" target="_blank">
+<span>CLAIM SEAT</span>
+<span class="material-symbols-outlined text-sm font-bold">arrow_outward</span>
+</a>
+</div>
+</div>
+</header>
+<main class="w-full relative">
+<!-- ========================================================================= -->
+<!-- 1. CINEMATIC INTRO REVEAL (Hero / Video-Like Motion Opener)                -->
+<!-- ========================================================================= -->
+<section class="relative min-h-screen w-full flex flex-col justify-center items-center pt-24 pb-20 px-6 cinema-grid overflow-hidden border-b border-white/5" id="cinema-hero">
+<!-- Glow & Ambient Camera Vignette -->
+<div class="absolute inset-0 hero-glow-green pointer-events-none"></div>
+<div class="cinema-scanlines absolute inset-0"></div>
+<!-- Timecode / Broadcast Telemetry Header Overlay -->
+<div class="z-10 flex flex-wrap items-center justify-center gap-4 text-[11px] font-mono tracking-wider text-white/60 mb-8 bg-surface-container-lowest/80 border border-white/10 px-4 py-1.5 rounded-full backdrop-blur-md">
+<div class="flex items-center gap-2">
+<span class="inline-block w-2 h-2 rounded-full bg-red-500 animate-pulse"></span>
+<span class="text-red-400 font-bold tracking-widest">[REC]</span>
+<span>00:24:09:30 IST</span>
+</div>
+<span class="text-white/20">•</span>
+<span class="text-primary font-semibold">MHSSCE CLOUD PRODUCTION // EVENT ARCHIVE 02</span>
+<span class="text-white/20">•</span>
+<span class="text-white/70">LEVEL 100 → 200 INTENSIVE</span>
+</div>
+<!-- KINETIC POP UP BADGES: AWS SBG MHSSCE × AWS -->
+<div class="z-10 flex items-center justify-center gap-4 sm:gap-8 my-4 relative max-w-xl w-full">
+<!-- Logo 1: AWS Student Builder Group MHSSCE -->
+<div class="badge-pop-left flex flex-col items-center gap-2 group cursor-pointer">
+<div class="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl bg-surface-container-low/90 border-2 border-primary/50 p-3.5 flex items-center justify-center shadow-[0_0_35px_rgba(0,210,106,0.35)] backdrop-blur-xl group-hover:scale-105 group-hover:border-primary transition-all">
+<img alt="AWS SBG MHSSCE Logo" class="w-full h-full object-contain filter drop-shadow" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA285t8dlndBiYn5jIiS_c0S4xR6j-z0CMYE-qlKVNSeFiqNcGbDT8Qq5wlMGjQFfMBLDS1wQuoDttz23PZtlx03BmdCbPvyWaHd2EkGgXxAWmjRuoRukyK7-QdSMnO-9vrTp3ZlKNCI105bV4eT3xpqRuNNFY17k5S7KT55cYpUFPhhNLiu6160teQkvTPRjNJj9o1uwI0yO4BtCW9q9ZHcIzCeJ0hueXZGDrRYzUqR165HVK1yElqxRIQm0U1UV2ayg"/>
+</div>
+<span class="font-mono text-[10px] text-primary uppercase font-bold tracking-wider">AWS SBG MHSSCE</span>
+</div>
+<!-- Glowing Dynamic Kinetic Circuit Line Connector -->
+<div class="flex-1 flex flex-col items-center justify-center relative px-2">
+<div class="h-[2px] w-full bg-gradient-to-r from-primary via-secondary to-primary relative circuit-pulse shadow-[0_0_12px_#00d26a]">
+<div class="absolute -top-1 left-1/2 -translate-x-1/2 w-2.5 h-2.5 rounded-full bg-white shadow-[0_0_12px_#ffffff] animate-ping"></div>
+</div>
+<span class="mt-2 text-[10px] font-mono uppercase tracking-widest text-white/50 bg-[#0a0e18] px-2 border border-white/10 rounded">
+            COLLABORATION
+          </span>
+</div>
+<!-- Logo 2: Official AWS Logo -->
+<div class="badge-pop-right flex flex-col items-center gap-2 group cursor-pointer">
+<div class="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl bg-surface-container-low/90 border-2 border-secondary/50 p-3.5 flex items-center justify-center shadow-[0_0_35px_rgba(56,189,248,0.25)] backdrop-blur-xl group-hover:scale-105 group-hover:border-secondary transition-all">
+<img alt="Amazon Web Services" class="w-full h-full object-contain brightness-125" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBESllz9HPj5VGrC2QDS8FdLFMADJOWSlTBkwKwaic4zsogh1eyOZvKQsxBWgIRIJKzLXSgo-hFQfO8_n8Cu_ZzRfKLUtXDxzHpiyqeWwDyo5YkChrjd-BOlwTIOl_K2JUGGkBm07s0bfkz7IyTkKh1eRKVQvJxFyKcqHiro-1zW5yGawTq8mlwDKS2CZPMgwwUqEmFEVBQ2szVKzM_A0asQiWfL_cSYfoPs1pIsH9xSRxJBtHR_M7P_K-JE8c685BU8Q"/>
+</div>
+<span class="font-mono text-[10px] text-secondary uppercase font-bold tracking-wider">AWS OFFICIAL</span>
+</div>
+</div>
+<!-- KINETIC TYPOGRAPHY TITLE REVEAL -->
+<div class="hero-title-reveal z-10 text-center mt-6 max-w-4xl mx-auto flex flex-col items-center">
+<h1 class="text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight text-white leading-[1.08]">
+          From <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-[#42ef83] underline decoration-primary/40 underline-offset-8">Clicks</span> 
+          to <span class="text-transparent bg-clip-text bg-gradient-to-r from-secondary to-[#7bd0ff] underline decoration-secondary/40 underline-offset-8">Code</span>.
+        </h1>
+<p class="mt-6 text-base sm:text-xl text-on-surface-variant max-w-2xl font-normal leading-relaxed">
+          Master the leap from manual console point-and-click operations to hardened, zero-port-22 AWS compute deployments automated by CloudFormation.
+        </p>
+</div>
+<!-- KEY METRICS / EVENT COCKPIT HUD -->
+<div class="hero-meta-reveal z-10 mt-8 w-full max-w-3xl">
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-3 p-4 rounded-2xl bg-surface-container-low/80 backdrop-blur-xl border border-white/10 shadow-2xl">
+<div class="flex flex-col border-r border-white/5 pr-2">
+<span class="text-[10px] font-mono uppercase text-white/50">Date &amp; Session</span>
+<span class="text-white font-bold font-mono text-sm mt-0.5">Sept 24, 2024</span>
+<span class="text-primary text-[10px] font-mono">Tuesday Morning</span>
+</div>
+<div class="flex flex-col sm:border-r border-white/5 pr-2">
+<span class="text-[10px] font-mono uppercase text-white/50">Timecode</span>
+<span class="text-white font-bold font-mono text-sm mt-0.5">09:30 - 12:00</span>
+<span class="text-secondary text-[10px] font-mono">IST (2.5h Sprint)</span>
+</div>
+<div class="flex flex-col border-r border-white/5 pr-2">
+<span class="text-[10px] font-mono uppercase text-white/50">Physical Venue</span>
+<span class="text-white font-bold text-sm mt-0.5">Seminar Hall</span>
+<span class="text-white/60 text-[10px] font-mono">MHSSCE Byculla</span>
+</div>
+<div class="flex flex-col">
+<span class="text-[10px] font-mono uppercase text-white/50">Registration</span>
+<span class="text-primary font-bold text-sm mt-0.5">Free Access</span>
+<span class="text-white/60 text-[10px] font-mono">RSVP via Meetup</span>
+</div>
+</div>
+<!-- Primary Actions Bar -->
+<div class="flex flex-wrap items-center justify-center gap-4 mt-8">
+<a class="inline-flex items-center gap-2.5 px-8 py-4 rounded-xl bg-primary text-[#00210b] font-extrabold text-sm tracking-wide shadow-[0_0_30px_rgba(0,210,106,0.45)] hover:shadow-[0_0_40px_rgba(0,210,106,0.7)] hover:scale-[1.02] transition-all" href="https://www.meetup.com" rel="noopener noreferrer" target="_blank">
+<span class="material-symbols-outlined text-lg">event_seat</span>
+<span>RESERVE SEAT ON MEETUP</span>
+<span class="material-symbols-outlined text-sm font-bold">arrow_forward</span>
+</a>
+<a class="inline-flex items-center gap-2 px-6 py-4 rounded-xl bg-surface-container-high/90 hover:bg-surface-bright border border-white/10 text-white text-sm font-semibold transition-all hover:border-primary/40 backdrop-blur" href="#story-pipeline">
+<span class="material-symbols-outlined text-primary text-base">play_circle</span>
+<span>Begin Visual Journey</span>
+</a>
+</div>
+</div>
+<!-- Floating "Scroll to Dive" Indicator -->
+<a class="z-10 mt-12 flex flex-col items-center gap-2 group text-white/50 hover:text-primary transition-colors" href="#story-pipeline">
+<span class="text-[10px] font-mono tracking-widest uppercase group-hover:tracking-[0.2em] transition-all">
+          SCROLL TO DIVE // SCENE 01
+        </span>
+<div class="w-5 h-9 rounded-full border-2 border-white/20 group-hover:border-primary flex items-start justify-center p-1">
+<span class="w-1.5 h-2.5 rounded-full bg-primary animate-bounce"></span>
+</div>
+</a>
+</section>
+<!-- ========================================================================= -->
+<!-- 2. "FEELS LIKE A VIDEO / SCROLL-ILLUSTRATIVE STORYTELLING" (Scenes 1 -> 3) -->
+<!-- ========================================================================= -->
+<section class="w-full bg-[#0a0e18] py-24 border-b border-white/5 relative" id="story-pipeline">
+<div class="max-w-7xl mx-auto px-6">
+<!-- Chapter Header -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-12 border-b border-white/10">
+<div>
+<div class="flex items-center gap-2 text-xs font-mono text-primary mb-2">
+<span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+<span>EPISODE REEL • THREE-ACT ARCHITECTURE TRANSFORMATION</span>
+</div>
+<h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight">
+              The Evolution of AWS Compute
+            </h2>
+</div>
+<p class="text-sm text-on-surface-variant max-w-md font-mono leading-relaxed">
+            Click across the scenes to simulate real-time architecture transitions, security telemetry, and production deployment scripts.
+          </p>
+</div>
+<!-- 3 Interactive Scene Stage Cards (Filmic Storytelling) -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
+<!-- Scene 01 Card -->
+<div class="scene-card active cursor-pointer p-6 rounded-2xl bg-surface-container-low border border-white/10 transition-all duration-300 relative group overflow-hidden" id="scene-card-1" onclick="selectScene(1)">
+<div class="flex items-center justify-between mb-5">
+<span class="px-2.5 py-1 rounded bg-[#0a0e18] text-[#ff9e76] border border-[#ff9e76]/30 font-mono text-[10px] font-bold">
+                SCENE 01 • LEGACY OPS
+              </span>
+<div class="w-12 h-12 rounded-xl bg-[#FF9900]/10 border border-[#FF9900]/30 p-2 flex items-center justify-center">
+<img alt="Amazon EC2" class="w-full h-full object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDgBmGKyj2aj63XODmBPsX3BOuhdU9M-uWXsHXJ7Y5DGqHHapDvEhP8T37wFSo9xHR2juMpHl0VN9lPXRnmk1wL_0tmOk4eO2ZQcxpOhq9l3bPY7TBRrkQdcnDu4rg-0DChyx6Kl_UwDa8DyWcsmBgi9AHU5P7NYMPn9Ru9fPip0daTC3jaz_YA-ltypowAuHHVhTueyXDfBaqTKaj3lMuysggaP_C6Ud81jEwTQuRMMpbisKi54CkHeCUTTVeIzitbHg"/>
+</div>
+</div>
+<h3 class="text-xl font-bold text-white mb-2 group-hover:text-primary transition-colors">
+              The Console Click Era
+            </h3>
+<p class="text-xs text-on-surface-variant leading-relaxed mb-4">
+              30+ manual wizard clicks. Vulnerable SSH ports open to 0.0.0.0/0. Human configuration drift and unrepeatable server builds.
+            </p>
+<div class="flex items-center justify-between pt-3 border-t border-white/5 font-mono text-xs">
+<span class="text-red-400 flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">warning</span> Port 22 Exposed
+              </span>
+<span class="text-primary group-hover:translate-x-1 transition-transform">Inspect →</span>
+</div>
+</div>
+<!-- Scene 02 Card -->
+<div class="scene-card cursor-pointer p-6 rounded-2xl bg-surface-container-low border border-white/10 hover:border-secondary/50 transition-all duration-300 relative group overflow-hidden" id="scene-card-2" onclick="selectScene(2)">
+<div class="flex items-center justify-between mb-5">
+<span class="px-2.5 py-1 rounded bg-[#0a0e18] text-secondary border border-secondary/30 font-mono text-[10px] font-bold">
+                SCENE 02 • HARDENING
+              </span>
+<div class="w-12 h-12 rounded-xl bg-secondary/10 border border-secondary/30 p-2 flex items-center justify-center">
+<img alt="AWS SSM" class="w-full h-full object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAih0zGMf_AtGwKKOdsCDp5311_-zLwNKAQJ-TEAPUxmj350vsv80aGXQBiRiIZR_BR3OFGS4uhfBhf7C0p7rp3GOrv906BSM70gyYHHEpnRWonWWqF4h3r2J2DEVpHA3U9apyWSsz5KlSeJEVf2lwd0rGkJ3D18hpZZMaq1_MpyWHbP_uksYOm3jYK40klZz1GouC0agF2WAePb3QZa3QaZ-Q4eQ_FY_oTrh89mUinHAOxIxlNMy_-Ig2uoav_Iv-ClQ"/>
+</div>
+</div>
+<h3 class="text-xl font-bold text-white mb-2 group-hover:text-secondary transition-colors">
+              Zero-SSH SSM Bastion
+            </h3>
+<p class="text-xs text-on-surface-variant leading-relaxed mb-4">
+              Eliminate port 22 completely. Leverage IAM instance roles and AWS Systems Manager Session Manager for encrypted browser terminals.
+            </p>
+<div class="flex items-center justify-between pt-3 border-t border-white/5 font-mono text-xs">
+<span class="text-secondary flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">lock</span> Zero Open Ports
+              </span>
+<span class="text-secondary group-hover:translate-x-1 transition-transform">Inspect →</span>
+</div>
+</div>
+<!-- Scene 03 Card -->
+<div class="scene-card cursor-pointer p-6 rounded-2xl bg-surface-container-low border border-white/10 hover:border-primary/50 transition-all duration-300 relative group overflow-hidden" id="scene-card-3" onclick="selectScene(3)">
+<div class="flex items-center justify-between mb-5">
+<span class="px-2.5 py-1 rounded bg-[#0a0e18] text-primary border border-primary/30 font-mono text-[10px] font-bold">
+                SCENE 03 • THE FUTURE
+              </span>
+<div class="w-12 h-12 rounded-xl bg-primary/10 border border-primary/30 p-2 flex items-center justify-center">
+<img alt="CloudFormation" class="w-full h-full object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDTOH9S2KFva2YmgYv8zMrd37sVhuRBrJ2bvd49jxpZ6GCrSPTiENuMxroovFkk4eDyFkDxT7sxw6f3QA3Bl-xSAhBSWRSSJIpVmGR7FmUMjm0rj_JtS9dAjOyg_vCBrFVOlOldEhh_MDBk08nOMB2lWPInJ5q45BCncxXnxaRS_3piJTQzzNnrtCZSJUE6ZmbERyXLqjZlZfEQ6LR7Jo16k7FkStK9PMBETVN8insY1Jv9jYC5GgWV4NPbS3RqQXWCDw"/>
+</div>
+</div>
+<h3 class="text-xl font-bold text-white mb-2 group-hover:text-primary transition-colors">
+              The Declarative Code IaC
+            </h3>
+<p class="text-xs text-on-surface-variant leading-relaxed mb-4">
+              Replace console clicks with version-controlled AWS CloudFormation templates. Deploy repeatable, drift-free stacks with automatic rollback.
+            </p>
+<div class="flex items-center justify-between pt-3 border-t border-white/5 font-mono text-xs">
+<span class="text-primary flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">verified</span> 1-Click Codified
+              </span>
+<span class="text-primary group-hover:translate-x-1 transition-transform">Inspect →</span>
+</div>
+</div>
+</div>
+<!-- DYNAMIC SCENE PLAYBACK SCREEN / HUD INSPECTOR -->
+<div class="mt-8 rounded-2xl bg-surface-container border border-white/15 p-6 md:p-8 shadow-2xl relative overflow-hidden">
+<!-- Glass reflection banner -->
+<div class="absolute top-0 right-0 w-80 h-80 bg-primary/5 rounded-full blur-3xl pointer-events-none"></div>
+<!-- Top Playhead / Telemetry Strip -->
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-white/10">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-xl bg-surface-container-lowest border border-white/10 p-2.5 flex items-center justify-center shadow-inner">
+<img alt="Active Scene Icon" class="w-full h-full object-contain" id="scene-icon" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB9fCX-ZjUtcq4ZC3ErV2XXfhJZN6iJyp1GH4aT4Rpjt8JBfrqpbXmxALQi-_vbUV9ZylUD1_92wsaF8M0Lstc9xVB8Nk5R1ZcqjOay76kKkCf82lQP2-P_UTFkkSjYaTesIoZ4ryJcLXnWKPAK029y-quznZfPAz3nVdRMsGaTF-JvClg-2L_ML6gVOA2-_G56uZ0S9aUrNYHf2w9z077oVlH9yKfchsGjZkUKudTUfs1BH6pew1rruEkA6PoEMAOJ6Q"/>
+</div>
+<div>
+<div class="flex items-center gap-2">
+<span class="text-[10px] font-mono px-2 py-0.5 rounded bg-primary/15 text-primary border border-primary/30 uppercase font-bold" id="scene-tag">
+                    ACT I: POINT &amp; CLICK
+                  </span>
+<span class="text-white/40 text-xs font-mono">• Telemetry Stream 60 FPS</span>
+</div>
+<h4 class="text-lg sm:text-xl font-bold text-white mt-0.5" id="scene-headline">
+                  Scene 01: AWS Management Console Operations (Click-Ops)
+                </h4>
+</div>
+</div>
+<!-- View Mode Switch: Video Simulator vs Code Terminal -->
+<div class="flex items-center gap-1 bg-surface-container-lowest p-1 rounded-xl border border-white/10 font-mono text-xs">
+<button class="px-3.5 py-1.5 rounded-lg bg-primary text-[#00210b] font-bold transition-all flex items-center gap-1.5" id="view-mode-terminal" onclick="toggleInspectorMode('terminal')">
+<span class="material-symbols-outlined text-sm">terminal</span>
+<span>Production YAML</span>
+</button>
+<button class="px-3.5 py-1.5 rounded-lg text-on-surface-variant hover:text-white transition-all flex items-center gap-1.5" id="view-mode-telemetry" onclick="toggleInspectorMode('telemetry')">
+<span class="material-symbols-outlined text-sm">analytics</span>
+<span>Console Click Breakdown</span>
+</button>
+</div>
+</div>
+<!-- Scene Deep Dive Content Area -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 mt-6 items-start">
+<!-- Left: Filmic Synopsis & Architecture Checkpoints -->
+<div class="lg:col-span-5 flex flex-col gap-5">
+<div>
+<span class="text-[11px] font-mono uppercase tracking-widest text-primary font-semibold">
+                  Scene Narrative &amp; Pain Points
+                </span>
+<p class="mt-2 text-sm text-on-surface-variant leading-relaxed" id="scene-synopsis">
+                  Attendees witness the friction of building infrastructure manually. We launch an Amazon EC2 instance by navigating deep console menus, auditing the danger of exposing port 22 directly to public IP ranges, and recognizing how unrecorded steps create tech debt.
+                </p>
+</div>
+<!-- Interactive Architecture HUD Card -->
+<div class="p-4 rounded-xl bg-surface-container-lowest border border-white/10 flex flex-col gap-3">
+<span class="text-[11px] font-mono text-white/50 uppercase tracking-wider flex items-center gap-1.5">
+<span class="material-symbols-outlined text-primary text-sm">hub</span>
+                  Cloud Architecture Specs
+                </span>
+<ul class="text-xs font-mono space-y-2 text-white/90" id="scene-bulletpoints">
+<li class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-sm">arrow_right</span>
+                    AMI: Amazon Linux 2023 64-bit (x86_64)
+                  </li>
+<li class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-sm">arrow_right</span>
+                    Instance Type: t2.micro / t3.small Free Tier eligible
+                  </li>
+<li class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-sm">arrow_right</span>
+                    Manual Inbound Rule: TCP 22 (Vulnerable surface)
+                  </li>
+</ul>
+</div>
+<!-- Lab Pre-flight trigger modal -->
+<button class="inline-flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-surface-container-high hover:bg-surface-bright border border-white/10 text-xs font-mono text-white transition-all hover:border-primary/40" onclick="openDeepSpecModal()">
+<span class="material-symbols-outlined text-sm text-primary">menu_book</span>
+<span>Open Full Architectural Spec &amp; Lab Notes</span>
+</button>
+</div>
+<!-- Right: Interactive Code or Click Breakdown Panel -->
+<div class="lg:col-span-7">
+<!-- Terminal View Panel -->
+<div class="rounded-xl bg-surface-container-lowest border border-white/10 p-4 font-mono text-xs text-on-surface-variant shadow-inner" id="panel-terminal">
+<div class="flex items-center justify-between pb-3 border-b border-white/10 text-[11px]">
+<div class="flex items-center gap-2">
+<span class="w-3 h-3 rounded-full bg-red-500/80 inline-block"></span>
+<span class="w-3 h-3 rounded-full bg-yellow-500/80 inline-block"></span>
+<span class="w-3 h-3 rounded-full bg-primary/80 inline-block"></span>
+<span class="text-white/70 ml-2" id="panel-filename">cloudformation-ec2.yaml</span>
+</div>
+<span class="text-primary font-bold">AWS CloudFormation Ready</span>
+</div>
+<pre class="mt-4 overflow-x-auto text-white leading-relaxed"><code id="panel-code-content"><span class="text-white/40">AWSTemplateFormatVersion:</span> <span class="text-primary">'2010-09-09'</span>
+<span class="text-white/40">Description:</span> <span class="text-secondary">'Stage 1 - Foundational EC2 Compute Provisioning'</span>
+<span class="text-white/40">Parameters:</span>
+  <span class="text-primary">InstanceTypeParam:</span>
+    <span class="text-white/40">Type:</span> String
+    <span class="text-white/40">Default:</span> t2.micro
+<span class="text-white/40">Resources:</span>
+  <span class="text-primary">LabEC2Instance:</span>
+    <span class="text-white/40">Type:</span> <span class="text-secondary">AWS::EC2::Instance</span>
+    <span class="text-white/40">Properties:</span>
+      <span class="text-white/40">InstanceType:</span> !Ref InstanceTypeParam
+      <span class="text-white/40">ImageId:</span> ami-0c101f26f147fa7fd
+      <span class="text-white/40">Tags:</span>
+        - <span class="text-white/40">Key:</span> Event
+          <span class="text-white/40">Value:</span> ClicksToCode-AWS-SBG</code></pre>
+</div>
+<!-- Telemetry / Click Ops View Panel (Hidden initially) -->
+<div class="hidden rounded-xl bg-surface-container-lowest border border-white/10 p-5 font-mono text-xs flex flex-col gap-3" id="panel-telemetry">
+<div class="flex items-center justify-between pb-3 border-b border-white/10">
+<span class="text-white font-bold">Friction Analysis: Manual Console Journey</span>
+<span class="text-amber-400 font-bold">Total: ~32 Manual Clicks</span>
+</div>
+<div class="space-y-2">
+<div class="p-3 rounded-lg bg-surface-container flex items-center justify-between">
+<span>1. Navigate AWS Console → Services → EC2</span>
+<span class="text-white/60">3 clicks • 45s</span>
+</div>
+<div class="p-3 rounded-lg bg-surface-container flex items-center justify-between">
+<span>2. Select AMI, Instance type &amp; generate .pem keypair</span>
+<span class="text-white/60">12 clicks • 2m 30s</span>
+</div>
+<div class="p-3 rounded-lg bg-surface-container flex items-center justify-between">
+<span>3. Inbound Security rules (Port 22 SSH) &amp; configure storage</span>
+<span class="text-white/60">17 clicks • 3m 40s</span>
+</div>
+<div class="p-3.5 rounded-lg bg-primary/10 border border-primary/30 flex items-center justify-between text-primary font-bold">
+<span>IaC Automation Comparison: CloudFormation 1-Command Stack</span>
+<span>40s (18× Faster)</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- ========================================================================= -->
+<!-- 3. SPEAKER AS IMMERSIVE CINEMATIC REVEAL (MS. AFREEN BANO)                -->
+<!-- ========================================================================= -->
+<section class="w-full bg-[#0a0e18] py-24 relative overflow-hidden border-b border-white/5" id="speaker">
+<!-- Ambient Spotlight effect -->
+<div class="absolute top-1/2 left-1/3 -translate-y-1/2 w-96 h-96 bg-primary/10 rounded-full blur-[140px] pointer-events-none"></div>
+<div class="max-w-7xl mx-auto px-6">
+<div class="p-8 sm:p-12 md:p-16 rounded-3xl bg-surface-container-low/90 border border-white/10 shadow-2xl relative">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+<!-- Speaker Photo: Keynote Portrait Card -->
+<div class="lg:col-span-5 flex justify-center">
+<div class="relative group">
+<!-- Glowing Border Halo -->
+<div class="absolute -inset-1.5 rounded-3xl bg-gradient-to-tr from-primary via-secondary to-primary opacity-40 blur-xl group-hover:opacity-75 transition duration-700"></div>
+<div class="relative w-72 sm:w-80 h-[440px] rounded-2xl overflow-hidden bg-surface-container-lowest border-2 border-white/20 shadow-2xl">
+<img alt="Ms. Afreen Bano Keynote Speaker" class="w-full h-full object-cover object-top filter contrast-105 group-hover:scale-105 transition duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAb6T9qiXIF10CliTluJet-AqLOQgNlJsKyJLpBjvLz0crp_UWA0t0fNUdmXnB1hbAIouziItzPi-cPZiiqumeBTSkhsnGpLq_iYd9VcABalPtx3Sn6JggZn82yqYeY0_uBlBL2ct8ESobW8xPiFcng3zqOpXigQ9LL9hizEifJQnVDffR0-4EHaJAXCfWF_LQuQ8VS5rcKUMjl_v4_XBphYdOrt7BqlDbUREPJNFxFQKiEbJfeHhVqT-0JPsJuj1TecQ"/>
+<!-- HUD overlay inside photo -->
+<div class="absolute inset-x-0 bottom-0 p-4 bg-gradient-to-t from-black/95 via-black/60 to-transparent flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-primary animate-ping"></span>
+<span class="text-[10px] font-mono uppercase tracking-wider text-white font-bold">INVITED MENTOR</span>
+</div>
+<span class="text-[10px] font-mono px-2 py-0.5 rounded bg-primary/20 text-primary border border-primary/40">
+                      LIVE ON STAGE
+                    </span>
+</div>
+</div>
+</div>
+</div>
+<!-- Speaker Dossier & Keynote Focus -->
+<div class="lg:col-span-7 flex flex-col gap-5 text-left">
+<div class="flex items-center gap-2.5">
+<span class="px-2.5 py-1 rounded bg-primary/10 text-primary border border-primary/30 text-xs font-mono font-bold tracking-wider uppercase">
+                  KEYNOTE SPEAKER &amp; SPRINT MENTOR
+                </span>
+<span class="text-white/30">•</span>
+<span class="text-xs font-mono text-on-surface-variant">AWS Community Leader</span>
+</div>
+<h3 class="text-3xl sm:text-5xl font-extrabold text-white tracking-tight leading-tight">
+                Ms. Afreen Bano
+              </h3>
+<p class="text-sm sm:text-base font-mono text-primary font-semibold">
+                DevOps Architect • AWS Community Leader • Cloud Security Specialist
+              </p>
+<p class="text-sm text-on-surface-variant leading-relaxed">
+                Afreen is an acclaimed cloud evangelist dedicated to democratizing advanced infrastructure engineering. She has empowered thousands of student developers and engineers to transcend fragile manual setups, championing zero-trust IAM frameworks and declarative automation across India.
+              </p>
+<!-- Illuminated Manifesto Quote Box -->
+<div class="p-5 rounded-2xl bg-surface-container border border-primary/20 flex items-start gap-4 relative">
+<span class="material-symbols-outlined text-primary text-3xl">format_quote</span>
+<div class="flex flex-col gap-1">
+<p class="text-xs sm:text-sm text-white italic leading-relaxed">
+                    “Stop clicking blindly in the AWS console. The moment you define your compute as code, your architecture becomes resilient, auditable, and production-ready. Bring your laptops — let's build the future together!”
+                  </p>
+<span class="text-[10px] font-mono text-primary font-bold uppercase tracking-wider mt-1">
+                    — Afreen Bano, Workshop Manifesto
+                  </span>
+</div>
+</div>
+<!-- Speaker Accolades & Interactive Credentials -->
+<div class="grid grid-cols-2 sm:grid-cols-3 gap-3 pt-2 font-mono text-xs">
+<div class="p-3 rounded-xl bg-surface-container-lowest border border-white/5 flex flex-col">
+<span class="text-white/40 text-[10px] uppercase">Specialization</span>
+<span class="text-white font-bold mt-1">CloudFormation IaC</span>
+</div>
+<div class="p-3 rounded-xl bg-surface-container-lowest border border-white/5 flex flex-col">
+<span class="text-white/40 text-[10px] uppercase">Security</span>
+<span class="text-secondary font-bold mt-1">AWS SSM Bastion</span>
+</div>
+<div class="p-3 rounded-xl bg-surface-container-lowest border border-white/5 flex flex-col col-span-2 sm:col-span-1">
+<span class="text-white/40 text-[10px] uppercase">Community</span>
+<span class="text-primary font-bold mt-1">Keynote Speaker</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- ========================================================================= -->
+<!-- 4. TIMELINE PRESENTED AS AN INTERACTIVE PLAYBACK SCRUBBER                -->
+<!-- ========================================================================= -->
+<section class="w-full bg-[#0a0e18] py-24 border-b border-white/5 relative" id="lab-timeline">
+<div class="max-w-7xl mx-auto px-6">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-12">
+<div>
+<span class="text-xs font-mono text-primary uppercase tracking-widest font-semibold">
+              MISSION RUNTIME (9:30 AM – 12:00 PM)
+            </span>
+<h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight mt-1">
+              Lab Execution Timeline &amp; Scrubber
+            </h2>
+</div>
+<div class="flex items-center gap-3 text-xs font-mono text-white/70 bg-surface-container px-4 py-2 rounded-xl border border-white/10">
+<span class="w-2.5 h-2.5 rounded-full bg-primary animate-pulse"></span>
+<span>Venue: Seminar Hall • Bring Laptops &amp; Chargers</span>
+</div>
+</div>
+<!-- Interactive Scrubber Bar Visual Track -->
+<div class="relative w-full my-6 hidden md:block">
+<div class="h-1.5 w-full bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-gradient-to-r from-primary via-secondary to-primary w-1/4 transition-all duration-500" id="timeline-progress-bar"></div>
+</div>
+<!-- 4 Scrubber Points -->
+<div class="flex justify-between -mt-3.5 px-2">
+<button class="timeline-scrub-point active w-6 h-6 rounded-full bg-primary border-2 border-[#0a0e18] transition-all" onclick="seekTimeline(1)"></button>
+<button class="timeline-scrub-point w-6 h-6 rounded-full bg-surface-bright border-2 border-[#0a0e18] transition-all" onclick="seekTimeline(2)"></button>
+<button class="timeline-scrub-point w-6 h-6 rounded-full bg-surface-bright border-2 border-[#0a0e18] transition-all" onclick="seekTimeline(3)"></button>
+<button class="timeline-scrub-point w-6 h-6 rounded-full bg-surface-bright border-2 border-[#0a0e18] transition-all" onclick="seekTimeline(4)"></button>
+</div>
+</div>
+<!-- 4 Timeline Module Cards -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mt-6">
+<!-- Module 00 -->
+<div class="cursor-pointer p-6 rounded-2xl bg-surface-container border-2 border-primary/60 transition-all flex flex-col justify-between" id="timeline-card-1" onclick="seekTimeline(1)">
+<div>
+<div class="flex items-center justify-between text-xs font-mono mb-2">
+<span class="text-primary font-bold">09:30 – 10:00 AM</span>
+<span class="px-2 py-0.5 rounded bg-surface-container-lowest text-white/60 text-[10px]">PRE-FLIGHT</span>
+</div>
+<h4 class="text-base font-bold text-white mb-1.5">Environment Verification</h4>
+<p class="text-xs text-on-surface-variant leading-relaxed">
+                Attendee hall check-in, Wi-Fi connectivity, and verification of AWS Free Tier / Learner Lab credentials.
+              </p>
+</div>
+<div class="mt-5 pt-3 border-t border-white/5 font-mono text-[11px] text-white/50 flex justify-between">
+<span>Duration</span>
+<span class="text-primary font-bold">30 Mins Setup</span>
+</div>
+</div>
+<!-- Module 01 -->
+<div class="cursor-pointer p-6 rounded-2xl bg-surface-container border border-white/10 hover:border-primary/40 transition-all flex flex-col justify-between" id="timeline-card-2" onclick="seekTimeline(2)">
+<div>
+<div class="flex items-center justify-between text-xs font-mono mb-2">
+<span class="text-primary font-bold">10:00 – 10:40 AM</span>
+<span class="px-2 py-0.5 rounded bg-surface-container-lowest text-primary text-[10px]">MODULE 01</span>
+</div>
+<h4 class="text-base font-bold text-white mb-1.5">Manual EC2 Compute</h4>
+<p class="text-xs text-on-surface-variant leading-relaxed">
+                Launch via AWS Console wizard, configure public subnets, test SSH keypairs, and observe configuration drift.
+              </p>
+</div>
+<div class="mt-5 pt-3 border-t border-white/5 font-mono text-[11px] text-white/50 flex justify-between">
+<span>Duration</span>
+<span class="text-primary font-bold">40 Mins Hands-on</span>
+</div>
+</div>
+<!-- Module 02 -->
+<div class="cursor-pointer p-6 rounded-2xl bg-surface-container border border-white/10 hover:border-secondary/40 transition-all flex flex-col justify-between" id="timeline-card-3" onclick="seekTimeline(3)">
+<div>
+<div class="flex items-center justify-between text-xs font-mono mb-2">
+<span class="text-secondary font-bold">10:40 – 11:20 AM</span>
+<span class="px-2 py-0.5 rounded bg-surface-container-lowest text-secondary text-[10px]">MODULE 02</span>
+</div>
+<h4 class="text-base font-bold text-white mb-1.5">Portless AWS SSM Bastion</h4>
+<p class="text-xs text-on-surface-variant leading-relaxed">
+                Close Port 22. Attach IAM instance profile and access the server via encrypted Systems Manager browser terminal.
+              </p>
+</div>
+<div class="mt-5 pt-3 border-t border-white/5 font-mono text-[11px] text-white/50 flex justify-between">
+<span>Duration</span>
+<span class="text-secondary font-bold">40 Mins Security</span>
+</div>
+</div>
+<!-- Module 03 -->
+<div class="cursor-pointer p-6 rounded-2xl bg-surface-container border border-white/10 hover:border-primary/40 transition-all flex flex-col justify-between" id="timeline-card-4" onclick="seekTimeline(4)">
+<div>
+<div class="flex items-center justify-between text-xs font-mono mb-2">
+<span class="text-primary font-bold">11:20 – 12:00 PM</span>
+<span class="px-2 py-0.5 rounded bg-surface-container-lowest text-primary text-[10px]">MODULE 03</span>
+</div>
+<h4 class="text-base font-bold text-white mb-1.5">CloudFormation Declarative IaC</h4>
+<p class="text-xs text-on-surface-variant leading-relaxed">
+                Codify the full compute stack into YAML. Execute 1-click deployment, rapid teardown, and student project Q&amp;A.
+              </p>
+</div>
+<div class="mt-5 pt-3 border-t border-white/5 font-mono text-[11px] text-white/50 flex justify-between">
+<span>Duration</span>
+<span class="text-primary font-bold">40 Mins IaC</span>
+</div>
+</div>
+</div>
+<!-- Bento Perks Grid: Verified Certification & Swag -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-5 mt-10">
+<div class="p-6 rounded-2xl bg-surface-container-low border border-white/10 flex items-start gap-4">
+<div class="w-10 h-10 rounded-xl bg-primary/10 text-primary flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-2xl">terminal</span>
+</div>
+<div>
+<h5 class="text-sm font-bold text-white mb-1">Resume-Ready IaC Repository</h5>
+<p class="text-xs text-on-surface-variant leading-relaxed">
+                Take home tested, production-grade CloudFormation code templates ready to showcase on your personal GitHub.
+              </p>
+</div>
+</div>
+<div class="p-6 rounded-2xl bg-surface-container-low border border-white/10 flex items-start gap-4">
+<div class="w-10 h-10 rounded-xl bg-secondary/10 text-secondary flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-2xl">verified</span>
+</div>
+<div>
+<h5 class="text-sm font-bold text-white mb-1">Verified Certificate of Participation</h5>
+<p class="text-xs text-on-surface-variant leading-relaxed">
+                Validated credential issued by the official AWS Student Builder Group MHSSCE chapter for active lab completion.
+              </p>
+</div>
+</div>
+<div class="p-6 rounded-2xl bg-surface-container-low border border-white/10 flex items-start gap-4">
+<div class="w-10 h-10 rounded-xl bg-primary/10 text-primary flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-2xl">card_giftcard</span>
+</div>
+<div>
+<h5 class="text-sm font-bold text-white mb-1">AWS Swag Kits &amp; Mentorship</h5>
+<p class="text-xs text-on-surface-variant leading-relaxed">
+                Top lab performers and active problem solvers receive official AWS swag packages and community peer mentorship.
+              </p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- ========================================================================= -->
+<!-- 5. PREREQUISITES & FREQUENTLY ASKED QUESTIONS (HUD ACCORDIONS)           -->
+<!-- ========================================================================= -->
+<section class="w-full bg-[#0a0e18] py-24 relative border-b border-white/5" id="faq">
+<div class="max-w-4xl mx-auto px-6 flex flex-col gap-10">
+<div class="text-center flex flex-col items-center gap-2">
+<span class="text-xs font-mono text-primary uppercase tracking-widest font-semibold">PRE-FLIGHT HUD CHECKLIST</span>
+<h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
+            Prerequisites &amp; Frequently Asked Questions
+          </h2>
+<p class="text-xs font-mono text-on-surface-variant">Check your readiness before stepping into the seminar hall.</p>
+</div>
+<!-- Prerequisites Checklist HUD Chips -->
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-3 p-4 rounded-2xl bg-surface-container border border-white/10 text-xs font-mono">
+<div class="flex items-center gap-2.5 p-2 rounded-lg bg-surface-container-lowest">
+<span class="material-symbols-outlined text-primary text-base">laptop_mac</span>
+<span class="text-white">Laptop &amp; Charger</span>
+</div>
+<div class="flex items-center gap-2.5 p-2 rounded-lg bg-surface-container-lowest">
+<span class="material-symbols-outlined text-primary text-base">cloud</span>
+<span class="text-white">Active AWS Account</span>
+</div>
+<div class="flex items-center gap-2.5 p-2 rounded-lg bg-surface-container-lowest">
+<span class="material-symbols-outlined text-primary text-base">terminal</span>
+<span class="text-white">Modern Web Browser</span>
+</div>
+<div class="flex items-center gap-2.5 p-2 rounded-lg bg-surface-container-lowest">
+<span class="material-symbols-outlined text-primary text-base">verified_user</span>
+<span class="text-white">Zero Fees Required</span>
+</div>
+</div>
+<!-- FAQ Accordion Container -->
+<div class="flex flex-col gap-3">
+<!-- Item 1 -->
+<div class="p-5 rounded-2xl bg-surface-container border border-white/10 hover:border-primary/40 transition-all cursor-pointer faq-item" onclick="toggleFaq(this)">
+<div class="flex items-center justify-between">
+<span class="text-sm font-bold text-white">Is this workshop 100% free to attend for students?</span>
+<span class="material-symbols-outlined text-primary text-base transition-transform duration-200">expand_more</span>
+</div>
+<p class="text-xs text-on-surface-variant pt-3 hidden leading-relaxed font-sans">
+              Yes, entirely free of cost! Organized as an educational community initiative by the AWS Student Builder Group MHSSCE to foster cloud excellence and cloud literacy on campus.
+            </p>
+</div>
+<!-- Item 2 -->
+<div class="p-5 rounded-2xl bg-surface-container border border-white/10 hover:border-primary/40 transition-all cursor-pointer faq-item" onclick="toggleFaq(this)">
+<div class="flex items-center justify-between">
+<span class="text-sm font-bold text-white">Do I need prior AWS or advanced coding experience?</span>
+<span class="material-symbols-outlined text-primary text-base transition-transform duration-200">expand_more</span>
+</div>
+<p class="text-xs text-on-surface-variant pt-3 hidden leading-relaxed font-sans">
+              No prior expertise is needed. The sprint is designed intentionally from Level 100 up to Level 200, starting from the graphical AWS Management Console and gently demystifying how code templates automate those exact steps.
+            </p>
+</div>
+<!-- Item 3 -->
+<div class="p-5 rounded-2xl bg-surface-container border border-white/10 hover:border-primary/40 transition-all cursor-pointer faq-item" onclick="toggleFaq(this)">
+<div class="flex items-center justify-between">
+<span class="text-sm font-bold text-white">How does Systems Manager connect without Port 22?</span>
+<span class="material-symbols-outlined text-primary text-base transition-transform duration-200">expand_more</span>
+</div>
+<p class="text-xs text-on-surface-variant pt-3 hidden leading-relaxed font-sans">
+              AWS Systems Manager Agent (SSM Agent) communicates outbound over secure HTTPS (Port 443) to AWS management endpoints. It uses an IAM Role policy (AmazonSSMManagedInstanceCore), completely removing the need for open inbound ports or public IP addresses.
+            </p>
+</div>
+<!-- Item 4 -->
+<div class="p-5 rounded-2xl bg-surface-container border border-white/10 hover:border-primary/40 transition-all cursor-pointer faq-item" onclick="toggleFaq(this)">
+<div class="flex items-center justify-between">
+<span class="text-sm font-bold text-white">How do I register and guarantee a seat?</span>
+<span class="material-symbols-outlined text-primary text-base transition-transform duration-200">expand_more</span>
+</div>
+<p class="text-xs text-on-surface-variant pt-3 hidden leading-relaxed font-sans">
+              Simply click the "RSVP on Meetup.com" button and reserve your spot on our official AWS SBG MHSSCE Meetup event page. Because the Seminar Hall has fixed physical seating, registration is first-come, first-served.
+            </p>
+</div>
+</div>
+</div>
+</section>
+<!-- ========================================================================= -->
+<!-- 6. FINAL REGISTRATION CALL TO ACTION REVEAL                               -->
+<!-- ========================================================================= -->
+<section class="w-full bg-[#0a0e18] py-24 relative overflow-hidden">
+<!-- Glow ambient backdrop -->
+<div class="absolute inset-0 hero-glow-green pointer-events-none"></div>
+<div class="max-w-5xl mx-auto px-6 relative z-10">
+<div class="p-10 sm:p-16 rounded-3xl bg-surface-container/90 border-2 border-primary/40 text-center flex flex-col items-center gap-6 shadow-[0_0_60px_rgba(0,210,106,0.18)] backdrop-blur-2xl">
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/15 border border-primary/30 text-primary font-mono text-xs font-bold uppercase tracking-wider">
+<span class="w-2 h-2 rounded-full bg-primary animate-ping"></span>
+<span>IN-PERSON SEATS STRICTLY LIMITED</span>
+</div>
+<h2 class="text-3xl sm:text-5xl font-extrabold text-white max-w-3xl tracking-tight leading-tight">
+            Ready to master AWS Infrastructure from Clicks to Code?
+          </h2>
+<p class="text-sm sm:text-base text-on-surface-variant max-w-xl leading-relaxed">
+            Join fellow collegiate builders, learn directly from AWS Community Leader Ms. Afreen Bano, and upgrade your DevOps portfolio in a single morning sprint.
+          </p>
+<div class="flex flex-wrap items-center justify-center gap-4 pt-4">
+<a class="inline-flex items-center gap-2.5 px-8 py-4 rounded-xl bg-primary hover:bg-[#34e284] text-[#00210b] font-extrabold text-sm tracking-wide shadow-[0_0_30px_rgba(0,210,106,0.4)] hover:shadow-[0_0_40px_rgba(0,210,106,0.7)] transition-all transform hover:-translate-y-0.5" href="https://www.meetup.com" rel="noopener noreferrer" target="_blank">
+<span>RSVP NOW ON MEETUP.COM</span>
+<span class="material-symbols-outlined text-base font-bold">arrow_outward</span>
+</a>
+<a class="inline-flex items-center gap-2 px-6 py-4 rounded-xl bg-surface-container-high border border-white/10 text-white hover:bg-surface-bright text-sm font-semibold transition-all hover:border-primary/40" href="https://awssbg-mhssce.in" rel="noopener noreferrer" target="_blank">
+<span class="material-symbols-outlined text-primary text-base">groups</span>
+<span>Join SBG Community</span>
+</a>
+</div>
+<span class="text-[11px] font-mono text-white/50 mt-2">
+            Organized by AWS Student Builder Group • M. H. Saboo Siddik College of Engineering, Byculla
+          </span>
+</div>
+</div>
+</section>
+</main>
+<!-- ========================================================================= -->
+<!-- MODAL: DEEP DIVE ARCHITECTURAL SPEC (PROGRESSIVE DISCLOSURE)              -->
+<!-- ========================================================================= -->
+<div class="fixed inset-0 z-50 bg-black/85 backdrop-blur-md hidden items-center justify-center p-4" id="deep-spec-modal">
+<div class="w-full max-w-2xl rounded-2xl bg-surface-container border border-white/20 p-6 flex flex-col gap-4 shadow-2xl relative">
+<div class="flex items-center justify-between pb-3 border-b border-white/10">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-xl">account_tree</span>
+<h3 class="text-base font-bold text-white font-mono">Stage Technical Blueprint &amp; Specs</h3>
+</div>
+<button class="w-8 h-8 rounded-lg bg-surface-container-high text-on-surface-variant hover:text-white flex items-center justify-center" onclick="closeDeepSpecModal()">
+<span class="material-symbols-outlined text-sm">close</span>
+</button>
+</div>
+<div class="flex flex-col gap-3 text-xs text-on-surface-variant font-mono leading-relaxed">
+<p class="text-white font-sans text-sm">
+          Technical specifications deployed during the live interactive lab:
+        </p>
+<div class="p-3.5 rounded-xl bg-surface-container-lowest border border-white/5 flex flex-col gap-1.5">
+<span class="text-primary font-bold">1. Zero-Trust Security Protocol (AWS Systems Manager):</span>
+<span>Zero inbound security group rules required. Instances assume IAM Instance Profile with <code class="text-white">AmazonSSMManagedInstanceCore</code>. Complete session auditing is fed directly to AWS CloudTrail.</span>
+</div>
+<div class="p-3.5 rounded-xl bg-surface-container-lowest border border-white/5 flex flex-col gap-1.5">
+<span class="text-secondary font-bold">2. CloudFormation IaC Stack Engine:</span>
+<span>Declarative templates executed via AWS CLI, AWS Console, or SAM. Automatic rollback triggers prevent stranded orphaned compute instances if configuration checks fail.</span>
+</div>
+</div>
+<div class="pt-2 flex justify-end">
+<button class="px-5 py-2.5 rounded-lg bg-primary text-[#00210b] font-bold text-xs font-mono" onclick="closeDeepSpecModal()">
+          Close Blueprint Spec
+        </button>
+</div>
+</div>
+</div>
+<!-- ========================================================================= -->
+<!-- FOOTER                                                                    -->
+<!-- ========================================================================= -->
+<footer class="w-full bg-[#080b13] border-t border-white/5 py-12">
+<div class="max-w-7xl mx-auto px-6 flex flex-col gap-8">
+<div class="flex flex-col md:flex-row items-center justify-between gap-6">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-lg bg-surface-container-high border border-primary/40 p-1 flex items-center justify-center">
+<img alt="AWS SBG MHSSCE Logo" class="w-full h-full object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBywqrkNgB4MXDBbNwvCPkQ-2lwKTX5LtUEE6zjaBoJOmE3HvcyRqocxRZ0Bx2xVDFtymUuI3jYBPnE4ZQ25rBZwMr49GhTzRIP_AFwyyk4jZfbiLh6fU4WI-1S5A-9RxLpS-dIK0-MAlvKUGroEmZx93rCH-HR7Rrbru6V8hGLYKX3oHbQxZpHzQ4-wQbWOOyRpvb85rYSHkmz7ZNF1b3jJMDjzbBntJZOo_2e3v34xyusMZ_DYMFGP3Nh95YrO8PMTA"/>
+</div>
+<div class="flex flex-col">
+<span class="font-mono text-xs text-white font-bold">AWS Student Builder Group MHSSCE</span>
+<span class="text-[11px] text-on-surface-variant font-mono">From Clicks to Code Workshop Series</span>
+</div>
+</div>
+<div class="flex items-center gap-6 text-xs text-on-surface-variant font-mono">
+<a class="hover:text-primary transition-colors" href="#cinema-hero">Hero Reel</a>
+<a class="hover:text-primary transition-colors" href="#story-pipeline">Story Pipeline</a>
+<a class="hover:text-primary transition-colors" href="#speaker">Keynote</a>
+<a class="hover:text-primary transition-colors" href="#lab-timeline">Timeline</a>
+<a class="hover:text-primary transition-colors" href="#faq">Intel &amp; FAQ</a>
+</div>
+</div>
+<div class="pt-4 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between text-[11px] font-mono text-white/40 gap-2">
+<span>© 2024 AWS SBG MHSSCE. Student cloud development initiative.</span>
+<span>M. H. Saboo Siddik College of Engineering, Byculla, Mumbai - 400008</span>
+</div>
+</div>
+</footer>
+<!-- ========================================================================= -->
+<!-- CLIENT-SIDE INTERACTION SCRIPT                                            -->
+<!-- ========================================================================= -->
+<script>
+    // Scene Data Configuration
+    var scenes = {
+      1: {
+        tag: "ACT I: MANUAL CONSOLE (CLICK-OPS)",
+        headline: "Scene 01: AWS Management Console Operations (Click-Ops)",
+        synopsis: "Attendees witness the friction of building infrastructure manually. We launch an Amazon EC2 instance by navigating deep console menus, auditing the danger of exposing port 22 directly to public IP ranges, and recognizing how unrecorded steps create tech debt.",
+        icon: "https://lh3.googleusercontent.com/aida-public/AB6AXuAet7aO4Yg3PJlpra0gJkNAPKq765cQCjyLHh_-BolzgCqYrN1QsSNuP5n8zj14EbLjqngrh8SePUdnTdivHZdcSBep0tw1QDOL18Linb-qgORC-HadTRr6fmsSMbDT0Z2YlQJSLvh1bIzgDwptezD8YwLoHOkhPBoeJ9MhdBs3FHp9YBMtYV9CETAgTyb-hbbBFxeAgtZwvR1k8QiwfEXP3YUiBokocHRj_IUEAnehosEeICYLqo-pFC9_gMVD-2ElJw",
+        filename: "manual-ec2-params.json",
+        bullets: [
+          "AMI: Amazon Linux 2023 64-bit (x86_64)",
+          "Instance Type: t2.micro / t3.small Free Tier eligible",
+          "Manual Inbound Rule: TCP 22 (Vulnerable public surface)"
+        ],
+        code: '<span class="text-white/40">AWSTemplateFormatVersion:</span> <span class="text-primary">\'2010-09-09\'</span>\n<span class="text-white/40">Description:</span> <span class="text-secondary">\'Stage 1 - Foundational EC2 Compute Provisioning\'</span>\n<span class="text-white/40">Parameters:</span>\n  <span class="text-primary">InstanceTypeParam:</span>\n    <span class="text-white/40">Type:</span> String\n    <span class="text-white/40">Default:</span> t2.micro\n<span class="text-white/40">Resources:</span>\n  <span class="text-primary">LabEC2Instance:</span>\n    <span class="text-white/40">Type:</span> <span class="text-secondary">AWS::EC2::Instance</span>\n    <span class="text-white/40">Properties:</span>\n      <span class="text-white/40">InstanceType:</span> !Ref InstanceTypeParam\n      <span class="text-white/40">ImageId:</span> ami-0c101f26f147fa7fd\n      <span class="text-white/40">Tags:</span>\n        - <span class="text-white/40">Key:</span> Event\n          <span class="text-white/40">Value:</span> ClicksToCode-AWS-SBG'
+      },
+      2: {
+        tag: "ACT II: ZERO-SSH HARDENING (SSM)",
+        headline: "Scene 02: Zero-SSH Port Bastion (AWS Systems Manager)",
+        synopsis: "Exposing port 22 invites automated botnet attacks and credential leakage. We demonstrate how AWS Systems Manager (SSM) Session Manager replaces fragile .pem private keys with cryptographically signed browser terminal sessions.",
+        icon: "https://lh3.googleusercontent.com/aida-public/AB6AXuDocQRDyJK9Gkv6jrTQrfTcH-BqiVAal1KerEjh9vW-uxJm8pSvkfYUb7R0uAiJr0sUN0rqOAZufg-RFdT9sa3arhAbxs3ylhyxzTVUp9lHQ09gyMAwMrQLn5G1Vj9wqUTl7ExW54YbwBvU7MDpp2uCgzLkZSamAFrtgdpJNOTIqdNg_W_LT6incRbxyYNJsGo6ZBEGZ05mjC2IGJYoHWN1zR8rCjlrLgDR3rjORzTv8gEPnaA3GAQ1Ot03U3-c3nQcJw",
+        filename: "ssm-iam-role.yaml",
+        bullets: [
+          "Zero Inbound Security Rules required (No Port 22)",
+          "IAM Instance Role: AmazonSSMManagedInstanceCore",
+          "Encrypted browser terminal session via AWS Console / CLI"
+        ],
+        code: '<span class="text-primary">EC2SSMRole:</span>\n  <span class="text-white/40">Type:</span> <span class="text-secondary">AWS::IAM::Role</span>\n  <span class="text-white/40">Properties:</span>\n    <span class="text-white/40">AssumeRolePolicyDocument:</span>\n      <span class="text-white/40">Statement:</span>\n        - <span class="text-white/40">Effect:</span> Allow\n          <span class="text-white/40">Principal:</span>\n            <span class="text-white/40">Service:</span> ec2.amazonaws.com\n          <span class="text-white/40">Action:</span> sts:AssumeRole\n    <span class="text-white/40">ManagedPolicyArns:</span>\n      - arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore'
+      },
+      3: {
+        tag: "ACT III: DECLARATIVE INFRASTRUCTURE AS CODE",
+        headline: "Scene 03: The Declarative Future (AWS CloudFormation)",
+        synopsis: "Convert human clicks into code. With CloudFormation, our entire hardened compute stack is defined in a concise YAML template that can be versioned on Git, tested in CI/CD, and deployed reliably in under 40 seconds.",
+        icon: "https://lh3.googleusercontent.com/aida-public/AB6AXuDv5lvAqK8sBEMxGvRz2h-WeBXSt8V3R1DZUPMoAT3_mgmVhz_zQxb1eMhnokqSxOTr7AC6Nl0_Lk-qOsEki_ihs-dCmIPaGt0yJGlIJcH-ZvXAPkyHYaMUaxbv3Nha1LtjBnmX0awzYEQEDPimBhTofjnF4aeM6DmiPNGnTKzU1K71xMZL9i0QnfvNmeVxKVkhZnnEo_FwaGMu-c5vWnYPbEgCRlQ6ZUV4U_GFL06jStn_8MbV9sJ2ug3n28dAjHSifg",
+        filename: "production-stack.yaml",
+        bullets: [
+          "Declarative Infrastructure as Code (YAML / JSON)",
+          "Automated Stack Rollback on provisioning failure",
+          "One-Click repeatable deployment in any AWS Region"
+        ],
+        code: '<span class="text-primary">HardenedComputeStack:</span>\n  <span class="text-white/40">Type:</span> <span class="text-secondary">AWS::CloudFormation::Stack</span>\n\n<span class="text-primary">Outputs:</span>\n  <span class="text-primary">SSMConnectCommand:</span>\n    <span class="text-white/40">Description:</span> <span class="text-secondary">"Start Zero-Port 22 Terminal Session"</span>\n    <span class="text-white/40">Value:</span> !Sub "aws ssm start-session --target ${LabEC2Instance}"'
+      }
+    };
+
+    function selectScene(sceneId) {
+      [1, 2, 3].forEach(function(id) {
+        var card = document.getElementById('scene-card-' + id);
+        if (id === sceneId) {
+          card.classList.add('active');
+        } else {
+          card.classList.remove('active');
+        }
+      });
+
+      var data = scenes[sceneId];
+      document.getElementById('scene-tag').innerText = data.tag;
+      document.getElementById('scene-headline').innerText = data.headline;
+      document.getElementById('scene-synopsis').innerText = data.synopsis;
+      document.getElementById('scene-icon').src = data.icon;
+      document.getElementById('panel-filename').innerText = data.filename;
+      document.getElementById('panel-code-content').innerHTML = data.code;
+
+      var bulletsHtml = '';
+      data.bullets.forEach(function(b) {
+        bulletsHtml += '<li class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-sm">arrow_right</span> ' + b + '</li>';
+      });
+      document.getElementById('scene-bulletpoints').innerHTML = bulletsHtml;
+    }
+
+    function toggleInspectorMode(mode) {
+      var terminal = document.getElementById('panel-terminal');
+      var telemetry = document.getElementById('panel-telemetry');
+      var btnTerminal = document.getElementById('view-mode-terminal');
+      var btnTelemetry = document.getElementById('view-mode-telemetry');
+
+      if (mode === 'terminal') {
+        terminal.classList.remove('hidden');
+        telemetry.classList.add('hidden');
+        btnTerminal.className = 'px-3.5 py-1.5 rounded-lg bg-primary text-[#00210b] font-bold transition-all flex items-center gap-1.5';
+        btnTelemetry.className = 'px-3.5 py-1.5 rounded-lg text-on-surface-variant hover:text-white transition-all flex items-center gap-1.5';
+      } else {
+        terminal.classList.add('hidden');
+        telemetry.classList.remove('hidden');
+        btnTelemetry.className = 'px-3.5 py-1.5 rounded-lg bg-primary text-[#00210b] font-bold transition-all flex items-center gap-1.5';
+        btnTerminal.className = 'px-3.5 py-1.5 rounded-lg text-on-surface-variant hover:text-white transition-all flex items-center gap-1.5';
+      }
+    }
+
+    function seekTimeline(step) {
+      var progressBar = document.getElementById('timeline-progress-bar');
+      var widths = { 1: '25%', 2: '50%', 3: '75%', 4: '100%' };
+      progressBar.style.width = widths[step];
+
+      var points = document.querySelectorAll('.timeline-scrub-point');
+      points.forEach(function(pt, idx) {
+        if (idx < step) {
+          pt.classList.add('active');
+          pt.classList.replace('bg-surface-bright', 'bg-primary');
+        } else {
+          pt.classList.remove('active');
+          pt.classList.replace('bg-primary', 'bg-surface-bright');
+        }
+      });
+
+      [1, 2, 3, 4].forEach(function(id) {
+        var card = document.getElementById('timeline-card-' + id);
+        if (id === step) {
+          card.classList.add('border-primary/60');
+          card.classList.remove('border-white/10');
+        } else {
+          card.classList.remove('border-primary/60');
+          card.classList.add('border-white/10');
+        }
+      });
+    }
+
+    function toggleFaq(el) {
+      var p = el.querySelector('p');
+      var icon = el.querySelector('.material-symbols-outlined');
+      if (p.classList.contains('hidden')) {
+        p.classList.remove('hidden');
+        icon.innerText = 'expand_less';
+      } else {
+        p.classList.add('hidden');
+        icon.innerText = 'expand_more';
+      }
+    }
+
+    function openDeepSpecModal() {
+      document.getElementById('deep-spec-modal').classList.remove('hidden');
+      document.getElementById('deep-spec-modal').classList.add('flex');
+    }
+
+    function closeDeepSpecModal() {
+      document.getElementById('deep-spec-modal').classList.add('hidden');
+      document.getElementById('deep-spec-modal').classList.remove('flex');
+    }
+  </script>
+</body></html>
