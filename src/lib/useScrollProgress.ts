@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { RefObject, useEffect, useState } from 'react';
 
 export interface ScrollProgressOptions {
   start?: number;
@@ -33,6 +33,41 @@ export function useScrollProgress({ start = 0, end = 1 }: ScrollProgressOptions 
       if (frame) window.cancelAnimationFrame(frame);
     };
   }, [start, end]);
+
+  return progress;
+}
+
+export function useElementScrollProgress(ref: RefObject<HTMLElement | null>) {
+  const [progress, setProgress] = useState(0);
+
+  useEffect(() => {
+    let frame = 0;
+
+    const update = () => {
+      frame = 0;
+      const element = ref.current;
+      if (!element) return;
+
+      const rect = element.getBoundingClientRect();
+      const travel = Math.max(1, element.offsetHeight - window.innerHeight);
+      const raw = (-rect.top) / travel;
+      setProgress(Math.min(1, Math.max(0, raw)));
+    };
+
+    const onScroll = () => {
+      if (!frame) frame = window.requestAnimationFrame(update);
+    };
+
+    update();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+
+    return () => {
+      window.removeEventListener('scroll', onScroll);
+      window.removeEventListener('resize', onScroll);
+      if (frame) window.cancelAnimationFrame(frame);
+    };
+  }, [ref]);
 
   return progress;
 }
