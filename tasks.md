@@ -2,7 +2,7 @@
 
 Implementation status for the cinematic scroll-driven rebuild.
 
-> **Status:** The cinematic fixed-frame scroll pass is implemented on `main`. The remaining external inputs are the event-specific RSVP URL and a successful GitHub Actions build run. No missing image asset was encountered.
+> **Status:** The story now uses a single fixed video-like viewport with an element-relative scroll timeline. The remaining external inputs are the event-specific RSVP URL and a successful GitHub Actions build run. No missing image asset was encountered.
 
 ## Working Rules
 
@@ -14,8 +14,9 @@ Implementation status for the cinematic scroll-driven rebuild.
 - [x] Screen 1 grand-entry identity preserved.
 - [x] Conflicting legacy implementations removed.
 - [x] Responsive and reduced-motion rules implemented.
-- [x] Chapters now use a fixed viewport frame while scroll advances the scene inside it.
+- [x] Chapters now use one shared fixed viewport frame while scroll advances the scene inside it.
 - [x] Chapter counters such as `02 //`, `03 //` were removed from the visible story.
+- [x] Story background matches the Screen 1 base background for visual continuity.
 
 ## Phase 0 — Baseline & Cleanup
 
@@ -40,7 +41,7 @@ Implementation status for the cinematic scroll-driven rebuild.
 
 ### TASK 0.4 — Establish scroll/motion infrastructure
 - [x] Added reusable `useScrollProgress`.
-- [x] Mapped global scroll position into per-chapter progress.
+- [x] Added element-relative scroll progress for the cinematic story stage.
 - [x] Removed timer/autoplay progression from the story.
 - [x] Added `prefers-reduced-motion` handling.
 - [x] Kept animation changes transform/opacity based to avoid layout instability.
@@ -225,7 +226,7 @@ Implementation status for the cinematic scroll-driven rebuild.
 
 ### TASK 8.5 — Implementation hardening
 - [x] Replaced the implicit `React.ReactNode` namespace reference with an explicit `ReactNode` type import in `Home.tsx`.
-- [x] Confirmed `CinematicChapter` and `useScrollProgress` are present and match the imports used by `Home.tsx`.
+- [x] Confirmed `CinematicChapter` and scroll hooks are present and match the imports used by `Home.tsx`.
 - [x] Confirmed the project build script is `tsc -b && vite build`.
 
 ### TASK 8.6 — Final interaction hardening
@@ -236,10 +237,13 @@ Implementation status for the cinematic scroll-driven rebuild.
 
 ### TASK 8.7 — Fixed-frame cinematic scroll pass
 - [x] Removed visible chapter counters such as `02 //`, `03 //`, and the repeated numeric mission prefixes.
-- [x] Converted each story chapter into a tall scroll runway with a sticky 100svh presentation frame.
-- [x] Kept scene elements inside the viewport while scroll advances their transforms, opacity, and staged reveals.
-- [x] Recalibrated chapter progress to the new fixed-frame scroll duration.
-- [x] Kept mobile and reduced-motion behavior aligned with the same frame model.
+- [x] Replaced independent sticky chapter runways with one shared fixed viewport frame for the entire story.
+- [x] Matched the story-stage background to the Screen 1 base background and repeated its grid/glow language.
+- [x] Made the story stage 33 viewport-units tall so each of the 11 chapters receives a deliberately long 3-viewport interaction window.
+- [x] Switched chapter timing from document-height percentages to element-relative scroll progress, removing transition compression caused by the rest of the page.
+- [x] Added layered chapter crossfades at boundaries so the handoff between screens does not feel like a normal page-section transition.
+- [x] Kept all scene elements inside the fixed viewport while scroll advances their transforms, opacity, and staged reveals.
+- [x] Kept mobile and reduced-motion behavior aligned with the frame model.
 - [x] Kept the story fully scroll-controlled with no autoplay progression.
 
 ## Final Implementation Order
