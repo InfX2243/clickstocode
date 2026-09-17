@@ -1,6 +1,7 @@
 import { createRoot } from 'react-dom/client';
 import Home from './pages/Home';
 import './styles.css';
+import './cinematic-scroll.css';
 
 function App() {
   return (
