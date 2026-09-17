@@ -50,7 +50,7 @@ export default function Home() {
       <ChapterShell index={3} eyebrow="THE CLICK" title="One action. One server." progress={chapterProgresses[1]}>
         <div className="console-scene" style={{ transform: `translateY(${(1 - chapterProgresses[1]) * 18}px) scale(${0.96 + chapterProgresses[1] * 0.04})` }}>
           <div className="console-bar"><span className="dot" /><span>EC2 / Instances</span><span className="console-status">READY</span></div>
-          <div className="console-body"><div className="console-nav"><b>Compute</b><span>Instances</span><span>Images</span><span>Security</span></div><div className="console-main"><span className="console-kicker">INSTANCE ACTION</span><strong>Launch instance</strong><button className="console-button" aria-label="Launch instance visual">Launch</button><span className="fake-cursor" style={{ transform: `translate(${chapterProgresses[1] * 150}px, ${chapterProgresses[1] * 55}px)` }}>➤</span></div></div>
+          <div className="console-body"><div className="console-nav"><b>Compute</b><span>Instances</span><span>Images</span><span>Security</span></div><div className="console-main"><span className="console-kicker">INSTANCE ACTION</span><strong>Launch instance</strong><span className="console-button" aria-hidden="true">Launch</span><span className="fake-cursor" aria-hidden="true" style={{ transform: `translate(${chapterProgresses[1] * 150}px, ${chapterProgresses[1] * 55}px)` }}>➤</span></div></div>
         </div>
       </ChapterShell>
 
@@ -59,7 +59,7 @@ export default function Home() {
       </ChapterShell>
 
       <ChapterShell index={5} eyebrow="THE TURN" title="From clicking to declaring." progress={chapterProgresses[3]}>
-        <div className="terminal-scene"><div className="terminal-top"><span>terminal</span><span>terraform</span></div><div className="terminal-line"><span className="prompt">$</span><span className="command">terraform apply</span><span className="cursor-block" style={{ opacity: chapterProgresses[3] > .2 ? 1 : 0 }} /></div><div className="terminal-output" style={{ opacity: chapterProgresses[3] }}>Plan: 1 to add, 0 to change, 0 to destroy.</div></div>
+        <div className="terminal-scene"><div className="terminal-top"><span>terminal</span><span>terraform</span></div><div className="terminal-line"><span className="prompt">$</span><span className="command">terraform apply</span><span className="cursor-block" aria-hidden="true" style={{ opacity: chapterProgresses[3] > .2 ? 1 : 0 }} /></div><div className="terminal-output" style={{ opacity: chapterProgresses[3] }}>Plan: 1 to add, 0 to change, 0 to destroy.</div></div>
       </ChapterShell>
 
       <ChapterShell index={6} eyebrow="INFRASTRUCTURE AS CODE" title="Human → Code → Plan → Infrastructure" progress={chapterProgresses[4]}>
@@ -67,7 +67,7 @@ export default function Home() {
       </ChapterShell>
 
       <ChapterShell index={7} eyebrow="THE PIPELINE" title="Click → Console → Code → Plan → Apply → Infrastructure" progress={chapterProgresses[5]}>
-        <div className="pipeline" aria-label="Infrastructure delivery pipeline">{['CLICK','CONSOLE','CODE','PLAN','APPLY','INFRASTRUCTURE'].map((step, i) => <div key={step} className={`pipeline-step ${chapterProgresses[5] >= i / 5 ? 'is-active' : ''}`}><span>{step}</span>{i < 5 && <i>→</i>}</div>)}</div>
+        <div className="pipeline" aria-label="Infrastructure delivery pipeline">{['CLICK','CONSOLE','CODE','PLAN','APPLY','INFRASTRUCTURE'].map((step, i) => <div key={step} className={`pipeline-step ${chapterProgresses[5] >= i / 5 ? 'is-active' : ''}`}><span>{step}</span>{i < 5 && <i aria-hidden="true">→</i>}</div>)}</div>
       </ChapterShell>
 
       <ChapterShell index={8} eyebrow="YOUR MISSION" title="Build the muscle, not just the demo." progress={chapterProgresses[6]}>
@@ -75,7 +75,7 @@ export default function Home() {
       </ChapterShell>
 
       <ChapterShell index={9} eyebrow="MISSION RUNTIME" title="The lab, as an execution log." progress={chapterProgresses[7]}>
-        <div className="execution-log">{[['09:30','PRE-FLIGHT','Check-in + credentials'],['10:00','MODULE 01','Manual EC2 compute'],['10:40','MODULE 02','Portless SSM access'],['11:20','MODULE 03','Declarative IaC']].map(([time,tag,label], i) => <div key={time} className={`log-row ${chapterProgresses[7] >= i / 4 ? 'is-active' : ''}`}><time>{time}</time><b>{tag}</b><span>{label}</span></div>)}</div>
+        <div className="execution-log" aria-label="Workshop execution log">{[['09:30','PRE-FLIGHT','Check-in + credentials'],['10:00','MODULE 01','Manual EC2 compute'],['10:40','MODULE 02','Portless SSM access'],['11:20','MODULE 03','Declarative IaC']].map(([time,tag,label], i) => <div key={time} className={`log-row ${chapterProgresses[7] >= i / 4 ? 'is-active' : ''}`}><time>{time}</time><b>{tag}</b><span>{label}</span></div>)}</div>
       </ChapterShell>
 
       <ChapterShell index={10} eyebrow="$ WHOAMI" title="Meet the builder." progress={chapterProgresses[8]}>
@@ -91,7 +91,7 @@ export default function Home() {
       </ChapterShell>
 
       <section className="final-cta" aria-labelledby="final-cta-title">
-        <div className="final-cta-inner"><span className="mono-label">AWS SBG MHSSCE // FINAL BUILD</span><h2 id="final-cta-title">YOU'VE SEEN THE CLICKS.<br /><em>NOW WRITE THE CODE.</em></h2><a className="join-button" href="https://www.meetup.com" target="_blank" rel="noreferrer">JOIN THE BUILD <span>→</span></a><small>RSVP destination still needs the event-specific Meetup URL.</small></div>
+        <div className="final-cta-inner"><span className="mono-label">AWS SBG MHSSCE // FINAL BUILD</span><h2 id="final-cta-title">YOU'VE SEEN THE CLICKS.<br /><em>NOW WRITE THE CODE.</em></h2><button className="join-button" type="button" disabled aria-describedby="rsvp-status">JOIN THE BUILD <span aria-hidden="true">→</span></button><small id="rsvp-status">RSVP destination pending: add the event-specific Meetup URL before launch.</small></div>
       </section>
     </div>
   );
