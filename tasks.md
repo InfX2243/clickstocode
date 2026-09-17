@@ -146,8 +146,9 @@ Implementation status for the cinematic scroll-driven rebuild.
 - [x] Organizer details kept minimal.
 
 ### TASK 5.3 — Validate CTA and external links
-- [ ] **Blocked:** the repository contains no event-specific Meetup URL, and web search did not locate a verifiable event-specific URL. The current CTA is explicitly marked with this dependency instead of pretending the generic Meetup homepage is the RSVP destination.
+- [ ] **Blocked:** the repository contains no event-specific Meetup URL, and GitHub code search found no `meetup.com` reference that could provide one. The CTA no longer links to the generic Meetup homepage and now remains visibly pending until the real event URL is supplied.
 - [x] No broken or fabricated event URL was introduced.
+- [x] CTA no longer presents a generic third-party homepage as the event RSVP destination.
 
 ## Phase 6 — Remove Legacy Implementations
 
@@ -225,6 +226,12 @@ Implementation status for the cinematic scroll-driven rebuild.
 - [x] Confirmed `CinematicChapter` and `useScrollProgress` are present and match the imports used by `Home.tsx`.
 - [x] Confirmed the project build script is `tsc -b && vite build`.
 
+### TASK 8.6 — Final interaction hardening
+- [x] Converted the console's non-interactive visual control from a native `<button>` to a non-interactive element so keyboard users do not encounter a fake control.
+- [x] Marked decorative cursor/caret/arrow elements as hidden from assistive technology.
+- [x] Added descriptive labels to the pipeline and execution-log visual regions.
+- [x] Replaced the generic Meetup homepage CTA with an explicitly disabled pending-RSVP state until the event-specific URL is available.
+
 ## Final Implementation Order
 
 1. [x] Baseline audit + architecture
@@ -245,4 +252,5 @@ Implementation status for the cinematic scroll-driven rebuild.
 16. [x] Legacy cleanup
 17. [x] Accessibility/performance implementation
 18. [x] Implementation hardening
-19. [ ] External URL + CI verification
+19. [x] Final interaction hardening
+20. [ ] External URL + CI verification
