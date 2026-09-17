@@ -2,7 +2,7 @@
 
 Implementation status for the cinematic scroll-driven rebuild.
 
-> **Status:** The story now uses a single fixed video-like viewport with an element-relative scroll timeline. The remaining external inputs are the event-specific RSVP URL and a successful GitHub Actions build run. No missing image asset was encountered.
+> **Status:** The entire entry + story now lives inside one shared fixed viewport timeline. Screen 1 is the first timeline scene, then its elements exit while the story chapters emerge underneath. The remaining external inputs are the event-specific RSVP URL and a successful GitHub Actions build run.
 
 ## Working Rules
 
@@ -14,9 +14,10 @@ Implementation status for the cinematic scroll-driven rebuild.
 - [x] Screen 1 grand-entry identity preserved.
 - [x] Conflicting legacy implementations removed.
 - [x] Responsive and reduced-motion rules implemented.
-- [x] Chapters now use one shared fixed viewport frame while scroll advances the scene inside it.
+- [x] One shared fixed viewport frame now starts on Screen 1, not Screen 2.
+- [x] Screen 1 and the story share the same continuous background/frame.
 - [x] Chapter counters such as `02 //`, `03 //` were removed from the visible story.
-- [x] Story background matches the Screen 1 base background for visual continuity.
+- [x] Story timing is element-relative rather than tied to total document height.
 
 ## Phase 0 — Baseline & Cleanup
 
@@ -41,7 +42,7 @@ Implementation status for the cinematic scroll-driven rebuild.
 
 ### TASK 0.4 — Establish scroll/motion infrastructure
 - [x] Added reusable `useScrollProgress`.
-- [x] Added element-relative scroll progress for the cinematic story stage.
+- [x] Added element-relative scroll progress for the cinematic timeline.
 - [x] Removed timer/autoplay progression from the story.
 - [x] Added `prefers-reduced-motion` handling.
 - [x] Kept animation changes transform/opacity based to avoid layout instability.
@@ -56,9 +57,11 @@ Implementation status for the cinematic scroll-driven rebuild.
 - [x] Screen 1 remains visually dominant.
 
 ### TASK 1.2 — Make Screen 1 transition scroll-driven
-- [x] Existing exit treatment retained and driven from scroll progress.
+- [x] Existing entrance animations still start automatically on load.
+- [x] Screen 1 now sits inside the same sticky viewport as every later chapter.
+- [x] Scroll begins by moving Screen 1 out of the frame rather than scrolling past a normal page section.
 - [x] No auto-dismiss logic remains.
-- [x] Scroll works through native wheel/touch/keyboard behavior.
+- [x] Native wheel/touch/keyboard scrolling remains the only story progression input.
 
 ## Phase 2 — Build the First Story Sequence
 
@@ -66,7 +69,7 @@ Implementation status for the cinematic scroll-driven rebuild.
 - [x] Generic legacy Hero removed.
 - [x] Minimal hands-on journey message added.
 - [x] `CLICK → CODE` motif introduced.
-- [x] Direct transition from Screen 1 implemented.
+- [x] Chapter emerges within the same fixed frame after the Screen 1 exit phase.
 - [x] No paragraph-heavy copy.
 
 ### TASK 2.2 — Chapter 3: THE CLICK
@@ -157,7 +160,6 @@ Implementation status for the cinematic scroll-driven rebuild.
 
 ### TASK 6.1 — Remove disconnected sections
 - [x] Removed legacy Hero, StoryPipeline, Speaker, Timeline, FAQ, Header, and Icons components.
-- [x] Removed obsolete scroll state/listeners from `Home.tsx`.
 - [x] Removed dead section imports.
 - [x] Removed legacy component-only styling dependencies.
 
@@ -225,26 +227,33 @@ Implementation status for the cinematic scroll-driven rebuild.
 - [x] No image placeholder is required.
 
 ### TASK 8.5 — Implementation hardening
-- [x] Replaced the implicit `React.ReactNode` namespace reference with an explicit `ReactNode` type import in `Home.tsx`.
-- [x] Confirmed `CinematicChapter` and scroll hooks are present and match the imports used by `Home.tsx`.
-- [x] Confirmed the project build script is `tsc -b && vite build`.
+- [x] Explicit `ReactNode` type import used in `Home.tsx`.
+- [x] `CinematicChapter` and scroll hooks match the imports used by `Home.tsx`.
+- [x] Project build script remains `tsc -b && vite build`.
 
 ### TASK 8.6 — Final interaction hardening
-- [x] Converted the console's non-interactive visual control from a native `<button>` to a non-interactive element so keyboard users do not encounter a fake control.
-- [x] Marked decorative cursor/caret/arrow elements as hidden from assistive technology.
-- [x] Added descriptive labels to the pipeline and execution-log visual regions.
-- [x] Replaced the generic Meetup homepage CTA with an explicitly disabled pending-RSVP state until the event-specific URL is available.
+- [x] Console visual control is non-interactive rather than a fake native button.
+- [x] Decorative cursor/caret/arrow elements are hidden from assistive technology.
+- [x] Pipeline and execution-log visual regions have descriptive labels.
+- [x] Generic Meetup homepage CTA remains disabled until the real event URL is available.
 
 ### TASK 8.7 — Fixed-frame cinematic scroll pass
-- [x] Removed visible chapter counters such as `02 //`, `03 //`, and the repeated numeric mission prefixes.
-- [x] Replaced independent sticky chapter runways with one shared fixed viewport frame for the entire story.
-- [x] Matched the story-stage background to the Screen 1 base background and repeated its grid/glow language.
-- [x] Made the story stage 33 viewport-units tall so each of the 11 chapters receives a deliberately long 3-viewport interaction window.
-- [x] Switched chapter timing from document-height percentages to element-relative scroll progress, removing transition compression caused by the rest of the page.
-- [x] Added layered chapter crossfades at boundaries so the handoff between screens does not feel like a normal page-section transition.
-- [x] Kept all scene elements inside the fixed viewport while scroll advances their transforms, opacity, and staged reveals.
-- [x] Kept mobile and reduced-motion behavior aligned with the frame model.
-- [x] Kept the story fully scroll-controlled with no autoplay progression.
+- [x] Removed visible chapter counters such as `02 //`, `03 //`, and repeated numeric mission prefixes.
+- [x] Replaced independent sticky chapter runways with one shared fixed viewport frame.
+- [x] Matched the story background to the Screen 1 base background.
+- [x] Made the story stage deliberately long so each chapter has a generous scroll window.
+- [x] Switched chapter timing from document-height percentages to element-relative scroll progress.
+- [x] Added layered chapter crossfades at boundaries.
+- [x] Kept scene elements inside the fixed viewport while scroll advances their transforms, opacity, and staged reveals.
+
+### TASK 8.8 — Unified entry-to-story cinematic pass
+- [x] Moved Screen 1 into the same sticky viewport frame as the later chapters.
+- [x] Preserved Screen 1's automatic load-in animation while keeping narrative progression scroll-controlled.
+- [x] Screen 1 now exits upward/fades inside the locked viewport instead of behaving like a normal page section.
+- [x] Chapter 1 begins underneath the exiting entry screen, creating a continuous handoff rather than a Screen 1 → page-section jump.
+- [x] Kept the background continuous from initial load through the story sequence.
+- [x] Extended the shared timeline to `3600svh` so the new entry phase does not steal the chapter scroll time.
+- [x] Kept the final CTA outside the cinematic timeline so the experience has a deliberate closing transition.
 
 ## Final Implementation Order
 
@@ -268,4 +277,5 @@ Implementation status for the cinematic scroll-driven rebuild.
 18. [x] Implementation hardening
 19. [x] Final interaction hardening
 20. [x] Fixed-frame cinematic scroll behavior
-21. [ ] External URL + CI verification
+21. [x] Unified Screen 1 → story viewport behavior
+22. [ ] External URL + CI verification
