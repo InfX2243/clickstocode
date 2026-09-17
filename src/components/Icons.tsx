@@ -1,2 +1,3 @@
-import { ArrowDown, ArrowForward, ArrowOutward, EventSeat } from 'lucide-react';
-export { ArrowDown, ArrowForward, ArrowOutward, EventSeat };
+import { ArrowDown, ArrowRight, ExternalLink, Armchair } from 'lucide-react';
+
+export { ArrowDown, ArrowRight, ExternalLink, Armchair };
