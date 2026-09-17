@@ -2,7 +2,7 @@
 
 Implementation status for the cinematic scroll-driven rebuild.
 
-> **Status:** The rebuild is implemented on `main`. Implementation hardening is complete; the remaining external inputs are the event-specific RSVP URL and a successful GitHub Actions build run. No missing image asset was encountered.
+> **Status:** The cinematic fixed-frame scroll pass is implemented on `main`. The remaining external inputs are the event-specific RSVP URL and a successful GitHub Actions build run. No missing image asset was encountered.
 
 ## Working Rules
 
@@ -14,6 +14,8 @@ Implementation status for the cinematic scroll-driven rebuild.
 - [x] Screen 1 grand-entry identity preserved.
 - [x] Conflicting legacy implementations removed.
 - [x] Responsive and reduced-motion rules implemented.
+- [x] Chapters now use a fixed viewport frame while scroll advances the scene inside it.
+- [x] Chapter counters such as `02 //`, `03 //` were removed from the visible story.
 
 ## Phase 0 — Baseline & Cleanup
 
@@ -232,6 +234,14 @@ Implementation status for the cinematic scroll-driven rebuild.
 - [x] Added descriptive labels to the pipeline and execution-log visual regions.
 - [x] Replaced the generic Meetup homepage CTA with an explicitly disabled pending-RSVP state until the event-specific URL is available.
 
+### TASK 8.7 — Fixed-frame cinematic scroll pass
+- [x] Removed visible chapter counters such as `02 //`, `03 //`, and the repeated numeric mission prefixes.
+- [x] Converted each story chapter into a tall scroll runway with a sticky 100svh presentation frame.
+- [x] Kept scene elements inside the viewport while scroll advances their transforms, opacity, and staged reveals.
+- [x] Recalibrated chapter progress to the new fixed-frame scroll duration.
+- [x] Kept mobile and reduced-motion behavior aligned with the same frame model.
+- [x] Kept the story fully scroll-controlled with no autoplay progression.
+
 ## Final Implementation Order
 
 1. [x] Baseline audit + architecture
@@ -253,4 +263,5 @@ Implementation status for the cinematic scroll-driven rebuild.
 17. [x] Accessibility/performance implementation
 18. [x] Implementation hardening
 19. [x] Final interaction hardening
-20. [ ] External URL + CI verification
+20. [x] Fixed-frame cinematic scroll behavior
+21. [ ] External URL + CI verification
