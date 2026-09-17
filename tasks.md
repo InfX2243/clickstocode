@@ -2,7 +2,7 @@
 
 Implementation status for the cinematic scroll-driven rebuild.
 
-> **Status:** The entire entry + story now lives inside one shared fixed viewport timeline. Screen 1 is the first timeline scene, then its elements exit while the story chapters emerge underneath. The remaining external inputs are the event-specific RSVP URL and a successful GitHub Actions build run.
+> **Status:** The entry, story, and final CTA now live inside one shared fixed viewport timeline. Screen 1 is the first scene, story chapters follow inside the same frame, and the CTA is now the closing scene instead of a traditional page section. The remaining external inputs are the event-specific RSVP URL and a successful GitHub Actions build run.
 
 ## Working Rules
 
@@ -14,8 +14,8 @@ Implementation status for the cinematic scroll-driven rebuild.
 - [x] Screen 1 grand-entry identity preserved.
 - [x] Conflicting legacy implementations removed.
 - [x] Responsive and reduced-motion rules implemented.
-- [x] One shared fixed viewport frame now starts on Screen 1, not Screen 2.
-- [x] Screen 1 and the story share the same continuous background/frame.
+- [x] One shared fixed viewport frame now starts on Screen 1 and ends on the final CTA.
+- [x] Screen 1, story chapters, and CTA share the same continuous background/frame.
 - [x] Chapter counters such as `02 //`, `03 //` were removed from the visible story.
 - [x] Story timing is element-relative rather than tied to total document height.
 
@@ -150,6 +150,7 @@ Implementation status for the cinematic scroll-driven rebuild.
 - [x] `NOW WRITE THE CODE.` used.
 - [x] `JOIN THE BUILD →` action presented.
 - [x] Organizer details kept minimal.
+- [x] Final CTA is now a fixed-viewport closing scene, not a normal scrolling section.
 
 ### TASK 5.3 — Validate CTA and external links
 - [ ] **Blocked:** the repository contains no event-specific Meetup URL, and GitHub code search found no `meetup.com` reference that could provide one. The CTA no longer links to the generic Meetup homepage and now remains visibly pending until the real event URL is supplied.
@@ -255,6 +256,38 @@ Implementation status for the cinematic scroll-driven rebuild.
 - [x] Extended the shared timeline to `3600svh` so the new entry phase does not steal the chapter scroll time.
 - [x] Kept the final CTA outside the cinematic timeline so the experience has a deliberate closing transition.
 
+### TASK 8.9 — Fixed-frame final CTA pass
+- [x] Moved the final CTA inside the same sticky cinematic viewport as Screen 1 and all story chapters.
+- [x] Extended the shared timeline to `3800svh` to give the closing scene its own scroll window.
+- [x] Final CTA now fades/scales into place inside the locked frame rather than becoming a traditional full-page section.
+- [x] Preserved the same dark background and visual language through the final scene.
+- [x] CTA remains scroll-controlled and does not autoplay.
+
+## Next Phase — Motion, Timing & Content
+
+### TASK 9.1 — Animation choreography
+- [ ] Define a consistent enter / hold / exit rhythm for every chapter.
+- [ ] Replace abrupt property jumps with deliberate interpolated motion where needed.
+- [ ] Sync supporting elements to the main visual beat of each chapter.
+- [ ] Make chapter-to-chapter handoffs feel continuous rather than like independent slides.
+
+### TASK 9.2 — Timing and scroll pacing
+- [ ] Tune the scroll budget per chapter based on visual complexity.
+- [ ] Give major story beats more breathing room than simple informational scenes.
+- [ ] Tune entry overlap and CTA reveal windows.
+- [ ] Check desktop and mobile timing separately.
+
+### TASK 9.3 — Content refinement
+- [ ] Review every heading, label, and micro-copy line for narrative clarity.
+- [ ] Remove anything that feels generic, repetitive, or template-like.
+- [ ] Strengthen the progression from manual clicking → IaC → automation → event value.
+- [ ] Keep content visual-first and concise.
+
+### TASK 9.4 — Final cinematic sync pass
+- [ ] Align motion, content, visual hierarchy, and scroll progress as one system.
+- [ ] Verify the first frame, chapter transitions, and closing CTA feel like one continuous film.
+- [ ] Re-check reduced-motion behavior after the motion pass.
+
 ## Final Implementation Order
 
 1. [x] Baseline audit + architecture
@@ -278,4 +311,6 @@ Implementation status for the cinematic scroll-driven rebuild.
 19. [x] Final interaction hardening
 20. [x] Fixed-frame cinematic scroll behavior
 21. [x] Unified Screen 1 → story viewport behavior
-22. [ ] External URL + CI verification
+22. [x] Fixed-frame final CTA
+23. [ ] Motion, timing, transition, sync, and content refinement
+24. [ ] External URL + CI verification
