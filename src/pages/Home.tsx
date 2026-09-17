@@ -5,7 +5,8 @@ import { useElementScrollProgress, useReducedMotion } from '../lib/useScrollProg
 const chapters = 11;
 const ENTRY_END = 0.12;
 const STORY_START = 0.1;
-const STORY_END = 0.96;
+const STORY_END = 0.94;
+const CTA_START = 0.9;
 const clamp01 = (value: number) => Math.min(1, Math.max(0, value));
 const storyTimelineProgress = (timeline: number) => clamp01((timeline - STORY_START) / (STORY_END - STORY_START));
 const chapterProgress = (story: number, index: number) => clamp01(story * chapters - index);
@@ -16,6 +17,7 @@ const chapterVisibility = (story: number, index: number) => {
   if (raw > 0.8) return clamp01((1.2 - raw) / 0.4);
   return 1;
 };
+const ctaProgress = (timeline: number) => clamp01((timeline - CTA_START) / (1 - CTA_START));
 
 function ChapterShell({ eyebrow, title, children, progress, visibility }: { eyebrow: string; title: string; children: ReactNode; progress: number; visibility: number }) {
   return <CinematicChapter eyebrow={eyebrow} title={title} progress={progress} visibility={visibility}>{children}</CinematicChapter>;
@@ -30,6 +32,8 @@ export default function Home() {
   const chapterProgresses = useMemo(() => Array.from({ length: chapters }, (_, i) => chapterProgress(storyProgress, i)), [storyProgress]);
   const chapterVisibilities = useMemo(() => Array.from({ length: chapters }, (_, i) => chapterVisibility(storyProgress, i)), [storyProgress]);
   const entryVisibility = clamp01((ENTRY_END - timelineProgress) / 0.09);
+  const finalProgress = ctaProgress(timelineProgress);
+  const finalVisibility = clamp01(finalProgress / 0.18) * clamp01((1.08 - finalProgress) / 0.18);
 
   return (
     <div className="experience">
@@ -62,10 +66,12 @@ export default function Home() {
             <ChapterShell eyebrow="WHY IT MATTERS" title="You're not just learning AWS." progress={chapterProgresses[9]} visibility={chapterVisibilities[9]}><div className="payoff"><span style={{ opacity: chapterProgresses[9] > .1 ? 1 : .2 }}>Build.</span><span style={{ opacity: chapterProgresses[9] > .35 ? 1 : .2 }}>Automate.</span><span style={{ opacity: chapterProgresses[9] > .6 ? 1 : .2 }}>Think like an engineer.</span></div></ChapterShell>
             <ChapterShell eyebrow="PRE-FLIGHT" title="Before you enter the lab." progress={chapterProgresses[10]} visibility={chapterVisibilities[10]}><div className="faq-grid">{[['WHO','Students & builders'],['LEVEL','No prior AWS expertise required'],['BRING','Laptop + charger'],['COST','Free community session']].map(([q,a]) => <div key={q}><b>{q}</b><span>{a}</span></div>)}</div></ChapterShell>
           </div>
+
+          <section className="final-cta cinematic-final-scene" aria-labelledby="final-cta-title" style={{ opacity: finalVisibility, transform: `translate3d(0, ${(1 - finalVisibility) * 28}px, 0) scale(${0.985 + finalVisibility * 0.015})`, pointerEvents: finalVisibility > 0.5 ? 'auto' : 'none' }}>
+            <div className="final-cta-inner"><span className="mono-label">AWS SBG MHSSCE // FINAL BUILD</span><h2 id="final-cta-title">YOU'VE SEEN THE CLICKS.<br /><em>NOW WRITE THE CODE.</em></h2><button className="join-button" type="button" disabled aria-describedby="rsvp-status">JOIN THE BUILD <span aria-hidden="true">→</span></button><small id="rsvp-status">RSVP destination pending: add the event-specific Meetup URL before launch.</small></div>
+          </section>
         </div>
       </section>
-
-      <section className="final-cta" aria-labelledby="final-cta-title"><div className="final-cta-inner"><span className="mono-label">AWS SBG MHSSCE // FINAL BUILD</span><h2 id="final-cta-title">YOU'VE SEEN THE CLICKS.<br /><em>NOW WRITE THE CODE.</em></h2><button className="join-button" type="button" disabled aria-describedby="rsvp-status">JOIN THE BUILD <span aria-hidden="true">→</span></button><small id="rsvp-status">RSVP destination pending: add the event-specific Meetup URL before launch.</small></div></section>
     </div>
   );
 }
