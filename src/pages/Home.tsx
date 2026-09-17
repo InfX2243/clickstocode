@@ -10,14 +10,13 @@ export default function Home() {
       <section id="screen-1" className="screen-1 relative min-h-screen w-full overflow-hidden flex items-center justify-center bg-[#080b13] px-6 py-16">
         <div className="screen-1-glow absolute inset-0 pointer-events-none" />
         <div className="screen-1-grid absolute inset-0 pointer-events-none" />
-        <div className="screen-1-content relative z-10 flex w-full max-w-5xl flex-col items-center text-center">
-          <div className="screen-1-brand flex flex-col md:flex-row items-center justify-center gap-8 md:gap-10">
-            <div className="screen-1-logo-wrap flex h-44 w-44 shrink-0 items-center justify-center rounded-[2rem] border border-[#00d26a]/30 bg-[#111621]/80 p-7 shadow-[0_0_70px_rgba(0,210,106,0.18)] backdrop-blur-md sm:h-52 sm:w-52 sm:p-8">
+        <div className="screen-1-content relative z-10 flex w-full max-w-6xl flex-col items-center text-center">
+          <div className="screen-1-brand flex flex-col md:flex-row items-center justify-center gap-8 md:gap-12">
+            <div className="screen-1-logo-wrap flex h-48 w-48 shrink-0 items-center justify-center rounded-[2rem] border border-[#00d26a]/30 bg-[#111621]/80 p-7 shadow-[0_0_90px_rgba(0,210,106,0.2)] backdrop-blur-md sm:h-56 sm:w-56 sm:p-9">
               <img src="/images/awssbg-logo.png" alt="AWS Student Builder Group MHSSCE" className="h-full w-full object-contain" />
             </div>
-            <div className="screen-1-org text-left md:text-left max-w-xl">
-              <p className="mb-3 font-mono text-[10px] font-bold uppercase tracking-[0.28em] text-[#00d26a]">AWS SBG • MHSSCE</p>
-              <h1 className="text-3xl font-bold leading-tight tracking-tight text-white sm:text-4xl md:text-5xl">AWS Student Builder Group at<br />M.H. Saboo Siddik College of Engineering</h1>
+            <div className="screen-1-org max-w-2xl text-center md:text-left">
+              <h1 className="text-3xl font-bold leading-tight tracking-tight text-white sm:text-4xl md:text-5xl lg:text-6xl">AWS Student Builder Group at<br />M.H. Saboo Siddik College of Engineering</h1>
             </div>
           </div>
 
@@ -25,9 +24,10 @@ export default function Home() {
             <p className="font-mono text-sm uppercase tracking-[0.45em] text-white/50 sm:text-base">presents</p>
           </div>
 
-          <div className="screen-1-event mt-5 sm:mt-7">
-            <p className="font-mono text-[10px] font-semibold uppercase tracking-[0.35em] text-[#38bdf8]">An AWS SBG Event</p>
-            <h2 className="mt-3 text-5xl font-extrabold leading-none tracking-tight text-white sm:text-6xl md:text-8xl">AWS From<br className="sm:hidden" /> Clicks to Code</h2>
+          <div className="screen-1-event mt-6 sm:mt-8">
+            <h2 className="screen-1-title text-5xl font-extrabold leading-none tracking-tight sm:text-6xl md:text-8xl lg:text-9xl">
+              <span className="screen-1-title-white">AWS From</span><br className="sm:hidden" /> <span className="screen-1-title-green">Clicks to Code</span>
+            </h2>
           </div>
         </div>
       </section>
