@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import Hero from '../components/Hero';
 import StoryPipeline from '../components/StoryPipeline';
 import Speaker from '../components/Speaker';
@@ -5,9 +6,18 @@ import Timeline from '../components/Timeline';
 import FAQ from '../components/FAQ';
 
 export default function Home() {
+  const [screen1Exiting, setScreen1Exiting] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => setScreen1Exiting(window.scrollY > 24);
+    handleScroll();
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
     <>
-      <section id="screen-1" className="screen-1 relative min-h-screen w-full overflow-hidden flex items-center justify-center bg-[#080b13] px-6 py-16">
+      <section id="screen-1" className={`screen-1 relative min-h-screen w-full overflow-hidden flex items-center justify-center bg-[#080b13] px-6 py-16${screen1Exiting ? ' is-exiting' : ''}`}>
         <div className="screen-1-glow absolute inset-0 pointer-events-none" />
         <div className="screen-1-grid absolute inset-0 pointer-events-none" />
         <div className="screen-1-content relative z-10 flex w-full max-w-6xl flex-col items-center text-center">
