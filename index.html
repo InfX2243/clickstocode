@@ -1,14 +1,33 @@
 <!doctype html>
-<html lang="en">
+<html class="dark scroll-smooth" lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#080b0f" />
-    <meta name="description" content="AWS From Clicks to Code — a hands-on AWS workshop by AWS Student Builder Group MHSSCE." />
-    <meta name="color-scheme" content="dark" />
-    <title>AWS From Clicks to Code | AWS SBG MHSSCE</title>
+    <meta name="theme-color" content="#0a0e18" />
+    <meta name="description" content="From Clicks to Code: Mastering AWS Infrastructure — AWS SBG MHSSCE." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: { extend: {
+          colors: {
+            background:'#0f131d', surface:'#0f131d', 'surface-dark':'#0B0F19',
+            'surface-container-lowest':'#0a0e18', 'surface-container-low':'#171b26',
+            'surface-container':'#1c1f2a', 'surface-container-high':'#262a35',
+            'surface-container-highest':'#313540', 'surface-bright':'#353944',
+            'on-surface':'#dfe2f1', 'on-surface-variant':'#8e95a5', primary:'#00d26a',
+            'primary-container':'#005426', secondary:'#38bdf8'
+          },
+          fontFamily:{ body:['Amazon Ember','Inter','system-ui','sans-serif'], mono:['JetBrains Mono','monospace'] }
+        }}
+      };
+    </script>
+    <title>From Clicks to Code: Mastering AWS Infrastructure | AWS SBG MHSSCE</title>
   </head>
-  <body>
+  <body class="bg-[#0a0e18] text-[#dfe2f1] font-body antialiased">
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
