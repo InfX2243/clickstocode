@@ -1,13 +1,13 @@
 import { useEffect, useMemo, useRef, useState, type ReactNode } from 'react';
 import { createRoot } from 'react-dom/client';
 import {
-  ArrowDown, ArrowUpRight, CalendarDays, Check, ChevronDown, Cloud,
-  ExternalLink, LockKeyhole, Menu, Network, Server, ShieldCheck, Terminal,
-  X, Zap,
+  ArrowDown, ArrowUpRight, CalendarDays, Check, ChevronDown, ExternalLink,
+  LockKeyhole, Menu, Network, Server, ShieldCheck, Terminal, X, Zap,
 } from 'lucide-react';
 import './styles.css';
 
 const MEETUP_URL = 'https://www.meetup.com/';
+const IMAGE_BASE = '/images';
 
 type Step = {
   number: string;
@@ -16,32 +16,24 @@ type Step = {
   description: string;
   icon: ReactNode;
   command: string;
+  image: string;
 };
 
 const steps: Step[] = [
   {
-    number: '01',
-    title: 'Launch',
-    kicker: 'EC2 · CONSOLE',
+    number: '01', title: 'Launch', kicker: 'EC2 · CONSOLE',
     description: 'Provision an EC2 instance manually. See the pieces, settings, and decisions behind a compute resource.',
-    icon: <Server />,
-    command: 'aws ec2 run-instances',
+    icon: <Server />, command: 'aws ec2 run-instances', image: `${IMAGE_BASE}/ec2.png`,
   },
   {
-    number: '02',
-    title: 'Connect',
-    kicker: 'SSM · NO SSH',
+    number: '02', title: 'Connect', kicker: 'SSM · NO SSH',
     description: 'Use Systems Manager Session Manager to reach the instance without exposing an inbound SSH port.',
-    icon: <LockKeyhole />,
-    command: 'aws ssm start-session',
+    icon: <LockKeyhole />, command: 'aws ssm start-session', image: `${IMAGE_BASE}/systemsmanager.png`,
   },
   {
-    number: '03',
-    title: 'Automate',
-    kicker: 'CLOUDFORMATION',
+    number: '03', title: 'Automate', kicker: 'CLOUDFORMATION',
     description: 'Turn the manual setup into CloudFormation and start thinking in repeatable infrastructure.',
-    icon: <Zap />,
-    command: 'aws cloudformation deploy',
+    icon: <Zap />, command: 'aws cloudformation deploy', image: `${IMAGE_BASE}/cloudformation.png`,
   },
 ];
 
@@ -86,20 +78,27 @@ function App() {
   }, []);
 
   const activeCommand = useMemo(() => steps[activeStep]?.command ?? steps[0].command, [activeStep]);
+  const activeImage = useMemo(() => steps[activeStep]?.image ?? steps[0].image, [activeStep]);
+
+  const closeMenu = () => setMenuOpen(false);
 
   return (
     <div className="app" id="top">
       <div className="scroll-progress" style={{ transform: `scaleX(${scrollProgress})` }} />
       <nav className={isScrolled ? 'nav nav-solid' : 'nav'}>
-        <a className="brand" href="#top" aria-label="AWS Student Builder Group MHSSCE home">
-          <span className="brand-mark"><Cloud size={17} /></span>
-          <span><strong>AWS</strong> Student Builder Group <b>MHSSCE</b></span>
+        <a className="brand" href="#top" aria-label="AWS Student Builder Group MHSSCE home" onClick={closeMenu}>
+          <span className="brand-logos">
+            <img src={`${IMAGE_BASE}/awssbg-logo.png`} alt="AWS Student Builder Group MHSSCE" />
+            <span>×</span>
+            <img src={`${IMAGE_BASE}/aws-logo.png`} alt="AWS" />
+          </span>
+          <span className="brand-copy"><strong>AWS</strong> Student Builder Group <b>MHSSCE</b></span>
         </a>
         <div className={menuOpen ? 'links open' : 'links'}>
-          <a href="#workshop" onClick={() => setMenuOpen(false)}>Workshop</a>
-          <a href="#flow" onClick={() => setMenuOpen(false)}>Flow</a>
-          <a href="#takeaways" onClick={() => setMenuOpen(false)}>Takeaways</a>
-          <a href="#faq" onClick={() => setMenuOpen(false)}>FAQ</a>
+          <a href="#workshop" onClick={closeMenu}>Workshop</a>
+          <a href="#flow" onClick={closeMenu}>Flow</a>
+          <a href="#takeaways" onClick={closeMenu}>Takeaways</a>
+          <a href="#faq" onClick={closeMenu}>FAQ</a>
           <a className="nav-cta" href={MEETUP_URL} target="_blank" rel="noreferrer">Register <ArrowUpRight size={15} /></a>
         </div>
         <button className="menu" onClick={() => setMenuOpen(value => !value)} aria-label="Toggle menu" aria-expanded={menuOpen}>
@@ -108,7 +107,7 @@ function App() {
       </nav>
 
       <main>
-        <section className="hero cinematic-section">
+        <section className="hero cinematic-section" id="cinema-hero">
           <div className="orb orb-a" /><div className="orb orb-b" /><div className="hero-grid" />
           <div className="hero-copy reveal">
             <div className="eyebrow"><span className="pulse" /> AWS Student Builder Group · MHSSCE</div>
@@ -120,11 +119,11 @@ function App() {
               <a className="secondary" href="#workshop">Explore workshop <ArrowDown size={16} /></a>
             </div>
             <div className="event-strip">
-              <div><CalendarDays size={18} /><span><b>24 September 2026</b><small>Wednesday · MHSSCE</small></span></div>
+              <div><CalendarDays size={18} /><span><b>24 September 2026</b><small>MHSSCE · Mumbai</small></span></div>
               <div><span className="dotline" /><span><b>9:30 AM — 12:00 PM</b><small>First 30 min · attendee check-in</small></span></div>
             </div>
           </div>
-          <div className="terminal-card cinematic-object" aria-label="Terminal illustration">
+          <div className="terminal-card cinematic-object" aria-label="Workshop workflow terminal">
             <div className="term-head"><span><i /><i /><i /></span><small>clicks-to-code.sh</small></div>
             <div className="term-body">
               <p><em>$</em> {activeCommand}</p>
@@ -132,7 +131,7 @@ function App() {
               <p><em>✓</em> infrastructure state: ready</p>
               <p className="dim">i-0a7f...mhssce</p>
               <p><em>→</em> session established</p>
-              <p className="dim">secure shell · no public :22</p>
+              <p className="dim">secure session · no public :22</p>
               <div className="cursor" />
             </div>
             <div className="term-badge"><LockKeyhole size={14} /> no public SSH</div>
@@ -161,8 +160,9 @@ function App() {
             <div className="story-visual">
               <div className="story-visual-inner">
                 <span className="visual-label">LIVE WORKFLOW</span>
+                <img className="workflow-image" src={activeImage} alt="" aria-hidden="true" />
                 <div className="visual-orbit orbit-one" /><div className="visual-orbit orbit-two" />
-                <div className="visual-core"><Cloud /></div>
+                <div className="visual-core"><img src={`${IMAGE_BASE}/aws-logo.png`} alt="AWS" /></div>
                 <div className="visual-command"><span>$</span> {activeCommand}<b>_</b></div>
                 <div className="visual-status"><span /> SYSTEM READY</div>
               </div>
@@ -171,13 +171,13 @@ function App() {
         </section>
 
         <section className="takeaways cinematic-section" id="takeaways">
-          <div className="takeaway-art cinematic-object"><div className="rings"><span /><span /><span /></div><div className="cube"><Cloud /></div><span className="float f1">EC2</span><span className="float f2">SSM</span><span className="float f3">YAML</span></div>
+          <div className="takeaway-art cinematic-object"><div className="rings"><span /><span /><span /></div><div className="cube"><img src={`${IMAGE_BASE}/cloudformation.png`} alt="CloudFormation" /></div><span className="float f1">EC2</span><span className="float f2">SSM</span><span className="float f3">YAML</span></div>
           <div className="takeaway-copy reveal"><div className="section-kicker">YOU’LL LEAVE WITH</div><h2>A clearer mental model<br /><span>of cloud infrastructure.</span></h2><div className="checklist"><p><Check /> Know the core pieces behind an EC2 deployment.</p><p><Check /> Connect to instances securely without public SSH.</p><p><Check /> Read and write a practical CloudFormation template.</p><p><Check /> Recognise when manual work should become code.</p></div></div>
         </section>
 
-        <section className="speaker cinematic-section"><div className="reveal"><div className="section-kicker">YOUR GUIDE</div><h2>Learn by doing<br /><span>with Afreen Bano.</span></h2><p>A focused technical session designed to make AWS infrastructure feel less like a black box and more like something you can build, inspect, and improve.</p></div><div className="speaker-card cinematic-object"><div className="portrait">AB</div><div><b>Ms. Afreen Bano</b><span>Workshop Speaker</span></div><ArrowUpRight /></div></section>
+        <section className="speaker cinematic-section" id="speaker"><div className="reveal"><div className="section-kicker">YOUR GUIDE</div><h2>Learn by doing<br /><span>with Afreen Bano.</span></h2><p>A focused technical session designed to make AWS infrastructure feel less like a black box and more like something you can build, inspect, and improve.</p></div><div className="speaker-card cinematic-object"><img className="speaker-photo" src={`${IMAGE_BASE}/speaker.png`} alt="Ms. Afreen Bano" /><div><b>Ms. Afreen Bano</b><span>Workshop Speaker</span></div><ArrowUpRight /></div></section>
 
-        <section className="details cinematic-section"><div className="detail"><CalendarDays /><small>DATE</small><b>24 Sep 2026</b><span>Wednesday</span></div><div className="detail"><Terminal /><small>TIME</small><b>9:30 AM — 12 PM</b><span>Check-in from 9:30 AM</span></div><div className="detail"><Network /><small>FORMAT</small><b>Hands-on</b><span>AWS technical workshop</span></div><div className="detail"><ShieldCheck /><small>ACCESS</small><b>Registered attendees</b><span>Practical instructions after signup</span></div></section>
+        <section className="details cinematic-section" id="lab-timeline"><div className="detail"><CalendarDays /><small>DATE</small><b>24 Sep 2026</b><span>Workshop day</span></div><div className="detail"><Terminal /><small>TIME</small><b>9:30 AM — 12 PM</b><span>Check-in from 9:30 AM</span></div><div className="detail"><Network /><small>FORMAT</small><b>Hands-on</b><span>AWS technical workshop</span></div><div className="detail"><ShieldCheck /><small>ACCESS</small><b>Registered attendees</b><span>Practical instructions after signup</span></div></section>
 
         <section className="faq cinematic-section" id="faq"><div className="section-kicker">GOOD TO KNOW</div><h2>Questions, answered.</h2><div className="faq-list">{faqs.map(([question, answer], index) => <div className={faqOpen === index ? 'faq-item active' : 'faq-item'} key={question}><button onClick={() => setFaqOpen(faqOpen === index ? null : index)} aria-expanded={faqOpen === index}><span>0{index + 1}</span><b>{question}</b><ChevronDown /></button>{faqOpen === index && <p>{answer}</p>}</div>)}</div></section>
 
