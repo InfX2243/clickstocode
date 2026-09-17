@@ -2,7 +2,7 @@
 
 Implementation status for the cinematic scroll-driven rebuild.
 
-> **Status:** The rebuild is implemented on `main`. The only remaining external inputs are the event-specific RSVP URL and a successful GitHub Actions build run; no missing image asset was encountered.
+> **Status:** The rebuild is implemented on `main`. Implementation hardening is complete; the remaining external inputs are the event-specific RSVP URL and a successful GitHub Actions build run. No missing image asset was encountered.
 
 ## Working Rules
 
@@ -220,6 +220,11 @@ Implementation status for the cinematic scroll-driven rebuild.
 - [x] Asset paths used by the new experience exist in `public/images`.
 - [x] No image placeholder is required.
 
+### TASK 8.5 — Implementation hardening
+- [x] Replaced the implicit `React.ReactNode` namespace reference with an explicit `ReactNode` type import in `Home.tsx`.
+- [x] Confirmed `CinematicChapter` and `useScrollProgress` are present and match the imports used by `Home.tsx`.
+- [x] Confirmed the project build script is `tsc -b && vite build`.
+
 ## Final Implementation Order
 
 1. [x] Baseline audit + architecture
@@ -239,4 +244,5 @@ Implementation status for the cinematic scroll-driven rebuild.
 15. [x] Final CTA
 16. [x] Legacy cleanup
 17. [x] Accessibility/performance implementation
-18. [ ] External URL + CI verification
+18. [x] Implementation hardening
+19. [ ] External URL + CI verification
