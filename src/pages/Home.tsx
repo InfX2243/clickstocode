@@ -1,4 +1,4 @@
-import { useMemo } from 'react';
+import { useMemo, type ReactNode } from 'react';
 import CinematicChapter from '../components/CinematicChapter';
 import { useReducedMotion, useScrollProgress } from '../lib/useScrollProgress';
 
@@ -6,7 +6,7 @@ const chapters = 12;
 const clamp01 = (value: number) => Math.min(1, Math.max(0, value));
 const chapterProgress = (global: number, index: number) => clamp01(global * chapters - index);
 
-function ChapterShell({ index, title, eyebrow, children, progress }: { index: number; title: string; eyebrow: string; children: React.ReactNode; progress: number }) {
+function ChapterShell({ index, title, eyebrow, children, progress }: { index: number; title: string; eyebrow: string; children: ReactNode; progress: number }) {
   return (
     <CinematicChapter eyebrow={`${String(index).padStart(2, '0')} // ${eyebrow}`} title={title} progress={progress}>
       {children}
