@@ -29,6 +29,12 @@ export default function Home() {
               <span className="screen-1-title-white">AWS From</span><br className="sm:hidden" /> <span className="screen-1-title-green">Clicks to Code</span>
             </h2>
           </div>
+
+          <div className="screen-1-scroll-hint" aria-hidden="true">
+            <span className="screen-1-scroll-line" />
+            <span className="screen-1-scroll-label">SCROLL TO EXPLORE</span>
+            <span className="screen-1-scroll-arrow">↓</span>
+          </div>
         </div>
       </section>
 
