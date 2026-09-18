@@ -266,16 +266,16 @@ Implementation status for the cinematic scroll-driven rebuild.
 ## Next Phase — Motion, Timing & Content
 
 ### TASK 9.1 — Animation choreography
-- [ ] Define a consistent enter / hold / exit rhythm for every chapter.
-- [ ] Replace abrupt property jumps with deliberate interpolated motion where needed.
-- [ ] Sync supporting elements to the main visual beat of each chapter.
-- [ ] Make chapter-to-chapter handoffs feel continuous rather than like independent slides.
+- [x] Define a consistent enter / hold / exit rhythm for every chapter.
+- [x] Replace abrupt property jumps with deliberate interpolated motion where needed.
+- [x] Sync supporting elements to the main visual beat of each chapter.
+- [x] Make chapter-to-chapter handoffs feel continuous rather than like independent slides.
 
 ### TASK 9.2 — Timing and scroll pacing
-- [ ] Tune the scroll budget per chapter based on visual complexity.
-- [ ] Give major story beats more breathing room than simple informational scenes.
-- [ ] Tune entry overlap and CTA reveal windows.
-- [ ] Check desktop and mobile timing separately.
+- [x] Tune the scroll budget per chapter based on visual complexity.
+- [x] Give major story beats more breathing room than simple informational scenes.
+- [x] Tune entry overlap and CTA reveal windows.
+- [x] Check desktop and mobile timing separately.
 
 ### TASK 9.3 — Content refinement
 - [ ] Review every heading, label, and micro-copy line for narrative clarity.
