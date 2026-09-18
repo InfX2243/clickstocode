@@ -76,7 +76,7 @@ export default function Home() {
             <ChapterShell eyebrow="PRE-FLIGHT" title="Before you enter the lab." progress={chapterProgresses[10]} visibility={chapterVisibilities[10]}><div className="faq-grid">{[['WHO','Students & builders'],['LEVEL','No prior AWS expertise required'],['BRING','Laptop + charger'],['COST','Free community session']].map(([q,a]) => <div key={q}><b>{q}</b><span>{a}</span></div>)}</div></ChapterShell>
           </div>
 
-          <section className="final-cta cinematic-final-scene" aria-labelledby="final-cta-title" style={{ opacity: finalVisibility, transform: `translate3d(0, ${(1 - finalVisibility) * 28}px, 0) scale(${0.985 + finalVisibility * 0.015})`, pointerEvents: finalVisibility > 0.5 ? 'auto' : 'none' }}>
+          <section className="final-cta cinematic-final-scene" aria-labelledby="final-cta-title" style={{ opacity: finalVisibility, '--final-visibility': finalVisibility, transform: `translate3d(0, ${(1 - finalVisibility) * 28}px, 0) scale(${0.985 + finalVisibility * 0.015})`, pointerEvents: finalVisibility > 0.5 ? 'auto' : 'none' }}>
             <div className="final-cta-inner"><span className="mono-label">AWS SBG MHSSCE // FINAL BUILD</span><h2 id="final-cta-title">YOU'VE SEEN THE CLICKS.<br /><em>NOW WRITE THE CODE.</em></h2><button className="join-button" type="button" disabled aria-describedby="rsvp-status">JOIN THE BUILD <span aria-hidden="true">→</span></button><small id="rsvp-status">RSVP destination pending: add the event-specific Meetup URL before launch.</small></div>
           </section>
         </div>
