@@ -74,7 +74,7 @@ export default function Home() {
   </header>
   <div className="event-overview-grid">
     <div className="event-overview-copy">
-      <span className="mono-label">DESCRIBE THE EVENT</span>
+      <span className="mono-label">ABOUT THE EVENT</span>
       <p>The AWS Student Builder Group at M.H. Saboo Siddik College of Engineering invites you to a practical cloud journey — from understanding AWS fundamentals to provisioning a server, securely accessing it, hosting a customized web page, and automating the infrastructure with Infrastructure as Code.</p>
       <div className="event-overview-idea"><span>THE CORE IDEA</span><strong>From clicking “Launch Instance”</strong><i>→</i><strong>to defining infrastructure as code.</strong></div>
     </div>
