@@ -88,15 +88,116 @@ export default function Home() {
   </div>
 </div></ChapterShell>
             <ChapterShell eyebrow="FOR THE CURIOUS" title="Who should attend? What will you learn?" progress={chapterProgresses[1]} visibility={chapterVisibilities[1]}><div className="audience-learnings-scene"><div className="audience-learnings-intro"><span className="mono-label">THIS SESSION IS FOR YOU IF…</span><p>You're a student, builder, or cloud-curious engineer who wants to move beyond clicking through a console and understand how AWS actually fits together.</p></div><div className="audience-learnings-grid"><section><div className="audience-learnings-heading"><span>01</span><h3>WHO SHOULD ATTEND?</h3></div><ul><li><b>Students</b><span>Starting their cloud journey or exploring AWS for the first time.</span></li><li><b>Builders</b><span>Already experimenting with projects and ready to make them repeatable.</span></li><li><b>Future DevOps engineers</b><span>Curious about secure access, automation, and infrastructure as code.</span></li></ul></section><section><div className="audience-learnings-heading"><span>02</span><h3>WHAT YOU LEARN</h3></div><ul><li><b>AWS fundamentals</b><span>Understand the building blocks behind cloud infrastructure.</span></li><li><b>EC2 + secure access</b><span>Provision a server and connect without relying on fragile access paths.</span></li><li><b>Infrastructure as Code</b><span>Turn a working setup into something you can define, repeat, and automate.</span></li></ul></section></div></div></ChapterShell>
-            <ChapterShell eyebrow="THE PROBLEM" title="What if infrastructure could remember what you wanted?" progress={chapterProgresses[2]} visibility={chapterVisibilities[2]}><div className="repeat-scene">{Array.from({ length: 5 }, (_, i) => <div key={i} className="repeat-card" style={{ '--scene-index': i, '--scene-progress': chapterProgresses[2] } as React.CSSProperties}><span>Launch instance</span><small>manual action</small></div>)}</div></ChapterShell>
-            <ChapterShell eyebrow="THE TURN" title="From clicking to declaring." progress={chapterProgresses[3]} visibility={chapterVisibilities[3]}><div className="terminal-scene"><div className="terminal-top"><span>terminal</span><span>terraform</span></div><div className="terminal-line"><span className="prompt">$</span><span className="command">terraform apply</span><span className="cursor-block" aria-hidden="true" style={{ '--scene-progress': chapterProgresses[3] } as React.CSSProperties} /></div><div className="terminal-output" style={{ '--scene-progress': chapterProgresses[3] } as React.CSSProperties}>Plan: 1 to add, 0 to change, 0 to destroy.</div></div></ChapterShell>
-            <ChapterShell eyebrow="INFRASTRUCTURE AS CODE" title="Human → Code → Plan → Infrastructure" progress={chapterProgresses[4]} visibility={chapterVisibilities[4]}><div className="iac-scene"><pre><code>{`resource "aws_instance" "web" {\n  ami           = "ami-example"\n  instance_type = "t3.micro"\n}`}</code></pre><div className="iac-result"><img src="/images/ec2.png" alt="EC2 service icon" /><span>EC2 instance</span></div></div></ChapterShell>
-            <ChapterShell eyebrow="THE PIPELINE" title="Click → Console → Code → Plan → Apply → Infrastructure" progress={chapterProgresses[5]} visibility={chapterVisibilities[5]}><div className="pipeline" aria-label="Infrastructure delivery pipeline">{['CLICK','CONSOLE','CODE','PLAN','APPLY','INFRASTRUCTURE'].map((step, i) => <div key={step} className="pipeline-step" style={{ '--scene-index': i, '--scene-progress': chapterProgresses[5] } as React.CSSProperties}><span>{step}</span>{i < 5 && <i aria-hidden="true">→</i>}</div>)}</div></ChapterShell>
-            <ChapterShell eyebrow="YOUR MISSION" title="Build the muscle, not just the demo." progress={chapterProgresses[6]} visibility={chapterVisibilities[6]}><div className="mission-grid">{[['Provision','Create repeatable infrastructure'],['Secure','Remove fragile access paths'],['Automate','Make the next run predictable']].map(([t,d], i) => <article key={t} className="mission-card" style={{ '--scene-index': i, '--scene-progress': chapterProgresses[6] } as React.CSSProperties}><strong>{t}</strong><span>{d}</span></article>)}</div></ChapterShell>
-            <ChapterShell eyebrow="MISSION RUNTIME" title="The lab, as an execution log." progress={chapterProgresses[7]} visibility={chapterVisibilities[7]}><div className="execution-log" aria-label="Workshop execution log">{[['09:30','PRE-FLIGHT','Check-in + credentials'],['10:00','MODULE 01','Manual EC2 compute'],['10:40','MODULE 02','Portless SSM access'],['11:20','MODULE 03','Declarative IaC']].map(([time,tag,label], i) => <div key={time} className="log-row" style={{ '--scene-index': i, '--scene-progress': chapterProgresses[7] } as React.CSSProperties}><time>{time}</time><b>{tag}</b><span>{label}</span></div>)}</div></ChapterShell>
-            <ChapterShell eyebrow="$ WHOAMI" title="Meet the builder." progress={chapterProgresses[8]} visibility={chapterVisibilities[8]}><div className="speaker-scene"><img src="/images/speaker.png" alt="Afreen Bano, invited mentor" /><div><span className="mono-label">INVITED MENTOR</span><h3>Ms. Afreen Bano</h3><p>DevOps Architect · AWS Community Leader · Cloud Security Specialist</p></div></div></ChapterShell>
-            <ChapterShell eyebrow="WHY IT MATTERS" title="You're not just learning AWS." progress={chapterProgresses[9]} visibility={chapterVisibilities[9]}><div className="payoff"><span style={{ '--scene-index': 0, '--scene-progress': chapterProgresses[9] } as React.CSSProperties}>Build.</span><span style={{ '--scene-index': 1, '--scene-progress': chapterProgresses[9] } as React.CSSProperties}>Automate.</span><span style={{ '--scene-index': 2, '--scene-progress': chapterProgresses[9] } as React.CSSProperties}>Think like an engineer.</span></div></ChapterShell>
-            <ChapterShell eyebrow="PRE-FLIGHT" title="Before you enter the lab." progress={chapterProgresses[10]} visibility={chapterVisibilities[10]}><div className="faq-grid">{[['WHO','Students & builders'],['LEVEL','No prior AWS expertise required'],['BRING','Laptop + charger'],['COST','Free community session']].map(([q,a]) => <div key={q}><b>{q}</b><span>{a}</span></div>)}</div></ChapterShell>
+            <ChapterShell eyebrow="THE PROBLEM" title="Clicking works once. What happens the next time?" progress={chapterProgresses[2]} visibility={chapterVisibilities[2]}>
+              <div className="problem-scene">
+                <div className="problem-intro"><span className="mono-label">THE MANUAL LOOP</span><p>Console clicks are useful for learning. They become painful when the same infrastructure has to be rebuilt, reviewed, or reproduced.</p></div>
+                <div className="problem-flow" aria-label="Manual infrastructure loop">
+                  {[
+                    ['01','CLICK','Launch the instance'],
+                    ['02','CONFIGURE','Change settings by hand'],
+                    ['03','REMEMBER','Hope the setup is documented'],
+                    ['04','REPEAT','Do it again for the next environment'],
+                  ].map(([n,t,d],i)=><article key={n} style={{'--scene-index':i,'--scene-progress':chapterProgresses[2]} as React.CSSProperties}><b>{n}</b><strong>{t}</strong><span>{d}</span></article>)}
+                </div>
+                <div className="problem-callout"><span>THE QUESTION</span><strong>Can the infrastructure remember the intent instead?</strong></div>
+              </div>
+            </ChapterShell>
+
+            <ChapterShell eyebrow="THE TURN" title="Stop describing clicks. Start declaring the result." progress={chapterProgresses[3]} visibility={chapterVisibilities[3]}>
+              <div className="declaration-scene">
+                <div className="declaration-copy"><span className="mono-label">THE MINDSET SHIFT</span><p>You define what the infrastructure should look like. The tooling works out the changes needed to get there.</p></div>
+                <div className="declaration-compare">
+                  <article><span>BEFORE</span><code>click → configure → repeat</code><small>imperative, manual, easy to drift</small></article>
+                  <i aria-hidden="true">→</i>
+                  <article className="declaration-after"><span>AFTER</span><code>code → plan → apply</code><small>declarative, reviewable, repeatable</small></article>
+                </div>
+              </div>
+            </ChapterShell>
+
+            <ChapterShell eyebrow="INFRASTRUCTURE AS CODE" title="A few lines can describe a whole machine." progress={chapterProgresses[4]} visibility={chapterVisibilities[4]}>
+              <div className="iac-story-scene">
+                <div className="iac-code-card">
+                  <div className="code-chrome"><span>main.tf</span><span>HCL</span></div>
+                  <pre><code>{`resource "aws_instance" "web" {
+  ami           = "ami-example"
+  instance_type = "t3.micro"
+
+  tags = {
+    Name = "clicks-to-code"
+  }
+}`}</code></pre>
+                </div>
+                <div className="iac-anatomy">
+                  <span className="mono-label">WHAT THE CODE GIVES YOU</span>
+                  {[
+                    ['DEFINE','Describe the desired infrastructure.'],
+                    ['REVIEW','See the change before it happens.'],
+                    ['REPEAT','Use the same definition again.'],
+                  ].map(([t,d],i)=><article key={t} style={{'--scene-index':i,'--scene-progress':chapterProgresses[4]} as React.CSSProperties}><b>{t}</b><span>{d}</span></article>)}
+                </div>
+              </div>
+            </ChapterShell>
+
+            <ChapterShell eyebrow="THE PIPELINE" title="From intent to infrastructure — one visible chain." progress={chapterProgresses[5]} visibility={chapterVisibilities[5]}>
+              <div className="pipeline-story">
+                {[
+                  ['01','INTENT','What should exist?'],
+                  ['02','CODE','Describe it'],
+                  ['03','PLAN','Preview the delta'],
+                  ['04','APPLY','Create the change'],
+                  ['05','VERIFY','Check the result'],
+                ].map(([n,t,d],i)=><article key={n} style={{'--scene-index':i,'--scene-progress':chapterProgresses[5]} as React.CSSProperties}><b>{n}</b><strong>{t}</strong><span>{d}</span>{i<4&&<i aria-hidden="true">↓</i>}</article>)}
+              </div>
+            </ChapterShell>
+
+            <ChapterShell eyebrow="WHY THIS MATTERS" title="You leave with a way of thinking, not just a working server." progress={chapterProgresses[6]} visibility={chapterVisibilities[6]}>
+              <div className="principles-scene">
+                {[
+                  ['REPEATABLE','If it works once, define it so it can work again.'],
+                  ['REVIEWABLE','Infrastructure changes can be read, discussed, and checked before apply.'],
+                  ['AUTOMATABLE','A clear definition becomes a foundation for CI/CD and larger systems.'],
+                ].map(([t,d],i)=><article key={t} style={{'--scene-index':i,'--scene-progress':chapterProgresses[6]} as React.CSSProperties}><span>{String(i+1).padStart(2,'0')}</span><strong>{t}</strong><p>{d}</p></article>)}
+              </div>
+            </ChapterShell>
+
+            <ChapterShell eyebrow="THE LAB" title="What you actually build in the session." progress={chapterProgresses[7]} visibility={chapterVisibilities[7]}>
+              <div className="lab-story">
+                {[
+                  ['01','UNDERSTAND','AWS fundamentals','Start with the mental model.'],
+                  ['02','PROVISION','Amazon EC2','Create the compute resource.'],
+                  ['03','CONNECT','Session Manager','Access it securely.'],
+                  ['04','MAKE IT REAL','Web Server','Serve a customized page.'],
+                  ['05','AUTOMATE','CloudFormation / IaC','Turn the setup into a definition.'],
+                ].map(([n,t,s,d],i)=><article key={n} style={{'--scene-index':i,'--scene-progress':chapterProgresses[7]} as React.CSSProperties}><b>{n}</b><div><strong>{t}</strong><span>{s}</span><small>{d}</small></div></article>)}
+              </div>
+            </ChapterShell>
+
+            <ChapterShell eyebrow="YOUR GUIDE" title="Meet the builder behind the session." progress={chapterProgresses[8]} visibility={chapterVisibilities[8]}>
+              <div className="mentor-story">
+                <div className="mentor-portrait"><img src="/images/speaker.png" alt="Afreen Bano" /></div>
+                <div className="mentor-copy"><span className="mono-label">INVITED MENTOR</span><h3>Ms. Afreen Bano</h3><p>DevOps Architect · AWS Community Leader · Cloud Security Specialist</p><div className="mentor-note"><span>THE FOCUS</span><strong>Practical cloud skills you can carry into your next project.</strong></div></div>
+              </div>
+            </ChapterShell>
+
+            <ChapterShell eyebrow="WHAT YOU TAKE AWAY" title="Three things should feel different when you leave." progress={chapterProgresses[9]} visibility={chapterVisibilities[9]}>
+              <div className="takeaway-scene">
+                {[
+                  ['01','YOU CAN EXPLAIN IT','Understand what the AWS pieces are doing and why they fit together.'],
+                  ['02','YOU CAN BUILD IT','Provision compute, access it securely, and put a web server on it.'],
+                  ['03','YOU CAN DECLARE IT','Turn a working setup into Infrastructure as Code you can revisit.'],
+                ].map(([n,t,d],i)=><article key={n} style={{'--scene-index':i,'--scene-progress':chapterProgresses[9]} as React.CSSProperties}><b>{n}</b><strong>{t}</strong><span>{d}</span></article>)}
+              </div>
+            </ChapterShell>
+
+            <ChapterShell eyebrow="PRE-FLIGHT" title="Ready for the lab?" progress={chapterProgresses[10]} visibility={chapterVisibilities[10]}>
+              <div className="preflight-story">
+                <div className="preflight-status"><span className="status-dot" />LAB READY</div>
+                <div className="preflight-grid">
+                  {[['WHO','Students, builders, cloud-curious engineers'],['LEVEL','Beginner-friendly · no prior AWS expertise required'],['BRING','Laptop, charger, and curiosity'],['OUTCOME','A working cloud flow + your first IaC mindset']].map(([q,a],i)=><article key={q} style={{'--scene-index':i,'--scene-progress':chapterProgresses[10]} as React.CSSProperties}><b>{q}</b><span>{a}</span></article>)}
+                </div>
+                <p>Come ready to click, inspect, question, and then rewrite the same idea as code.</p>
+              </div>
+            </ChapterShell>
           </div>
 
           <section className="final-cta cinematic-final-scene" aria-labelledby="final-cta-title" style={{ opacity: finalVisibility, '--final-visibility': finalVisibility, transform: `translate3d(0, ${(1 - finalVisibility) * 28}px, 0) scale(${0.985 + finalVisibility * 0.015})`, pointerEvents: finalVisibility > 0.5 ? 'auto' : 'none' } as CSSProperties & Record<`--${string}`, string | number>}>
