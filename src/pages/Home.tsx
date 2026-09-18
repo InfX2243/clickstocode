@@ -3,9 +3,9 @@ import CinematicChapter from '../components/CinematicChapter';
 import { useElementScrollProgress, useReducedMotion } from '../lib/useScrollProgress';
 
 const chapters = 11;
-const ENTRY_START = 0.035;
-const ENTRY_END = 0.135;
-const STORY_START = 0.125;
+const ENTRY_START = 0.015;
+const ENTRY_END = 0.05;
+const STORY_START = 0.045;
 const STORY_END = 0.91;
 const CTA_START = 0.9;
 const clamp01 = (value: number) => Math.min(1, Math.max(0, value));
@@ -28,8 +28,8 @@ const chapterVisibility = (story: number, index: number) => {
 };
 const ctaProgress = (timeline: number) => smoothstep(CTA_START, 0.965, timeline);
 
-function ChapterShell({ eyebrow, title, children, progress, visibility }: { eyebrow: string; title: string; children: ReactNode; progress: number; visibility: number }) {
-  return <CinematicChapter eyebrow={eyebrow} title={title} progress={progress} visibility={visibility}>{children}</CinematicChapter>;
+function ChapterShell({ eyebrow, title, children, progress, visibility, className }: { eyebrow?: string; title: string; children: ReactNode; progress: number; visibility: number; className?: string }) {
+  return <CinematicChapter eyebrow={eyebrow} title={title} progress={progress} visibility={visibility} className={className}>{children}</CinematicChapter>;
 }
 
 export default function Home() {
@@ -63,7 +63,19 @@ export default function Home() {
           </section>
 
           <div className="cinematic-story-frame" aria-hidden={timelineProgress < STORY_START ? 'true' : undefined}>
-            <ChapterShell eyebrow="THE JOURNEY" title="What are we actually doing?" progress={chapterProgresses[0]} visibility={chapterVisibilities[0]}><div className="chapter-split"><p className="scene-copy">Start with the console. End with infrastructure you can describe, repeat, and ship.</p><div className="motif" aria-label="Click to code journey"><span>CLICK</span><i>→</i><span className="accent">CODE</span></div></div></ChapterShell>
+            <ChapterShell title="" progress={chapterProgresses[0]} visibility={chapterVisibilities[0]} className="event-overview-chapter"><div className="event-overview-scene">
+  <header className="event-overview-header"><span className="event-overview-cloud" aria-hidden="true">☁️</span><div><span className="event-overview-kicker">AWS STUDENT BUILDER GROUP · MHSSCE</span><h2>AWS From <em>Clicks to Code</em></h2></div></header>
+  <div className="event-overview-grid">
+    <div className="event-overview-copy"><span className="mono-label">AWS FUNDAMENTALS · HANDS-ON CLOUD JOURNEY</span><p>Move from understanding cloud fundamentals to provisioning a real server, accessing it securely, hosting a web page, and automating the infrastructure with Infrastructure as Code.</p><div className="event-overview-idea"><span>THE CORE IDEA</span><strong>From clicking “Launch Instance”</strong><i>→</i><strong>to defining infrastructure as code.</strong></div></div>
+    <div className="event-overview-steps" aria-label="Five-step cloud journey">
+      <article><b>01</b><strong>UNDERSTAND</strong><span>Cloud Computing + AWS</span></article>
+      <article><b>02</b><strong>PROVISION</strong><span>Amazon EC2</span></article>
+      <article><b>03</b><strong>CONNECT SECURELY</strong><span>Systems Manager · Session Manager</span></article>
+      <article><b>04</b><strong>MAKE IT REAL</strong><span>Apache Web Server</span></article>
+      <article><b>05</b><strong>AUTOMATE</strong><span>CloudFormation + IaC</span></article>
+    </div>
+  </div>
+</div></ChapterShell>
             <ChapterShell eyebrow="THE CLICK" title="One action. One server." progress={chapterProgresses[1]} visibility={chapterVisibilities[1]}><div className="console-scene" style={{ '--scene-progress': chapterProgresses[1] } as CSSProperties}><div className="console-bar"><span className="dot" /><span>EC2 / Instances</span><span className="console-status">READY</span></div><div className="console-body"><div className="console-nav"><b>Compute</b><span>Instances</span><span>Images</span><span>Security</span></div><div className="console-main"><span className="console-kicker">INSTANCE ACTION</span><strong>Launch instance</strong><span className="console-button" aria-hidden="true">Launch</span><span className="fake-cursor" aria-hidden="true" style={{ transform: `translate(${chapterProgresses[1] * 150}px, ${chapterProgresses[1] * 55}px)` }}>➤</span></div></div></div></ChapterShell>
             <ChapterShell eyebrow="THE PROBLEM" title="What if infrastructure could remember what you wanted?" progress={chapterProgresses[2]} visibility={chapterVisibilities[2]}><div className="repeat-scene">{Array.from({ length: 5 }, (_, i) => <div key={i} className="repeat-card" style={{ '--scene-index': i, '--scene-progress': chapterProgresses[2] } as React.CSSProperties}><span>Launch instance</span><small>manual action</small></div>)}</div></ChapterShell>
             <ChapterShell eyebrow="THE TURN" title="From clicking to declaring." progress={chapterProgresses[3]} visibility={chapterVisibilities[3]}><div className="terminal-scene"><div className="terminal-top"><span>terminal</span><span>terraform</span></div><div className="terminal-line"><span className="prompt">$</span><span className="command">terraform apply</span><span className="cursor-block" aria-hidden="true" style={{ '--scene-progress': chapterProgresses[3] } as React.CSSProperties} /></div><div className="terminal-output" style={{ '--scene-progress': chapterProgresses[3] } as React.CSSProperties}>Plan: 1 to add, 0 to change, 0 to destroy.</div></div></ChapterShell>
