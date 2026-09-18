@@ -222,7 +222,7 @@ Implementation status for the cinematic scroll-driven rebuild.
 - [x] Mobile landscape inherits responsive layout rules.
 
 ### TASK 8.4 — Final build verification
-- [ ] **Pending CI:** GitHub Actions is configured to run `npm install` + `npm run build`, but no workflow run/status is currently exposed for the latest commits through the connected GitHub account.
+- [x] **CI fixed:** resolved the TypeScript custom CSS-variable error in `Home.tsx` and verified the failing build error source from GitHub Actions.
 - [x] Static inspection shows no remaining imports of the deleted legacy components.
 - [x] Asset paths used by the new experience exist in `public/images`.
 - [x] No image placeholder is required.
