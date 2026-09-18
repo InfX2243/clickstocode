@@ -57,7 +57,7 @@ export default function Home() {
                 <div className="screen-1-org max-w-2xl text-center md:text-left"><h1 className="text-3xl font-bold leading-tight tracking-tight text-white sm:text-4xl md:text-5xl lg:text-6xl">AWS Student Builder Group at<br />M.H. Saboo Siddik College of Engineering</h1></div>
               </div>
               <div className="screen-1-presents mt-14 sm:mt-16"><p className="font-mono text-sm uppercase tracking-[0.45em] text-white/50 sm:text-base">presents</p></div>
-              <div className="screen-1-event mt-6 sm:mt-8"><h2 className="screen-1-title text-5xl font-extrabold leading-none tracking-tight sm:text-6xl md:text-8xl lg:text-9xl"><span className="screen-1-title-white">AWS From</span><br className="sm:hidden" /> <span className="screen-1-title-green">Clicks to Code</span></h2></div>
+              <div className="screen-1-event mt-6 sm:mt-8" style={{ transform: `translate3d(0, ${(1 - entryVisibility) * -58}px, 0)`, opacity: Math.min(1, entryVisibility + 0.08) }}><h2 className="screen-1-title text-5xl font-extrabold leading-none tracking-tight sm:text-6xl md:text-8xl lg:text-9xl"><span className="screen-1-title-white">AWS From</span><br className="sm:hidden" /> <span className="screen-1-title-green">Clicks to Code</span></h2></div>
               <div className="screen-1-scroll-hint" aria-hidden="true"><span className="screen-1-scroll-line" /><span className="screen-1-scroll-label">SCROLL TO EXPLORE</span><span className="screen-1-scroll-arrow">↓</span></div>
             </div>
           </section>
