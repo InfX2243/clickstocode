@@ -67,9 +67,7 @@ export default function Home() {
           <div className="cinematic-story-frame" aria-hidden={timelineProgress < STORY_START ? 'true' : undefined}>
             <ChapterShell title="" progress={chapterProgresses[0]} visibility={chapterVisibilities[0]} className="event-overview-chapter"><div className="event-overview-scene">
   <header className="event-overview-header">
-    <span className="event-overview-cloud" aria-hidden="true">☁️</span>
     <div>
-      <span className="event-overview-kicker">AWS STUDENT BUILDER GROUP · M.H. SABOO SIDDIK COLLEGE OF ENGINEERING</span>
       <h2>AWS From <em>Clicks to Code</em></h2>
       <strong>AWS FUNDAMENTALS · HANDS-ON CLOUD JOURNEY</strong>
     </div>
@@ -84,7 +82,7 @@ export default function Home() {
       <article><b>01</b><img src="/images/aws-logo.png" alt="" /><div><strong>UNDERSTAND</strong><span>Cloud Computing + AWS</span></div></article>
       <article><b>02</b><img src="/images/ec2.png" alt="" /><div><strong>PROVISION</strong><span>Amazon EC2</span></div></article>
       <article><b>03</b><img src="/images/systemsmanager.png" alt="" /><div><strong>CONNECT SECURELY</strong><span>Systems Manager · Session Manager</span></div></article>
-      <article><b>04</b><span className="event-service-badge">WEB</span><div><strong>MAKE IT REAL</strong><span>Apache Web Server</span></div></article>
+      <article><b>04</b><span className="event-service-badge">WEB</span><div><strong>MAKE IT REAL</strong><span>Web Server</span></div></article>
       <article><b>05</b><img src="/images/cloudformation.png" alt="" /><div><strong>AUTOMATE</strong><span>CloudFormation + Infrastructure as Code</span></div></article>
     </div>
   </div>
