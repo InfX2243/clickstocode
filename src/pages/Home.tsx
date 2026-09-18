@@ -66,15 +66,26 @@ export default function Home() {
 
           <div className="cinematic-story-frame" aria-hidden={timelineProgress < STORY_START ? 'true' : undefined}>
             <ChapterShell title="" progress={chapterProgresses[0]} visibility={chapterVisibilities[0]} className="event-overview-chapter"><div className="event-overview-scene">
-  <header className="event-overview-header"><span className="event-overview-cloud" aria-hidden="true">☁️</span><div><span className="event-overview-kicker">AWS STUDENT BUILDER GROUP · M.H. SABOO SIDDIK COLLEGE OF ENGINEERING</span><strong>AWS FUNDAMENTALS · HANDS-ON CLOUD JOURNEY</strong></div></header>
+  <header className="event-overview-header">
+    <span className="event-overview-cloud" aria-hidden="true">☁️</span>
+    <div>
+      <span className="event-overview-kicker">AWS STUDENT BUILDER GROUP · M.H. SABOO SIDDIK COLLEGE OF ENGINEERING</span>
+      <h2>AWS From <em>Clicks to Code</em></h2>
+      <strong>AWS FUNDAMENTALS · HANDS-ON CLOUD JOURNEY</strong>
+    </div>
+  </header>
   <div className="event-overview-grid">
-    <div className="event-overview-copy"><span className="mono-label">AWS FUNDAMENTALS · HANDS-ON CLOUD JOURNEY</span><p>Move from understanding cloud fundamentals to provisioning a real server, accessing it securely, hosting a web page, and automating the infrastructure with Infrastructure as Code.</p><div className="event-overview-idea"><span>THE CORE IDEA</span><strong>From clicking “Launch Instance”</strong><i>→</i><strong>to defining infrastructure as code.</strong></div></div>
+    <div className="event-overview-copy">
+      <span className="mono-label">DESCRIBE THE EVENT</span>
+      <p>The AWS Student Builder Group at M.H. Saboo Siddik College of Engineering invites you to a practical cloud journey — from understanding AWS fundamentals to provisioning a server, securely accessing it, hosting a customized web page, and automating the infrastructure with Infrastructure as Code.</p>
+      <div className="event-overview-idea"><span>THE CORE IDEA</span><strong>From clicking “Launch Instance”</strong><i>→</i><strong>to defining infrastructure as code.</strong></div>
+    </div>
     <div className="event-overview-steps" aria-label="Five-step cloud journey">
-      <article><b>01</b><strong>UNDERSTAND</strong><span>Cloud Computing + AWS</span></article>
-      <article><b>02</b><strong>PROVISION</strong><span>Amazon EC2</span></article>
-      <article><b>03</b><strong>CONNECT SECURELY</strong><span>Systems Manager · Session Manager</span></article>
-      <article><b>04</b><strong>MAKE IT REAL</strong><span>Apache Web Server</span></article>
-      <article><b>05</b><strong>AUTOMATE</strong><span>CloudFormation + IaC</span></article>
+      <article><b>01</b><img src="/images/aws-logo.png" alt="" /><div><strong>UNDERSTAND</strong><span>Cloud Computing + AWS</span></div></article>
+      <article><b>02</b><img src="/images/ec2.png" alt="" /><div><strong>PROVISION</strong><span>Amazon EC2</span></div></article>
+      <article><b>03</b><img src="/images/systemsmanager.png" alt="" /><div><strong>CONNECT SECURELY</strong><span>Systems Manager · Session Manager</span></div></article>
+      <article><b>04</b><span className="event-service-badge">WEB</span><div><strong>MAKE IT REAL</strong><span>Apache Web Server</span></div></article>
+      <article><b>05</b><img src="/images/cloudformation.png" alt="" /><div><strong>AUTOMATE</strong><span>CloudFormation + Infrastructure as Code</span></div></article>
     </div>
   </div>
 </div></ChapterShell>
