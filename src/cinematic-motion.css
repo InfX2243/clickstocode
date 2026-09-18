@@ -270,3 +270,8 @@
   .event-overview-steps article{grid-template-columns:24px 36px minmax(0,1fr)}
   .event-overview-steps article > img,.event-service-badge{width:30px;height:30px}
 }
+
+/* Fix the Screen 1 stacking context: once the hero exits, the story frame must be able to render above its background. */
+.screen-1.is-exiting{z-index:3!important}
+.cinematic-story-frame{z-index:4!important}
+.screen-1.is-exiting .screen-1-event{z-index:1}
