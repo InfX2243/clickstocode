@@ -250,7 +250,8 @@ Implementation status for the cinematic scroll-driven rebuild.
 ### TASK 8.8 — Unified entry-to-story cinematic pass
 - [x] Moved Screen 1 into the same sticky viewport frame as the later chapters.
 - [x] Preserved Screen 1's automatic load-in animation while keeping narrative progression scroll-controlled.
-- [x] Screen 1 now exits upward/fades inside the locked viewport instead of behaving like a normal page section.
+- [x] Screen 1 now transitions inside the locked viewport instead of behaving like a normal page section.
+- [x] Screen 1 exit runway is shortened so the first scroll gesture starts the handoff immediately.
 - [x] Chapter 1 begins underneath the exiting entry screen, creating a continuous handoff rather than a Screen 1 → page-section jump.
 - [x] Kept the background continuous from initial load through the story sequence.
 - [x] Extended the shared timeline to `3600svh` so the new entry phase does not steal the chapter scroll time.
@@ -273,6 +274,7 @@ Implementation status for the cinematic scroll-driven rebuild.
 
 ### TASK 9.2 — Timing and scroll pacing
 - [x] Shorten the Screen 1 → Scene 2 handoff so the event overview arrives earlier.
+- [x] Keep the event name alive during the handoff: surrounding entry elements exit while the title moves upward and becomes the Scene 2 header.
 - [x] Tune the scroll budget per chapter based on visual complexity.
 - [x] Give major story beats more breathing room than simple informational scenes.
 - [x] Tune entry overlap and CTA reveal windows.
@@ -280,6 +282,7 @@ Implementation status for the cinematic scroll-driven rebuild.
 
 ### TASK 9.3 — Content refinement
 - [x] Reframed the first story scene as the event overview, carrying the event identity forward from Screen 1.
+- [x] Made the Screen 1 event title itself carry into the top of the event overview instead of duplicating/exiting it.
 - [x] Added the five-step cloud journey and the manual-provisioning → IaC narrative to the first story scene.
 - [ ] Review every remaining heading, label, and micro-copy line for narrative clarity.
 - [ ] Remove anything that feels generic, repetitive, or template-like.
@@ -315,5 +318,5 @@ Implementation status for the cinematic scroll-driven rebuild.
 20. [x] Fixed-frame cinematic scroll behavior
 21. [x] Unified Screen 1 → story viewport behavior
 22. [x] Fixed-frame final CTA
-23. [ ] Motion, timing, transition, sync, and content refinement (event overview pass complete; remaining chapters pending)
+23. [ ] Motion, timing, transition, sync, and content refinement (event-title handoff pass complete; remaining chapters pending)
 24. [ ] External URL + CI verification
