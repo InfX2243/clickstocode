@@ -1,0 +1,106 @@
+/* Scroll choreography: every scene gets a deliberate enter → hold → exit rhythm. */
+.cinematic-timeline-frame{isolation:isolate}
+.cinematic-timeline-frame::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  z-index:0;
+  pointer-events:none;
+  background:
+    radial-gradient(circle at 50% 42%,rgba(0,210,106,.055),transparent 48%),
+    linear-gradient(rgba(255,255,255,.022) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.022) 1px,transparent 1px);
+  background-size:auto,72px 72px,72px 72px;
+}
+.cinematic-story-frame,.cinematic-final-scene{will-change:opacity,transform}
+.cinematic-chapter{
+  opacity:calc(var(--chapter-visibility,1));
+  transform:scale(calc(.985 + var(--chapter-visibility,1) * .015));
+}
+.cinematic-chapter-inner{
+  --p:var(--chapter-progress,0);
+  --scene-enter:clamp(0,calc(var(--p) * 5),1);
+  --scene-exit:clamp(0,calc((1 - var(--p)) * 5),1);
+}
+.cinematic-chapter-inner > .scene-copy,
+.cinematic-chapter-inner > .motif,
+.cinematic-chapter-inner > .console-scene,
+.cinematic-chapter-inner > .repeat-scene,
+.cinematic-chapter-inner > .terminal-scene,
+.cinematic-chapter-inner > .iac-scene,
+.cinematic-chapter-inner > .pipeline,
+.cinematic-chapter-inner > .mission-grid,
+.cinematic-chapter-inner > .execution-log,
+.cinematic-chapter-inner > .speaker-scene,
+.cinematic-chapter-inner > .payoff,
+.cinematic-chapter-inner > .faq-grid{
+  opacity:min(var(--scene-enter),var(--scene-exit));
+  transform:translate3d(0,calc((1 - var(--scene-enter)) * 30px + (1 - var(--scene-exit)) * -24px),0) scale(calc(.975 + min(var(--scene-enter),var(--scene-exit)) * .025));
+  will-change:opacity,transform;
+}
+.cinematic-chapter-inner > .chapter-split{
+  opacity:min(var(--scene-enter),var(--scene-exit));
+  transform:translate3d(0,calc((1 - var(--scene-enter)) * 30px + (1 - var(--scene-exit)) * -24px),0);
+  will-change:opacity,transform;
+}
+.cinematic-chapter-eyebrow{
+  transform:translate3d(0,calc((1 - var(--scene-enter)) * 26px),0)!important;
+  opacity:var(--scene-enter)!important;
+}
+.cinematic-chapter-title{
+  transform:translate3d(calc((1 - var(--scene-enter)) * 34px),calc((1 - var(--scene-enter)) * 18px),0)!important;
+  opacity:min(var(--scene-enter),var(--scene-exit))!important;
+}
+.chapter-split .scene-copy{opacity:var(--scene-enter);transform:translateX(calc((1 - var(--scene-enter)) * -30px));}
+.chapter-split .motif{opacity:var(--scene-enter);transform:translateX(calc((1 - var(--scene-enter)) * 42px));}
+.console-scene .console-bar{opacity:var(--scene-enter);transform:translateY(calc((1 - var(--scene-enter)) * -16px));}
+.console-scene .console-body{opacity:var(--scene-enter);transform:translateY(calc((1 - var(--scene-enter)) * 24px));}
+.console-scene .console-main > *{opacity:var(--scene-enter);transform:translateY(calc((1 - var(--scene-enter)) * 16px));}
+.console-scene .console-main > *:nth-child(2){transition-delay:0ms}
+.console-scene .console-main > *:nth-child(3){transition-delay:40ms}
+.console-scene .console-main > *:nth-child(4){transition-delay:80ms}
+.repeat-card{
+  --i:var(--scene-index,0);
+  opacity:clamp(.12,calc(var(--scene-enter) - var(--i) * .12),1)!important;
+  transform:translate3d(calc(var(--i) * var(--p) * 22px),calc((1 - var(--scene-enter)) * 34px + var(--i) * var(--p) * 8px),0)!important;
+}
+.terminal-scene .terminal-line{opacity:var(--scene-enter);transform:translateX(calc((1 - var(--scene-enter)) * -22px));}
+.terminal-scene .terminal-output{opacity:var(--scene-enter)!important;transform:translateY(calc((1 - var(--scene-enter)) * 18px));}
+.iac-scene pre{opacity:var(--scene-enter);transform:translateX(calc((1 - var(--scene-enter)) * -30px));}
+.iac-scene .iac-result{opacity:var(--scene-enter);transform:translateX(calc((1 - var(--scene-enter)) * 30px));}
+.pipeline-step{
+  --i:var(--scene-index,0);
+  opacity:clamp(.18,calc(var(--scene-enter) - var(--i) * .11),1)!important;
+  transform:translate3d(0,calc((1 - var(--scene-enter)) * 28px),0)!important;
+}
+.pipeline-step i{opacity:var(--scene-enter);transform:scaleX(var(--scene-enter));transform-origin:left center;}
+.mission-card,.log-row{
+  --i:var(--scene-index,0);
+  opacity:clamp(.15,calc(var(--scene-enter) - var(--i) * .16),1)!important;
+  transform:translate3d(0,calc((1 - var(--scene-enter)) * 30px),0)!important;
+}
+.speaker-scene img{opacity:var(--scene-enter);transform:translateX(calc((1 - var(--scene-enter)) * -34px)) scale(calc(.94 + var(--scene-enter) * .06));}
+.speaker-scene > div{opacity:var(--scene-enter);transform:translateX(calc((1 - var(--scene-enter)) * 34px));}
+.payoff > span{
+  --i:var(--scene-index,0);
+  opacity:clamp(.15,calc(var(--scene-enter) - var(--i) * .18),1)!important;
+  transform:translateY(calc((1 - var(--scene-enter)) * 30px)) scale(calc(.97 + var(--scene-enter) * .03));
+}
+.faq-grid > div{
+  --i:var(--scene-index,0);
+  opacity:clamp(.12,calc(var(--scene-enter) - var(--i) * .13),1)!important;
+  transform:translateY(calc((1 - var(--scene-enter)) * 24px));
+}
+.cinematic-final-scene .final-cta-inner{
+  opacity:var(--final-visibility,1);
+  transform:translate3d(0,calc((1 - var(--final-visibility,1)) * 30px),0) scale(calc(.97 + var(--final-visibility,1) * .03));
+}
+@media(prefers-reduced-motion:reduce){
+  .cinematic-chapter,.cinematic-chapter-inner > *,.cinematic-chapter-eyebrow,.cinematic-chapter-title,
+  .repeat-card,.pipeline-step,.mission-card,.log-row,.speaker-scene img,.speaker-scene > div,.payoff > span,.faq-grid > div,
+  .chapter-split .scene-copy,.chapter-split .motif,.console-scene .console-bar,.console-scene .console-body,
+  .console-scene .console-main > *,.terminal-scene .terminal-line,.terminal-scene .terminal-output,.iac-scene pre,.iac-scene .iac-result{
+    transform:none!important;
+    opacity:1!important;
+  }
+}
