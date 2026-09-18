@@ -272,13 +272,16 @@ Implementation status for the cinematic scroll-driven rebuild.
 - [x] Make chapter-to-chapter handoffs feel continuous rather than like independent slides.
 
 ### TASK 9.2 — Timing and scroll pacing
+- [x] Shorten the Screen 1 → Scene 2 handoff so the event overview arrives earlier.
 - [x] Tune the scroll budget per chapter based on visual complexity.
 - [x] Give major story beats more breathing room than simple informational scenes.
 - [x] Tune entry overlap and CTA reveal windows.
 - [x] Check desktop and mobile timing separately.
 
 ### TASK 9.3 — Content refinement
-- [ ] Review every heading, label, and micro-copy line for narrative clarity.
+- [x] Reframed the first story scene as the event overview, carrying the event identity forward from Screen 1.
+- [x] Added the five-step cloud journey and the manual-provisioning → IaC narrative to the first story scene.
+- [ ] Review every remaining heading, label, and micro-copy line for narrative clarity.
 - [ ] Remove anything that feels generic, repetitive, or template-like.
 - [ ] Strengthen the progression from manual clicking → IaC → automation → event value.
 - [ ] Keep content visual-first and concise.
@@ -312,5 +315,5 @@ Implementation status for the cinematic scroll-driven rebuild.
 20. [x] Fixed-frame cinematic scroll behavior
 21. [x] Unified Screen 1 → story viewport behavior
 22. [x] Fixed-frame final CTA
-23. [ ] Motion, timing, transition, sync, and content refinement
+23. [ ] Motion, timing, transition, sync, and content refinement (event overview pass complete; remaining chapters pending)
 24. [ ] External URL + CI verification
