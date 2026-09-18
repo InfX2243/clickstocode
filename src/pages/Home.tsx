@@ -3,9 +3,9 @@ import CinematicChapter from '../components/CinematicChapter';
 import { useElementScrollProgress, useReducedMotion } from '../lib/useScrollProgress';
 
 const chapters = 11;
-const ENTRY_START = 0.015;
-const ENTRY_END = 0.05;
-const STORY_START = 0.045;
+const ENTRY_START = 0.006;
+const ENTRY_END = 0.032;
+const STORY_START = 0.022;
 const STORY_END = 0.91;
 const CTA_START = 0.9;
 const clamp01 = (value: number) => Math.min(1, Math.max(0, value));
@@ -36,11 +36,13 @@ export default function Home() {
   const timelineRef = useRef<HTMLElement | null>(null);
   const timelineProgress = useElementScrollProgress(timelineRef);
   const reducedMotion = useReducedMotion();
-  const screen1Exit = timelineProgress > (reducedMotion ? 0.01 : ENTRY_START);
+  const screen1Exit = timelineProgress > (reducedMotion ? 0.004 : ENTRY_START);
+  const entryFade = smoothstep(ENTRY_START, ENTRY_END, timelineProgress);
+  const eventHandoff = smoothstep(0.012, 0.055, timelineProgress);
   const storyProgress = storyTimelineProgress(timelineProgress);
   const chapterProgresses = useMemo(() => Array.from({ length: chapters }, (_, i) => chapterProgress(storyProgress, i)), [storyProgress]);
   const chapterVisibilities = useMemo(() => Array.from({ length: chapters }, (_, i) => chapterVisibility(storyProgress, i)), [storyProgress]);
-  const entryVisibility = 1 - smoothstep(ENTRY_START, ENTRY_END, timelineProgress);
+  const entryVisibility = 1 - entryFade;
   const finalProgress = ctaProgress(timelineProgress);
   const finalVisibility = finalProgress;
 
@@ -48,23 +50,23 @@ export default function Home() {
     <div className="experience">
       <section ref={timelineRef} className="cinematic-timeline" aria-label="AWS From Clicks to Code cinematic experience">
         <div className="cinematic-timeline-frame">
-          <section id="screen-1" className={`screen-1 relative min-h-screen w-full overflow-hidden flex items-center justify-center bg-[#080b13] px-6 py-16${screen1Exit ? ' is-exiting' : ''}`} style={{ opacity: entryVisibility, transform: `translate3d(0, ${(1 - entryVisibility) * -20}px, 0) scale(${1 - (1 - entryVisibility) * 0.012})`, filter: `blur(${(1 - entryVisibility) * 1.5}px)` }}>
-            <div className="screen-1-glow absolute inset-0 pointer-events-none" />
-            <div className="screen-1-grid absolute inset-0 pointer-events-none" />
+          <section id="screen-1" className={`screen-1 relative min-h-screen w-full overflow-hidden flex items-center justify-center bg-[#080b13] px-6 py-16${screen1Exit ? ' is-exiting' : ''}`} style={{ '--entry-fade': entryFade, '--event-handoff': eventHandoff } as CSSProperties}>
+            <div className="screen-1-glow absolute inset-0 pointer-events-none" style={{ opacity: 1 - entryFade * 0.85 }} />
+            <div className="screen-1-grid absolute inset-0 pointer-events-none" style={{ opacity: 1 - entryFade }} />
             <div className="screen-1-content relative z-10 flex w-full max-w-6xl flex-col items-center text-center">
-              <div className="screen-1-brand flex flex-col md:flex-row items-center justify-center gap-8 md:gap-12">
+              <div className="screen-1-brand flex flex-col md:flex-row items-center justify-center gap-8 md:gap-12" style={{ opacity: 1 - entryFade, transform: `translate3d(0, ${entryFade * -34}px, 0)` }}>
                 <div className="screen-1-logo-wrap flex h-48 w-48 shrink-0 items-center justify-center rounded-[2rem] border border-[#00d26a]/30 bg-[#111621]/80 p-7 shadow-[0_0_90px_rgba(0,210,106,0.2)] backdrop-blur-md sm:h-56 sm:w-56 sm:p-9"><img src="/images/awssbg-logo.png" alt="AWS Student Builder Group MHSSCE" className="h-full w-full object-contain" /></div>
                 <div className="screen-1-org max-w-2xl text-center md:text-left"><h1 className="text-3xl font-bold leading-tight tracking-tight text-white sm:text-4xl md:text-5xl lg:text-6xl">AWS Student Builder Group at<br />M.H. Saboo Siddik College of Engineering</h1></div>
               </div>
-              <div className="screen-1-presents mt-14 sm:mt-16"><p className="font-mono text-sm uppercase tracking-[0.45em] text-white/50 sm:text-base">presents</p></div>
-              <div className="screen-1-event mt-6 sm:mt-8" style={{ transform: `translate3d(0, ${(1 - entryVisibility) * -58}px, 0)`, opacity: Math.min(1, entryVisibility + 0.08) }}><h2 className="screen-1-title text-5xl font-extrabold leading-none tracking-tight sm:text-6xl md:text-8xl lg:text-9xl"><span className="screen-1-title-white">AWS From</span><br className="sm:hidden" /> <span className="screen-1-title-green">Clicks to Code</span></h2></div>
-              <div className="screen-1-scroll-hint" aria-hidden="true"><span className="screen-1-scroll-line" /><span className="screen-1-scroll-label">SCROLL TO EXPLORE</span><span className="screen-1-scroll-arrow">↓</span></div>
+              <div className="screen-1-presents mt-14 sm:mt-16" style={{ opacity: 1 - entryFade, transform: `translate3d(0, ${entryFade * -24}px, 0)` }}><p className="font-mono text-sm uppercase tracking-[0.45em] text-white/50 sm:text-base">presents</p></div>
+              <div className={`screen-1-event mt-6 sm:mt-8${screen1Exit ? ' is-handoff' : ''}`} style={{ '--event-handoff': eventHandoff } as CSSProperties}><h2 className="screen-1-title text-5xl font-extrabold leading-none tracking-tight sm:text-6xl md:text-8xl lg:text-9xl"><span className="screen-1-title-white">AWS From</span><br className="sm:hidden" /> <span className="screen-1-title-green">Clicks to Code</span></h2></div>
+              <div className="screen-1-scroll-hint" aria-hidden="true" style={{ opacity: 1 - entryFade, transform: `translate3d(0, ${entryFade * -18}px, 0)` }}><span className="screen-1-scroll-line" /><span className="screen-1-scroll-label">SCROLL TO EXPLORE</span><span className="screen-1-scroll-arrow">↓</span></div>
             </div>
           </section>
 
           <div className="cinematic-story-frame" aria-hidden={timelineProgress < STORY_START ? 'true' : undefined}>
             <ChapterShell title="" progress={chapterProgresses[0]} visibility={chapterVisibilities[0]} className="event-overview-chapter"><div className="event-overview-scene">
-  <header className="event-overview-header"><span className="event-overview-cloud" aria-hidden="true">☁️</span><div><span className="event-overview-kicker">AWS STUDENT BUILDER GROUP · MHSSCE</span><h2>AWS From <em>Clicks to Code</em></h2></div></header>
+  <header className="event-overview-header"><span className="event-overview-cloud" aria-hidden="true">☁️</span><div><span className="event-overview-kicker">AWS STUDENT BUILDER GROUP · M.H. SABOO SIDDIK COLLEGE OF ENGINEERING</span><strong>AWS FUNDAMENTALS · HANDS-ON CLOUD JOURNEY</strong></div></header>
   <div className="event-overview-grid">
     <div className="event-overview-copy"><span className="mono-label">AWS FUNDAMENTALS · HANDS-ON CLOUD JOURNEY</span><p>Move from understanding cloud fundamentals to provisioning a real server, accessing it securely, hosting a web page, and automating the infrastructure with Infrastructure as Code.</p><div className="event-overview-idea"><span>THE CORE IDEA</span><strong>From clicking “Launch Instance”</strong><i>→</i><strong>to defining infrastructure as code.</strong></div></div>
     <div className="event-overview-steps" aria-label="Five-step cloud journey">
