@@ -372,3 +372,88 @@
   .event-overview-steps article > img,.event-service-badge{width:32px;height:32px}
   .event-overview-steps b{font-size:18px}
 }
+
+
+/* Audience + learning chapter: replace the old console moment with the questions attendees actually have. */
+.audience-learnings-scene{
+  width:min(1240px,100%);
+  margin:0 auto;
+  display:grid;
+  gap:clamp(24px,3vw,38px);
+}
+.audience-learnings-intro{
+  max-width:820px;
+  opacity:var(--scene-enter);
+  transform:translate3d(0,calc((1 - var(--scene-enter)) * 24px),0);
+}
+.audience-learnings-intro p{
+  margin:12px 0 0;
+  max-width:760px;
+  color:rgba(255,255,255,.7);
+  font-size:clamp(17px,1.45vw,21px);
+  line-height:1.5;
+}
+.audience-learnings-grid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:18px;
+}
+.audience-learnings-grid section{
+  padding:clamp(20px,2.2vw,30px);
+  border:1px solid rgba(0,210,106,.42);
+  border-left-width:2px;
+  background:rgba(8,11,19,.62);
+  box-shadow:inset 0 0 0 1px rgba(0,210,106,.04),0 0 26px rgba(0,210,106,.035);
+  opacity:var(--scene-enter);
+  transform:translate3d(0,calc((1 - var(--scene-enter)) * 30px),0);
+}
+.audience-learnings-grid section:nth-child(2){
+  transition-delay:90ms;
+}
+.audience-learnings-heading{
+  display:flex;
+  align-items:center;
+  gap:16px;
+  padding-bottom:18px;
+  border-bottom:1px solid rgba(255,255,255,.09);
+}
+.audience-learnings-heading > span{
+  color:#00d26a;
+  font:700 clamp(22px,2vw,30px)/1 'Amazon Ember Mono',monospace;
+}
+.audience-learnings-heading h3{
+  margin:0;
+  color:#fff;
+  font-size:clamp(16px,1.45vw,20px);
+  letter-spacing:.09em;
+}
+.audience-learnings-grid ul{
+  list-style:none;
+  margin:0;
+  padding:6px 0 0;
+}
+.audience-learnings-grid li{
+  display:grid;
+  grid-template-columns:minmax(120px,.72fr) minmax(0,1.28fr);
+  gap:18px;
+  padding:17px 0;
+  border-bottom:1px solid rgba(255,255,255,.07);
+}
+.audience-learnings-grid li:last-child{border-bottom:0}
+.audience-learnings-grid li b{
+  color:#fff;
+  font-size:13px;
+  letter-spacing:.04em;
+}
+.audience-learnings-grid li span{
+  color:rgba(255,255,255,.58);
+  font-size:13px;
+  line-height:1.45;
+}
+@media(max-width:820px){
+  .audience-learnings-grid{grid-template-columns:1fr}
+}
+@media(max-width:560px){
+  .audience-learnings-grid li{grid-template-columns:1fr;gap:6px}
+  .audience-learnings-intro p{font-size:15px}
+}
