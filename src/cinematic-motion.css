@@ -218,3 +218,55 @@
     transform:translate3d(0,-32vh,0) scale(.58)!important;
   }
 }
+
+
+/* Event title stays sharp and large while handing off from the hero into the description. */
+.screen-1.is-exiting .screen-1-event{
+  filter:none!important;
+  -webkit-filter:none!important;
+  opacity:1!important;
+}
+.screen-1.is-exiting .screen-1-title{
+  filter:none!important;
+  -webkit-filter:none!important;
+  text-rendering:geometricPrecision;
+}
+.event-overview-header h2{
+  margin:2px 0 0;
+  font-size:clamp(42px,7vw,92px);
+  line-height:.9;
+  letter-spacing:-.055em;
+  font-weight:800;
+  color:#fff;
+}
+.event-overview-header h2 em{font-style:normal;color:#00d26a}
+.event-overview-header{
+  align-items:flex-start;
+}
+.event-overview-steps article{
+  grid-template-columns:28px 42px minmax(0,1fr);
+}
+.event-overview-steps article > img{
+  width:34px;
+  height:34px;
+  object-fit:contain;
+  filter:drop-shadow(0 0 12px rgba(0,210,106,.16));
+}
+.event-service-badge{
+  width:34px;
+  height:34px;
+  display:grid;
+  place-items:center;
+  border:1px solid rgba(0,210,106,.3);
+  color:#00d26a!important;
+  font:700 8px 'Amazon Ember Mono',monospace!important;
+  letter-spacing:.05em;
+}
+.event-overview-steps article > div{
+  min-width:0;
+}
+@media(max-width:560px){
+  .event-overview-header h2{font-size:clamp(38px,12vw,58px)}
+  .event-overview-steps article{grid-template-columns:24px 36px minmax(0,1fr)}
+  .event-overview-steps article > img,.event-service-badge{width:30px;height:30px}
+}
