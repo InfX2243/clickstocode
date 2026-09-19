@@ -9,7 +9,6 @@ const ENTRY_END = 0.032;
 const STORY_START = 0.008;
 const STORY_HANDOFF_END = 0.055;
 const STORY_END = 0.975;
-const CTA_START = 0.965;
 const MEETUP_URL = 'https://www.meetup.com/';
 const clamp01 = (value: number) => Math.min(1, Math.max(0, value));
 const storyTimelineProgress = (timeline: number) => clamp01((timeline - STORY_START) / (STORY_END - STORY_START));
@@ -31,7 +30,6 @@ const chapterVisibility = (story: number, index: number) => {
   if (raw <= 0.85) return 1;
   return 1 - smoothstep(0.85, 1.15, raw);
 };
-const ctaProgress = (timeline: number) => smoothstep(CTA_START, 0.965, timeline);
 
 function ChapterShell({ eyebrow, title, children, progress, visibility, className }: { eyebrow?: string; title: string; children: ReactNode; progress: number; visibility: number; className?: string }) {
   return <CinematicChapter eyebrow={eyebrow} title={title} progress={progress} visibility={visibility} className={className}>{children}</CinematicChapter>;
@@ -50,8 +48,6 @@ export default function Home() {
   const chapterProgresses = useMemo(() => Array.from({ length: chapters }, (_, i) => i === 0 ? handoffChapterProgress : chapterProgress(storyProgress, i)), [storyProgress, handoffChapterProgress]);
   const chapterVisibilities = useMemo(() => Array.from({ length: chapters }, (_, i) => chapterVisibility(storyProgress, i)), [storyProgress]);
   const entryVisibility = 1 - entryFade;
-  const finalProgress = ctaProgress(timelineProgress);
-  const finalVisibility = finalProgress;
 
   return (
     <div className="experience">
