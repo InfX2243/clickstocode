@@ -10,6 +10,7 @@ const STORY_HANDOFF_END = 0.055;
 const STORY_END = 0.91;
 const CTA_START = 0.9;
 const MEETUP_URL = 'https://www.meetup.com/';
+const MEETUP_URL = 'https://www.meetup.com/';
 const clamp01 = (value: number) => Math.min(1, Math.max(0, value));
 const storyTimelineProgress = (timeline: number) => clamp01((timeline - STORY_START) / (STORY_END - STORY_START));
 const easeInOut = (value: number) => {
