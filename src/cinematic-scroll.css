@@ -107,3 +107,90 @@
 
 /* Make the overview registration control interactive despite cinematic chapter hit-testing. */
 .event-overview-chapter .event-overview-register{position:relative;z-index:3;pointer-events:auto;cursor:pointer}
+
+
+/* Finalized event information surfaces. */
+.event-overview-meta{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  margin-top:12px;
+}
+.event-overview-meta span{
+  padding:7px 9px;
+  border:1px solid rgba(0,210,106,.14);
+  background:rgba(0,210,106,.035);
+  color:rgba(255,255,255,.58);
+  font:700 9px/1 'Amazon Ember Mono',monospace;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+}
+.event-overview-register-disabled{
+  cursor:default!important;
+  opacity:.72;
+  border-color:rgba(255,255,255,.14)!important;
+  background:rgba(255,255,255,.025)!important;
+  box-shadow:none!important;
+}
+.event-overview-register-disabled:hover{transform:none!important}
+.hands-on-guide{
+  align-self:center;
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:9px 11px;
+  border:1px solid rgba(0,210,106,.2);
+  color:#00d26a;
+  text-decoration:none;
+  font:700 9px/1 'Amazon Ember Mono',monospace;
+  letter-spacing:.08em;
+  white-space:nowrap;
+}
+.hands-on-guide b{font-size:13px}
+.hands-on-guide:hover{border-color:rgba(0,210,106,.6);background:rgba(0,210,106,.05)}
+.speaker-bio{
+  margin:12px 0 0;
+  color:rgba(255,255,255,.48);
+  font-size:11px;
+  line-height:1.55;
+  max-width:680px;
+}
+.speaker-link-placeholder{
+  display:inline-flex;
+  flex-direction:column;
+  gap:5px;
+  margin-top:12px;
+  color:inherit;
+  text-decoration:none;
+}
+.speaker-link-placeholder span{
+  color:#00d26a;
+  font:700 9px/1 'Amazon Ember Mono',monospace;
+  letter-spacing:.12em;
+}
+.speaker-link-placeholder strong{
+  color:#fff;
+  font-size:10px;
+  letter-spacing:.06em;
+}
+.speaker-link-placeholder:hover strong{text-decoration:underline;text-underline-offset:4px}
+.sponsor-mail-button{
+  display:inline-flex;
+  align-items:center;
+  gap:9px;
+  min-height:40px;
+  padding:10px 13px;
+  border:1px solid rgba(0,210,106,.35);
+  color:#fff;
+  background:rgba(0,210,106,.055);
+  text-decoration:none;
+  font:700 9px/1 'Amazon Ember Mono',monospace;
+  letter-spacing:.1em;
+}
+.sponsor-mail-button b{color:#00d26a;font-size:13px}
+.sponsor-mail-button:hover{border-color:#00d26a;background:rgba(0,210,106,.1)}
+@media(max-width:760px){
+  .event-overview-meta{display:grid;grid-template-columns:1fr}
+  .hands-on-guide{width:100%;justify-content:space-between}
+  .speaker-bio{font-size:10px}
+}
