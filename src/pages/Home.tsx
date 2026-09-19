@@ -100,7 +100,43 @@ export default function Home() {
     </div>
   </div>
 </div></ChapterShell>
-            <ChapterShell eyebrow="FOR THE CURIOUS" title="Who should attend? What will you learn?" progress={chapterProgresses[1]} visibility={chapterVisibilities[1]}><div className="audience-learnings-scene"><div className="audience-learnings-intro"><span className="mono-label">THIS SESSION IS FOR YOU IF…</span><p>You're a student, builder, or cloud-curious engineer who wants to move beyond clicking through a console and understand how AWS actually fits together.</p></div><div className="audience-learnings-grid"><section><div className="audience-learnings-heading"><span>01</span><h3>WHO SHOULD ATTEND?</h3></div><ul><li><b>Students</b><span>Starting their cloud journey or exploring AWS for the first time.</span></li><li><b>Builders</b><span>Already experimenting with projects and ready to make them repeatable.</span></li><li><b>Future DevOps engineers</b><span>Curious about secure access, automation, and infrastructure as code.</span></li></ul></section><section><div className="audience-learnings-heading"><span>02</span><h3>WHAT YOU LEARN</h3></div><ul><li><b>AWS fundamentals</b><span>Understand the building blocks behind cloud infrastructure.</span></li><li><b>EC2 + secure access</b><span>Provision a server and connect without relying on fragile access paths.</span></li><li><b>Infrastructure as Code</b><span>Turn a working setup into something you can define, repeat, and automate.</span></li></ul></section></div></div></ChapterShell>
+            <ChapterShell eyebrow="FOR THE CURIOUS" title="Is this event for me?" progress={chapterProgresses[1]} visibility={chapterVisibilities[1]} className="audience-chapter">
+              <div className="audience-scene">
+                <div className="audience-hero-copy">
+                  <span className="mono-label">BEGINNER-FRIENDLY · BUILDER-FOCUSED</span>
+                  <p>You don't need to already be an AWS expert. Curiosity matters more than prior AWS experience.</p>
+                </div>
+                <div className="audience-profile-grid">
+                  <section className="audience-profile audience-profile-who">
+                    <div className="audience-profile-heading"><span>01</span><h3>WHO SHOULD ATTEND?</h3></div>
+                    <ul>
+                      <li><b>Students</b><span>Starting a cloud journey or exploring AWS for the first time.</span></li>
+                      <li><b>CS / IT / Engineering</b><span>Wanting practical infrastructure experience beyond coursework.</span></li>
+                      <li><b>Cloud-curious builders</b><span>Working on projects and ready to understand what runs behind them.</span></li>
+                      <li><b>Future DevOps / Security engineers</b><span>Interested in automation, secure access, and infrastructure.</span></li>
+                    </ul>
+                  </section>
+                  <section className="audience-profile audience-profile-why">
+                    <div className="audience-profile-heading"><span>02</span><h3>WHY PARTICIPATE?</h3></div>
+                    <ul>
+                      <li><b>Hands-on AWS experience</b><span>Work with real cloud infrastructure inside the workshop flow.</span></li>
+                      <li><b>EC2 + secure access</b><span>Provision a server and connect with Systems Manager / Session Manager.</span></li>
+                      <li><b>Infrastructure as Code</b><span>See how a working setup can become a repeatable definition.</span></li>
+                      <li><b>Certificate + trivia + swag</b><span>Complete the hands-on experience and take part in the extras.</span></li>
+                    </ul>
+                  </section>
+                </div>
+                <div className="audience-reassurance">
+                  <div><span>NO PRIOR AWS EXPERIENCE REQUIRED</span><strong>Bring your questions, your laptop, and the willingness to build.</strong></div>
+                  <a className="event-overview-register audience-register" href={MEETUP_URL} target="_blank" rel="noreferrer">
+                    <img src="/images/meetup-icon.png" alt="" aria-hidden="true" />
+                    <span>REGISTER ON MEETUP</span>
+                    <b aria-hidden="true">↗</b>
+                  </a>
+                </div>
+              </div>
+            </ChapterShell>
+
             <ChapterShell eyebrow="THE PROBLEM" title="Clicking works once. What happens the next time?" progress={chapterProgresses[2]} visibility={chapterVisibilities[2]}>
               <div className="problem-scene">
                 <div className="problem-intro"><span className="mono-label">THE MANUAL LOOP</span><p>Console clicks are useful for learning. They become painful when the same infrastructure has to be rebuilt, reviewed, or reproduced.</p></div>
