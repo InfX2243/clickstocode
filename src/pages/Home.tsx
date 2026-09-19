@@ -9,7 +9,15 @@ const ENTRY_END = 0.032;
 const STORY_START = 0.008;
 const STORY_HANDOFF_END = 0.055;
 const STORY_END = 0.975;
-const MEETUP_URL = 'https://www.meetup.com/';
+const MEETUP_URL: string | null = null;
+const MEETUP_STATUS = 'MEETUP REGISTRATION COMING SOON';
+const EVENT_DATE = '24 September 2026';
+const EVENT_TIME = '9:30 AM – 12:00 PM';
+const VENUE = '3rd Floor, Seminar Hall, MHSSCE';
+const CHECKIN_LOCATION = 'Ground Floor · Near the Staff Lift';
+const LEARNER_LAB_GUIDE_URL = 'https://d3fzag6u5cy19y.cloudfront.net/enrollment-guide';
+const SPONSOR_EMAIL = 'awssbg@mhssce.ac.in';
+const SPONSOR_MAILTO = 'mailto:' + SPONSOR_EMAIL + '?subject=' + encodeURIComponent('Sponsor / Partnership Enquiry — AWS From Clicks to Code') + '&body=' + encodeURIComponent('Hello AWS Student Builder Group at MHSSCE,\\n\\nI am [YOUR NAME] from [ORGANIZATION / COMMUNITY].\\n\\nI would like to discuss [YOUR SPONSORSHIP / PARTNERSHIP IDEA].\\n\\nYou can reach me at [YOUR EMAIL / PHONE].\\n\\nThank you,\\n[YOUR NAME]');
 const clamp01 = (value: number) => Math.min(1, Math.max(0, value));
 const storyTimelineProgress = (timeline: number) => clamp01((timeline - STORY_START) / (STORY_END - STORY_START));
 const easeInOut = (value: number) => {
@@ -78,17 +86,18 @@ export default function Home() {
     <div>
       <h2>AWS From <em>Clicks to Code</em></h2>
       <strong>AWS FUNDAMENTALS · HANDS-ON CLOUD JOURNEY</strong>
+      <div className="event-overview-meta"><span>{EVENT_DATE}</span><span>{EVENT_TIME}</span><span>{VENUE}</span></div>
     </div>
   </header>
   <div className="event-overview-grid">
     <div className="event-overview-copy">
       <span className="mono-label">ABOUT THE EVENT</span>
-      <p>The AWS Student Builder Group at M.H. Saboo Siddik College of Engineering invites you to a practical cloud journey — from understanding AWS fundamentals to provisioning a server, securely accessing it, hosting a customized web page, and automating the infrastructure with Infrastructure as Code.</p>
-      <a className="event-overview-register" href={MEETUP_URL} target="_blank" rel="noreferrer">
+      <p>The AWS Student Builder Group at M.H. Saboo Siddik College of Engineering invites students to a practical cloud journey — from understanding AWS fundamentals to provisioning a server, securely accessing it, hosting a customized web page, and automating the infrastructure with Infrastructure as Code.</p>
+      <div className="event-overview-register event-overview-register-disabled" aria-label={MEETUP_STATUS}>
         <img src="/images/meetup-icon.png" alt="" aria-hidden="true" />
-        <span>REGISTER ON MEETUP</span>
-        <b aria-hidden="true">↗</b>
-      </a>
+        <span>{MEETUP_STATUS}</span>
+        <b aria-hidden="true">·</b>
+      </div>
     </div>
     <div className="event-overview-steps" aria-label="Five-step cloud journey">
       <article><b>01</b><img src="/images/aws-logo.png" alt="" /><div><strong>UNDERSTAND</strong><span>Cloud Computing + AWS</span></div></article>
@@ -152,11 +161,9 @@ export default function Home() {
 
                 <div className="audience-reassurance">
                   <div><span>NO PRIOR AWS EXPERIENCE REQUIRED</span><strong>Bring your questions, your laptop, and the willingness to build.</strong></div>
-                  <a className="event-overview-register audience-register" href={MEETUP_URL} target="_blank" rel="noreferrer">
+                  <div className="event-overview-register event-overview-register-disabled audience-register" aria-label={MEETUP_STATUS}>
                     <img src="/images/meetup-icon.png" alt="" aria-hidden="true" />
-                    <span>REGISTER ON MEETUP</span>
-                    <b aria-hidden="true">↗</b>
-                  </a>
+                    <span>{MEETUP_STATUS}</span><b aria-hidden="true">·</b></div>
                 </div>
               </div>
             </ChapterShell>
@@ -232,15 +239,13 @@ export default function Home() {
 
                 <div className="hands-on-sandbox">
                   <div className="hands-on-sandbox-icon"><Terminal size={20} /></div>
-                  <div><span>SANDBOX ENVIRONMENT</span><strong>Provided for the workshop</strong><p>Final sandbox access instructions will be added here once confirmed.</p></div>
-                  <span className="hands-on-placeholder">DETAILS PENDING</span>
+                  <div><span>SANDBOX ENVIRONMENT</span><strong>AWS Academy Learner Lab</strong><p>Provided by AWS Academy. Organizers verify in the waiting room that you received the resource and can access it before the program begins.</p></div>
+                  <a className="hands-on-guide" href={LEARNER_LAB_GUIDE_URL} target="_blank" rel="noreferrer"><span>ENROLLMENT GUIDE · STEPS 6–10</span><b aria-hidden="true">↗</b></a>
                 </div>
 
-                <a className="event-overview-register hands-on-register" href={MEETUP_URL} target="_blank" rel="noreferrer">
+                <div className="event-overview-register event-overview-register-disabled hands-on-register" aria-label={MEETUP_STATUS}>
                   <img src="/images/meetup-icon.png" alt="" aria-hidden="true" />
-                  <span>REGISTER ON MEETUP</span>
-                  <b aria-hidden="true">↗</b>
-                </a>
+                  <span>{MEETUP_STATUS}</span><b aria-hidden="true">·</b></div>
               </div>
             </ChapterShell>
 
@@ -248,23 +253,27 @@ export default function Home() {
               <div className="arrival-scene">
                 <div className="arrival-intro">
                   <div className="arrival-badge"><DoorOpen size={16} strokeWidth={2} /><span>YOUR FIRST 30 MINUTES</span></div>
-                  <p>Everything you need to know when you walk in — so you can spend the day building, not figuring out where to go.</p>
+                  <p>Check in, verify your AWS Academy Learner Lab access in the waiting room, then move into the Seminar Hall before the 10:00 AM program begins.</p>
                 </div>
                 <div className="arrival-hero">
                   <div className="arrival-time-card">
-                    <span>09:30 AM</span><strong>CHECK-IN OPENS</strong><small>Arrive early. Get settled before the workshop begins.</small>
+                    <span>24 SEPTEMBER · 09:30 AM</span><strong>CHECK-IN OPENS</strong><small>Arrive early. Check in at the Registration Desk and get ready for the workshop.</small>
                   </div>
                   <div className="arrival-location-card">
                     <MapPin size={24} strokeWidth={1.7} />
                     <div><span>CHECK-IN LOCATION</span><strong>Registration Desk</strong><small>Ground Floor · Near the Staff Lift</small></div>
                   </div>
+                  <div className="arrival-location-card">
+                    <MapPin size={24} strokeWidth={1.7} />
+                    <div><span>MAIN VENUE · 10:00 AM</span><strong>Seminar Hall</strong><small>3rd Floor · MHSSCE</small></div>
+                  </div>
                 </div>
                 <div className="arrival-steps" aria-label="Arrival checklist">
                   {[
-                    [ClipboardCheck, '01', 'CHECK IN', 'Complete attendance at the registration desk.'],
-                    [Cloud, '02', 'GET ACCESS', 'Receive or confirm your workshop and sandbox instructions.'],
-                    [Laptop, '03', 'SET UP', 'Prepare your laptop, browser, network, and required accounts.'],
-                    [MessageCircle, '04', 'CONNECT', 'Confirm access to the official WhatsApp group if required.'],
+                    [ClipboardCheck, '01', 'CHECK IN', 'Show your Meetup QR ticket and complete event-day check-in.'],
+                    [Cloud, '02', 'GET ACCESS', 'In the waiting room, confirm that you received and can access AWS Academy Learner Lab.'],
+                    [Laptop, '03', 'SET UP', 'Get your laptop ready while organizers complete the access check.'],
+                    [MessageCircle, '04', 'CONNECT', 'After check-in and access verification, move toward the main venue around 9:55 AM.'],
                   ].map(([Icon, number, title, description], index) => {
                     const ArrivalIcon = Icon as typeof ClipboardCheck;
                     return <article className="arrival-step" key={number as string} style={{ '--arrival-index': index } as CSSProperties}>
@@ -274,15 +283,14 @@ export default function Home() {
                   })}
                 </div>
                 <div className="arrival-window">
-                  <div><span>09:30 — 10:00</span><strong>CHECK-IN + SETUP WINDOW</strong></div>
+                  <div><span>09:30 — 09:50</span><strong>CHECK-IN + LEARNER LAB CHECK</strong></div>
                   <i aria-hidden="true" /><div><span>10:00 AM</span><strong>WORKSHOP BEGINS</strong></div>
                 </div>
                 <div className="arrival-note">
-                  <span>FINAL AGENDA</span><p>Exact workshop timings and venue details will replace the temporary placeholders once confirmed.</p>
+                  <span>MAIN VENUE · 10:00 AM</span><p>{VENUE}. Check-in and support remain at the {CHECKIN_LOCATION.toLowerCase()}.</p>
                 </div>
-                <a className="event-overview-register arrival-register" href={MEETUP_URL} target="_blank" rel="noreferrer">
-                  <img src="/images/meetup-icon.png" alt="" aria-hidden="true" /><span>REGISTER ON MEETUP</span><b aria-hidden="true">↗</b>
-                </a>
+                <div className="event-overview-register event-overview-register-disabled arrival-register" aria-label={MEETUP_STATUS}>
+                  <img src="/images/meetup-icon.png" alt="" aria-hidden="true" /><span>{MEETUP_STATUS}</span><b aria-hidden="true">·</b></div>
               </div>
             </ChapterShell>
 
@@ -296,10 +304,10 @@ export default function Home() {
                 <div className="registration-flow" aria-label="Registration steps">
                   {[
                     [CalendarCheck, '01', 'REGISTER THROUGH MEETUP', 'Use the official Meetup registration flow to reserve your place.'],
-                    [ClipboardCheck, '02', 'ENTER YOUR COLLEGE DOMAIN ID', 'Provide your college or institutional domain ID where the Meetup form requests it.', 'FORMAT TO BE CONFIRMED'],
-                    [MessageCircle, '03', 'JOIN THE WHATSAPP GROUP', 'After registering, use the WhatsApp group link provided through Meetup to join the official event group.'],
-                    [Cloud, '04', 'SAVE THE EVENT DETAILS', 'Keep your registration confirmation, venue information, and event timing handy.'],
-                    [MapPin, '05', 'ARRIVE AT 9:30 AM', 'Go to the Registration Desk on the Ground Floor, near the Staff Lift, for check-in.'],
+                    [ClipboardCheck, '02', 'ENTER YOUR COLLEGE DOMAIN ID', 'Use your college/institutional domain ID where the registration flow requests it.', '@mhssce.ac.in'],
+                    [MessageCircle, '03', 'JOIN THE WHATSAPP GROUP', 'The official WhatsApp group is not published on this website. Access is provided after you RSVP through Meetup.'],
+                    [Cloud, '04', 'SAVE THE EVENT DETAILS', 'Keep your Meetup confirmation/QR ticket and the event timing handy.'],
+                    [MapPin, '05', 'ARRIVE AT 9:30 AM', 'Arrive at 9:30 AM at the Registration Desk on the Ground Floor, near the Staff Lift.'],
                   ].map(([Icon, number, title, description, note], index) => {
                     const RegistrationIcon = Icon as typeof CalendarCheck;
                     return (
@@ -319,11 +327,9 @@ export default function Home() {
                   <span>Register early to secure your place.</span>
                 </div>
 
-                <a className="event-overview-register registration-register" href={MEETUP_URL} target="_blank" rel="noreferrer">
+                <div className="event-overview-register event-overview-register-disabled registration-register" aria-label={MEETUP_STATUS}>
                   <img src="/images/meetup-icon.png" alt="" aria-hidden="true" />
-                  <span>REGISTER ON MEETUP</span>
-                  <b aria-hidden="true">↗</b>
-                </a>
+                  <span>{MEETUP_STATUS}</span><b aria-hidden="true">·</b></div>
               </div>
             </ChapterShell>
 
@@ -331,7 +337,7 @@ export default function Home() {
               <div className="day-timeline-scene">
                 <div className="day-timeline-intro">
                   <div className="day-timeline-badge"><AlarmClock size={16} strokeWidth={2} /><span>THE DAY AT A GLANCE</span></div>
-                  <p>Follow the day from arrival to completion. The final agenda will replace the temporary time markers once confirmed.</p>
+                  <p>From QR check-in and Learner Lab verification to the main program, trivia, feedback, and next-day certificates.</p>
                 </div>
 
                 <div className="day-timeline" aria-label="Event day timeline">
@@ -361,16 +367,14 @@ export default function Home() {
                 </div>
 
                 <div className="day-timeline-note">
-                  <span>AGENDA STATUS</span>
-                  <strong>FINAL TIMINGS TO BE CONFIRMED</strong>
-                  <p>Use this timeline as the current event-day structure until the final agenda is supplied.</p>
+                  <span>EVENT WINDOW</span>
+                  <strong>09:30 AM – 12:00 PM</strong>
+                  <p>Internal speaker-session timings remain flexible so the technical session can follow the speaker's plan.</p>
                 </div>
 
-                <a className="event-overview-register timeline-register" href={MEETUP_URL} target="_blank" rel="noreferrer">
+                <div className="event-overview-register event-overview-register-disabled timeline-register" aria-label={MEETUP_STATUS}>
                   <img src="/images/meetup-icon.png" alt="" aria-hidden="true" />
-                  <span>REGISTER ON MEETUP</span>
-                  <b aria-hidden="true">↗</b>
-                </a>
+                  <span>{MEETUP_STATUS}</span><b aria-hidden="true">·</b></div>
               </div>
             </ChapterShell>
 
@@ -390,21 +394,19 @@ export default function Home() {
                   </div>
                   <div className="requirements-side">
                     <article><BatteryCharging size={22} /><div><strong>LAPTOP CHARGER</strong><span>Keep your device powered through the hands-on lab.</span></div></article>
-                    <article><IdCard size={22} /><div><strong>COLLEGE DOMAIN ID</strong><span>Have the required college/institutional details ready.</span></div></article>
-                    <article><CalendarCheck size={22} /><div><strong>MEETUP CONFIRMATION</strong><span>Keep your registration confirmation accessible.</span></div></article>
+                    <article><IdCard size={22} /><div><strong>COLLEGE DOMAIN ID</strong><span>Use the college domain ID @mhssce.ac.in where required.</span></div></article>
+                    <article><CalendarCheck size={22} /><div><strong>MEETUP CONFIRMATION</strong><span>Keep your Meetup confirmation and QR ticket accessible.</span></div></article>
                   </div>
                 </div>
 
                 <div className="requirements-footer">
                   <div><span>FREE TO ATTEND</span><strong>LIMITED TO 100 PARTICIPANTS</strong></div>
-                  <p>Any additional login or account requirements will be communicated before the event.</p>
+                  <p>Event date: 24 September 2026 · Venue: 3rd Floor, Seminar Hall, MHSSCE.</p>
                 </div>
 
-                <a className="event-overview-register requirements-register" href={MEETUP_URL} target="_blank" rel="noreferrer">
+                <div className="event-overview-register event-overview-register-disabled requirements-register" aria-label={MEETUP_STATUS}>
                   <img src="/images/meetup-icon.png" alt="" aria-hidden="true" />
-                  <span>REGISTER ON MEETUP</span>
-                  <b aria-hidden="true">↗</b>
-                </a>
+                  <span>{MEETUP_STATUS}</span><b aria-hidden="true">·</b></div>
               </div>
             </ChapterShell>
 
@@ -418,14 +420,15 @@ export default function Home() {
                   <div className="speaker-badge"><Users size={16} strokeWidth={2} /><span>INVITED MENTOR · AWS COMMUNITY</span></div>
                   <span className="mono-label">MS. AFREEN BANO</span>
                   <h3>Build with context.<br /><em>Leave with confidence.</em></h3>
-                  <p className="speaker-role">DevOps Architect <b>·</b> AWS Community Leader <b>·</b> Cloud Security Specialist</p>
+                  <p className="speaker-role">Technology Leader <b>·</b> AWS Cloud <b>·</b> DevSecOps <b>·</b> Engineering Leadership</p>
+                  <p className="speaker-bio">Afreen Bano is a technology leader with 15+ years of experience, spanning AWS Cloud, DevSecOps, engineering leadership, and high-performing teams. She leads HerTechEra – Pune Chapter, building a community where technology, learning, and inclusion come together. A globally recognized speaker and community leader, she has shared her expertise on international technology and leadership platforms and has been recognized for her impact in the tech community. At heart, she is passionate about turning complex technology into practical learning and inspiring the next generation of technologists.</p>
                   <div className="speaker-focus-grid">
                     <article><Cloud size={19} /><strong>CLOUD + AWS</strong><span>Learn the foundations behind the infrastructure you will build.</span></article>
                     <article><Code2 size={19} /><strong>DEVOPS</strong><span>Connect practical building with repeatable engineering habits.</span></article>
                     <article><ShieldCheck size={19} /><strong>CLOUD SECURITY</strong><span>Understand why secure access belongs in the workflow.</span></article>
                   </div>
                   <div className="speaker-note"><span>SESSION FOCUS</span><strong>Practical cloud skills you can carry into your next project.</strong></div>
-                  <div className="speaker-link-placeholder"><span>LINKEDIN</span><strong>PROFILE LINK TO BE ADDED</strong></div>
+                  <a className="speaker-link-placeholder" href="https://in.linkedin.com/in/afreen-bano" target="_blank" rel="noreferrer"><span>LINKEDIN</span><strong>VIEW AFREEN BANO'S PROFILE ↗</strong></a>
                 </div>
               </div>
             </ChapterShell>
@@ -458,7 +461,7 @@ export default function Home() {
                     <div className="rewards-feature-icon"><Award size={25} strokeWidth={1.7} /></div>
                     <span>03 · COMPLETION</span>
                     <strong>CERTIFICATE</strong>
-                    <p>Successfully complete the hands-on workshop and receive your event certificate.</p>
+                    <p>Every participant who attends receives a digital certificate by the next day on their registered email.</p>
                     <div className="rewards-certificate-mark"><CheckCircle2 size={15} /><span>SUCCESSFULLY COMPLETED</span></div>
                   </article>
                 </div>
@@ -468,11 +471,9 @@ export default function Home() {
                     <span>ONE HANDS-ON EXPERIENCE</span>
                     <strong>Learn something useful. Have some fun. Finish with proof you built it.</strong>
                   </div>
-                  <a className="event-overview-register rewards-register" href={MEETUP_URL} target="_blank" rel="noreferrer">
+                  <div className="event-overview-register event-overview-register-disabled rewards-register" aria-label={MEETUP_STATUS}>
                     <img src="/images/meetup-icon.png" alt="" aria-hidden="true" />
-                    <span>REGISTER ON MEETUP</span>
-                    <b aria-hidden="true">↗</b>
-                  </a>
+                    <span>{MEETUP_STATUS}</span><b aria-hidden="true">·</b></div>
                 </div>
               </div>
             </ChapterShell>
@@ -515,9 +516,9 @@ export default function Home() {
                 <div className="sponsor-contact">
                   <div>
                     <span>GET IN TOUCH</span>
-                    <strong>SPONSORSHIP CONTACT · TO BE ADDED</strong>
+                    <strong>{SPONSOR_EMAIL}</strong>
                   </div>
-                  <span className="sponsor-placeholder">CONTACT DETAILS PENDING</span>
+                  <a className="sponsor-mail-button" href={SPONSOR_MAILTO}><span>OPEN PREFILLED EMAIL</span><b aria-hidden="true">↗</b></a>
                 </div>
               </div>
             </ChapterShell>
@@ -532,15 +533,15 @@ export default function Home() {
                 <div className="faq-grid" aria-label="Frequently asked questions">
                   {[
                     [Users, 'WHO IS THIS FOR?', 'Students, cloud enthusiasts, beginners, project builders, and anyone curious about AWS, DevOps, security, or infrastructure.'],
-                    [Gift, 'IS IT FREE?', 'Yes. The workshop is free to attend, with capacity limited to 100 participants.'],
+                    [Gift, 'IS IT FREE?', 'Yes. Attendance is completely free, with Meetup registration capped at 100 participants.'],
                     [Laptop, 'DO I NEED A LAPTOP?', 'Yes. A laptop is mandatory for the hands-on workshop. Bring it charged, along with your charger.'],
                     [Cloud, 'IS IT BEGINNER-FRIENDLY?', 'Yes. You do not need prior AWS expertise; the session is designed around learning by building.'],
-                    [Terminal, 'HOW DOES THE SANDBOX WORK?', 'A workshop sandbox is planned. Final access and setup instructions will be added once confirmed.'],
-                    [IdCard, 'WHAT COLLEGE ID IS NEEDED?', 'The required college or institutional domain ID should be provided during registration. The exact format is still to be confirmed.'],
+                    [Terminal, 'HOW DOES THE SANDBOX WORK?', 'The workshop uses AWS Academy Learner Lab. Organizers verify that you received and can access it in the waiting room before the program begins.'],
+                    [IdCard, 'WHAT COLLEGE ID IS NEEDED?', 'Use your college/institutional domain ID: @mhssce.ac.in.'],
                     [MessageCircle, 'HOW DO I JOIN WHATSAPP?', 'The official WhatsApp group link will be provided through the Meetup registration flow.'],
-                    [MapPin, 'WHEN AND WHERE DO I CHECK IN?', 'Check-in opens at 9:30 AM at the Registration Desk on the Ground Floor, near the Staff Lift.'],
-                    [Award, 'DO I GET A CERTIFICATE?', 'Yes. The plan is to provide a certificate after successful completion of the hands-on workshop.'],
-                    [HeartHandshake, 'NEED MORE HELP?', 'Support contact details will be added here once the official event support channel is confirmed.'],
+                    [MapPin, 'WHEN AND WHERE DO I CHECK IN?', 'Check-in opens at 9:30 AM at the Registration Desk on the Ground Floor, near the Staff Lift. The main program begins at 10:00 AM in the 3rd Floor, Seminar Hall, MHSSCE.'],
+                    [Award, 'DO I GET A CERTIFICATE?', 'Yes. Every participant who attends receives a digital certificate by the next day on their registered email.'],
+                    [HeartHandshake, 'NEED MORE HELP?', 'For event-related help, contact Abid Ahmed Shaikh, AWS Student Builder Group Leader at MHSSCE, at +91 99678 13266.'],
                   ].map(([Icon, question, answer], index) => {
                     const FaqIcon = Icon as typeof MessageCircle;
                     return (
@@ -553,12 +554,10 @@ export default function Home() {
                 </div>
 
                 <div className="faq-footer">
-                  <div><span>STILL NEED HELP?</span><strong>OFFICIAL SUPPORT CONTACT · TO BE ADDED</strong></div>
-                  <a className="event-overview-register faq-register" href={MEETUP_URL} target="_blank" rel="noreferrer">
+                  <div><span>STILL NEED HELP?</span><strong>ABID AHMED SHAIKH · +91 99678 13266</strong></div>
+                  <div className="event-overview-register event-overview-register-disabled faq-register" aria-label={MEETUP_STATUS}>
                     <img src="/images/meetup-icon.png" alt="" aria-hidden="true" />
-                    <span>REGISTER ON MEETUP</span>
-                    <b aria-hidden="true">↗</b>
-                  </a>
+                    <span>{MEETUP_STATUS}</span><b aria-hidden="true">·</b></div>
                 </div>
               </div>
             </ChapterShell>
@@ -569,14 +568,14 @@ export default function Home() {
               <div className="final-build-hero">
                 <div className="final-build-badge"><Rocket size={17} strokeWidth={2} /><span>FINAL CALL · 100 SEATS · FREE TO ATTEND</span></div>
                 <h3>One hands-on cloud experience.<br /><em>Built for curious people.</em></h3>
-                <p>Bring your laptop, arrive at 9:30 AM, and learn by building — from AWS fundamentals to a working web server and Infrastructure as Code.</p>
+                <p>Join us on {EVENT_DATE} from {EVENT_TIME}. Check in at 9:30 AM, verify your AWS Academy Learner Lab access, then build from AWS fundamentals to a working web server and Infrastructure as Code.</p>
               </div>
 
               <div className="final-build-facts">
                 <article><AlarmClock size={20} /><span>09:30 AM</span><strong>ARRIVE + CHECK IN</strong></article>
-                <article><Laptop size={20} /><span>LAPTOP REQUIRED</span><strong>BRING YOUR BUILD TOOL</strong></article>
-                <article><Award size={20} /><span>CERTIFICATE</span><strong>COMPLETE THE WORKSHOP</strong></article>
-                <article><Gift size={20} /><span>TRIVIA + SWAG</span><strong>PLAY ALONG + WIN</strong></article>
+                <article><MapPin size={20} /><span>VENUE</span><strong>3RD FLOOR · SEMINAR HALL</strong></article>
+                <article><Award size={20} /><span>CERTIFICATE</span><strong>EVERY ATTENDEE · BY NEXT DAY</strong></article>
+                <article><Gift size={20} /><span>TRIVIA + PRIZES</span><strong>PLAY ALONG + WIN</strong></article>
               </div>
             </div>
           </ChapterShell>
