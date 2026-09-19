@@ -297,12 +297,12 @@ export default function Home() {
               <div className="registration-scene">
                 <div className="registration-intro">
                   <div className="registration-badge"><ClipboardCheck size={16} strokeWidth={2} /><span>IMPORTANT REGISTRATION INSTRUCTIONS</span></div>
-                  <p>Register once, complete the required details, then keep the event information close. The steps below are the path from Meetup registration to event day.</p>
+                  <p>Once the Meetup event is published, RSVP through the official registration flow, complete the required details, and keep your confirmation close. The steps below take you from RSVP to event day.</p>
                 </div>
 
                 <div className="registration-flow" aria-label="Registration steps">
                   {[
-                    [CalendarCheck, '01', 'REGISTER THROUGH MEETUP', 'Use the official Meetup registration flow to reserve your place.'],
+                    [CalendarCheck, '01', 'REGISTER THROUGH MEETUP', 'Once the event is published, use the official Meetup registration flow to reserve your place.'],
                     [ClipboardCheck, '02', 'ENTER YOUR COLLEGE DOMAIN ID', 'Use your college/institutional domain ID where the registration flow requests it.', '@mhssce.ac.in'],
                     [MessageCircle, '03', 'JOIN THE WHATSAPP GROUP', 'The official WhatsApp group is not published on this website. Access is provided after you RSVP through Meetup.'],
                     [Cloud, '04', 'SAVE THE EVENT DETAILS', 'Keep your Meetup confirmation/QR ticket and the event timing handy.'],
@@ -323,7 +323,7 @@ export default function Home() {
 
                 <div className="registration-callout">
                   <div><span>REGISTRATION IS FREE</span><strong>ONLY 100 SEATS AVAILABLE</strong></div>
-                  <span>Register early to secure your place.</span>
+                  <span>The Meetup event will be published when this website is ready for deployment.</span>
                 </div>
 
                 <div className="event-overview-register event-overview-register-disabled registration-register" aria-label={MEETUP_STATUS}>
