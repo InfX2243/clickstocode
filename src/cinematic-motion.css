@@ -3060,3 +3060,23 @@
 @media(prefers-reduced-motion:reduce){
   .sponsor-scene,.sponsor-options article{transform:none!important;opacity:1!important}
 }
+
+/* Screen 14: compact FAQ/support grid for practical attendee questions. */
+.faq-chapter .cinematic-chapter-inner{padding-top:clamp(24px,2.7vw,40px);padding-bottom:clamp(24px,2.7vw,40px);justify-content:center}
+.faq-scene{width:min(1180px,100%);margin:0 auto;opacity:min(var(--scene-enter),var(--scene-exit));transform:translate3d(0,calc((1 - var(--scene-enter))*26px + (1 - var(--scene-exit))*-22px),0);will-change:opacity,transform}
+.faq-intro{display:flex;align-items:flex-end;justify-content:space-between;gap:26px}
+.faq-badge{display:inline-flex;align-items:center;gap:8px;color:#00d26a;font:700 10px/1 'Amazon Ember Mono',monospace;letter-spacing:.14em;white-space:nowrap}
+.faq-intro p{margin:0;max-width:780px;color:rgba(255,255,255,.62);font-size:clamp(13px,1.15vw,17px);line-height:1.43}
+.faq-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;margin-top:clamp(18px,2.2vw,26px)}
+.faq-item{--i:var(--faq-index,0);min-height:82px;padding:12px 13px;display:grid;grid-template-columns:40px 1fr;align-items:center;gap:11px;border:1px solid rgba(255,255,255,.08);background:linear-gradient(145deg,rgba(0,210,106,.035),rgba(8,11,19,.72));opacity:clamp(.12,calc(var(--scene-enter) - var(--i)*.055),1);transform:translate3d(0,calc((1 - var(--scene-enter))*(15px + var(--i)*2px)),0);will-change:opacity,transform}
+.faq-item::before{content:'';position:absolute;inset:0;border-top:1px solid rgba(0,210,106,.14);pointer-events:none}
+.faq-icon{width:40px;height:40px;display:grid;place-items:center;border:1px solid rgba(0,210,106,.2);border-radius:10px;color:#00d26a;background:rgba(0,210,106,.04)}
+.faq-item>div:last-child{display:grid;gap:5px}
+.faq-item strong{color:#fff;font-size:10px;letter-spacing:.065em}
+.faq-item p{margin:0;color:rgba(255,255,255,.4);font-size:9px;line-height:1.4}
+.faq-footer{margin-top:11px;padding:13px 15px;display:flex;align-items:center;justify-content:space-between;gap:18px;border-left:2px solid #00d26a;background:rgba(0,210,106,.045)}
+.faq-footer>div{display:grid;gap:5px}.faq-footer>div span{color:#00d26a;font:700 9px/1 'Amazon Ember Mono',monospace;letter-spacing:.12em}.faq-footer>div strong{color:#fff;font-size:11px;letter-spacing:.06em}
+.faq-register{margin-top:0!important;flex:0 0 auto;position:relative;z-index:20;pointer-events:auto;cursor:pointer}
+@media(max-width:760px){.faq-intro{display:grid;gap:9px}.faq-grid{grid-template-columns:1fr}.faq-footer{align-items:flex-start;flex-direction:column}.faq-register{width:100%}}
+@media(max-width:520px){.faq-item{grid-template-columns:36px 1fr;padding:11px}.faq-icon{width:36px;height:36px}}
+@media(prefers-reduced-motion:reduce){.faq-scene,.faq-item{transform:none!important;opacity:1!important}}
