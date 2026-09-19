@@ -3175,35 +3175,8 @@
   font-size:10px;
   letter-spacing:.065em;
 }
-.final-build-footer{
-  margin-top:10px;
-  padding:15px 16px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:18px;
-  border-left:2px solid #00d26a;
-  background:rgba(0,210,106,.055);
-}
-.final-build-footer>div{display:grid;gap:5px}
-.final-build-footer>div span{
-  color:#00d26a;
-  font:700 9px/1 'Amazon Ember Mono',monospace;
-  letter-spacing:.12em;
-}
-.final-build-footer>div strong{color:#fff;font-size:13px}
-.final-build-register{
-  margin-top:0!important;
-  flex:0 0 auto;
-  position:relative;
-  z-index:20;
-  pointer-events:auto;
-  cursor:pointer;
-}
 @media(max-width:760px){
   .final-build-facts{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .final-build-footer{align-items:flex-start;flex-direction:column}
-  .final-build-register{width:100%}
 }
 @media(max-width:520px){
   .final-build-hero{padding:22px 18px}
