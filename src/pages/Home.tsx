@@ -3,7 +3,7 @@ import CinematicChapter from '../components/CinematicChapter';
 import { AlarmClock, Award, BatteryCharging, CalendarCheck, CheckCircle2, ClipboardCheck, Cloud, Code2, DoorOpen, Gift, GraduationCap, Handshake, HeartHandshake, IdCard, ImageIcon, Laptop, MapPin, MessageCircle, Play, Rocket, Server, ShieldCheck, Sparkles, Terminal, UserRound, Users } from 'lucide-react';
 import { useElementScrollProgress, useReducedMotion } from '../lib/useScrollProgress';
 
-const chapters = 12;
+const chapters = 13;
 const ENTRY_START = 0.006;
 const ENTRY_END = 0.032;
 const STORY_START = 0.008;
@@ -568,9 +568,31 @@ export default function Home() {
             </ChapterShell>
           </div>
 
-          <section className="final-cta cinematic-final-scene" aria-labelledby="final-cta-title" style={{ opacity: finalVisibility, '--final-visibility': finalVisibility, transform: `translate3d(0, ${(1 - finalVisibility) * 28}px, 0) scale(${0.985 + finalVisibility * 0.015})`, pointerEvents: finalVisibility > 0.5 ? 'auto' : 'none' } as CSSProperties & Record<`--${string}`, string | number>}>
-            <div className="final-cta-inner"><span className="mono-label">AWS SBG MHSSCE // FINAL BUILD</span><h2 id="final-cta-title">YOU'VE SEEN THE CLICKS.<br /><em>NOW WRITE THE CODE.</em></h2><button className="join-button" type="button" disabled aria-describedby="rsvp-status">JOIN THE BUILD <span aria-hidden="true">→</span></button><small id="rsvp-status">RSVP destination pending: add the event-specific Meetup URL before launch.</small></div>
-          </section>
+          <ChapterShell eyebrow="READY TO BUILD?" title="You've seen the clicks. Now learn what happens behind them." progress={chapterProgresses[12]} visibility={chapterVisibilities[12]} className="final-chapter">
+            <div className="final-build-scene">
+              <div className="final-build-hero">
+                <div className="final-build-badge"><Rocket size={17} strokeWidth={2} /><span>FINAL CALL · 100 SEATS · FREE TO ATTEND</span></div>
+                <h3>One hands-on cloud experience.<br /><em>Built for curious people.</em></h3>
+                <p>Bring your laptop, arrive at 9:30 AM, and learn by building — from AWS fundamentals to a working web server and Infrastructure as Code.</p>
+              </div>
+
+              <div className="final-build-facts">
+                <article><AlarmClock size={20} /><span>09:30 AM</span><strong>ARRIVE + CHECK IN</strong></article>
+                <article><Laptop size={20} /><span>LAPTOP REQUIRED</span><strong>BRING YOUR BUILD TOOL</strong></article>
+                <article><Award size={20} /><span>CERTIFICATE</span><strong>COMPLETE THE WORKSHOP</strong></article>
+                <article><Gift size={20} /><span>TRIVIA + SWAG</span><strong>PLAY ALONG + WIN</strong></article>
+              </div>
+
+              <div className="final-build-footer">
+                <div><span>FREE · LIMITED TO 100 PARTICIPANTS</span><strong>Ready when you are.</strong></div>
+                <a className="event-overview-register final-build-register" href={MEETUP_URL} target="_blank" rel="noreferrer">
+                  <img src="/images/meetup-icon.png" alt="" aria-hidden="true" />
+                  <span>REGISTER ON MEETUP</span>
+                  <b aria-hidden="true">↗</b>
+                </a>
+              </div>
+            </div>
+          </ChapterShell>
         </div>
       </section>
     </div>
