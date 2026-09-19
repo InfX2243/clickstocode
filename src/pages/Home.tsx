@@ -1,6 +1,6 @@
 import { useMemo, useRef, type ReactNode, type CSSProperties } from 'react';
 import CinematicChapter from '../components/CinematicChapter';
-import { Award, BatteryCharging, CalendarCheck, ClipboardCheck, Cloud, Code2, DoorOpen, GraduationCap, IdCard, Laptop, MapPin, MessageCircle, Rocket, Server, ShieldCheck, Sparkles, Terminal, Users } from 'lucide-react';
+import { AlarmClock, Award, BatteryCharging, CalendarCheck, CheckCircle2, ClipboardCheck, Cloud, Code2, DoorOpen, Gift, GraduationCap, IdCard, Laptop, MapPin, MessageCircle, Play, Rocket, Server, ShieldCheck, Sparkles, Terminal, Users } from 'lucide-react';
 import { useElementScrollProgress, useReducedMotion } from '../lib/useScrollProgress';
 
 const chapters = 11;
@@ -331,13 +331,50 @@ export default function Home() {
               </div>
             </ChapterShell>
 
-            <ChapterShell eyebrow="WHY THIS MATTERS" title="You leave with a way of thinking, not just a working server." progress={chapterProgresses[6]} visibility={chapterVisibilities[6]}>
-              <div className="principles-scene">
-                {[
-                  ['REPEATABLE','If it works once, define it so it can work again.'],
-                  ['REVIEWABLE','Infrastructure changes can be read, discussed, and checked before apply.'],
-                  ['AUTOMATABLE','A clear definition becomes a foundation for CI/CD and larger systems.'],
-                ].map(([t,d],i)=><article key={t} style={{'--scene-index':i,'--scene-progress':chapterProgresses[6]} as React.CSSProperties}><span>{String(i+1).padStart(2,'0')}</span><strong>{t}</strong><p>{d}</p></article>)}
+            <ChapterShell eyebrow="EVENT DAY TIMELINE" title="One day. From check-in to certificate." progress={chapterProgresses[6]} visibility={chapterVisibilities[6]} className="timeline-chapter">
+              <div className="day-timeline-scene">
+                <div className="day-timeline-intro">
+                  <div className="day-timeline-badge"><AlarmClock size={16} strokeWidth={2} /><span>THE DAY AT A GLANCE</span></div>
+                  <p>Follow the day from arrival to completion. The final agenda will replace the temporary time markers once confirmed.</p>
+                </div>
+
+                <div className="day-timeline" aria-label="Event day timeline">
+                  {[
+                    [AlarmClock, '09:30', 'CHECK-IN OPENS', 'Registration desk opens on the Ground Floor, near the Staff Lift.'],
+                    [ClipboardCheck, '09:30–10:00', 'REGISTRATION + SETUP', 'Attendance, sandbox access, laptop and browser preparation.'],
+                    [Play, '10:00', 'WELCOME + INTRO', 'Kick off the session and get oriented for the workshop.'],
+                    [Cloud, 'NEXT', 'AWS FUNDAMENTALS', 'Build the cloud foundation before touching the infrastructure.'],
+                    [Laptop, 'NEXT', 'HANDS-ON LAB', 'Work through AWS → EC2 → Session Manager → Web Server → IaC.'],
+                    [Gift, 'NEXT', 'TRIVIA + SWAG', 'Take part in event trivia and opportunities to win swag.'],
+                    [CheckCircle2, 'NEXT', 'COMPLETION', 'Finish the hands-on experience and close out the workshop.'],
+                    [Award, 'FINAL', 'CERTIFICATE', 'Receive your certificate after successfully completing the workshop.'],
+                  ].map(([Icon, time, title, description], index) => {
+                    const TimelineIcon = Icon as typeof AlarmClock;
+                    return (
+                      <article className="day-timeline-item" key={title as string} style={{ '--timeline-index': index } as CSSProperties}>
+                        <div className="day-timeline-node"><TimelineIcon size={20} strokeWidth={1.8} /></div>
+                        <div className="day-timeline-copy">
+                          <span>{time as string}</span>
+                          <strong>{title as string}</strong>
+                          <p>{description as string}</p>
+                        </div>
+                        {index < 7 && <i aria-hidden="true" />}
+                      </article>
+                    );
+                  })}
+                </div>
+
+                <div className="day-timeline-note">
+                  <span>AGENDA STATUS</span>
+                  <strong>FINAL TIMINGS TO BE CONFIRMED</strong>
+                  <p>Use this timeline as the current event-day structure until the final agenda is supplied.</p>
+                </div>
+
+                <a className="event-overview-register timeline-register" href={MEETUP_URL} target="_blank" rel="noreferrer">
+                  <img src="/images/meetup-icon.png" alt="" aria-hidden="true" />
+                  <span>REGISTER ON MEETUP</span>
+                  <b aria-hidden="true">↗</b>
+                </a>
               </div>
             </ChapterShell>
 
