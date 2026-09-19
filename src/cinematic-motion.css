@@ -3080,3 +3080,136 @@
 @media(max-width:760px){.faq-intro{display:grid;gap:9px}.faq-grid{grid-template-columns:1fr}.faq-footer{align-items:flex-start;flex-direction:column}.faq-register{width:100%}}
 @media(max-width:520px){.faq-item{grid-template-columns:36px 1fr;padding:11px}.faq-icon{width:36px;height:36px}}
 @media(prefers-reduced-motion:reduce){.faq-scene,.faq-item{transform:none!important;opacity:1!important}}
+
+/* Screen 15: final conversion moment with a single clear Meetup action. */
+.final-chapter .cinematic-chapter-inner{
+  padding-top:clamp(28px,3vw,46px);
+  padding-bottom:clamp(28px,3vw,46px);
+  justify-content:center;
+}
+.final-build-scene{
+  width:min(1120px,100%);
+  margin:0 auto;
+  opacity:min(var(--scene-enter),var(--scene-exit));
+  transform:translate3d(0,calc((1 - var(--scene-enter))*30px + (1 - var(--scene-exit))*-24px),0);
+  will-change:opacity,transform;
+}
+.final-build-hero{
+  position:relative;
+  padding:clamp(24px,4vw,46px);
+  overflow:hidden;
+  border:1px solid rgba(0,210,106,.28);
+  background:
+    radial-gradient(circle at 78% 25%,rgba(0,210,106,.13),transparent 30%),
+    radial-gradient(circle at 18% 80%,rgba(0,210,106,.07),transparent 28%),
+    linear-gradient(145deg,rgba(0,210,106,.055),rgba(8,11,19,.86) 72%);
+}
+.final-build-hero::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);
+  background-size:52px 52px;
+  mask-image:linear-gradient(to right,transparent,black 22%,black 78%,transparent);
+  pointer-events:none;
+}
+.final-build-badge{
+  position:relative;
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  color:#00d26a;
+  font:700 10px/1 'Amazon Ember Mono',monospace;
+  letter-spacing:.14em;
+}
+.final-build-hero h3{
+  position:relative;
+  margin:18px 0 0;
+  max-width:900px;
+  color:#fff;
+  font-size:clamp(32px,5.2vw,72px);
+  line-height:.98;
+  letter-spacing:-.045em;
+}
+.final-build-hero h3 em{
+  color:#00d26a;
+  font-style:normal;
+}
+.final-build-hero p{
+  position:relative;
+  margin:17px 0 0;
+  max-width:690px;
+  color:rgba(255,255,255,.56);
+  font-size:clamp(13px,1.15vw,17px);
+  line-height:1.5;
+}
+.final-build-facts{
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:9px;
+  margin-top:10px;
+}
+.final-build-facts article{
+  --i:var(--final-fact-index,0);
+  min-height:105px;
+  padding:14px;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  border:1px solid rgba(255,255,255,.08);
+  background:rgba(8,11,19,.64);
+  color:#00d26a;
+  opacity:clamp(.12,calc(var(--scene-enter) - var(--i)*.08),1);
+  transform:translate3d(0,calc((1 - var(--scene-enter))*(16px + var(--i)*4px)),0);
+}
+.final-build-facts article:nth-child(1){--i:0}.final-build-facts article:nth-child(2){--i:1}.final-build-facts article:nth-child(3){--i:2}.final-build-facts article:nth-child(4){--i:3}
+.final-build-facts article span{
+  color:#00d26a;
+  font:700 9px/1 'Amazon Ember Mono',monospace;
+  letter-spacing:.1em;
+}
+.final-build-facts article strong{
+  color:#fff;
+  font-size:10px;
+  letter-spacing:.065em;
+}
+.final-build-footer{
+  margin-top:10px;
+  padding:15px 16px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:18px;
+  border-left:2px solid #00d26a;
+  background:rgba(0,210,106,.055);
+}
+.final-build-footer>div{display:grid;gap:5px}
+.final-build-footer>div span{
+  color:#00d26a;
+  font:700 9px/1 'Amazon Ember Mono',monospace;
+  letter-spacing:.12em;
+}
+.final-build-footer>div strong{color:#fff;font-size:13px}
+.final-build-register{
+  margin-top:0!important;
+  flex:0 0 auto;
+  position:relative;
+  z-index:20;
+  pointer-events:auto;
+  cursor:pointer;
+}
+@media(max-width:760px){
+  .final-build-facts{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .final-build-footer{align-items:flex-start;flex-direction:column}
+  .final-build-register{width:100%}
+}
+@media(max-width:520px){
+  .final-build-hero{padding:22px 18px}
+  .final-build-hero h3{font-size:clamp(32px,12vw,48px)}
+  .final-build-facts{grid-template-columns:1fr}
+}
+@media(prefers-reduced-motion:reduce){
+  .final-build-scene,.final-build-facts article{transform:none!important;opacity:1!important}
+}
