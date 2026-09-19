@@ -2333,3 +2333,165 @@
 @media(prefers-reduced-motion:reduce){
   .speaker-scene,.speaker-focus-grid article{transform:none!important;opacity:1!important}
 }
+
+/* Screen 10: turn the agenda into a readable event-day timeline. */
+.timeline-chapter .cinematic-chapter-inner{
+  padding-top:clamp(24px,2.8vw,40px);
+  padding-bottom:clamp(24px,2.8vw,40px);
+  justify-content:center;
+}
+.day-timeline-scene{
+  width:min(1120px,100%);
+  margin:0 auto;
+  opacity:min(var(--scene-enter),var(--scene-exit));
+  transform:translate3d(0,calc((1 - var(--scene-enter)) * 28px + (1 - var(--scene-exit)) * -24px),0);
+  will-change:opacity,transform;
+}
+.day-timeline-intro{
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap:28px;
+}
+.day-timeline-badge{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  color:#00d26a;
+  font:700 10px/1 'Amazon Ember Mono',monospace;
+  letter-spacing:.14em;
+  white-space:nowrap;
+}
+.day-timeline-badge svg{filter:drop-shadow(0 0 10px rgba(0,210,106,.2))}
+.day-timeline-intro p{
+  margin:0;
+  max-width:760px;
+  color:rgba(255,255,255,.62);
+  font-size:clamp(14px,1.15vw,17px);
+  line-height:1.45;
+}
+.day-timeline{
+  position:relative;
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:10px;
+  margin-top:clamp(20px,2.4vw,28px);
+}
+.day-timeline-item{
+  --i:var(--timeline-index,0);
+  position:relative;
+  min-height:142px;
+  padding:16px;
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-end;
+  border:1px solid rgba(255,255,255,.09);
+  background:linear-gradient(145deg,rgba(0,210,106,.045),rgba(8,11,19,.72) 72%);
+  opacity:clamp(.12,calc(var(--scene-enter) - var(--i) * .075),1);
+  transform:translate3d(0,calc((1 - var(--scene-enter)) * (22px + var(--i) * 4px)),0);
+  will-change:opacity,transform;
+}
+.day-timeline-item::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  border-top:1px solid rgba(0,210,106,.2);
+  pointer-events:none;
+}
+.day-timeline-node{
+  position:absolute;
+  top:14px;
+  left:15px;
+  width:40px;
+  height:40px;
+  display:grid;
+  place-items:center;
+  border:1px solid rgba(0,210,106,.23);
+  border-radius:10px;
+  color:#00d26a;
+  background:rgba(0,210,106,.045);
+}
+.day-timeline-copy{
+  position:relative;
+  display:grid;
+  gap:5px;
+}
+.day-timeline-copy>span{
+  color:#00d26a;
+  font:700 9px/1 'Amazon Ember Mono',monospace;
+  letter-spacing:.1em;
+}
+.day-timeline-copy strong{
+  color:#fff;
+  font-size:11px;
+  line-height:1.22;
+  letter-spacing:.075em;
+}
+.day-timeline-copy p{
+  margin:0;
+  color:rgba(255,255,255,.4);
+  font-size:9px;
+  line-height:1.4;
+}
+.day-timeline-item>i{
+  position:absolute;
+  z-index:2;
+  top:34px;
+  right:-16px;
+  width:22px;
+  height:1px;
+  background:rgba(0,210,106,.34);
+  transform-origin:left center;
+  transform:scaleX(var(--scene-enter));
+}
+.day-timeline-note{
+  margin-top:12px;
+  padding:13px 16px;
+  display:grid;
+  grid-template-columns:auto auto 1fr;
+  align-items:center;
+  gap:14px;
+  border-left:2px solid #00d26a;
+  background:rgba(0,210,106,.045);
+}
+.day-timeline-note span{
+  color:#00d26a;
+  font:700 9px/1 'Amazon Ember Mono',monospace;
+  letter-spacing:.12em;
+}
+.day-timeline-note strong{
+  color:#fff;
+  font-size:11px;
+  letter-spacing:.07em;
+}
+.day-timeline-note p{
+  margin:0;
+  color:rgba(255,255,255,.38);
+  font-size:9px;
+  line-height:1.4;
+  justify-self:end;
+  text-align:right;
+}
+.timeline-register{
+  margin-top:14px!important;
+  position:relative;
+  z-index:20;
+  pointer-events:auto;
+  cursor:pointer;
+}
+@media(max-width:900px){
+  .day-timeline{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .day-timeline-item>i{display:none}
+  .day-timeline-intro{display:grid;gap:10px}
+  .day-timeline-note{grid-template-columns:auto 1fr}
+  .day-timeline-note p{grid-column:1/-1;justify-self:start;text-align:left}
+}
+@media(max-width:520px){
+  .day-timeline{grid-template-columns:1fr}
+  .day-timeline-item{min-height:132px}
+  .day-timeline-note{display:flex;align-items:flex-start;flex-direction:column;gap:6px}
+  .timeline-register{width:100%}
+}
+@media(prefers-reduced-motion:reduce){
+  .day-timeline-scene,.day-timeline-item{transform:none!important;opacity:1!important}
+}
