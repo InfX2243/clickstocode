@@ -2495,3 +2495,187 @@
 @media(prefers-reduced-motion:reduce){
   .day-timeline-scene,.day-timeline-item{transform:none!important;opacity:1!important}
 }
+
+/* Screen 11: make the finish feel rewarding without inventing unconfirmed prize details. */
+.rewards-chapter .cinematic-chapter-inner{
+  padding-top:clamp(26px,3vw,44px);
+  padding-bottom:clamp(26px,3vw,44px);
+  justify-content:center;
+}
+.rewards-scene{
+  width:min(1180px,100%);
+  margin:0 auto;
+  opacity:min(var(--scene-enter),var(--scene-exit));
+  transform:translate3d(0,calc((1 - var(--scene-enter)) * 28px + (1 - var(--scene-exit)) * -24px),0);
+  will-change:opacity,transform;
+}
+.rewards-intro{
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap:28px;
+}
+.rewards-badge{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  color:#00d26a;
+  font:700 10px/1 'Amazon Ember Mono',monospace;
+  letter-spacing:.14em;
+  white-space:nowrap;
+}
+.rewards-intro p{
+  margin:0;
+  max-width:780px;
+  color:rgba(255,255,255,.64);
+  font-size:clamp(14px,1.2vw,18px);
+  line-height:1.45;
+}
+.rewards-feature-grid{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:11px;
+  margin-top:clamp(20px,2.5vw,30px);
+}
+.rewards-feature{
+  --i:var(--rewards-index,0);
+  position:relative;
+  min-height:260px;
+  padding:19px;
+  display:flex;
+  flex-direction:column;
+  overflow:hidden;
+  border:1px solid rgba(0,210,106,.18);
+  background:linear-gradient(145deg,rgba(0,210,106,.055),rgba(8,11,19,.76) 72%);
+  opacity:clamp(.12,calc(var(--scene-enter) - var(--i) * .1),1);
+  transform:translate3d(0,calc((1 - var(--scene-enter)) * (25px + var(--i) * 6px)),0);
+  will-change:opacity,transform;
+}
+.rewards-feature:nth-child(1){--i:0}
+.rewards-feature:nth-child(2){--i:1}
+.rewards-feature:nth-child(3){--i:2}
+.rewards-feature::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  border-top:1px solid rgba(0,210,106,.25);
+  pointer-events:none;
+}
+.rewards-feature::after{
+  content:'';
+  position:absolute;
+  width:150px;
+  height:150px;
+  right:-75px;
+  bottom:-75px;
+  border-radius:50%;
+  background:rgba(0,210,106,.08);
+  filter:blur(24px);
+  pointer-events:none;
+}
+.rewards-feature-icon{
+  width:52px;
+  height:52px;
+  display:grid;
+  place-items:center;
+  border:1px solid rgba(0,210,106,.24);
+  border-radius:13px;
+  color:#00d26a;
+  background:rgba(0,210,106,.05);
+  box-shadow:0 0 24px rgba(0,210,106,.06);
+}
+.rewards-feature>span{
+  margin-top:22px;
+  color:rgba(255,255,255,.3);
+  font:700 9px/1 'Amazon Ember Mono',monospace;
+  letter-spacing:.11em;
+}
+.rewards-feature>strong{
+  margin-top:7px;
+  color:#fff;
+  font:800 clamp(25px,2.3vw,34px)/1 'Amazon Ember Mono',monospace;
+  letter-spacing:-.02em;
+}
+.rewards-feature>p{
+  margin:10px 0 0;
+  max-width:330px;
+  color:rgba(255,255,255,.46);
+  font-size:10px;
+  line-height:1.48;
+}
+.rewards-trivia-pills{
+  margin-top:auto;
+  display:flex;
+  flex-wrap:wrap;
+  gap:6px;
+}
+.rewards-trivia-pills b{
+  padding:6px 7px;
+  border:1px solid rgba(0,210,106,.18);
+  color:#00d26a;
+  background:rgba(0,210,106,.035);
+  font:700 8px/1 'Amazon Ember Mono',monospace;
+  letter-spacing:.08em;
+}
+.rewards-placeholder{
+  margin-top:auto;
+  padding:9px 10px;
+  border:1px dashed rgba(255,255,255,.17);
+  color:rgba(255,255,255,.32);
+  font:8px/1 'Amazon Ember Mono',monospace;
+  letter-spacing:.09em;
+}
+.rewards-certificate-mark{
+  margin-top:auto;
+  padding:9px 10px;
+  display:flex;
+  align-items:center;
+  gap:7px;
+  border-left:2px solid #00d26a;
+  background:rgba(0,210,106,.045);
+  color:#00d26a;
+  font:700 8px/1 'Amazon Ember Mono',monospace;
+  letter-spacing:.08em;
+}
+.rewards-bottom{
+  margin-top:12px;
+  padding:14px 16px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+  border-left:2px solid #00d26a;
+  background:rgba(0,210,106,.045);
+}
+.rewards-bottom-copy{
+  display:grid;
+  gap:5px;
+}
+.rewards-bottom-copy>span{
+  color:#00d26a;
+  font:700 9px/1 'Amazon Ember Mono',monospace;
+  letter-spacing:.12em;
+}
+.rewards-bottom-copy>strong{
+  color:#fff;
+  font-size:12px;
+  line-height:1.35;
+}
+.rewards-register{
+  margin-top:0!important;
+  flex:0 0 auto;
+  position:relative;
+  z-index:20;
+  pointer-events:auto;
+  cursor:pointer;
+}
+@media(max-width:760px){
+  .rewards-intro{display:grid;gap:10px}
+  .rewards-feature-grid{grid-template-columns:1fr}
+  .rewards-feature{min-height:205px}
+  .rewards-bottom{align-items:flex-start;flex-direction:column}
+  .rewards-register{width:100%}
+}
+@media(prefers-reduced-motion:reduce){
+  .rewards-scene,.rewards-feature{transform:none!important;opacity:1!important}
+}
