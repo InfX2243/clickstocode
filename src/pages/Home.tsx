@@ -129,7 +129,7 @@ export default function Home() {
                       const AudienceIcon = Icon as typeof Cloud;
                       return <article className="audience-tile" key={title as string} style={{ '--audience-index': index } as CSSProperties}>
                         <span className="audience-tile-icon"><AudienceIcon size={22} strokeWidth={1.8} /></span>
-                        <span className="audience-tile-number">{String(index + 1).padStart(2, '0')}</span>
+                        <span className="audience-tile-number">{String(index + 1)}</span>
                         <strong>{title as string}</strong>
                         <p>{description as string}</p>
                       </article>;
@@ -175,12 +175,12 @@ export default function Home() {
                 </div>
                 <div className="learning-modules" aria-label="What you will learn">
                   {[
-                    [Cloud, '01', 'CLOUD FUNDAMENTALS', 'Understand what cloud computing actually means.', null],
-                    [Cloud, '02', 'AWS FUNDAMENTALS', 'Meet the AWS ecosystem and its core building blocks.', '/images/aws-logo.png'],
-                    [Server, '03', 'AMAZON EC2', 'Provision and work with your own cloud server.', '/images/ec2.png'],
-                    [ShieldCheck, '04', 'SECURE ACCESS', 'Connect securely with Systems Manager / Session Manager.', '/images/systemsmanager.png'],
-                    [Laptop, '05', 'BUILD A WEB SERVER', 'Turn infrastructure into something tangible in the browser.', '/images/web-server-icon.png'],
-                    [Code2, '06', 'INFRASTRUCTURE AS CODE', 'Define and automate infrastructure with CloudFormation.', '/images/cloudformation.png'],
+                    [Cloud, '1', 'CLOUD FUNDAMENTALS', 'Understand what cloud computing actually means.', null],
+                    [Cloud, '2', 'AWS FUNDAMENTALS', 'Meet the AWS ecosystem and its core building blocks.', '/images/aws-logo.png'],
+                    [Server, '3', 'AMAZON EC2', 'Provision and work with your own cloud server.', '/images/ec2.png'],
+                    [ShieldCheck, '4', 'SECURE ACCESS', 'Connect securely with Systems Manager / Session Manager.', '/images/systemsmanager.png'],
+                    [Laptop, '5', 'BUILD A WEB SERVER', 'Turn infrastructure into something tangible in the browser.', '/images/web-server-icon.png'],
+                    [Code2, '6', 'INFRASTRUCTURE AS CODE', 'Define and automate infrastructure with CloudFormation.', '/images/cloudformation.png'],
                   ].map(([Icon, number, title, description, image], index) => {
                     const LearningIcon = Icon as typeof Cloud;
                     return (
@@ -213,11 +213,11 @@ export default function Home() {
 
                 <div className="hands-on-flow" aria-label="Hands-on workshop flow">
                   {[
-                    [Cloud, '01', 'AWS', 'Start with the cloud foundation', '/images/aws-logo.png'],
-                    [Server, '02', 'EC2', 'Provision your cloud server', '/images/ec2.png'],
-                    [ShieldCheck, '03', 'SESSION MANAGER', 'Connect securely without exposing SSH', '/images/systemsmanager.png'],
-                    [Laptop, '04', 'WEB SERVER', 'Host a customized page', '/images/web-server-icon.png'],
-                    [Code2, '05', 'INFRASTRUCTURE AS CODE', 'Turn the working setup into a definition', '/images/cloudformation.png'],
+                    [Cloud, '1', 'AWS', 'Start with the cloud foundation', '/images/aws-logo.png'],
+                    [Server, '2', 'EC2', 'Provision your cloud server', '/images/ec2.png'],
+                    [ShieldCheck, '3', 'SESSION MANAGER', 'Connect securely without exposing SSH', '/images/systemsmanager.png'],
+                    [Laptop, '4', 'WEB SERVER', 'Host a customized page', '/images/web-server-icon.png'],
+                    [Code2, '5', 'INFRASTRUCTURE AS CODE', 'Turn the working setup into a definition', '/images/cloudformation.png'],
                   ].map(([Icon, number, title, description, image], index) => {
                     const FlowIcon = Icon as typeof Cloud;
                     return (
@@ -269,10 +269,10 @@ export default function Home() {
                 </div>
                 <div className="arrival-steps" aria-label="Arrival checklist">
                   {[
-                    [ClipboardCheck, '01', 'CHECK IN', 'Show your Meetup QR ticket and complete event-day check-in.'],
-                    [Cloud, '02', 'GET ACCESS', 'In the waiting room, confirm that you received and can access AWS Academy Learner Lab.'],
-                    [Laptop, '03', 'SET UP', 'Get your laptop ready while organizers complete the access check.'],
-                    [MessageCircle, '04', 'CONNECT', 'After check-in and access verification, move toward the main venue around 9:55 AM.'],
+                    [ClipboardCheck, '1', 'CHECK IN', 'Show your Meetup QR ticket and complete event-day check-in.'],
+                    [Cloud, '2', 'GET ACCESS', 'In the waiting room, confirm that you received and can access AWS Academy Learner Lab.'],
+                    [Laptop, '3', 'SET UP', 'Get your laptop ready while organizers complete the access check.'],
+                    [MessageCircle, '4', 'CONNECT', 'After check-in and access verification, move toward the main venue around 9:55 AM.'],
                   ].map(([Icon, number, title, description], index) => {
                     const ArrivalIcon = Icon as typeof ClipboardCheck;
                     return <article className="arrival-step" key={number as string} style={{ '--arrival-index': index } as CSSProperties}>
@@ -302,11 +302,11 @@ export default function Home() {
 
                 <div className="registration-flow" aria-label="Registration steps">
                   {[
-                    [CalendarCheck, '01', 'REGISTER THROUGH MEETUP', 'Once the event is published, use the official Meetup registration flow to reserve your place.'],
-                    [ClipboardCheck, '02', 'ENTER YOUR COLLEGE DOMAIN ID', 'Use your college/institutional domain ID where the registration flow requests it.', '@mhssce.ac.in'],
-                    [MessageCircle, '03', 'JOIN THE WHATSAPP GROUP', 'The official WhatsApp group is not published on this website. Access is provided after you RSVP through Meetup.'],
-                    [Cloud, '04', 'SAVE THE EVENT DETAILS', 'Keep your Meetup confirmation/QR ticket and the event timing handy.'],
-                    [MapPin, '05', 'ARRIVE AT 9:30 AM', 'Arrive at 9:30 AM at the Registration Desk on the Ground Floor, near the Staff Lift.'],
+                    [CalendarCheck, '1', 'REGISTER THROUGH MEETUP', 'Once the event is published, use the official Meetup registration flow to reserve your place.'],
+                    [ClipboardCheck, '2', 'ENTER YOUR COLLEGE DOMAIN ID', 'Use your college/institutional domain ID where the registration flow requests it.', '@mhssce.ac.in'],
+                    [MessageCircle, '3', 'JOIN THE WHATSAPP GROUP', 'The official WhatsApp group is not published on this website. Access is provided after you RSVP through Meetup.'],
+                    [Cloud, '4', 'SAVE THE EVENT DETAILS', 'Keep your Meetup confirmation/QR ticket and the event timing handy.'],
+                    [MapPin, '5', 'ARRIVE AT 9:30 AM', 'Arrive at 9:30 AM at the Registration Desk on the Ground Floor, near the Staff Lift.'],
                   ].map(([Icon, number, title, description, note], index) => {
                     const RegistrationIcon = Icon as typeof CalendarCheck;
                     return (
