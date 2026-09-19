@@ -3,7 +3,7 @@ import CinematicChapter from '../components/CinematicChapter';
 import { AlarmClock, Award, BatteryCharging, CalendarCheck, CheckCircle2, ClipboardCheck, Cloud, Code2, DoorOpen, Gift, GraduationCap, Handshake, HeartHandshake, IdCard, ImageIcon, Laptop, MapPin, MessageCircle, Play, Rocket, Server, ShieldCheck, Sparkles, Terminal, UserRound, Users } from 'lucide-react';
 import { useElementScrollProgress, useReducedMotion } from '../lib/useScrollProgress';
 
-const chapters = 11;
+const chapters = 12;
 const ENTRY_START = 0.006;
 const ENTRY_END = 0.032;
 const STORY_START = 0.008;
@@ -522,6 +522,47 @@ export default function Home() {
                     <strong>SPONSORSHIP CONTACT · TO BE ADDED</strong>
                   </div>
                   <span className="sponsor-placeholder">CONTACT DETAILS PENDING</span>
+                </div>
+              </div>
+            </ChapterShell>
+
+            <ChapterShell eyebrow="FAQ · SUPPORT" title="The answers before you arrive." progress={chapterProgresses[11]} visibility={chapterVisibilities[11]} className="faq-chapter">
+              <div className="faq-scene">
+                <div className="faq-intro">
+                  <div className="faq-badge"><MessageCircle size={16} strokeWidth={2} /><span>QUICK ANSWERS · EVENT SUPPORT</span></div>
+                  <p>Everything you need to feel ready. Confirmed details stay clear; anything still being finalized is marked as a placeholder.</p>
+                </div>
+
+                <div className="faq-grid" aria-label="Frequently asked questions">
+                  {[
+                    [Users, 'WHO IS THIS FOR?', 'Students, cloud enthusiasts, beginners, project builders, and anyone curious about AWS, DevOps, security, or infrastructure.'],
+                    [Gift, 'IS IT FREE?', 'Yes. The workshop is free to attend, with capacity limited to 100 participants.'],
+                    [Laptop, 'DO I NEED A LAPTOP?', 'Yes. A laptop is mandatory for the hands-on workshop. Bring it charged, along with your charger.'],
+                    [Cloud, 'IS IT BEGINNER-FRIENDLY?', 'Yes. You do not need prior AWS expertise; the session is designed around learning by building.'],
+                    [Terminal, 'HOW DOES THE SANDBOX WORK?', 'A workshop sandbox is planned. Final access and setup instructions will be added once confirmed.'],
+                    [IdCard, 'WHAT COLLEGE ID IS NEEDED?', 'The required college or institutional domain ID should be provided during registration. The exact format is still to be confirmed.'],
+                    [MessageCircle, 'HOW DO I JOIN WHATSAPP?', 'The official WhatsApp group link will be provided through the Meetup registration flow.'],
+                    [MapPin, 'WHEN AND WHERE DO I CHECK IN?', 'Check-in opens at 9:30 AM at the Registration Desk on the Ground Floor, near the Staff Lift.'],
+                    [Award, 'DO I GET A CERTIFICATE?', 'Yes. The plan is to provide a certificate after successful completion of the hands-on workshop.'],
+                    [HeartHandshake, 'NEED MORE HELP?', 'Support contact details will be added here once the official event support channel is confirmed.'],
+                  ].map(([Icon, question, answer], index) => {
+                    const FaqIcon = Icon as typeof MessageCircle;
+                    return (
+                      <article className="faq-item" key={question as string} style={{ '--faq-index': index } as CSSProperties}>
+                        <div className="faq-icon"><FaqIcon size={19} strokeWidth={1.8} /></div>
+                        <div><strong>{question as string}</strong><p>{answer as string}</p></div>
+                      </article>
+                    );
+                  })}
+                </div>
+
+                <div className="faq-footer">
+                  <div><span>STILL NEED HELP?</span><strong>OFFICIAL SUPPORT CONTACT · TO BE ADDED</strong></div>
+                  <a className="event-overview-register faq-register" href={MEETUP_URL} target="_blank" rel="noreferrer">
+                    <img src="/images/meetup-icon.png" alt="" aria-hidden="true" />
+                    <span>REGISTER ON MEETUP</span>
+                    <b aria-hidden="true">↗</b>
+                  </a>
                 </div>
               </div>
             </ChapterShell>
