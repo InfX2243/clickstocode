@@ -1,21 +1,22 @@
-/* Screen 15 consistency pass: keep the final CTA in the same breathing space and tonal range as Screens 10–14. */
+/* Screen 15 consistency pass: match the polished rhythm, spacing, and tonal range of Screens 13–14. */
 .final-chapter{
   background:
-    radial-gradient(circle at 50% 42%,rgba(0,210,106,.055),transparent 48%),
-    linear-gradient(rgba(255,255,255,.022) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(255,255,255,.022) 1px,transparent 1px),
+    radial-gradient(circle at 18% 28%,rgba(0,210,106,.10),transparent 28%),
+    radial-gradient(circle at 82% 72%,rgba(0,210,106,.075),transparent 30%),
+    linear-gradient(rgba(255,255,255,.028) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.028) 1px,transparent 1px),
     #080b13!important;
-  background-size:auto,72px 72px,72px 72px,auto!important;
+  background-size:auto,auto,72px 72px,72px 72px,auto!important;
 }
 
 .final-chapter .cinematic-chapter-inner{
-  padding-top:clamp(24px,2.8vw,40px)!important;
-  padding-bottom:clamp(24px,2.8vw,40px)!important;
+  padding-top:clamp(24px,2.7vw,40px)!important;
+  padding-bottom:clamp(24px,2.7vw,40px)!important;
   justify-content:center;
 }
 
 .final-chapter .cinematic-chapter-title{
-  margin-bottom:clamp(18px,2.2vw,28px);
+  margin-bottom:clamp(18px,2.2vw,26px);
 }
 
 .final-build-scene{
@@ -24,14 +25,15 @@
 
 .final-build-hero{
   padding:clamp(22px,3vw,34px)!important;
+  border:1px solid rgba(0,210,106,.22);
   background:
-    radial-gradient(circle at 78% 25%,rgba(0,210,106,.11),transparent 30%),
-    radial-gradient(circle at 18% 80%,rgba(0,210,106,.06),transparent 28%),
-    linear-gradient(145deg,rgba(0,210,106,.045),rgba(14,19,29,.72) 72%)!important;
+    radial-gradient(circle at 78% 25%,rgba(0,210,106,.085),transparent 30%),
+    radial-gradient(circle at 18% 80%,rgba(0,210,106,.05),transparent 28%),
+    linear-gradient(145deg,rgba(0,210,106,.035),rgba(8,11,19,.72) 72%)!important;
 }
 
 .final-build-hero::before{
-  opacity:.7;
+  opacity:.55;
 }
 
 .final-build-hero h3{
@@ -45,16 +47,16 @@
 }
 
 .final-build-facts{
-  margin-top:12px;
+  margin-top:10px;
 }
 
 .final-build-facts article{
   min-height:96px;
-  background:rgba(14,19,29,.62);
+  background:linear-gradient(145deg,rgba(0,210,106,.025),rgba(8,11,19,.66));
 }
 
 .final-build-footer{
-  margin-top:12px;
+  margin-top:11px;
   padding:13px 15px;
   background:rgba(0,210,106,.045);
 }
@@ -67,8 +69,8 @@
 
 @media(max-width:520px){
   .final-chapter .cinematic-chapter-inner{
-    padding-top:28px!important;
-    padding-bottom:28px!important;
+    padding-top:24px!important;
+    padding-bottom:24px!important;
   }
 
   .final-build-hero{
