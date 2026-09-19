@@ -582,3 +582,72 @@
   .screen-1-college-logo{width:62px;height:62px;padding:7px;border-radius:14px}
   .screen-1-register{padding:11px 13px;font-size:9px;letter-spacing:.09em}
 }
+
+
+/* Hero utility bar: isolated from the title stack with deliberate entry/exit choreography. */
+.screen-1-topbar{
+  position:absolute;
+  top:clamp(18px,3.5vw,42px);
+  left:clamp(18px,4vw,64px);
+  right:clamp(18px,4vw,64px);
+  width:auto;
+  margin:0;
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:clamp(16px,3vw,32px);
+  z-index:30;
+  opacity:calc(1 - var(--hero-ui-exit,0));
+  transform:translate3d(0,calc(var(--hero-ui-exit,0) * -26px),0);
+  will-change:opacity,transform;
+}
+.screen-1-college-logo{
+  width:clamp(72px,7vw,104px);
+  height:clamp(72px,7vw,104px);
+  flex:0 0 auto;
+  display:grid;
+  place-items:center;
+  padding:10px;
+  border:1px solid rgba(255,255,255,.16);
+  border-radius:18px;
+  background:rgba(17,22,33,.82);
+  box-shadow:0 0 34px rgba(0,210,106,.08);
+  animation:heroUtilityEnter .75s cubic-bezier(.22,1,.36,1) both;
+}
+.screen-1-college-logo img{display:block;width:100%;height:100%;object-fit:contain}
+.screen-1-register{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  min-height:46px;
+  max-width:100%;
+  padding:12px 16px;
+  border:1px solid rgba(0,210,106,.65);
+  border-radius:999px;
+  color:#fff;
+  background:rgba(0,210,106,.09);
+  box-shadow:0 0 24px rgba(0,210,106,.08);
+  font:700 11px/1 'Amazon Ember Mono',monospace;
+  letter-spacing:.12em;
+  text-decoration:none;
+  white-space:nowrap;
+  animation:heroUtilityEnter .75s .08s cubic-bezier(.22,1,.36,1) both;
+  transition:transform .2s ease,background .2s ease,box-shadow .2s ease;
+}
+.screen-1-register img{display:block;width:20px;height:20px;object-fit:contain;flex:0 0 auto}
+.screen-1-register b{color:#00d26a;font-size:14px;font-weight:700;line-height:1}
+.screen-1-register:hover{transform:translateY(-2px);background:rgba(0,210,106,.16);box-shadow:0 0 32px rgba(0,210,106,.16)}
+.screen-1-register:focus-visible{outline:2px solid #00d26a;outline-offset:4px}
+@keyframes heroUtilityEnter{
+  from{opacity:0;transform:translate3d(0,-18px,0) scale(.96)}
+  to{opacity:1;transform:translate3d(0,0,0) scale(1)}
+}
+@media(max-width:640px){
+  .screen-1-topbar{top:14px;left:14px;right:14px;align-items:center;gap:10px}
+  .screen-1-college-logo{width:58px;height:58px;padding:7px;border-radius:14px}
+  .screen-1-register{min-height:40px;padding:9px 11px;gap:7px;font-size:8px;letter-spacing:.07em}
+  .screen-1-register img{width:17px;height:17px}
+  .screen-1-register b{font-size:12px}
+}
+@media(prefers-reduced-motion:reduce){.screen-1-college-logo,.screen-1-register{animation:none}}
