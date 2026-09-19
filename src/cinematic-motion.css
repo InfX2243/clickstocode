@@ -1073,3 +1073,70 @@
   position:absolute;
   z-index:5;
 }
+
+
+/* Final atmosphere pass: the green grid must remain visible behind every story chapter. */
+.cinematic-story-frame{
+  background:
+    radial-gradient(circle at 8% 14%,rgba(0,210,106,.30),transparent 25%),
+    radial-gradient(circle at 92% 24%,rgba(0,210,106,.24),transparent 27%),
+    radial-gradient(circle at 18% 86%,rgba(0,210,106,.25),transparent 28%),
+    radial-gradient(circle at 88% 82%,rgba(0,210,106,.30),transparent 27%),
+    linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px),
+    #08131a!important;
+  background-size:auto,auto,auto,auto,72px 72px,72px 72px,auto!important;
+  animation:awsGreenFieldStrong 16s ease-in-out infinite alternate!important;
+}
+.cinematic-story-frame::before{
+  z-index:0!important;
+  opacity:1!important;
+  background:
+    linear-gradient(124deg,transparent 0%,transparent 24%,rgba(0,210,106,0) 31%,rgba(0,210,106,.34) 40%,rgba(0,210,106,0) 49%,transparent 57%,transparent 100%),
+    linear-gradient(28deg,transparent 0%,rgba(0,210,106,0) 42%,rgba(0,210,106,.20) 50%,rgba(0,210,106,0) 58%,transparent 100%),
+    linear-gradient(rgba(255,255,255,.026) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.026) 1px,transparent 1px)!important;
+  background-size:260% 260%,220% 220%,72px 72px,72px 72px!important;
+  mask-image:none!important;
+  animation:awsGridCurrentStrong 9s linear infinite!important;
+}
+.cinematic-story-frame::after{
+  z-index:0!important;
+  opacity:1!important;
+  background:
+    radial-gradient(circle at 10% 20%,rgba(0,210,106,.28),transparent 12%),
+    radial-gradient(circle at 78% 18%,rgba(0,210,106,.22),transparent 13%),
+    radial-gradient(circle at 28% 76%,rgba(0,210,106,.24),transparent 14%),
+    radial-gradient(circle at 90% 76%,rgba(0,210,106,.28),transparent 13%),
+    radial-gradient(circle at 54% 52%,rgba(0,210,106,.10),transparent 24%)!important;
+  filter:blur(26px)!important;
+  animation:awsGreenNodesStrong 12s ease-in-out infinite alternate!important;
+}
+.cinematic-story-frame > .cinematic-chapter{
+  background:transparent!important;
+}
+.cinematic-story-frame > .cinematic-chapter > .cinematic-chapter-inner{
+  background:transparent!important;
+}
+@keyframes awsGreenFieldStrong{
+  0%{background-position:0% 0%,100% 0%,0% 100%,100% 100%,0 0,0 0}
+  33%{background-position:68% 22%,24% 76%,78% 44%,18% 86%,34px -26px,-28px 32px}
+  66%{background-position:18% 84%,86% 28%,26% 12%,72% 64%,-42px 28px,38px -34px}
+  100%{background-position:92% 54%,8% 88%,84% 24%,14% 38%,56px 18px,-52px -46px}
+}
+@keyframes awsGridCurrentStrong{
+  0%{background-position:-90% 30%,120% 70%,0 0,0 0}
+  38%{background-position:24% 88%,62% 12%,36px -24px,-28px 30px}
+  72%{background-position:118% 16%,-12% 84%,-30px 38px,34px -40px}
+  100%{background-position:220% 92%,210% 8%,54px 52px,-54px -48px}
+}
+@keyframes awsGreenNodesStrong{
+  0%{transform:translate3d(-9%,6%,0) scale(.86)}
+  32%{transform:translate3d(7%,-8%,0) scale(1.08)}
+  64%{transform:translate3d(-4%,-2%,0) scale(.94)}
+  100%{transform:translate3d(10%,8%,0) scale(1.16)}
+}
+@media(prefers-reduced-motion:reduce){
+  .cinematic-story-frame{animation:none!important}
+  .cinematic-story-frame::before,.cinematic-story-frame::after{animation:none!important}
+}
