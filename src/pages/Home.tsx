@@ -1,6 +1,6 @@
 import { useMemo, useRef, type ReactNode, type CSSProperties } from 'react';
 import CinematicChapter from '../components/CinematicChapter';
-import { Award, Cloud, Code2, Compass, GraduationCap, Laptop, Rocket, Server, ShieldCheck, Sparkles, Terminal, Trophy, Users } from 'lucide-react';
+import { Award, Cloud, Code2, GraduationCap, Laptop, Rocket, Server, ShieldCheck, Sparkles, Terminal, Users } from 'lucide-react';
 import { useElementScrollProgress, useReducedMotion } from '../lib/useScrollProgress';
 
 const chapters = 11;
@@ -165,18 +165,40 @@ export default function Home() {
               </div>
             </ChapterShell>
 
-            <ChapterShell eyebrow="THE PROBLEM" title="Clicking works once. What happens the next time?" progress={chapterProgresses[2]} visibility={chapterVisibilities[2]}>
-              <div className="problem-scene">
-                <div className="problem-intro"><span className="mono-label">THE MANUAL LOOP</span><p>Console clicks are useful for learning. They become painful when the same infrastructure has to be rebuilt, reviewed, or reproduced.</p></div>
-                <div className="problem-flow" aria-label="Manual infrastructure loop">
-                  {[
-                    ['01','CLICK','Launch the instance'],
-                    ['02','CONFIGURE','Change settings by hand'],
-                    ['03','REMEMBER','Hope the setup is documented'],
-                    ['04','REPEAT','Do it again for the next environment'],
-                  ].map(([n,t,d],i)=><article key={n} style={{'--scene-index':i,'--scene-progress':chapterProgresses[2]} as React.CSSProperties}><b>{n}</b><strong>{t}</strong><span>{d}</span></article>)}
+            <ChapterShell eyebrow="WHAT YOU WILL LEARN" title="Six steps from cloud curiosity to a working foundation." progress={chapterProgresses[2]} visibility={chapterVisibilities[2]} className="learning-chapter">
+              <div className="learning-scene">
+                <div className="learning-intro">
+                  <div className="learning-intro-badge"><Cloud size={16} strokeWidth={2} /><span>YOUR LEARNING PATH</span></div>
+                  <p>Move from the big picture to hands-on infrastructure — with every concept tied to something you can actually build.</p>
                 </div>
-                <div className="problem-callout"><span>THE QUESTION</span><strong>Can the infrastructure remember the intent instead?</strong></div>
+                <div className="learning-modules" aria-label="What you will learn">
+                  {[
+                    [Cloud, '01', 'CLOUD FUNDAMENTALS', 'Understand what cloud computing actually means.', null],
+                    [Cloud, '02', 'AWS FUNDAMENTALS', 'Meet the AWS ecosystem and its core building blocks.', '/images/aws-logo.png'],
+                    [Server, '03', 'AMAZON EC2', 'Provision and work with your own cloud server.', '/images/ec2.png'],
+                    [ShieldCheck, '04', 'SECURE ACCESS', 'Connect securely with Systems Manager / Session Manager.', '/images/systemsmanager.png'],
+                    [Laptop, '05', 'BUILD A WEB SERVER', 'Turn infrastructure into something tangible in the browser.', '/images/web-server-icon.png'],
+                    [Code2, '06', 'INFRASTRUCTURE AS CODE', 'Define and automate infrastructure with CloudFormation.', '/images/cloudformation.png'],
+                  ].map(([Icon, number, title, description, image], index) => {
+                    const LearningIcon = Icon as typeof Cloud;
+                    return (
+                      <article className="learning-module" key={number as string} style={{ '--learning-index': index } as CSSProperties}>
+                        <div className="learning-module-top">
+                          <span>{number as string}</span>
+                          <div className="learning-module-visual">
+                            {image ? <img src={image as string} alt="" /> : <LearningIcon size={27} strokeWidth={1.7} />}
+                          </div>
+                        </div>
+                        <strong>{title as string}</strong>
+                        <p>{description as string}</p>
+                      </article>
+                    );
+                  })}
+                </div>
+                <div className="learning-strip">
+                  <span><Sparkles size={15} /> LEARN → BUILD → AUTOMATE</span>
+                  <strong>Every module points toward the hands-on lab.</strong>
+                </div>
               </div>
             </ChapterShell>
 
