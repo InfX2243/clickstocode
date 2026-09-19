@@ -770,3 +770,62 @@
 @media(prefers-reduced-motion:reduce){
   .screen-1-logo-wrap,.screen-1-org,.screen-1-college-logo,.screen-1-register{animation:none}
 }
+
+
+/* Screen 1 -> Screen 2 handoff: the hero clears as the overview arrives underneath it. */
+.screen-1.is-exiting .screen-1-content{
+  transform:translate3d(0,-4vh,0);
+}
+.screen-1.is-exiting .screen-1-brand{
+  opacity:0;
+  transform:translate3d(0,-16vh,0) scale(.94);
+  filter:blur(2px);
+}
+.screen-1.is-exiting .screen-1-logo-wrap{
+  opacity:0;
+  transform:translate3d(-10vw,-10vh,0) scale(.82) rotate(-3deg);
+  filter:blur(4px);
+}
+.screen-1.is-exiting .screen-1-org{
+  opacity:0;
+  transform:translate3d(5vw,-9vh,0);
+  filter:blur(3px);
+}
+.screen-1.is-exiting .screen-1-college-logo{
+  opacity:0;
+  transform:translate3d(10vw,-8vh,0) scale(.82) rotate(3deg);
+  filter:blur(4px);
+}
+.screen-1.is-exiting .screen-1-presents{
+  opacity:0!important;
+  transform:translate3d(0,-10vh,0);
+}
+.screen-1.is-exiting .screen-1-event{
+  opacity:0!important;
+  transform:translate3d(0,-18vh,0) scale(.9)!important;
+  filter:blur(1px)!important;
+}
+.screen-1.is-exiting .screen-1-scroll-hint{
+  opacity:0!important;
+  transform:translate3d(0,10vh,0);
+}
+.screen-1.is-exiting .screen-1-glow{
+  opacity:0!important;
+  transform:scale(1.08);
+}
+.screen-1.is-exiting .screen-1-grid{
+  opacity:0!important;
+  transform:translateY(-3vh) scale(1.04);
+}
+.screen-1.is-exiting::after{
+  opacity:0!important;
+  transform:scale(1.04);
+}
+.event-overview-chapter .event-overview-header,
+.event-overview-chapter .event-overview-copy,
+.event-overview-chapter .event-overview-steps{
+  will-change:opacity,transform;
+}
+@media(prefers-reduced-motion:reduce){
+  .cinematic-story-frame{opacity:1!important;transform:none!important}
+}
