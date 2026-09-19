@@ -434,13 +434,50 @@ export default function Home() {
               </div>
             </ChapterShell>
 
-            <ChapterShell eyebrow="WHAT YOU TAKE AWAY" title="Three things should feel different when you leave." progress={chapterProgresses[9]} visibility={chapterVisibilities[9]}>
-              <div className="takeaway-scene">
-                {[
-                  ['01','YOU CAN EXPLAIN IT','Understand what the AWS pieces are doing and why they fit together.'],
-                  ['02','YOU CAN BUILD IT','Provision compute, access it securely, and put a web server on it.'],
-                  ['03','YOU CAN DECLARE IT','Turn a working setup into Infrastructure as Code you can revisit.'],
-                ].map(([n,t,d],i)=><article key={n} style={{'--scene-index':i,'--scene-progress':chapterProgresses[9]} as React.CSSProperties}><b>{n}</b><strong>{t}</strong><span>{d}</span></article>)}
+            <ChapterShell eyebrow="TRIVIA · SWAG · CERTIFICATE" title="Build it. Play along. Leave with something to remember." progress={chapterProgresses[9]} visibility={chapterVisibilities[9]} className="rewards-chapter">
+              <div className="rewards-scene">
+                <div className="rewards-intro">
+                  <div className="rewards-badge"><Sparkles size={16} strokeWidth={2} /><span>THE FUN PART OF FINISHING</span></div>
+                  <p>The workshop does not stop when the lab works. Take part in trivia, chase the challenge, and complete the experience.</p>
+                </div>
+
+                <div className="rewards-feature-grid">
+                  <article className="rewards-feature rewards-trivia">
+                    <div className="rewards-feature-icon"><Sparkles size={25} strokeWidth={1.7} /></div>
+                    <span>01 · INTERACTIVE</span>
+                    <strong>TRIVIA</strong>
+                    <p>Test what you picked up during the session and play along with the room.</p>
+                    <div className="rewards-trivia-pills"><b>QUICK</b><b>LIVE</b><b>PLAY ALONG</b></div>
+                  </article>
+
+                  <article className="rewards-feature rewards-swag">
+                    <div className="rewards-feature-icon"><Gift size={25} strokeWidth={1.7} /></div>
+                    <span>02 · REWARDS</span>
+                    <strong>SWAG</strong>
+                    <p>Trivia gives you a chance to win event swag and take a little piece of the day home.</p>
+                    <div className="rewards-placeholder">SWAG VISUAL · TO BE ADDED</div>
+                  </article>
+
+                  <article className="rewards-feature rewards-certificate">
+                    <div className="rewards-feature-icon"><Award size={25} strokeWidth={1.7} /></div>
+                    <span>03 · COMPLETION</span>
+                    <strong>CERTIFICATE</strong>
+                    <p>Successfully complete the hands-on workshop and receive your event certificate.</p>
+                    <div className="rewards-certificate-mark"><CheckCircle2 size={15} /><span>SUCCESSFULLY COMPLETED</span></div>
+                  </article>
+                </div>
+
+                <div className="rewards-bottom">
+                  <div className="rewards-bottom-copy">
+                    <span>ONE HANDS-ON EXPERIENCE</span>
+                    <strong>Learn something useful. Have some fun. Finish with proof you built it.</strong>
+                  </div>
+                  <a className="event-overview-register rewards-register" href={MEETUP_URL} target="_blank" rel="noreferrer">
+                    <img src="/images/meetup-icon.png" alt="" aria-hidden="true" />
+                    <span>REGISTER ON MEETUP</span>
+                    <b aria-hidden="true">↗</b>
+                  </a>
+                </div>
               </div>
             </ChapterShell>
 
