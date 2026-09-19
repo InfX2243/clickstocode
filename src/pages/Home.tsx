@@ -9,7 +9,6 @@ const ENTRY_END = 0.032;
 const STORY_START = 0.008;
 const STORY_HANDOFF_END = 0.055;
 const STORY_END = 0.975;
-const MEETUP_URL: string | null = null;
 const MEETUP_STATUS = 'MEETUP REGISTRATION COMING SOON';
 const EVENT_DATE = '24 September 2026';
 const EVENT_TIME = '9:30 AM – 12:00 PM';
@@ -148,7 +147,7 @@ export default function Home() {
                       [Server, 'Build on AWS', 'Provision and work with real cloud infrastructure.'],
                       [ShieldCheck, 'Connect securely', 'Use Systems Manager / Session Manager to access your server.'],
                       [Laptop, 'Learn by doing', 'Follow the workshop flow from cloud fundamentals to automation.'],
-                      [Award, 'Leave with more', 'Certificate, trivia, and a chance to win event swag.'],
+                      [Award, 'Leave with more', 'Certificate, trivia, and event prizes.'],
                     ].map(([Icon, title, description], index) => {
                       const BenefitIcon = Icon as typeof Server;
                       return <article className="audience-benefit" key={title as string} style={{ '--benefit-index': index } as CSSProperties}>
@@ -454,7 +453,7 @@ export default function Home() {
                     <div className="rewards-feature-icon"><Gift size={25} strokeWidth={1.7} /></div>
                     <span>02 · REWARDS</span>
                     <strong>SWAG</strong>
-                    <p>Trivia gives you a chance to win event swag and take a little piece of the day home.</p>
+                    <p>Trivia happens near the end of the program, followed by prize distribution. Swag details will be added only when confirmed.</p>
                     <div className="rewards-placeholder">SWAG VISUAL · TO BE ADDED</div>
                   </article>
 
