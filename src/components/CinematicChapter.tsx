@@ -13,6 +13,8 @@ export default function CinematicChapter({ eyebrow, title, children, progress = 
   const style = {
     '--chapter-progress': progress,
     '--chapter-visibility': visibility,
+    visibility: visibility > 0.001 ? 'visible' : 'hidden',
+    zIndex: visibility > 0.001 ? 2 : 1,
   } as CSSProperties;
 
   return (
