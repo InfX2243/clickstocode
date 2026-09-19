@@ -1,6 +1,6 @@
 import { useMemo, useRef, type ReactNode, type CSSProperties } from 'react';
 import CinematicChapter from '../components/CinematicChapter';
-import { Award, ClipboardCheck, Cloud, Code2, DoorOpen, GraduationCap, Laptop, MapPin, MessageCircle, Rocket, Server, ShieldCheck, Sparkles, Terminal, Users } from 'lucide-react';
+import { Award, CalendarCheck, ClipboardCheck, Cloud, Code2, DoorOpen, GraduationCap, Laptop, MapPin, MessageCircle, Rocket, Server, ShieldCheck, Sparkles, Terminal, Users } from 'lucide-react';
 import { useElementScrollProgress, useReducedMotion } from '../lib/useScrollProgress';
 
 const chapters = 11;
@@ -290,15 +290,44 @@ export default function Home() {
               </div>
             </ChapterShell>
 
-            <ChapterShell eyebrow="THE PIPELINE" title="From intent to infrastructure — one visible chain." progress={chapterProgresses[5]} visibility={chapterVisibilities[5]}>
-              <div className="pipeline-story">
-                {[
-                  ['01','INTENT','What should exist?'],
-                  ['02','CODE','Describe it'],
-                  ['03','PLAN','Preview the delta'],
-                  ['04','APPLY','Create the change'],
-                  ['05','VERIFY','Check the result'],
-                ].map(([n,t,d],i)=><article key={n} style={{'--scene-index':i,'--scene-progress':chapterProgresses[5]} as React.CSSProperties}><b>{n}</b><strong>{t}</strong><span>{d}</span>{i<4&&<i aria-hidden="true">↓</i>}</article>)}
+            <ChapterShell eyebrow="REGISTER CORRECTLY" title="Five steps. One simple registration flow." progress={chapterProgresses[5]} visibility={chapterVisibilities[5]} className="registration-chapter">
+              <div className="registration-scene">
+                <div className="registration-intro">
+                  <div className="registration-badge"><ClipboardCheck size={16} strokeWidth={2} /><span>IMPORTANT REGISTRATION INSTRUCTIONS</span></div>
+                  <p>Register once, complete the required details, then keep the event information close. The steps below are the path from Meetup registration to event day.</p>
+                </div>
+
+                <div className="registration-flow" aria-label="Registration steps">
+                  {[
+                    [CalendarCheck, '01', 'REGISTER THROUGH MEETUP', 'Use the official Meetup registration flow to reserve your place.'],
+                    [ClipboardCheck, '02', 'ENTER YOUR COLLEGE DOMAIN ID', 'Provide your college or institutional domain ID where the Meetup form requests it.', 'FORMAT TO BE CONFIRMED'],
+                    [MessageCircle, '03', 'JOIN THE WHATSAPP GROUP', 'After registering, use the WhatsApp group link provided through Meetup to join the official event group.'],
+                    [Cloud, '04', 'SAVE THE EVENT DETAILS', 'Keep your registration confirmation, venue information, and event timing handy.'],
+                    [MapPin, '05', 'ARRIVE AT 9:30 AM', 'Go to the Registration Desk on the Ground Floor, near the Staff Lift, for check-in.'],
+                  ].map(([Icon, number, title, description, note], index) => {
+                    const RegistrationIcon = Icon as typeof CalendarCheck;
+                    return (
+                      <article className="registration-step" key={number as string} style={{ '--registration-index': index } as CSSProperties}>
+                        <div className="registration-step-icon"><RegistrationIcon size={22} strokeWidth={1.8} /></div>
+                        <span className="registration-step-number">{number as string}</span>
+                        <strong>{title as string}</strong>
+                        <p>{description as string}</p>
+                        {note && <small>{note as string}</small>}
+                      </article>
+                    );
+                  })}
+                </div>
+
+                <div className="registration-callout">
+                  <div><span>REGISTRATION IS FREE</span><strong>ONLY 100 SEATS AVAILABLE</strong></div>
+                  <span>Register early to secure your place.</span>
+                </div>
+
+                <a className="event-overview-register registration-register" href={MEETUP_URL} target="_blank" rel="noreferrer">
+                  <img src="/images/meetup-icon.png" alt="" aria-hidden="true" />
+                  <span>REGISTER ON MEETUP</span>
+                  <b aria-hidden="true">↗</b>
+                </a>
               </div>
             </ChapterShell>
 
