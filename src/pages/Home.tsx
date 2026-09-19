@@ -10,7 +10,6 @@ const STORY_HANDOFF_END = 0.055;
 const STORY_END = 0.91;
 const CTA_START = 0.9;
 const MEETUP_URL = 'https://www.meetup.com/';
-const MEETUP_URL = 'https://www.meetup.com/';
 const clamp01 = (value: number) => Math.min(1, Math.max(0, value));
 const storyTimelineProgress = (timeline: number) => clamp01((timeline - STORY_START) / (STORY_END - STORY_START));
 const easeInOut = (value: number) => {
@@ -87,7 +86,7 @@ export default function Home() {
       <span className="mono-label">ABOUT THE EVENT</span>
       <p>The AWS Student Builder Group at M.H. Saboo Siddik College of Engineering invites you to a practical cloud journey — from understanding AWS fundamentals to provisioning a server, securely accessing it, hosting a customized web page, and automating the infrastructure with Infrastructure as Code.</p>
       <a className="event-overview-register" href={MEETUP_URL} target="_blank" rel="noreferrer">
-        <img src="/images/meetup.png" alt="" aria-hidden="true" />
+        <img src="/images/meetup-icon.png" alt="" aria-hidden="true" />
         <span>REGISTER ON MEETUP</span>
         <b aria-hidden="true">↗</b>
       </a>
