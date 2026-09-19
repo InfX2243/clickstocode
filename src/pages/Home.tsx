@@ -5,7 +5,8 @@ import { useElementScrollProgress, useReducedMotion } from '../lib/useScrollProg
 const chapters = 11;
 const ENTRY_START = 0.006;
 const ENTRY_END = 0.032;
-const STORY_START = 0.022;
+const STORY_START = 0.008;
+const STORY_HANDOFF_END = 0.055;
 const STORY_END = 0.91;
 const CTA_START = 0.9;
 const clamp01 = (value: number) => Math.min(1, Math.max(0, value));
@@ -38,10 +39,12 @@ export default function Home() {
   const reducedMotion = useReducedMotion();
   const screen1Exit = timelineProgress > (reducedMotion ? 0.004 : ENTRY_START);
   const entryFade = smoothstep(ENTRY_START, ENTRY_END, timelineProgress);
-  const eventHandoff = smoothstep(0.012, 0.055, timelineProgress);
+  const eventHandoff = smoothstep(0.012, STORY_HANDOFF_END, timelineProgress);
+  const storyReveal = smoothstep(STORY_START, STORY_HANDOFF_END, timelineProgress);
   const storyProgress = storyTimelineProgress(timelineProgress);
-  const chapterProgresses = useMemo(() => Array.from({ length: chapters }, (_, i) => chapterProgress(storyProgress, i)), [storyProgress]);
-  const chapterVisibilities = useMemo(() => Array.from({ length: chapters }, (_, i) => chapterVisibility(storyProgress, i)), [storyProgress]);
+  const handoffChapterProgress = smoothstep(0.012, STORY_HANDOFF_END, timelineProgress);
+  const chapterProgresses = useMemo(() => Array.from({ length: chapters }, (_, i) => i === 0 ? handoffChapterProgress : chapterProgress(storyProgress, i)), [storyProgress, handoffChapterProgress]);
+  const chapterVisibilities = useMemo(() => Array.from({ length: chapters }, (_, i) => i === 0 ? storyReveal : chapterVisibility(storyProgress, i)), [storyProgress, storyReveal]);
   const entryVisibility = 1 - entryFade;
   const finalProgress = ctaProgress(timelineProgress);
   const finalVisibility = finalProgress;
@@ -69,7 +72,7 @@ export default function Home() {
             </div>
           </section>
 
-          <div className="cinematic-story-frame" aria-hidden={timelineProgress < STORY_START ? 'true' : undefined}>
+          <div className="cinematic-story-frame" aria-hidden={timelineProgress < STORY_START ? 'true' : undefined} style={{ opacity: storyReveal, transform: `translate3d(0, ${(1 - storyReveal) * 1.5}vh, 0)` }}>
             <ChapterShell title="" progress={chapterProgresses[0]} visibility={chapterVisibilities[0]} className="event-overview-chapter"><div className="event-overview-scene">
   <header className="event-overview-header">
     <div>
