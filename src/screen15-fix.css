@@ -107,3 +107,12 @@
     padding:0!important;
   }
 }
+
+
+/* Final Screen 15 transparency: the shared timeline rule paints the inner panel dark.
+   Keep the content itself transparent so the story-frame atmosphere remains visible underneath. */
+.final-chapter,
+.final-chapter .cinematic-chapter-inner,
+.final-chapter .final-build-scene{
+  background:transparent!important;
+}
