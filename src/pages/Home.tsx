@@ -55,18 +55,20 @@ export default function Home() {
             <div className="screen-1-grid absolute inset-0 pointer-events-none" style={{ opacity: 1 - entryFade }} />
             <div className="screen-1-content relative z-10 flex w-full max-w-6xl flex-col items-center text-center">
               <div className="screen-1-topbar" style={{ '--hero-ui-exit': entryFade } as CSSProperties}>
-                <div className="screen-1-college-logo" aria-label="M.H. Saboo Siddik College of Engineering">
-                  <img src="/images/mhssce-logo.png" alt="M.H. Saboo Siddik College of Engineering" onError={(event) => { event.currentTarget.style.display = 'none'; }} />
-                </div>
                 <a className="screen-1-register" href="https://www.meetup.com/" target="_blank" rel="noreferrer">
                   <img src="/images/meetup.png" alt="" aria-hidden="true" onError={(event) => { event.currentTarget.style.display = 'none'; }} />
                   <span>REGISTER ON MEETUP</span>
                   <b aria-hidden="true">↗</b>
                 </a>
               </div>
-              <div className="screen-1-brand flex flex-col md:flex-row items-center justify-center gap-8 md:gap-12" style={{ opacity: 1 - entryFade, transform: `translate3d(0, ${entryFade * -34}px, 0)` }}>
-                <div className="screen-1-logo-wrap flex h-48 w-48 shrink-0 items-center justify-center rounded-[2rem] border border-[#00d26a]/30 bg-[#111621]/80 p-7 shadow-[0_0_90px_rgba(0,210,106,0.2)] backdrop-blur-md sm:h-56 sm:w-56 sm:p-9"><img src="/images/awssbg-logo.png" alt="AWS Student Builder Group MHSSCE" className="h-full w-full object-contain" /></div>
-                <div className="screen-1-org max-w-2xl text-center md:text-left"><h1 className="text-3xl font-bold leading-tight tracking-tight text-white sm:text-4xl md:text-5xl lg:text-6xl">AWS Student Builder Group at<br />M.H. Saboo Siddik College of Engineering</h1></div>
+              <div className="screen-1-brand" style={{ opacity: 1 - entryFade, transform: `translate3d(0, ${entryFade * -34}px, 0)` }}>
+                <a className="screen-1-logo-wrap" href="https://awssbg-mhssce.in" target="_blank" rel="noreferrer" aria-label="AWS Student Builder Group at M.H. Saboo Siddik College of Engineering">
+                  <img src="/images/awssbg-logo.png" alt="AWS Student Builder Group MHSSCE" />
+                </a>
+                <div className="screen-1-org"><h1>AWS Student Builder Group at<br />M.H. Saboo Siddik College of Engineering</h1></div>
+                <a className="screen-1-college-logo" href="https://mhssce.ac.in/" target="_blank" rel="noreferrer" aria-label="M.H. Saboo Siddik College of Engineering">
+                  <img src="/images/mhssce-logo.png" alt="M.H. Saboo Siddik College of Engineering" onError={(event) => { event.currentTarget.style.display = 'none'; }} />
+                </a>
               </div>
               <div className="screen-1-presents mt-14 sm:mt-16" style={{ opacity: 1 - entryFade, transform: `translate3d(0, ${entryFade * -24}px, 0)` }}><p className="font-mono text-sm uppercase tracking-[0.45em] text-white/50 sm:text-base">presents</p></div>
               <div className={`screen-1-event mt-6 sm:mt-8${screen1Exit ? ' is-handoff' : ''}`} style={{ '--event-handoff': eventHandoff } as CSSProperties}><h2 className="screen-1-title text-5xl font-extrabold leading-none tracking-tight sm:text-6xl md:text-8xl lg:text-9xl"><span className="screen-1-title-white">AWS From</span><br className="sm:hidden" /> <span className="screen-1-title-green">Clicks to Code</span></h2></div>
