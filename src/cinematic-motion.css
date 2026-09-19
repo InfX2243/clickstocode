@@ -1592,3 +1592,222 @@
 @media(prefers-reduced-motion:reduce){
   .hands-on-scene,.hands-on-step{transform:none!important;opacity:1!important}
 }
+
+
+/* Screen 6: arrival information is practical, scannable, and still feels cinematic. */
+.arrival-chapter .cinematic-chapter-inner{
+  padding-top:clamp(28px,3.2vw,46px);
+  padding-bottom:clamp(28px,3.2vw,46px);
+  justify-content:center;
+}
+.arrival-scene{
+  width:min(1280px,100%);
+  margin:0 auto;
+  opacity:min(var(--scene-enter),var(--scene-exit));
+  transform:translate3d(0,calc((1 - var(--scene-enter)) * 28px + (1 - var(--scene-exit)) * -24px),0);
+  will-change:opacity,transform;
+}
+.arrival-intro{
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap:28px;
+}
+.arrival-badge{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  color:#00d26a;
+  font:700 10px/1 'Amazon Ember Mono',monospace;
+  letter-spacing:.14em;
+  white-space:nowrap;
+}
+.arrival-intro p{
+  margin:0;
+  max-width:780px;
+  color:rgba(255,255,255,.64);
+  font-size:clamp(15px,1.25vw,19px);
+  line-height:1.45;
+}
+.arrival-hero{
+  display:grid;
+  grid-template-columns:.8fr 1.2fr;
+  gap:12px;
+  margin-top:clamp(20px,2.5vw,30px);
+}
+.arrival-time-card,
+.arrival-location-card{
+  min-height:128px;
+  padding:20px;
+  border:1px solid rgba(0,210,106,.2);
+  background:linear-gradient(145deg,rgba(0,210,106,.07),rgba(8,11,19,.72) 72%);
+}
+.arrival-time-card{
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+}
+.arrival-time-card span{
+  color:#00d26a;
+  font:800 clamp(27px,3vw,42px)/1 'Amazon Ember Mono',monospace;
+  letter-spacing:-.04em;
+}
+.arrival-time-card strong,
+.arrival-location-card strong{
+  margin-top:7px;
+  color:#fff;
+  font-size:13px;
+  letter-spacing:.09em;
+}
+.arrival-time-card small,
+.arrival-location-card small{
+  margin-top:5px;
+  color:rgba(255,255,255,.44);
+  font-size:10px;
+  line-height:1.4;
+}
+.arrival-location-card{
+  display:flex;
+  align-items:center;
+  gap:16px;
+}
+.arrival-location-card>svg{
+  flex:0 0 auto;
+  color:#00d26a;
+  filter:drop-shadow(0 0 12px rgba(0,210,106,.2));
+}
+.arrival-location-card>div{
+  display:grid;
+}
+.arrival-location-card span{
+  color:#00d26a;
+  font:700 9px/1 'Amazon Ember Mono',monospace;
+  letter-spacing:.13em;
+}
+.arrival-steps{
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:10px;
+  margin-top:12px;
+}
+.arrival-step{
+  --i:var(--arrival-index,0);
+  min-height:150px;
+  padding:16px;
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-end;
+  position:relative;
+  overflow:hidden;
+  border:1px solid rgba(255,255,255,.09);
+  background:rgba(8,11,19,.58);
+  opacity:clamp(.12,calc(var(--scene-enter) - var(--i) * .1),1);
+  transform:translate3d(0,calc((1 - var(--scene-enter)) * (22px + var(--i) * 5px)),0);
+  will-change:opacity,transform;
+}
+.arrival-step::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  border-top:1px solid rgba(0,210,106,.2);
+  pointer-events:none;
+}
+.arrival-step-icon{
+  position:absolute;
+  top:15px;
+  left:16px;
+  width:42px;
+  height:42px;
+  display:grid;
+  place-items:center;
+  border:1px solid rgba(0,210,106,.2);
+  border-radius:10px;
+  color:#00d26a;
+  background:rgba(0,210,106,.045);
+}
+.arrival-step>span{
+  position:absolute;
+  top:17px;
+  right:16px;
+  color:rgba(255,255,255,.24);
+  font:10px 'Amazon Ember Mono',monospace;
+}
+.arrival-step strong{
+  color:#fff;
+  font-size:12px;
+  letter-spacing:.08em;
+}
+.arrival-step p{
+  margin:5px 0 0;
+  color:rgba(255,255,255,.44);
+  font-size:10px;
+  line-height:1.4;
+}
+.arrival-window{
+  margin-top:12px;
+  padding:14px 18px;
+  display:grid;
+  grid-template-columns:1fr 1px 1fr;
+  align-items:center;
+  gap:18px;
+  border-left:2px solid #00d26a;
+  background:rgba(0,210,106,.045);
+}
+.arrival-window>div{
+  display:grid;
+  gap:4px;
+}
+.arrival-window span{
+  color:#00d26a;
+  font:700 10px/1 'Amazon Ember Mono',monospace;
+  letter-spacing:.11em;
+}
+.arrival-window strong{
+  color:#fff;
+  font-size:12px;
+  letter-spacing:.07em;
+}
+.arrival-window>i{
+  height:34px;
+  background:rgba(255,255,255,.12);
+}
+.arrival-note{
+  margin-top:10px;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  color:rgba(255,255,255,.38);
+}
+.arrival-note span{
+  flex:0 0 auto;
+  color:rgba(255,255,255,.48);
+  font:700 9px/1 'Amazon Ember Mono',monospace;
+  letter-spacing:.12em;
+}
+.arrival-note p{
+  margin:0;
+  font-size:10px;
+}
+.arrival-register{
+  margin-top:14px!important;
+  position:relative;
+  z-index:20;
+  pointer-events:auto;
+  cursor:pointer;
+}
+@media(max-width:850px){
+  .arrival-intro{display:grid;gap:10px}
+  .arrival-hero{grid-template-columns:1fr}
+  .arrival-steps{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:560px){
+  .arrival-steps{grid-template-columns:1fr}
+  .arrival-step{min-height:130px}
+  .arrival-window{grid-template-columns:1fr;gap:10px}
+  .arrival-window>i{width:100%;height:1px}
+  .arrival-note{align-items:flex-start;flex-direction:column;gap:5px}
+  .arrival-register{width:100%}
+}
+@media(prefers-reduced-motion:reduce){
+  .arrival-scene,.arrival-step{transform:none!important;opacity:1!important}
+}
