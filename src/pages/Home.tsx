@@ -55,7 +55,7 @@ export default function Home() {
             <div className="screen-1-grid absolute inset-0 pointer-events-none" style={{ opacity: 1 - entryFade }} />
             <div className="screen-1-content relative z-10 flex w-full max-w-6xl flex-col items-center text-center">
               <div className="screen-1-topbar" style={{ opacity: 1 - entryFade, transform: `translate3d(0, ${entryFade * -24}px, 0)` }}>
-                <div className="screen-1-college-logo"><img src="/images/college-logo.png" alt="M.H. Saboo Siddik College of Engineering" /></div>
+                <div className="screen-1-college-logo" aria-label="M.H. Saboo Siddik College of Engineering logo placeholder"><span>MHSSCE</span></div>
                 <a className="screen-1-register" href="https://www.meetup.com/" target="_blank" rel="noreferrer">REGISTER ON MEETUP <span aria-hidden="true">↗</span></a>
               </div>
               <div className="screen-1-brand flex flex-col md:flex-row items-center justify-center gap-8 md:gap-12" style={{ opacity: 1 - entryFade, transform: `translate3d(0, ${entryFade * -34}px, 0)` }}>
