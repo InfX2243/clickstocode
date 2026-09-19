@@ -1,5 +1,6 @@
 import { useMemo, useRef, type ReactNode, type CSSProperties } from 'react';
 import CinematicChapter from '../components/CinematicChapter';
+import { Award, Cloud, Code2, Compass, GraduationCap, Laptop, Rocket, Server, ShieldCheck, Sparkles, Terminal, Trophy, Users } from 'lucide-react';
 import { useElementScrollProgress, useReducedMotion } from '../lib/useScrollProgress';
 
 const chapters = 11;
@@ -105,29 +106,54 @@ export default function Home() {
             <ChapterShell eyebrow="FOR THE CURIOUS" title="Is this event for me?" progress={chapterProgresses[1]} visibility={chapterVisibilities[1]} className="audience-chapter">
               <div className="audience-scene">
                 <div className="audience-hero-copy">
-                  <span className="mono-label">BEGINNER-FRIENDLY · BUILDER-FOCUSED</span>
-                  <p>You don't need to already be an AWS expert. Curiosity matters more than prior AWS experience.</p>
+                  <div className="audience-kicker"><Sparkles size={15} strokeWidth={2.2} /><span>BEGINNER-FRIENDLY · BUILDER-FOCUSED</span></div>
+                  <p>You don't need to already be an AWS expert. <strong>Curiosity matters more than prior AWS experience.</strong></p>
                 </div>
-                <div className="audience-profile-grid">
-                  <section className="audience-profile audience-profile-who">
-                    <div className="audience-profile-heading"><span>01</span><h3>WHO SHOULD ATTEND?</h3></div>
-                    <ul>
-                      <li><b>Students</b><span>Starting a cloud journey or exploring AWS for the first time.</span></li>
-                      <li><b>CS / IT / Engineering</b><span>Wanting practical infrastructure experience beyond coursework.</span></li>
-                      <li><b>Cloud-curious builders</b><span>Working on projects and ready to understand what runs behind them.</span></li>
-                      <li><b>Future DevOps / Security engineers</b><span>Interested in automation, secure access, and infrastructure.</span></li>
-                    </ul>
-                  </section>
-                  <section className="audience-profile audience-profile-why">
-                    <div className="audience-profile-heading"><span>02</span><h3>WHY PARTICIPATE?</h3></div>
-                    <ul>
-                      <li><b>Hands-on AWS experience</b><span>Work with real cloud infrastructure inside the workshop flow.</span></li>
-                      <li><b>EC2 + secure access</b><span>Provision a server and connect with Systems Manager / Session Manager.</span></li>
-                      <li><b>Infrastructure as Code</b><span>See how a working setup can become a repeatable definition.</span></li>
-                      <li><b>Certificate + trivia + swag</b><span>Complete the hands-on experience and take part in the extras.</span></li>
-                    </ul>
-                  </section>
+
+                <div className="audience-panel">
+                  <div className="audience-panel-heading">
+                    <div><span className="mono-label">WHO SHOULD ATTEND?</span><h3>Find your reason to build.</h3></div>
+                    <Users size={22} aria-hidden="true" />
+                  </div>
+                  <div className="audience-audience-grid">
+                    {[
+                      [Cloud, 'Cloud Enthusiasts', 'Curious about what really happens behind the cloud.'],
+                      [GraduationCap, 'Cloud Beginners', 'Ready to go from concepts to a first hands-on build.'],
+                      [Rocket, 'Future Builders', 'Exploring DevOps, infrastructure, automation, or security.'],
+                      [Code2, 'Project Builders', 'Already building things and ready to understand the cloud layer.'],
+                    ].map(([Icon, title, description], index) => {
+                      const AudienceIcon = Icon as typeof Cloud;
+                      return <article className="audience-tile" key={title as string} style={{ '--audience-index': index } as CSSProperties}>
+                        <span className="audience-tile-icon"><AudienceIcon size={22} strokeWidth={1.8} /></span>
+                        <span className="audience-tile-number">{String(index + 1).padStart(2, '0')}</span>
+                        <strong>{title as string}</strong>
+                        <p>{description as string}</p>
+                      </article>;
+                    })}
+                  </div>
                 </div>
+
+                <div className="audience-panel audience-why-panel">
+                  <div className="audience-panel-heading">
+                    <div><span className="mono-label">WHY PARTICIPATE?</span><h3>More than a demo.</h3></div>
+                    <Terminal size={22} aria-hidden="true" />
+                  </div>
+                  <div className="audience-benefit-grid">
+                    {[
+                      [Server, 'Build on AWS', 'Provision and work with real cloud infrastructure.'],
+                      [ShieldCheck, 'Connect securely', 'Use Systems Manager / Session Manager to access your server.'],
+                      [Laptop, 'Learn by doing', 'Follow the workshop flow from cloud fundamentals to automation.'],
+                      [Award, 'Leave with more', 'Certificate, trivia, and a chance to win event swag.'],
+                    ].map(([Icon, title, description], index) => {
+                      const BenefitIcon = Icon as typeof Server;
+                      return <article className="audience-benefit" key={title as string} style={{ '--benefit-index': index } as CSSProperties}>
+                        <BenefitIcon size={20} strokeWidth={1.9} aria-hidden="true" />
+                        <div><strong>{title as string}</strong><p>{description as string}</p></div>
+                      </article>;
+                    })}
+                  </div>
+                </div>
+
                 <div className="audience-reassurance">
                   <div><span>NO PRIOR AWS EXPERIENCE REQUIRED</span><strong>Bring your questions, your laptop, and the willingness to build.</strong></div>
                   <a className="event-overview-register audience-register" href={MEETUP_URL} target="_blank" rel="noreferrer">
