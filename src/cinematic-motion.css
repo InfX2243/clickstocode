@@ -1391,3 +1391,204 @@
 @media(prefers-reduced-motion:reduce){
   .learning-scene,.learning-module{transform:none!important;opacity:1!important}
 }
+
+
+/* Screen 5: make the hands-on lab the visual centerpiece of the workshop story. */
+.lab-chapter .cinematic-chapter-inner{
+  padding-top:clamp(28px,3.2vw,46px);
+  padding-bottom:clamp(28px,3.2vw,46px);
+  justify-content:center;
+}
+.hands-on-scene{
+  width:min(1420px,100%);
+  margin:0 auto;
+  opacity:min(var(--scene-enter),var(--scene-exit));
+  transform:translate3d(0,calc((1 - var(--scene-enter)) * 28px + (1 - var(--scene-exit)) * -24px),0);
+  will-change:opacity,transform;
+}
+.hands-on-intro{
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap:28px;
+  max-width:1120px;
+}
+.hands-on-badge{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  color:#00d26a;
+  font:700 10px/1 'Amazon Ember Mono',monospace;
+  letter-spacing:.14em;
+  white-space:nowrap;
+}
+.hands-on-intro p{
+  margin:0;
+  max-width:820px;
+  color:rgba(255,255,255,.68);
+  font-size:clamp(15px,1.3vw,20px);
+  line-height:1.48;
+}
+.hands-on-flow{
+  display:grid;
+  grid-template-columns:repeat(5,minmax(0,1fr));
+  gap:10px;
+  margin-top:clamp(20px,2.6vw,34px);
+}
+.hands-on-step{
+  --i:var(--hands-on-index,0);
+  position:relative;
+  min-height:clamp(170px,20vh,210px);
+  padding:17px;
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-end;
+  overflow:visible;
+  border:1px solid rgba(0,210,106,.18);
+  background:linear-gradient(145deg,rgba(0,210,106,.05),rgba(8,11,19,.72) 72%);
+  opacity:clamp(.12,calc(var(--scene-enter) - var(--i) * .09),1);
+  transform:translate3d(0,calc((1 - var(--scene-enter)) * (24px + var(--i) * 5px)),0);
+  will-change:opacity,transform;
+}
+.hands-on-step::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  border-top:1px solid rgba(0,210,106,.25);
+  pointer-events:none;
+}
+.hands-on-step-top{
+  position:absolute;
+  top:15px;
+  left:16px;
+  right:16px;
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+}
+.hands-on-step-top>span{
+  color:rgba(255,255,255,.28);
+  font:10px 'Amazon Ember Mono',monospace;
+  letter-spacing:.08em;
+}
+.hands-on-visual{
+  width:52px;
+  height:52px;
+  display:grid;
+  place-items:center;
+  border:1px solid rgba(0,210,106,.24);
+  border-radius:12px;
+  background:rgba(0,210,106,.045);
+  color:#00d26a;
+}
+.hands-on-visual img{
+  display:block;
+  width:37px;
+  height:37px;
+  object-fit:contain;
+}
+.hands-on-step strong{
+  position:relative;
+  color:#fff;
+  font-size:12px;
+  letter-spacing:.075em;
+  line-height:1.2;
+}
+.hands-on-step p{
+  position:relative;
+  margin:6px 0 0;
+  color:rgba(255,255,255,.46);
+  font-size:10px;
+  line-height:1.42;
+}
+.hands-on-step>i{
+  position:absolute;
+  z-index:2;
+  top:50%;
+  right:-19px;
+  width:28px;
+  height:28px;
+  display:grid;
+  place-items:center;
+  border:1px solid rgba(0,210,106,.32);
+  border-radius:50%;
+  background:#080b13;
+  color:#00d26a;
+  font:700 14px/1 sans-serif;
+  font-style:normal;
+  transform:translateY(-50%);
+}
+.hands-on-sandbox{
+  margin-top:14px;
+  padding:14px 16px;
+  display:grid;
+  grid-template-columns:42px minmax(0,1fr) auto;
+  align-items:center;
+  gap:13px;
+  border:1px dashed rgba(0,210,106,.35);
+  background:rgba(0,210,106,.035);
+}
+.hands-on-sandbox-icon{
+  width:42px;
+  height:42px;
+  display:grid;
+  place-items:center;
+  border:1px solid rgba(0,210,106,.22);
+  border-radius:10px;
+  color:#00d26a;
+  background:rgba(0,210,106,.05);
+}
+.hands-on-sandbox>div:nth-child(2){
+  display:grid;
+  gap:3px;
+}
+.hands-on-sandbox>div:nth-child(2)>span{
+  color:#00d26a;
+  font:700 9px/1 'Amazon Ember Mono',monospace;
+  letter-spacing:.13em;
+}
+.hands-on-sandbox>div:nth-child(2)>strong{
+  color:#fff;
+  font-size:13px;
+}
+.hands-on-sandbox>div:nth-child(2)>p{
+  margin:0;
+  color:rgba(255,255,255,.42);
+  font-size:10px;
+}
+.hands-on-placeholder{
+  padding:7px 9px;
+  border:1px dashed rgba(255,255,255,.2);
+  color:rgba(255,255,255,.35);
+  font:9px 'Amazon Ember Mono',monospace;
+  letter-spacing:.1em;
+  white-space:nowrap;
+}
+.hands-on-register{
+  margin-top:14px!important;
+  position:relative;
+  z-index:20;
+  pointer-events:auto;
+  cursor:pointer;
+}
+@media(max-width:1050px){
+  .hands-on-flow{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .hands-on-step:nth-child(3) > i{display:none}
+  .hands-on-step:nth-child(2) > i,
+  .hands-on-step:nth-child(4) > i{display:none}
+}
+@media(max-width:760px){
+  .hands-on-intro{display:grid;gap:10px}
+  .hands-on-flow{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .hands-on-step>i{display:none}
+}
+@media(max-width:520px){
+  .hands-on-flow{grid-template-columns:1fr}
+  .hands-on-step{min-height:145px}
+  .hands-on-sandbox{grid-template-columns:42px minmax(0,1fr)}
+  .hands-on-placeholder{grid-column:2;width:max-content}
+  .hands-on-register{width:100%}
+}
+@media(prefers-reduced-motion:reduce){
+  .hands-on-scene,.hands-on-step{transform:none!important;opacity:1!important}
+}
