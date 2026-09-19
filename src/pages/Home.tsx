@@ -578,15 +578,6 @@ export default function Home() {
                 <article><Award size={20} /><span>CERTIFICATE</span><strong>COMPLETE THE WORKSHOP</strong></article>
                 <article><Gift size={20} /><span>TRIVIA + SWAG</span><strong>PLAY ALONG + WIN</strong></article>
               </div>
-
-              <div className="final-build-footer">
-                <div><span>FREE · LIMITED TO 100 PARTICIPANTS</span><strong>Ready when you are.</strong></div>
-                <a className="event-overview-register final-build-register" href={MEETUP_URL} target="_blank" rel="noreferrer">
-                  <img src="/images/meetup-icon.png" alt="" aria-hidden="true" />
-                  <span>REGISTER ON MEETUP</span>
-                  <b aria-hidden="true">↗</b>
-                </a>
-              </div>
             </div>
           </ChapterShell>
         </div>
