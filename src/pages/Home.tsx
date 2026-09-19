@@ -99,11 +99,11 @@ export default function Home() {
       </div>
     </div>
     <div className="event-overview-steps" aria-label="Five-step cloud journey">
-      <article><b>1</b><img src="/images/aws-logo.png" alt="" /><div><strong>UNDERSTAND</strong><span>Cloud Computing + AWS</span></div></article>
-      <article><b>2</b><img src="/images/ec2.png" alt="" /><div><strong>PROVISION</strong><span>Amazon EC2</span></div></article>
-      <article><b>3</b><img src="/images/systemsmanager.png" alt="" /><div><strong>CONNECT SECURELY</strong><span>Systems Manager · Session Manager</span></div></article>
-      <article><b>4</b><span className="event-service-badge event-service-image"><img src="/images/web-server-icon.png" alt="" /></span><div><strong>MAKE IT REAL</strong><span>Web Server</span></div></article>
-      <article><b>5</b><img src="/images/cloudformation.png" alt="" /><div><strong>AUTOMATE</strong><span>CloudFormation + Infrastructure as Code</span></div></article>
+      <article><b>01</b><img src="/images/aws-logo.png" alt="" /><div><strong>UNDERSTAND</strong><span>Cloud Computing + AWS</span></div></article>
+      <article><b>02</b><img src="/images/ec2.png" alt="" /><div><strong>PROVISION</strong><span>Amazon EC2</span></div></article>
+      <article><b>03</b><img src="/images/systemsmanager.png" alt="" /><div><strong>CONNECT SECURELY</strong><span>Systems Manager · Session Manager</span></div></article>
+      <article><b>04</b><span className="event-service-badge event-service-image"><img src="/images/web-server-icon.png" alt="" /></span><div><strong>MAKE IT REAL</strong><span>Web Server</span></div></article>
+      <article><b>05</b><img src="/images/cloudformation.png" alt="" /><div><strong>AUTOMATE</strong><span>CloudFormation + Infrastructure as Code</span></div></article>
     </div>
   </div>
 </div></ChapterShell>
