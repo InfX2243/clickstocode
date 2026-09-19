@@ -54,13 +54,6 @@ export default function Home() {
             <div className="screen-1-glow absolute inset-0 pointer-events-none" style={{ opacity: 1 - entryFade * 0.85 }} />
             <div className="screen-1-grid absolute inset-0 pointer-events-none" style={{ opacity: 1 - entryFade }} />
             <div className="screen-1-content relative z-10 flex w-full max-w-6xl flex-col items-center text-center">
-              <div className="screen-1-topbar" style={{ '--hero-ui-exit': entryFade } as CSSProperties}>
-                <a className="screen-1-register" href="https://www.meetup.com/" target="_blank" rel="noreferrer">
-                  <img src="/images/meetup.png" alt="" aria-hidden="true" onError={(event) => { event.currentTarget.style.display = 'none'; }} />
-                  <span>REGISTER ON MEETUP</span>
-                  <b aria-hidden="true">↗</b>
-                </a>
-              </div>
               <div className="screen-1-brand" style={{ opacity: 1 - entryFade, transform: `translate3d(0, ${entryFade * -34}px, 0)` }}>
                 <a className="screen-1-logo-wrap" href="https://awssbg-mhssce.in" target="_blank" rel="noreferrer" aria-label="AWS Student Builder Group at M.H. Saboo Siddik College of Engineering">
                   <img src="/images/awssbg-logo.png" alt="AWS Student Builder Group MHSSCE" />
