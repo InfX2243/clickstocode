@@ -1,6 +1,6 @@
 import { useMemo, useRef, type ReactNode, type CSSProperties } from 'react';
 import CinematicChapter from '../components/CinematicChapter';
-import { Award, CalendarCheck, ClipboardCheck, Cloud, Code2, DoorOpen, GraduationCap, Laptop, MapPin, MessageCircle, Rocket, Server, ShieldCheck, Sparkles, Terminal, Users } from 'lucide-react';
+import { Award, BatteryCharging, CalendarCheck, ClipboardCheck, Cloud, Code2, DoorOpen, GraduationCap, IdCard, Laptop, MapPin, MessageCircle, Rocket, Server, ShieldCheck, Sparkles, Terminal, Users } from 'lucide-react';
 import { useElementScrollProgress, useReducedMotion } from '../lib/useScrollProgress';
 
 const chapters = 11;
@@ -341,15 +341,37 @@ export default function Home() {
               </div>
             </ChapterShell>
 
-            <ChapterShell eyebrow="THE LAB" title="What you actually build in the session." progress={chapterProgresses[7]} visibility={chapterVisibilities[7]}>
-              <div className="lab-story">
-                {[
-                  ['01','UNDERSTAND','AWS fundamentals','Start with the mental model.'],
-                  ['02','PROVISION','Amazon EC2','Create the compute resource.'],
-                  ['03','CONNECT','Session Manager','Access it securely.'],
-                  ['04','MAKE IT REAL','Web Server','Serve a customized page.'],
-                  ['05','AUTOMATE','CloudFormation / IaC','Turn the setup into a definition.'],
-                ].map(([n,t,s,d],i)=><article key={n} style={{'--scene-index':i,'--scene-progress':chapterProgresses[7]} as React.CSSProperties}><b>{n}</b><div><strong>{t}</strong><span>{s}</span><small>{d}</small></div></article>)}
+            <ChapterShell eyebrow="WHAT TO BRING" title="Bring the tools that let you build." progress={chapterProgresses[7]} visibility={chapterVisibilities[7]} className="requirements-chapter">
+              <div className="requirements-scene">
+                <div className="requirements-intro">
+                  <div className="requirements-badge"><Laptop size={16} strokeWidth={2} /><span>HANDS-ON WORKSHOP · LAPTOP REQUIRED</span></div>
+                  <p>This is a practical build session, so come prepared with the essentials. The laptop is the one non-negotiable.</p>
+                </div>
+
+                <div className="requirements-hero">
+                  <div className="requirements-laptop">
+                    <Laptop size={76} strokeWidth={1.25} aria-hidden="true" />
+                    <span>MANDATORY</span>
+                    <strong>YOUR LAPTOP</strong>
+                    <small>Bring it charged and ready to use.</small>
+                  </div>
+                  <div className="requirements-side">
+                    <article><BatteryCharging size={22} /><div><strong>LAPTOP CHARGER</strong><span>Keep your device powered through the hands-on lab.</span></div></article>
+                    <article><IdCard size={22} /><div><strong>COLLEGE DOMAIN ID</strong><span>Have the required college/institutional details ready.</span></div></article>
+                    <article><CalendarCheck size={22} /><div><strong>MEETUP CONFIRMATION</strong><span>Keep your registration confirmation accessible.</span></div></article>
+                  </div>
+                </div>
+
+                <div className="requirements-footer">
+                  <div><span>FREE TO ATTEND</span><strong>LIMITED TO 100 PARTICIPANTS</strong></div>
+                  <p>Any additional login or account requirements will be communicated before the event.</p>
+                </div>
+
+                <a className="event-overview-register requirements-register" href={MEETUP_URL} target="_blank" rel="noreferrer">
+                  <img src="/images/meetup-icon.png" alt="" aria-hidden="true" />
+                  <span>REGISTER ON MEETUP</span>
+                  <b aria-hidden="true">↗</b>
+                </a>
               </div>
             </ChapterShell>
 
