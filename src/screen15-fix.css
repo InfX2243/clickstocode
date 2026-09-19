@@ -77,3 +77,33 @@
     padding:20px 18px!important;
   }
 }
+
+
+/* Remove the opaque Screen 15 content slab so the same atmospheric story frame used by Screens 13–14 remains visible behind the copy. */
+.final-chapter{
+  background:transparent!important;
+}
+
+.final-chapter .final-build-hero{
+  padding:0!important;
+  border:0!important;
+  background:transparent!important;
+}
+
+.final-chapter .final-build-hero::before{
+  display:none!important;
+}
+
+.final-chapter .final-build-hero h3{
+  margin-top:12px;
+}
+
+.final-chapter .final-build-hero p{
+  margin-top:12px;
+}
+
+@media(max-width:520px){
+  .final-chapter .final-build-hero{
+    padding:0!important;
+  }
+}
