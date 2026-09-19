@@ -47,7 +47,7 @@ export default function Home() {
   const storyProgress = storyTimelineProgress(timelineProgress);
   const handoffChapterProgress = smoothstep(0.012, STORY_HANDOFF_END, timelineProgress);
   const chapterProgresses = useMemo(() => Array.from({ length: chapters }, (_, i) => i === 0 ? handoffChapterProgress : chapterProgress(storyProgress, i)), [storyProgress, handoffChapterProgress]);
-  const chapterVisibilities = useMemo(() => Array.from({ length: chapters }, (_, i) => i === 0 ? storyReveal : chapterVisibility(storyProgress, i)), [storyProgress, storyReveal]);
+  const chapterVisibilities = useMemo(() => Array.from({ length: chapters }, (_, i) => chapterVisibility(storyProgress, i)), [storyProgress]);
   const entryVisibility = 1 - entryFade;
   const finalProgress = ctaProgress(timelineProgress);
   const finalVisibility = finalProgress;
