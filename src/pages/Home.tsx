@@ -375,10 +375,25 @@ export default function Home() {
               </div>
             </ChapterShell>
 
-            <ChapterShell eyebrow="YOUR GUIDE" title="Meet the builder behind the session." progress={chapterProgresses[8]} visibility={chapterVisibilities[8]}>
-              <div className="mentor-story">
-                <div className="mentor-portrait"><img src="/images/speaker.png" alt="Afreen Bano" /></div>
-                <div className="mentor-copy"><span className="mono-label">INVITED MENTOR</span><h3>Ms. Afreen Bano</h3><p>DevOps Architect · AWS Community Leader · Cloud Security Specialist</p><div className="mentor-note"><span>THE FOCUS</span><strong>Practical cloud skills you can carry into your next project.</strong></div></div>
+            <ChapterShell eyebrow="YOUR GUIDE" title="Meet the builder behind the session." progress={chapterProgresses[8]} visibility={chapterVisibilities[8]} className="speaker-chapter">
+              <div className="speaker-scene">
+                <div className="speaker-portrait-card">
+                  <div className="speaker-portrait-frame"><img src="/images/speaker.png" alt="Afreen Bano" /></div>
+                  <span>YOUR MENTOR</span>
+                </div>
+                <div className="speaker-profile">
+                  <div className="speaker-badge"><Users size={16} strokeWidth={2} /><span>INVITED MENTOR · AWS COMMUNITY</span></div>
+                  <span className="mono-label">MS. AFREEN BANO</span>
+                  <h3>Build with context.<br /><em>Leave with confidence.</em></h3>
+                  <p className="speaker-role">DevOps Architect <b>·</b> AWS Community Leader <b>·</b> Cloud Security Specialist</p>
+                  <div className="speaker-focus-grid">
+                    <article><Cloud size={19} /><strong>CLOUD + AWS</strong><span>Learn the foundations behind the infrastructure you will build.</span></article>
+                    <article><Code2 size={19} /><strong>DEVOPS</strong><span>Connect practical building with repeatable engineering habits.</span></article>
+                    <article><ShieldCheck size={19} /><strong>CLOUD SECURITY</strong><span>Understand why secure access belongs in the workflow.</span></article>
+                  </div>
+                  <div className="speaker-note"><span>SESSION FOCUS</span><strong>Practical cloud skills you can carry into your next project.</strong></div>
+                  <div className="speaker-link-placeholder"><span>LINKEDIN</span><strong>PROFILE LINK TO BE ADDED</strong></div>
+                </div>
               </div>
             </ChapterShell>
 
