@@ -23,10 +23,12 @@ const smoothstep = (start: number, end: number, value: number) => {
 const chapterProgress = (story: number, index: number) => easeInOut(clamp01(story * chapters - index));
 const chapterVisibility = (story: number, index: number) => {
   const raw = story * chapters - index;
-  if (raw < -0.24 || raw > 1.24) return 0;
-  if (raw < 0) return smoothstep(-0.24, 0, raw);
-  if (raw <= 1) return 1;
-  return 1 - smoothstep(1, 1.24, raw);
+  // Give each chapter a clean, non-overlapping handoff window:
+  // enter -> hold -> exit, with the next chapter starting as the previous finishes.
+  if (raw <= 0 || raw >= 1.15) return 0;
+  if (raw < 0.15) return smoothstep(0, 0.15, raw);
+  if (raw <= 0.85) return 1;
+  return 1 - smoothstep(0.85, 1.15, raw);
 };
 const ctaProgress = (timeline: number) => smoothstep(CTA_START, 0.965, timeline);
 
