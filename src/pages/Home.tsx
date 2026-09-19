@@ -1,6 +1,6 @@
 import { useMemo, useRef, type ReactNode, type CSSProperties } from 'react';
 import CinematicChapter from '../components/CinematicChapter';
-import { AlarmClock, Award, BatteryCharging, CalendarCheck, CheckCircle2, ClipboardCheck, Cloud, Code2, DoorOpen, Gift, GraduationCap, IdCard, Laptop, MapPin, MessageCircle, Play, Rocket, Server, ShieldCheck, Sparkles, Terminal, Users } from 'lucide-react';
+import { AlarmClock, Award, BatteryCharging, CalendarCheck, CheckCircle2, ClipboardCheck, Cloud, Code2, DoorOpen, Gift, GraduationCap, HeartHandshake, IdCard, ImageIcon, Laptop, MapPin, MessageCircle, Play, Rocket, Server, ShieldCheck, Sparkles, Terminal, UserRound, Users } from 'lucide-react';
 import { useElementScrollProgress, useReducedMotion } from '../lib/useScrollProgress';
 
 const chapters = 11;
@@ -481,13 +481,30 @@ export default function Home() {
               </div>
             </ChapterShell>
 
-            <ChapterShell eyebrow="PRE-FLIGHT" title="Ready for the lab?" progress={chapterProgresses[10]} visibility={chapterVisibilities[10]}>
-              <div className="preflight-story">
-                <div className="preflight-status"><span className="status-dot" />LAB READY</div>
-                <div className="preflight-grid">
-                  {[['WHO','Students, builders, cloud-curious engineers'],['LEVEL','Beginner-friendly · no prior AWS expertise required'],['BRING','Laptop, charger, and curiosity'],['OUTCOME','A working cloud flow + your first IaC mindset']].map(([q,a],i)=><article key={q} style={{'--scene-index':i,'--scene-progress':chapterProgresses[10]} as React.CSSProperties}><b>{q}</b><span>{a}</span></article>)}
+            <ChapterShell eyebrow="MEET THE ORGANIZERS" title="Built by a community that wants you to build too." progress={chapterProgresses[10]} visibility={chapterVisibilities[10]} className="organizers-chapter">
+              <div className="organizers-scene">
+                <div className="organizers-intro">
+                  <div className="organizers-badge"><Users size={16} strokeWidth={2} /><span>COLLEGE · COMMUNITY · SUPPORT</span></div>
+                  <p>This workshop is made possible with the support of the college community and the people helping bring a hands-on cloud experience to campus.</p>
                 </div>
-                <p>Come ready to click, inspect, question, and then rewrite the same idea as code.</p>
+                <div className="organizers-main">
+                  <div className="organizers-college-card">
+                    <div className="organizers-logo-frame"><img src="/images/mhssce-logo.png" alt="M.H. Saboo Siddik College of Engineering" /></div>
+                    <span>HOST INSTITUTION</span>
+                    <strong>M.H. SABOO SIDDIK COLLEGE OF ENGINEERING</strong>
+                    <p>Supporting practical learning, student builders, and the next generation of technology talent.</p>
+                  </div>
+                  <div className="organizers-support">
+                    <div className="organizers-support-heading"><span className="mono-label">SPECIAL THANKS</span><HeartHandshake size={21} strokeWidth={1.8} aria-hidden="true" /></div>
+                    <article><div className="organizers-person-icon"><UserRound size={21} strokeWidth={1.8} /></div><div><span>COLLEGE LEADERSHIP</span><strong>PRINCIPAL</strong><small>Thank you for supporting the event and student learning.</small></div></article>
+                    <article><div className="organizers-person-icon"><Sparkles size={21} strokeWidth={1.8} /></div><div><span>EVENT SUPPORT</span><strong>DR. ZAINAB MIRZA</strong><small>With appreciation for the support behind this hands-on cloud experience.</small></div></article>
+                    <div className="organizers-photo-placeholder"><ImageIcon size={18} strokeWidth={1.7} /><span>OPTIONAL ORGANIZER / COLLEGE PHOTOS · TO BE ADDED</span></div>
+                  </div>
+                </div>
+                <div className="organizers-footer">
+                  <div><span>BUILT FOR STUDENTS</span><strong>From campus curiosity to practical cloud building.</strong></div>
+                  <a className="event-overview-register organizers-register" href={MEETUP_URL} target="_blank" rel="noreferrer"><img src="/images/meetup-icon.png" alt="" aria-hidden="true" /><span>REGISTER ON MEETUP</span><b aria-hidden="true">↗</b></a>
+                </div>
               </div>
             </ChapterShell>
           </div>
