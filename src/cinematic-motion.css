@@ -1054,3 +1054,22 @@
 @media(prefers-reduced-motion:reduce){
   .cinematic-story-frame,.cinematic-story-frame::before,.cinematic-story-frame::after{animation:none}
 }
+
+
+/* Keep the attendee CTA above the cinematic chapter hit-test layer. */
+.audience-chapter .audience-register{
+  position:relative;
+  z-index:20;
+  pointer-events:auto;
+  cursor:pointer;
+}
+
+/* Let the animated green atmosphere receive no pointer events and sit behind every chapter. */
+.cinematic-story-frame::before,
+.cinematic-story-frame::after{
+  pointer-events:none;
+}
+.cinematic-story-frame > .cinematic-chapter{
+  position:absolute;
+  z-index:5;
+}
