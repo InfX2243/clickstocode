@@ -3213,3 +3213,12 @@
 @media(prefers-reduced-motion:reduce){
   .final-build-scene,.final-build-facts article{transform:none!important;opacity:1!important}
 }
+
+/* Screen 15 sits beside the persistent story frame in the timeline DOM.
+   Keep it above that frame so its final CTA cannot be visually covered. */
+.cinematic-timeline-frame > .final-chapter{
+  z-index:6!important;
+}
+.cinematic-timeline-frame > .final-chapter .cinematic-chapter-inner{
+  z-index:7;
+}
