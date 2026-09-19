@@ -104,3 +104,6 @@
 @media(prefers-reduced-motion:reduce){
   .cinematic-story-frame::before,.cinematic-story-frame::after{animation:none}
 }
+
+/* Make the overview registration control interactive despite cinematic chapter hit-testing. */
+.event-overview-chapter .event-overview-register{position:relative;z-index:3;pointer-events:auto;cursor:pointer}
