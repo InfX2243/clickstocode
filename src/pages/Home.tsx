@@ -1,6 +1,6 @@
 import { useMemo, useRef, type ReactNode, type CSSProperties } from 'react';
 import CinematicChapter from '../components/CinematicChapter';
-import { Award, Cloud, Code2, GraduationCap, Laptop, Rocket, Server, ShieldCheck, Sparkles, Terminal, Users } from 'lucide-react';
+import { Award, ClipboardCheck, Cloud, Code2, DoorOpen, GraduationCap, Laptop, MapPin, MessageCircle, Rocket, Server, ShieldCheck, Sparkles, Terminal, Users } from 'lucide-react';
 import { useElementScrollProgress, useReducedMotion } from '../lib/useScrollProgress';
 
 const chapters = 11;
@@ -248,27 +248,45 @@ export default function Home() {
               </div>
             </ChapterShell>
 
-            <ChapterShell eyebrow="INFRASTRUCTURE AS CODE" title="A few lines can describe a whole machine." progress={chapterProgresses[4]} visibility={chapterVisibilities[4]}>
-              <div className="iac-story-scene">
-                <div className="iac-code-card">
-                  <div className="code-chrome"><span>main.tf</span><span>HCL</span></div>
-                  <pre><code>{`resource "aws_instance" "web" {
-  ami           = "ami-example"
-  instance_type = "t3.micro"
-
-  tags = {
-    Name = "clicks-to-code"
-  }
-}`}</code></pre>
+            <ChapterShell eyebrow="EVENT DAY" title="Arrive. Check in. Get ready to build." progress={chapterProgresses[4]} visibility={chapterVisibilities[4]} className="arrival-chapter">
+              <div className="arrival-scene">
+                <div className="arrival-intro">
+                  <div className="arrival-badge"><DoorOpen size={16} strokeWidth={2} /><span>YOUR FIRST 30 MINUTES</span></div>
+                  <p>Everything you need to know when you walk in — so you can spend the day building, not figuring out where to go.</p>
                 </div>
-                <div className="iac-anatomy">
-                  <span className="mono-label">WHAT THE CODE GIVES YOU</span>
+                <div className="arrival-hero">
+                  <div className="arrival-time-card">
+                    <span>09:30 AM</span><strong>CHECK-IN OPENS</strong><small>Arrive early. Get settled before the workshop begins.</small>
+                  </div>
+                  <div className="arrival-location-card">
+                    <MapPin size={24} strokeWidth={1.7} />
+                    <div><span>CHECK-IN LOCATION</span><strong>Registration Desk</strong><small>Ground Floor · Near the Staff Lift</small></div>
+                  </div>
+                </div>
+                <div className="arrival-steps" aria-label="Arrival checklist">
                   {[
-                    ['DEFINE','Describe the desired infrastructure.'],
-                    ['REVIEW','See the change before it happens.'],
-                    ['REPEAT','Use the same definition again.'],
-                  ].map(([t,d],i)=><article key={t} style={{'--scene-index':i,'--scene-progress':chapterProgresses[4]} as React.CSSProperties}><b>{t}</b><span>{d}</span></article>)}
+                    [ClipboardCheck, '01', 'CHECK IN', 'Complete attendance at the registration desk.'],
+                    [Cloud, '02', 'GET ACCESS', 'Receive or confirm your workshop and sandbox instructions.'],
+                    [Laptop, '03', 'SET UP', 'Prepare your laptop, browser, network, and required accounts.'],
+                    [MessageCircle, '04', 'CONNECT', 'Confirm access to the official WhatsApp group if required.'],
+                  ].map(([Icon, number, title, description], index) => {
+                    const ArrivalIcon = Icon as typeof ClipboardCheck;
+                    return <article className="arrival-step" key={number as string} style={{ '--arrival-index': index } as CSSProperties}>
+                      <div className="arrival-step-icon"><ArrivalIcon size={22} strokeWidth={1.8} /></div>
+                      <span>{number as string}</span><strong>{title as string}</strong><p>{description as string}</p>
+                    </article>;
+                  })}
                 </div>
+                <div className="arrival-window">
+                  <div><span>09:30 — 10:00</span><strong>CHECK-IN + SETUP WINDOW</strong></div>
+                  <i aria-hidden="true" /><div><span>10:00 AM</span><strong>WORKSHOP BEGINS</strong></div>
+                </div>
+                <div className="arrival-note">
+                  <span>FINAL AGENDA</span><p>Exact workshop timings and venue details will replace the temporary placeholders once confirmed.</p>
+                </div>
+                <a className="event-overview-register arrival-register" href={MEETUP_URL} target="_blank" rel="noreferrer">
+                  <img src="/images/meetup-icon.png" alt="" aria-hidden="true" /><span>REGISTER ON MEETUP</span><b aria-hidden="true">↗</b>
+                </a>
               </div>
             </ChapterShell>
 
