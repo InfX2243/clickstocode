@@ -30,3 +30,54 @@
   .screen-1-brand .screen-1-college-logo{width:68px;height:68px;padding:9px}
   .screen-1-brand .screen-1-logo-wrap{width:72px;height:72px;padding:7px}
 }
+
+
+/* Screen 2 polish: make the five workshop journey cards prominent and interactive. */
+.event-overview-steps { gap: clamp(12px, 1.35vw, 22px); }
+.event-overview-steps article {
+  min-height: clamp(118px, 10vw, 154px);
+  padding: clamp(18px, 1.7vw, 26px);
+  border: 1px solid rgba(255,255,255,.12);
+  border-radius: 18px;
+  background: linear-gradient(145deg, rgba(20,26,38,.96), rgba(13,18,28,.96));
+  box-shadow: 0 18px 50px rgba(0,0,0,.24);
+  transition: transform .35s cubic-bezier(.16,1,.3,1), border-color .35s ease, background .35s ease, box-shadow .35s ease;
+}
+.event-overview-steps article:hover {
+  transform: translateY(-7px) scale(1.015);
+  border-color: rgba(0,210,106,.62);
+  background: linear-gradient(145deg, rgba(21,34,30,.98), rgba(15,22,30,.98));
+  box-shadow: 0 22px 60px rgba(0,0,0,.38), 0 0 28px rgba(0,210,106,.12);
+}
+.event-overview-steps article > b {
+  font-size: clamp(18px, 1.7vw, 26px);
+  color: #fff;
+  transition: color .3s ease, transform .3s ease;
+}
+.event-overview-steps article:hover > b { color: #00d26a; transform: translateX(2px); }
+.event-overview-steps article img,
+.event-overview-steps article .event-service-badge {
+  width: clamp(42px, 3.5vw, 58px);
+  height: clamp(42px, 3.5vw, 58px);
+  transition: transform .35s cubic-bezier(.16,1,.3,1), filter .35s ease;
+}
+.event-overview-steps article:hover img,
+.event-overview-steps article:hover .event-service-badge {
+  transform: scale(1.1);
+  filter: drop-shadow(0 0 14px rgba(0,210,106,.2));
+}
+.event-overview-steps article div strong { font-size: clamp(14px, 1.2vw, 18px); }
+.event-overview-steps article div span { font-size: clamp(12px, 1vw, 15px); line-height: 1.35; }
+@media (max-width: 900px) {
+  .event-overview-steps article { min-height: 126px; padding: 18px; }
+}
+@media (max-width: 640px) {
+  .event-overview-steps article { min-height: 112px; padding: 15px; }
+  .event-overview-steps article:hover { transform: translateY(-4px); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .event-overview-steps article,
+  .event-overview-steps article > b,
+  .event-overview-steps article img,
+  .event-overview-steps article .event-service-badge { transition: none; }
+}
