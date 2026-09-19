@@ -54,9 +54,15 @@ export default function Home() {
             <div className="screen-1-glow absolute inset-0 pointer-events-none" style={{ opacity: 1 - entryFade * 0.85 }} />
             <div className="screen-1-grid absolute inset-0 pointer-events-none" style={{ opacity: 1 - entryFade }} />
             <div className="screen-1-content relative z-10 flex w-full max-w-6xl flex-col items-center text-center">
-              <div className="screen-1-topbar" style={{ opacity: 1 - entryFade, transform: `translate3d(0, ${entryFade * -24}px, 0)` }}>
-                <div className="screen-1-college-logo" aria-label="M.H. Saboo Siddik College of Engineering logo placeholder"><span>MHSSCE</span></div>
-                <a className="screen-1-register" href="https://www.meetup.com/" target="_blank" rel="noreferrer">REGISTER ON MEETUP <span aria-hidden="true">↗</span></a>
+              <div className="screen-1-topbar" style={{ '--hero-ui-exit': entryFade } as CSSProperties}>
+                <div className="screen-1-college-logo" aria-label="M.H. Saboo Siddik College of Engineering">
+                  <img src="/images/mhssce-logo.png" alt="M.H. Saboo Siddik College of Engineering" />
+                </div>
+                <a className="screen-1-register" href="https://www.meetup.com/" target="_blank" rel="noreferrer">
+                  <img src="/images/meetup.png" alt="" aria-hidden="true" />
+                  <span>REGISTER ON MEETUP</span>
+                  <b aria-hidden="true">↗</b>
+                </a>
               </div>
               <div className="screen-1-brand flex flex-col md:flex-row items-center justify-center gap-8 md:gap-12" style={{ opacity: 1 - entryFade, transform: `translate3d(0, ${entryFade * -34}px, 0)` }}>
                 <div className="screen-1-logo-wrap flex h-48 w-48 shrink-0 items-center justify-center rounded-[2rem] border border-[#00d26a]/30 bg-[#111621]/80 p-7 shadow-[0_0_90px_rgba(0,210,106,0.2)] backdrop-blur-md sm:h-56 sm:w-56 sm:p-9"><img src="/images/awssbg-logo.png" alt="AWS Student Builder Group MHSSCE" className="h-full w-full object-contain" /></div>
