@@ -1,6 +1,6 @@
 import { useMemo, useRef, type ReactNode, type CSSProperties } from 'react';
 import CinematicChapter from '../components/CinematicChapter';
-import { AlarmClock, Award, BatteryCharging, CalendarCheck, CheckCircle2, ClipboardCheck, Cloud, Code2, DoorOpen, Gift, GraduationCap, HeartHandshake, IdCard, ImageIcon, Laptop, MapPin, MessageCircle, Play, Rocket, Server, ShieldCheck, Sparkles, Terminal, UserRound, Users } from 'lucide-react';
+import { AlarmClock, Award, BatteryCharging, CalendarCheck, CheckCircle2, ClipboardCheck, Cloud, Code2, DoorOpen, Gift, GraduationCap, Handshake, HeartHandshake, IdCard, ImageIcon, Laptop, MapPin, MessageCircle, Play, Rocket, Server, ShieldCheck, Sparkles, Terminal, UserRound, Users } from 'lucide-react';
 import { useElementScrollProgress, useReducedMotion } from '../lib/useScrollProgress';
 
 const chapters = 11;
@@ -481,29 +481,47 @@ export default function Home() {
               </div>
             </ChapterShell>
 
-            <ChapterShell eyebrow="MEET THE ORGANIZERS" title="Built by a community that wants you to build too." progress={chapterProgresses[10]} visibility={chapterVisibilities[10]} className="organizers-chapter">
-              <div className="organizers-scene">
-                <div className="organizers-intro">
-                  <div className="organizers-badge"><Users size={16} strokeWidth={2} /><span>COLLEGE · COMMUNITY · SUPPORT</span></div>
-                  <p>This workshop is made possible with the support of the college community and the people helping bring a hands-on cloud experience to campus.</p>
+            <ChapterShell eyebrow="SPONSOR THE NEXT BUILD" title="Help put practical cloud skills in more hands." progress={chapterProgresses[10]} visibility={chapterVisibilities[10]} className="sponsor-chapter">
+              <div className="sponsor-scene">
+                <div className="sponsor-intro">
+                  <div className="sponsor-badge"><Handshake size={16} strokeWidth={2} /><span>OPEN TO INDUSTRY · COMMUNITY · CLOUD PARTNERS</span></div>
+                  <p>We welcome companies, technology and cloud organizations, professionals, community groups, and industry partners who want to support student builders.</p>
                 </div>
-                <div className="organizers-main">
-                  <div className="organizers-college-card">
-                    <div className="organizers-logo-frame"><img src="/images/mhssce-logo.png" alt="M.H. Saboo Siddik College of Engineering" /></div>
-                    <span>HOST INSTITUTION</span>
-                    <strong>M.H. SABOO SIDDIK COLLEGE OF ENGINEERING</strong>
-                    <p>Supporting practical learning, student builders, and the next generation of technology talent.</p>
+
+                <div className="sponsor-main">
+                  <div className="sponsor-hero-card">
+                    <div className="sponsor-hero-icon"><Handshake size={34} strokeWidth={1.5} /></div>
+                    <span>PARTNERSHIP OPPORTUNITY</span>
+                    <strong>Support the next generation of cloud builders.</strong>
+                    <p>Your support can help make practical, accessible cloud learning possible for students and emerging builders.</p>
+                    <div className="sponsor-question">WANT TO SUPPORT THE NEXT GENERATION OF CLOUD BUILDERS?</div>
                   </div>
-                  <div className="organizers-support">
-                    <div className="organizers-support-heading"><span className="mono-label">SPECIAL THANKS</span><HeartHandshake size={21} strokeWidth={1.8} aria-hidden="true" /></div>
-                    <article><div className="organizers-person-icon"><UserRound size={21} strokeWidth={1.8} /></div><div><span>COLLEGE LEADERSHIP</span><strong>PRINCIPAL</strong><small>Thank you for supporting the event and student learning.</small></div></article>
-                    <article><div className="organizers-person-icon"><Sparkles size={21} strokeWidth={1.8} /></div><div><span>EVENT SUPPORT</span><strong>DR. ZAINAB MIRZA</strong><small>With appreciation for the support behind this hands-on cloud experience.</small></div></article>
-                    <div className="organizers-photo-placeholder"><ImageIcon size={18} strokeWidth={1.7} /><span>OPTIONAL ORGANIZER / COLLEGE PHOTOS · TO BE ADDED</span></div>
+
+                  <div className="sponsor-options">
+                    <span className="mono-label">WAYS TO SUPPORT</span>
+                    {[
+                      [Cloud, 'CLOUD + TECHNOLOGY', 'Support hands-on access to modern cloud tools and learning.'],
+                      [Users, 'COMMUNITY', 'Help connect students with practitioners and builder communities.'],
+                      [Gift, 'EVENT SUPPORT', 'Contribute to the workshop experience, learning materials, or swag.'],
+                      [Rocket, 'INDUSTRY PARTNERSHIP', 'Bring mentorship, collaboration, or opportunities closer to campus.'],
+                    ].map(([Icon, title, description], index) => {
+                      const SponsorIcon = Icon as typeof Cloud;
+                      return (
+                        <article key={title as string} style={{ '--sponsor-index': index } as CSSProperties}>
+                          <SponsorIcon size={20} strokeWidth={1.8} />
+                          <div><strong>{title as string}</strong><p>{description as string}</p></div>
+                        </article>
+                      );
+                    })}
                   </div>
                 </div>
-                <div className="organizers-footer">
-                  <div><span>BUILT FOR STUDENTS</span><strong>From campus curiosity to practical cloud building.</strong></div>
-                  <a className="event-overview-register organizers-register" href={MEETUP_URL} target="_blank" rel="noreferrer"><img src="/images/meetup-icon.png" alt="" aria-hidden="true" /><span>REGISTER ON MEETUP</span><b aria-hidden="true">↗</b></a>
+
+                <div className="sponsor-contact">
+                  <div>
+                    <span>GET IN TOUCH</span>
+                    <strong>SPONSORSHIP CONTACT · TO BE ADDED</strong>
+                  </div>
+                  <span className="sponsor-placeholder">CONTACT DETAILS PENDING</span>
                 </div>
               </div>
             </ChapterShell>
