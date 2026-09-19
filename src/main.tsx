@@ -3,6 +3,7 @@ import Home from './pages/Home';
 import './styles.css';
 import './cinematic-scroll.css';
 import './cinematic-motion.css';
+import './screen15-fix.css';
 
 function App() {
   return (
