@@ -55,11 +55,6 @@
   background:linear-gradient(145deg,rgba(0,210,106,.025),rgba(8,11,19,.66));
 }
 
-.final-build-footer{
-  margin-top:11px;
-  padding:13px 15px;
-  background:rgba(0,210,106,.045);
-}
 
 @media(max-width:760px){
   .final-chapter .cinematic-chapter-title{
@@ -115,4 +110,24 @@
 .final-chapter .cinematic-chapter-inner,
 .final-chapter .final-build-scene{
   background:transparent!important;
+}
+
+
+/* Screen 15 is the terminal scene: animate it in, then hold the complete content in place. */
+.final-chapter{
+  opacity:var(--scene-enter)!important;
+  transform:scale(calc(.985 + var(--scene-enter) * .015))!important;
+  visibility:visible!important;
+}
+.final-chapter .cinematic-chapter-eyebrow{
+  transform:translate3d(0,calc((1 - var(--scene-enter)) * 26px),0)!important;
+  opacity:var(--scene-enter)!important;
+}
+.final-chapter .cinematic-chapter-title{
+  transform:translate3d(calc((1 - var(--scene-enter)) * 34px),calc((1 - var(--scene-enter)) * 18px),0)!important;
+  opacity:var(--scene-enter)!important;
+}
+.final-chapter .final-build-scene{
+  opacity:var(--scene-enter)!important;
+  transform:translate3d(0,calc((1 - var(--scene-enter)) * 30px),0)!important;
 }
