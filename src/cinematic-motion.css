@@ -2881,3 +2881,182 @@
 @media(prefers-reduced-motion:reduce){
   .organizers-scene{transform:none!important;opacity:1!important}
 }
+
+/* Screen 13: frame sponsorship as a clear partnership opportunity, without inventing contact details. */
+.sponsor-chapter .cinematic-chapter-inner{
+  padding-top:clamp(26px,3vw,44px);
+  padding-bottom:clamp(26px,3vw,44px);
+  justify-content:center;
+}
+.sponsor-scene{
+  width:min(1160px,100%);
+  margin:0 auto;
+  opacity:min(var(--scene-enter),var(--scene-exit));
+  transform:translate3d(0,calc((1 - var(--scene-enter)) * 28px + (1 - var(--scene-exit)) * -24px),0);
+  will-change:opacity,transform;
+}
+.sponsor-intro{
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap:28px;
+}
+.sponsor-badge{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  color:#00d26a;
+  font:700 10px/1 'Amazon Ember Mono',monospace;
+  letter-spacing:.14em;
+  white-space:nowrap;
+}
+.sponsor-intro p{
+  margin:0;
+  max-width:780px;
+  color:rgba(255,255,255,.64);
+  font-size:clamp(14px,1.2vw,18px);
+  line-height:1.45;
+}
+.sponsor-main{
+  display:grid;
+  grid-template-columns:1.05fr .95fr;
+  gap:12px;
+  margin-top:clamp(20px,2.5vw,30px);
+}
+.sponsor-hero-card{
+  min-height:335px;
+  padding:22px;
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-end;
+  border:1px solid rgba(0,210,106,.22);
+  background:
+    radial-gradient(circle at 72% 24%,rgba(0,210,106,.1),transparent 34%),
+    linear-gradient(145deg,rgba(0,210,106,.06),rgba(8,11,19,.8) 72%);
+}
+.sponsor-hero-icon{
+  width:64px;
+  height:64px;
+  display:grid;
+  place-items:center;
+  margin-bottom:auto;
+  border:1px solid rgba(0,210,106,.25);
+  border-radius:15px;
+  color:#00d26a;
+  background:rgba(0,210,106,.05);
+  box-shadow:0 0 30px rgba(0,210,106,.06);
+}
+.sponsor-hero-card>span{
+  margin-top:28px;
+  color:#00d26a;
+  font:700 9px/1 'Amazon Ember Mono',monospace;
+  letter-spacing:.14em;
+}
+.sponsor-hero-card>strong{
+  margin-top:8px;
+  max-width:570px;
+  color:#fff;
+  font-size:clamp(24px,2.5vw,36px);
+  line-height:1.05;
+  letter-spacing:-.025em;
+}
+.sponsor-hero-card>p{
+  margin:10px 0 0;
+  max-width:560px;
+  color:rgba(255,255,255,.44);
+  font-size:10px;
+  line-height:1.48;
+}
+.sponsor-question{
+  margin-top:15px;
+  padding:10px 11px;
+  border-left:2px solid #00d26a;
+  background:rgba(0,210,106,.045);
+  color:#fff;
+  font:700 8px/1.4 'Amazon Ember Mono',monospace;
+  letter-spacing:.08em;
+}
+.sponsor-options{
+  padding:20px;
+  border:1px solid rgba(255,255,255,.09);
+  background:rgba(8,11,19,.58);
+}
+.sponsor-options>.mono-label{
+  display:block;
+  margin-bottom:10px;
+}
+.sponsor-options article{
+  --i:var(--sponsor-index,0);
+  display:grid;
+  grid-template-columns:42px 1fr;
+  align-items:center;
+  gap:12px;
+  min-height:69px;
+  padding:10px 11px;
+  border-top:1px solid rgba(255,255,255,.07);
+  opacity:clamp(.12,calc(var(--scene-enter) - var(--i) * .09),1);
+  transform:translate3d(0,calc((1 - var(--scene-enter)) * (18px + var(--i) * 5px)),0);
+  will-change:opacity,transform;
+}
+.sponsor-options article svg{color:#00d26a}
+.sponsor-options article>div{
+  display:grid;
+  gap:4px;
+}
+.sponsor-options article strong{
+  color:#fff;
+  font-size:10px;
+  letter-spacing:.075em;
+}
+.sponsor-options article p{
+  margin:0;
+  color:rgba(255,255,255,.4);
+  font-size:9px;
+  line-height:1.4;
+}
+.sponsor-contact{
+  margin-top:12px;
+  padding:14px 16px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:18px;
+  border-left:2px solid #00d26a;
+  background:rgba(0,210,106,.045);
+}
+.sponsor-contact>div{
+  display:grid;
+  gap:5px;
+}
+.sponsor-contact>div span{
+  color:#00d26a;
+  font:700 9px/1 'Amazon Ember Mono',monospace;
+  letter-spacing:.12em;
+}
+.sponsor-contact>div strong{
+  color:#fff;
+  font-size:11px;
+  letter-spacing:.06em;
+}
+.sponsor-placeholder{
+  padding:7px 9px;
+  border:1px dashed rgba(255,255,255,.18);
+  color:rgba(255,255,255,.32);
+  font:8px/1 'Amazon Ember Mono',monospace;
+  letter-spacing:.08em;
+}
+@media(max-width:780px){
+  .sponsor-intro{display:grid;gap:10px}
+  .sponsor-main{grid-template-columns:1fr}
+  .sponsor-hero-card{min-height:300px}
+  .sponsor-contact{align-items:flex-start;flex-direction:column;gap:9px}
+}
+@media(max-width:520px){
+  .sponsor-hero-card{min-height:270px;padding:18px}
+  .sponsor-options{padding:16px}
+  .sponsor-options article{grid-template-columns:38px 1fr;padding:10px 4px}
+  .sponsor-placeholder{white-space:normal;line-height:1.3}
+}
+@media(prefers-reduced-motion:reduce){
+  .sponsor-scene,.sponsor-options article{transform:none!important;opacity:1!important}
+}
