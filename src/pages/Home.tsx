@@ -342,14 +342,15 @@ export default function Home() {
 
                 <div className="day-timeline" aria-label="Event day timeline">
                   {[
-                    [AlarmClock, '09:30', 'CHECK-IN OPENS', 'Registration desk opens on the Ground Floor, near the Staff Lift.'],
-                    [ClipboardCheck, '09:30–10:00', 'REGISTRATION + SETUP', 'Attendance, sandbox access, laptop and browser preparation.'],
-                    [Play, '10:00', 'WELCOME + INTRO', 'Kick off the session and get oriented for the workshop.'],
-                    [Cloud, 'NEXT', 'AWS FUNDAMENTALS', 'Build the cloud foundation before touching the infrastructure.'],
-                    [Laptop, 'NEXT', 'HANDS-ON LAB', 'Work through AWS → EC2 → Session Manager → Web Server → IaC.'],
-                    [Gift, 'NEXT', 'TRIVIA + SWAG', 'Take part in event trivia and opportunities to win swag.'],
-                    [CheckCircle2, 'NEXT', 'COMPLETION', 'Finish the hands-on experience and close out the workshop.'],
-                    [Award, 'FINAL', 'CERTIFICATE', 'Receive your certificate after successfully completing the workshop.'],
+                    [AlarmClock, '09:30', 'CHECK-IN OPENS', 'Registration Desk opens on the Ground Floor, near the Staff Lift.'],
+                    [ClipboardCheck, '09:30–09:50', 'QR CHECK-IN', 'Show your Meetup QR ticket and complete event-day check-in.'],
+                    [Cloud, '09:50–09:55', 'WAITING ROOM + LEARNER LAB', 'Confirm your AWS Academy Learner Lab resource and access before entering the main venue.'],
+                    [DoorOpen, '≈09:55', 'MOVE TO SEMINAR HALL', 'Participants begin moving to the 3rd Floor, Seminar Hall, MHSSCE.'],
+                    [Play, '10:00', 'PROGRAM BEGINS', 'Welcome, introductions, felicitations, Principal and faculty addresses, then handover to the speaker.'],
+                    [Laptop, 'NEXT', 'SPEAKER-LED HANDS-ON SESSION', 'Afreen Bano leads the technical session according to her session plan.'],
+                    [Gift, 'LATE MORNING', 'TRIVIA + PRIZES', 'Take part in trivia, followed by prize distribution.'],
+                    [HeartHandshake, 'AFTER TRIVIA', 'VOTE OF THANKS + FEEDBACK', 'Close the program with a vote of thanks, then share the event feedback form.'],
+                    [Award, 'BY NEXT DAY', 'DIGITAL CERTIFICATE', 'Every participant who attends receives a digital certificate by the next day via their registered email.'],
                   ].map(([Icon, time, title, description], index) => {
                     const TimelineIcon = Icon as typeof AlarmClock;
                     return (
