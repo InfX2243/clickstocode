@@ -1168,3 +1168,62 @@
   .cinematic-story-frame{animation:none!important}
   .cinematic-story-frame::before,.cinematic-story-frame::after{animation:none!important}
 }
+
+
+/* Shared solid Meetup CTA: one visual language on Screens 2 and 3. */
+.event-overview-register{
+  min-height:52px!important;
+  padding:13px 19px!important;
+  border:1px solid #00d26a!important;
+  border-radius:10px!important;
+  background:#00d26a!important;
+  color:#07120d!important;
+  box-shadow:0 12px 34px rgba(0,210,106,.18),inset 0 -1px 0 rgba(0,0,0,.14)!important;
+  font-weight:800!important;
+}
+.event-overview-register img{filter:brightness(0) saturate(100%);opacity:.9}
+.event-overview-register b{color:#07120d!important}
+.event-overview-register:hover{
+  transform:translateY(-3px);
+  background:#00d26a!important;
+  border-color:#00d26a!important;
+  box-shadow:0 16px 42px rgba(0,210,106,.28),inset 0 -1px 0 rgba(0,0,0,.14)!important;
+}
+.event-overview-register:focus-visible{outline:2px solid #fff;outline-offset:4px}
+
+/* Screen 3: illustrative audience cards instead of dense text lists. */
+.audience-chapter .cinematic-chapter-inner{padding-top:clamp(30px,3.8vw,52px);padding-bottom:clamp(30px,3.8vw,52px)}
+.audience-scene{width:min(1280px,100%);margin:0 auto}
+.audience-hero-copy{display:grid;gap:10px;max-width:820px}
+.audience-kicker{display:inline-flex;align-items:center;gap:8px;color:#00d26a;font:700 10px/1 'Amazon Ember Mono',monospace;letter-spacing:.13em}
+.audience-hero-copy p{margin:0;color:rgba(255,255,255,.7);font-size:clamp(16px,1.35vw,20px);line-height:1.4}
+.audience-hero-copy p strong{color:#fff}
+.audience-panel{margin-top:clamp(18px,2vw,28px);padding:clamp(18px,1.7vw,25px);border:1px solid rgba(255,255,255,.09);background:rgba(8,11,19,.56);box-shadow:inset 0 0 40px rgba(0,210,106,.018)}
+.audience-why-panel{margin-top:14px}
+.audience-panel-heading{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:14px;color:rgba(255,255,255,.5)}
+.audience-panel-heading>div{display:grid;gap:5px}
+.audience-panel-heading h3{margin:0;color:#fff;font-size:clamp(17px,1.5vw,21px);letter-spacing:-.02em}
+.audience-panel-heading>svg{color:#00d26a;flex:0 0 auto}
+.audience-audience-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.audience-tile{position:relative;min-height:152px;padding:16px;display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-end;overflow:hidden;border:1px solid rgba(0,210,106,.16);background:linear-gradient(145deg,rgba(0,210,106,.055),rgba(8,11,19,.66));opacity:var(--scene-enter);transform:translate3d(0,calc((1 - var(--scene-enter)) * (20px + var(--audience-index) * 5px)),0);will-change:opacity,transform}
+.audience-tile::before{content:'';position:absolute;inset:auto -30% -55% auto;width:130px;height:130px;border-radius:50%;background:rgba(0,210,106,.09);filter:blur(22px)}
+.audience-tile-icon{position:absolute;top:15px;left:15px;width:40px;height:40px;display:grid;place-items:center;border:1px solid rgba(0,210,106,.25);border-radius:10px;color:#00d26a;background:rgba(0,210,106,.055)}
+.audience-tile-number{position:absolute;top:18px;right:16px;color:rgba(255,255,255,.25);font:10px 'Amazon Ember Mono',monospace}
+.audience-tile strong{position:relative;color:#fff;font-size:14px;letter-spacing:-.01em}
+.audience-tile p{position:relative;margin:5px 0 0;color:rgba(255,255,255,.47);font-size:11px;line-height:1.35}
+.audience-benefit-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.audience-benefit{display:flex;align-items:flex-start;gap:11px;padding:14px;border-top:1px solid rgba(255,255,255,.08);opacity:var(--scene-enter);transform:translate3d(0,calc((1 - var(--scene-enter)) * (18px + var(--benefit-index) * 5px)),0);will-change:opacity,transform}
+.audience-benefit>svg{color:#00d26a;flex:0 0 auto;margin-top:2px}
+.audience-benefit strong{color:#fff;font-size:12px}
+.audience-benefit p{margin:4px 0 0;color:rgba(255,255,255,.45);font-size:10px;line-height:1.35}
+.audience-reassurance{margin-top:14px!important}
+@media(max-width:980px){
+  .audience-audience-grid,.audience-benefit-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .audience-tile{min-height:135px}
+}
+@media(max-width:620px){
+  .audience-audience-grid,.audience-benefit-grid{grid-template-columns:1fr}
+  .audience-tile{min-height:125px}
+  .audience-panel{padding:15px}
+  .audience-reassurance{margin-top:12px!important}
+}
