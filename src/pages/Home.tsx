@@ -56,10 +56,10 @@ export default function Home() {
             <div className="screen-1-content relative z-10 flex w-full max-w-6xl flex-col items-center text-center">
               <div className="screen-1-topbar" style={{ '--hero-ui-exit': entryFade } as CSSProperties}>
                 <div className="screen-1-college-logo" aria-label="M.H. Saboo Siddik College of Engineering">
-                  <img src="/images/mhssce-logo.png" alt="M.H. Saboo Siddik College of Engineering" />
+                  <img src="/images/mhssce-logo.png" alt="M.H. Saboo Siddik College of Engineering" onError={(event) => { event.currentTarget.style.display = 'none'; }} />
                 </div>
                 <a className="screen-1-register" href="https://www.meetup.com/" target="_blank" rel="noreferrer">
-                  <img src="/images/meetup.png" alt="" aria-hidden="true" />
+                  <img src="/images/meetup.png" alt="" aria-hidden="true" onError={(event) => { event.currentTarget.style.display = 'none'; }} />
                   <span>REGISTER ON MEETUP</span>
                   <b aria-hidden="true">↗</b>
                 </a>
