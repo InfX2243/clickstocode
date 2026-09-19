@@ -202,14 +202,49 @@ export default function Home() {
               </div>
             </ChapterShell>
 
-            <ChapterShell eyebrow="THE TURN" title="Stop describing clicks. Start declaring the result." progress={chapterProgresses[3]} visibility={chapterVisibilities[3]}>
-              <div className="declaration-scene">
-                <div className="declaration-copy"><span className="mono-label">THE MINDSET SHIFT</span><p>You define what the infrastructure should look like. The tooling works out the changes needed to get there.</p></div>
-                <div className="declaration-compare">
-                  <article><span>BEFORE</span><code>click → configure → repeat</code><small>imperative, manual, easy to drift</small></article>
-                  <i aria-hidden="true">→</i>
-                  <article className="declaration-after"><span>AFTER</span><code>code → plan → apply</code><small>declarative, reviewable, repeatable</small></article>
+            <ChapterShell eyebrow="THE HANDS-ON LAB" title="You are not just watching. You are building." progress={chapterProgresses[3]} visibility={chapterVisibilities[3]} className="lab-chapter">
+              <div className="hands-on-scene">
+                <div className="hands-on-intro">
+                  <div className="hands-on-badge"><Laptop size={16} strokeWidth={2} /><span>BUILD IT YOURSELF</span></div>
+                  <p>Inside the provided sandbox environment, you will move through a real cloud workflow — from compute to a working web server, then toward automation.</p>
                 </div>
+
+                <div className="hands-on-flow" aria-label="Hands-on workshop flow">
+                  {[
+                    [Cloud, '01', 'AWS', 'Start with the cloud foundation', '/images/aws-logo.png'],
+                    [Server, '02', 'EC2', 'Provision your cloud server', '/images/ec2.png'],
+                    [ShieldCheck, '03', 'SESSION MANAGER', 'Connect securely without exposing SSH', '/images/systemsmanager.png'],
+                    [Laptop, '04', 'WEB SERVER', 'Host a customized page', '/images/web-server-icon.png'],
+                    [Code2, '05', 'INFRASTRUCTURE AS CODE', 'Turn the working setup into a definition', '/images/cloudformation.png'],
+                  ].map(([Icon, number, title, description, image], index) => {
+                    const FlowIcon = Icon as typeof Cloud;
+                    return (
+                      <article className="hands-on-step" key={number as string} style={{ '--hands-on-index': index } as CSSProperties}>
+                        <div className="hands-on-step-top">
+                          <span>{number as string}</span>
+                          <div className="hands-on-visual">
+                            {image ? <img src={image as string} alt="" /> : <FlowIcon size={25} strokeWidth={1.7} />}
+                          </div>
+                        </div>
+                        <strong>{title as string}</strong>
+                        <p>{description as string}</p>
+                        {index < 4 && <i aria-hidden="true">→</i>}
+                      </article>
+                    );
+                  })}
+                </div>
+
+                <div className="hands-on-sandbox">
+                  <div className="hands-on-sandbox-icon"><Terminal size={20} /></div>
+                  <div><span>SANDBOX ENVIRONMENT</span><strong>Provided for the workshop</strong><p>Final sandbox access instructions will be added here once confirmed.</p></div>
+                  <span className="hands-on-placeholder">DETAILS PENDING</span>
+                </div>
+
+                <a className="event-overview-register hands-on-register" href={MEETUP_URL} target="_blank" rel="noreferrer">
+                  <img src="/images/meetup-icon.png" alt="" aria-hidden="true" />
+                  <span>REGISTER ON MEETUP</span>
+                  <b aria-hidden="true">↗</b>
+                </a>
               </div>
             </ChapterShell>
 
