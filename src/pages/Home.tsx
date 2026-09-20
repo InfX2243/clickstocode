@@ -356,9 +356,7 @@ export default function Home() {
                   <span>The Meetup event will be published when this website is ready for deployment.</span>
                 </div>
 
-                <div className="event-overview-register event-overview-register-disabled registration-register" aria-label={MEETUP_STATUS}>
-                  <img src="/images/meetup-icon.png" alt="" aria-hidden="true" />
-                  <span>{MEETUP_STATUS}</span><b aria-hidden="true">·</b></div>
+
               </div>
             </ChapterShell>
 
