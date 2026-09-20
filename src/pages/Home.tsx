@@ -160,9 +160,16 @@ export default function Home() {
 
                 <div className="audience-reassurance">
                   <div><span>NO PRIOR AWS EXPERIENCE REQUIRED</span><strong>Bring your questions, your laptop, and the willingness to build.</strong></div>
-                  <div className="event-overview-register event-overview-register-disabled audience-register" aria-label={MEETUP_STATUS}>
+                  <button
+                    type="button"
+                    className="event-overview-register audience-register"
+                    aria-label="Open Meetup"
+                    onClick={() => window.open('https://www.meetup.com/', '_blank', 'noopener,noreferrer')}
+                  >
                     <img src="/images/meetup-icon.png" alt="" aria-hidden="true" />
-                    <span>{MEETUP_STATUS}</span><b aria-hidden="true">·</b></div>
+                    <span>OPEN MEETUP</span>
+                    <b aria-hidden="true">↗</b>
+                  </button>
                 </div>
               </div>
             </ChapterShell>
