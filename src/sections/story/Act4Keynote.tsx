@@ -7,7 +7,7 @@ export default function Act4Keynote() {
     <StorySection
       id="story-keynote"
       actNumber="4"
-      actLabel="THE KEYNOTE VOICE"
+      actLabel="SPEAKER"
       eyebrow="INVITED INDUSTRY LEADER"
     >
       <div className="space-y-16 sm:space-y-24">
@@ -29,7 +29,7 @@ export default function Act4Keynote() {
             <div className="relative aspect-[3/4] sm:aspect-[4/5] rounded-xl overflow-hidden bg-[#0c1017] border border-white/[0.08] shadow-2xl">
               <img
                 src="/images/speaker.png"
-                alt="Ms. Afreen Bano"
+                alt="Er. Afreen Bano"
                 className="w-full h-full object-cover object-top filter contrast-[1.03] transition-all duration-700 ease-out group-hover:scale-[1.02]"
               />
               {/* Subtle edge anchoring only at the base, never obscuring the face */}
@@ -39,7 +39,7 @@ export default function Act4Keynote() {
             {/* Editorial Caption Underneath */}
             <div className="pt-4 flex flex-wrap items-baseline justify-between gap-2 border-b border-white/[0.06] pb-3">
               <div>
-                <span className="text-lg font-medium text-white">Ms. Afreen Bano</span>
+                <span className="text-lg font-medium text-white">Er. Afreen Bano</span>
                 <span className="text-sm text-[#8e95a5] ml-3">Lead · HerTechEra (Pune Chapter)</span>
               </div>
               <span className="text-xs font-mono text-[#00d26a] uppercase">INVITED MENTOR</span>

@@ -31,11 +31,10 @@ export default function EditorialNav() {
   return (
     <>
       <header
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-          scrolled
-            ? 'bg-[#080b11]/85 backdrop-blur-xl border-b border-white/[0.07] py-3.5 shadow-2xl shadow-black/40'
-            : 'bg-transparent py-5'
-        }`}
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled
+          ? 'bg-[#080b11]/85 backdrop-blur-xl border-b border-white/[0.07] py-3.5 shadow-2xl shadow-black/40'
+          : 'bg-transparent py-5'
+          }`}
       >
         <div className="max-w-7xl mx-auto px-5 sm:px-8 flex items-center justify-between">
           {/* Brand Monogram */}
@@ -52,10 +51,6 @@ export default function EditorialNav() {
               <div className="flex items-center gap-2">
                 <span className="text-white font-medium text-sm sm:text-base tracking-tight group-hover:text-[#00d26a] transition-colors">
                   AWS From Clicks to Code
-                </span>
-                <span className="hidden md:inline-flex items-center gap-1 text-[10px] font-mono uppercase px-2 py-0.5 rounded-full bg-white/[0.05] border border-white/[0.08] text-white/70">
-                  <Radio size={10} className="text-[#00d26a] animate-pulse" />
-                  MHSSCE
                 </span>
               </div>
               <span className="text-[11px] font-mono uppercase tracking-widest text-[#8e95a5] hidden sm:block">
@@ -155,35 +150,35 @@ export default function EditorialNav() {
               className="text-left text-2xl font-light text-white hover:text-[#00d26a] transition-colors"
             >
               <span className="font-mono text-xs text-[#00d26a] mr-3">1</span>
-              The Manifesto
+              Story
             </button>
             <button
               onClick={() => scrollTo('story-odyssey')}
               className="text-left text-2xl font-light text-white hover:text-[#00d26a] transition-colors"
             >
               <span className="font-mono text-xs text-[#00d26a] mr-3">2</span>
-              The Technical Journey
+              Tech
             </button>
             <button
               onClick={() => scrollTo('story-keynote')}
               className="text-left text-2xl font-light text-white hover:text-[#00d26a] transition-colors"
             >
               <span className="font-mono text-xs text-[#00d26a] mr-3">3</span>
-              The Keynote Voice
+              Speaker
             </button>
             <button
               onClick={() => scrollTo('story-blueprint')}
               className="text-left text-2xl font-light text-white hover:text-[#00d26a] transition-colors"
             >
               <span className="font-mono text-xs text-[#00d26a] mr-3">4</span>
-              Event Day Blueprint
+              Schedule
             </button>
             <button
               onClick={() => scrollTo('story-inquiries')}
               className="text-left text-2xl font-light text-white hover:text-[#00d26a] transition-colors"
             >
               <span className="font-mono text-xs text-[#00d26a] mr-3">5</span>
-              Inquiries & FAQ
+              FAQ
             </button>
           </div>
 

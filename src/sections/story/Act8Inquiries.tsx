@@ -69,7 +69,7 @@ export default function Act8Inquiries() {
     <StorySection
       id="story-inquiries"
       actNumber="8"
-      actLabel="INQUIRIES & FINAL CALL"
+      actLabel="FAQ"
       eyebrow="FREQUENTLY ASKED QUESTIONS"
     >
       <div className="space-y-24 sm:space-y-36">

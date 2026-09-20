@@ -291,7 +291,7 @@ Also remind attendees to bring:
 Use the provided speaker photograph.
 
 ### Speaker
-**Ms. Afreen Bano**
+**Er. Afreen Bano**
 
 Current positioning:
 - DevOps Architect

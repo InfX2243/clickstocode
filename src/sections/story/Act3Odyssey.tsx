@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import StorySection from '../../components/editorial/StorySection';
-import { Cloud, Server, ShieldCheck, Globe, Code2, ExternalLink, CheckCircle2, ChevronRight, Terminal } from 'lucide-react';
-import { LEARNER_LAB_GUIDE_URL } from '../../constants/event';
+import { Cloud, Server, ShieldCheck, Globe, Code2, Phone, CheckCircle2, ChevronRight, Terminal } from 'lucide-react';
 
 interface TechnicalStage {
   id: string;
@@ -85,11 +84,11 @@ const STAGES: TechnicalStage[] = [
 ];
 
 const LAB_STEPS = [
-  { step: '6', title: 'Accept Course Invitation', desc: 'Open your AWS Academy student invitation email and accept enrollment.' },
-  { step: '7', title: 'Open Learner Lab Workspace', desc: 'Navigate to the course module list and locate the assigned Learner Lab.' },
-  { step: '8', title: 'Start Lab Environment', desc: 'Click "Start Lab" and monitor the AWS badge until it shifts from red to green.' },
-  { step: '9', title: 'Launch AWS Management Console', desc: 'Click the active AWS button to open the real cloud console sandbox.' },
-  { step: '10', title: 'Verify Active Lab Session', desc: 'Confirm session timer is active and you have access before the workshop begins.' },
+  { step: '1', title: 'Accept Course Invitation', desc: 'Open your AWS Academy student invitation email and accept enrollment.' },
+  { step: '2', title: 'Open Learner Lab Workspace', desc: 'Navigate to the course module list and locate the assigned Learner Lab.' },
+  { step: '3', title: 'Start Lab Environment', desc: 'Click "Start Lab" and monitor the AWS badge until it shifts from red to green.' },
+  { step: '4', title: 'Launch AWS Management Console', desc: 'Click the active AWS button to open the real cloud console sandbox.' },
+  { step: '5', title: 'Verify Active Lab Session', desc: 'Confirm session timer is active and you have access before the workshop begins.' },
 ];
 
 export default function Act3Odyssey() {
@@ -111,7 +110,7 @@ export default function Act3Odyssey() {
     <StorySection
       id="story-odyssey"
       actNumber="3"
-      actLabel="THE TECHNICAL JOURNEY"
+      actLabel="TECH"
       eyebrow="HANDS-ON WORKSHOP ARCHITECTURE"
     >
       <div className="space-y-20 sm:space-y-28">
@@ -125,8 +124,8 @@ export default function Act3Odyssey() {
           </p>
         </div>
 
-        {/* Technical Architecture Connection Pipeline (AWS Blue structure, AWS Green progress) */}
-        <div className="relative py-4 px-6 rounded-2xl bg-white/[0.02] border border-[#0073bb]/20 overflow-x-auto reveal-init">
+        {/* Desktop Technical Architecture Connection Pipeline */}
+        <div className="hidden lg:block relative py-4 px-6 rounded-2xl bg-white/[0.02] border border-[#0073bb]/20 overflow-x-auto reveal-init">
           <div className="min-w-[640px] flex items-center justify-between">
             {STAGES.map((s, idx) => {
               const isPastOrCurrent = idx <= activeStageIndex;
@@ -169,10 +168,31 @@ export default function Act3Odyssey() {
           </div>
         </div>
 
+        {/* Mobile Compact 5-Step Switcher (Fits in 1 Screen) */}
+        <div className="lg:hidden grid grid-cols-5 gap-1.5 p-1.5 rounded-xl bg-white/[0.03] border border-[#0073bb]/20 reveal-init">
+          {STAGES.map((s, idx) => {
+            const isCurrent = idx === activeStageIndex;
+            return (
+              <button
+                key={s.id}
+                onClick={() => handleStageSelect(idx)}
+                className={`py-2 px-1 rounded-lg text-center font-mono transition-all duration-200 cursor-pointer ${
+                  isCurrent
+                    ? 'bg-[#00d26a] text-[#080b11] font-bold shadow-md shadow-[#00d26a]/30'
+                    : 'text-[#8e95a5] hover:text-white bg-transparent'
+                }`}
+              >
+                <div className="text-xs">{s.stepNumber}</div>
+                <div className="text-[10px] truncate">{s.title.split(' ')[0]}</div>
+              </button>
+            );
+          })}
+        </div>
+
         {/* Two-Column Interactive Workspace */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
-          {/* Milestone List (Left Column) */}
-          <div className="lg:col-span-5 space-y-3">
+          {/* Milestone List (Desktop Only — on Mobile, the Compact Switcher Above Controls This) */}
+          <div className="hidden lg:block lg:col-span-5 space-y-3">
             <div className="text-xs font-mono uppercase tracking-widest text-[#8e95a5] mb-4 flex items-center justify-between">
               <span>WORKSHOP MILESTONES</span>
               <span className="text-[#00d26a]">STAGE {activeStageIndex + 1} OF 5</span>
@@ -220,8 +240,8 @@ export default function Act3Odyssey() {
             })}
           </div>
 
-          {/* Active Stage Detail Specification (Right Column) with Smooth Transition */}
-          <div className="lg:col-span-7 bg-[#0d121c] border border-white/[0.08] rounded-2xl p-6 sm:p-10 relative overflow-hidden shadow-2xl">
+          {/* Active Stage Detail Specification with Smooth Transition */}
+          <div className="w-full lg:col-span-7 bg-[#0d121c] border border-white/[0.08] rounded-2xl p-5 sm:p-8 lg:p-10 relative overflow-hidden shadow-2xl">
             <div
               className={`transition-all duration-200 ${
                 isTransitioning
@@ -275,11 +295,32 @@ export default function Act3Odyssey() {
                 <CheckCircle2 size={14} className="text-[#00d26a]" />
                 <span>Core Takeaway: {activeStage.keypoint}</span>
               </div>
+
+              {/* Mobile Quick Navigation Controls */}
+              <div className="flex lg:hidden items-center justify-between pt-5 border-t border-white/[0.08] mt-6">
+                <button
+                  disabled={activeStageIndex === 0}
+                  onClick={() => handleStageSelect(Math.max(0, activeStageIndex - 1))}
+                  className="px-3.5 py-1.5 rounded-full border border-white/15 text-xs font-mono text-[#8e95a5] disabled:opacity-30 disabled:pointer-events-none hover:text-white cursor-pointer"
+                >
+                  ← Prev
+                </button>
+                <span className="font-mono text-xs text-[#00d26a]">
+                  Stage {activeStageIndex + 1} of 5
+                </span>
+                <button
+                  disabled={activeStageIndex === STAGES.length - 1}
+                  onClick={() => handleStageSelect(Math.min(STAGES.length - 1, activeStageIndex + 1))}
+                  className="px-3.5 py-1.5 rounded-full bg-[#00d26a]/15 border border-[#00d26a]/40 text-xs font-mono text-[#00d26a] disabled:opacity-30 disabled:pointer-events-none hover:bg-[#00d26a] hover:text-[#080b11] cursor-pointer"
+                >
+                  Next →
+                </button>
+              </div>
             </div>
           </div>
         </div>
 
-        {/* AWS Academy Learner Lab Sandbox (Steps 6-10) */}
+        {/* AWS Academy Learner Lab Sandbox (Steps 1-5) */}
         <div className="pt-12 border-t border-white/[0.08] reveal-init">
           <div className="max-w-3xl mb-10">
             <div className="inline-flex items-center gap-2 text-xs font-mono text-[#00d26a] uppercase tracking-widest mb-3">
@@ -289,7 +330,7 @@ export default function Act3Odyssey() {
               AWS Academy Learner Lab
             </h3>
             <p className="text-sm sm:text-base text-[#8e95a5] font-light leading-relaxed">
-              Every participant receives an official cloud sandbox powered by AWS Academy. As per workshop protocol, verify <strong className="text-white">Steps 6 through 10</strong> before moving to the Seminar Hall.
+              Every participant receives an official cloud sandbox powered by AWS Academy. As per workshop protocol, verify <strong className="text-white">Steps 1 through 5</strong> before moving to the Seminar Hall.
             </p>
           </div>
 
@@ -306,18 +347,17 @@ export default function Act3Odyssey() {
             ))}
           </div>
 
+          {/* Contact Support Assistance Callout */}
           <div className="flex flex-wrap items-center justify-between gap-4 p-5 rounded-xl bg-white/[0.02] border border-white/[0.06]">
             <div className="text-xs font-mono text-[#8e95a5]">
-              Need the complete AWS Academy setup walkthrough?
+              Need assistance with your AWS Academy sandbox or haven&apos;t received your invite?
             </div>
             <a
-              href={LEARNER_LAB_GUIDE_URL}
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center gap-2 text-xs font-mono text-white hover:text-[#00d26a] uppercase tracking-wider transition-colors"
+              href="tel:+919967813266"
+              className="inline-flex items-center gap-2 text-xs font-mono text-[#00d26a] hover:text-white uppercase tracking-wider transition-colors"
             >
-              <span>Official AWS Academy Enrollment Guide</span>
-              <ExternalLink size={13} />
+              <Phone size={13} />
+              <span>Contact Organizer Support: +91 99678 13266</span>
             </a>
           </div>
         </div>

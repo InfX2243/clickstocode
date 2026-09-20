@@ -47,7 +47,7 @@ const BLUEPRINT_SCHEDULE: TimelineEntry[] = [
     category: 'KEYNOTE BUILD',
     title: 'Speaker-Led Hands-On Cloud Odyssey',
     location: 'Main Technical Lab',
-    description: 'Ms. Afreen Bano conducts the live technical workshop from EC2 compute to CloudFormation automation.',
+    description: 'Er. Afreen Bano conducts the live technical workshop from EC2 compute to CloudFormation automation.',
     highlight: true,
   },
   {
@@ -105,7 +105,7 @@ export default function Act5Blueprint() {
     <StorySection
       id="story-blueprint"
       actNumber="5"
-      actLabel="THE EVENT BLUEPRINT"
+      actLabel="SCHEDULE"
       eyebrow="SCHEDULE & FIELD REQUIREMENTS"
     >
       <div className="space-y-16 sm:space-y-24">
@@ -149,21 +149,19 @@ export default function Act5Blueprint() {
                   >
                     {/* Node Dot */}
                     <div
-                      className={`absolute -left-[35px] sm:-left-[43px] top-2 w-3 h-3 rounded-full border-2 border-[#080b11] transition-all duration-400 ${
-                        isCurrent
+                      className={`absolute -left-[35px] sm:-left-[43px] top-2 w-3 h-3 rounded-full border-2 border-[#080b11] transition-all duration-400 ${isCurrent
                           ? 'bg-[#00d26a] ring-4 ring-[#00d26a]/30 scale-125'
                           : isActive
-                          ? 'bg-[#00d26a]'
-                          : 'bg-white/20'
-                      }`}
+                            ? 'bg-[#00d26a]'
+                            : 'bg-white/20'
+                        }`}
                     />
 
                     <div className="space-y-2">
                       {/* Big Typographic Time Numerals */}
                       <div className="flex flex-wrap items-baseline gap-3">
-                        <span className={`font-mono text-2xl sm:text-3xl font-medium tracking-tight transition-colors ${
-                          isCurrent ? 'text-[#00d26a]' : isActive ? 'text-white' : 'text-[#8e95a5]'
-                        }`}>
+                        <span className={`font-mono text-2xl sm:text-3xl font-medium tracking-tight transition-colors ${isCurrent ? 'text-[#00d26a]' : isActive ? 'text-white' : 'text-[#8e95a5]'
+                          }`}>
                           {item.time}
                         </span>
                         <span className="font-mono text-xs uppercase tracking-widest text-[#38bdf8]">
@@ -171,9 +169,8 @@ export default function Act5Blueprint() {
                         </span>
                       </div>
 
-                      <h3 className={`text-lg sm:text-xl font-medium tracking-tight transition-colors ${
-                        isCurrent ? 'text-white' : 'text-white/80'
-                      }`}>
+                      <h3 className={`text-lg sm:text-xl font-medium tracking-tight transition-colors ${isCurrent ? 'text-white' : 'text-white/80'
+                        }`}>
                         {item.title}
                       </h3>
 

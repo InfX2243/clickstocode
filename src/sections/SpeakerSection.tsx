@@ -20,7 +20,7 @@ export default function SpeakerSection() {
             <Users size={16} strokeWidth={2} />
             <span>INVITED MENTOR · AWS COMMUNITY</span>
           </div>
-          <span className="mono-label">MS. AFREEN BANO</span>
+          <span className="mono-label">ER. AFREEN BANO</span>
           <h3>
             Build with context.<br />
             <em>Leave with confidence.</em>

@@ -6,7 +6,7 @@ export default function Act2Manifesto() {
     <StorySection
       id="story-manifesto"
       actNumber="2"
-      actLabel="THE MANIFESTO"
+      actLabel="STORY"
       eyebrow="WHY CLICKS TO CODE MATTERS"
     >
       <div className="space-y-20 sm:space-y-28">

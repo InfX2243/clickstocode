@@ -163,7 +163,7 @@ The event is a practical cloud journey covering:
 
 ### Name
 
-**Ms. Afreen Bano**
+**Er. Afreen Bano**
 
 ### Profile
 
@@ -289,7 +289,7 @@ Important details:
 - WhatsApp access comes through Meetup after RSVP
 - All attendees receive a digital certificate
 - Certificate delivery: by the next day via registered email
-- Speaker: **Ms. Afreen Bano**
+- Speaker: **Er. Afreen Bano**
 - Speaker LinkedIn: provided above
 - Organizer contact: **Abid Ahmed Shaikh, +91 99678 13266**
 - Sponsor/partnership email: **awssbg@mhssce.ac.in**

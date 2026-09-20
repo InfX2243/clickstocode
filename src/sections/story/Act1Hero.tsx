@@ -40,14 +40,13 @@ export default function Act1Hero() {
           transform: `translate3d(0, -${heroTranslate * 0.4}px, 0)`,
           opacity: heroOpacity,
         }}
-        className={`max-w-7xl mx-auto w-full flex flex-wrap items-center justify-between gap-4 mb-8 sm:mb-12 transition-all duration-700 ease-out ${
-          mounted ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-3'
-        }`}
+        className={`max-w-7xl mx-auto w-full flex flex-wrap items-center justify-between gap-4 mb-8 sm:mb-12 transition-all duration-700 ease-out ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-3'
+          }`}
       >
         <div className="flex items-center gap-3">
           <span className="w-2 h-2 rounded-full bg-[#00d26a] animate-pulse" />
           <span className="font-mono text-xs uppercase tracking-widest text-[#8e95a5]">
-            M.H. Saboo Siddik College of Engineering · Dept. of IT
+            M.H. Saboo Siddik College of Engineering
           </span>
         </div>
         <div className="font-mono text-xs uppercase tracking-widest text-[#8e95a5]">
@@ -65,9 +64,8 @@ export default function Act1Hero() {
       >
         {/* Step 1: Badge Reveal */}
         <div
-          className={`inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/[0.04] border border-white/[0.08] text-[#8e95a5] text-xs font-mono mb-6 sm:mb-8 transition-all duration-700 delay-100 ease-out ${
-            mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
-          }`}
+          className={`inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/[0.04] border border-white/[0.08] text-[#8e95a5] text-xs font-mono mb-6 sm:mb-8 transition-all duration-700 delay-100 ease-out ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+            }`}
         >
           <Ticket size={13} className="text-[#00d26a]" />
           <span>FREE ADMISSION · 100 SEATS LIMITED</span>
@@ -75,9 +73,8 @@ export default function Act1Hero() {
 
         {/* Step 2: Monolithic Display Headline Reveal */}
         <h1
-          className={`text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-light tracking-[-0.04em] leading-[0.92] text-white text-balance mb-6 sm:mb-8 transition-all duration-1000 delay-200 ease-out ${
-            mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
-          }`}
+          className={`text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-light tracking-[-0.04em] leading-[0.92] text-white text-balance mb-6 sm:mb-8 transition-all duration-1000 delay-200 ease-out ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
+            }`}
         >
           AWS From <br />
           <span className="italic font-normal text-[#00d26a] pr-2">Clicks to Code</span>
@@ -85,18 +82,16 @@ export default function Act1Hero() {
 
         {/* Step 3: Supporting Copy Reveal */}
         <p
-          className={`max-w-2xl text-lg sm:text-xl md:text-2xl text-[#8e95a5] font-light leading-relaxed mb-10 sm:mb-14 transition-all duration-800 delay-300 ease-out ${
-            mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'
-          }`}
+          className={`max-w-2xl text-lg sm:text-xl md:text-2xl text-[#8e95a5] font-light leading-relaxed mb-10 sm:mb-14 transition-all duration-800 delay-300 ease-out ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'
+            }`}
         >
           Move from visual console setup to real Linux compute, zero-trust Session Manager access, and declarative CloudFormation automation in one guided builder session.
         </p>
 
         {/* Step 4: Metadata Strip Settles */}
         <div
-          className={`grid grid-cols-2 md:grid-cols-4 gap-6 py-6 border-y border-white/[0.08] mb-10 sm:mb-12 transition-all duration-800 delay-400 ease-out ${
-            mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'
-          }`}
+          className={`grid grid-cols-2 md:grid-cols-4 gap-6 py-6 border-y border-white/[0.08] mb-10 sm:mb-12 transition-all duration-800 delay-400 ease-out ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'
+            }`}
         >
           <div>
             <div className="flex items-center gap-1.5 text-xs font-mono text-[#8e95a5] uppercase mb-1">
@@ -133,9 +128,8 @@ export default function Act1Hero() {
 
         {/* Step 5: Primary Action CTAs Reveal */}
         <div
-          className={`flex flex-wrap items-center gap-4 transition-all duration-800 delay-500 ease-out ${
-            mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
-          }`}
+          className={`flex flex-wrap items-center gap-4 transition-all duration-800 delay-500 ease-out ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+            }`}
         >
           <button
             onClick={() => {
@@ -160,16 +154,12 @@ export default function Act1Hero() {
 
       {/* Step 6: Bottom Editorial Scroll Cue */}
       <div
-        className={`max-w-7xl mx-auto w-full flex items-center justify-between pt-6 text-xs font-mono text-[#8e95a5] transition-all duration-800 delay-600 ease-out ${
-          mounted ? 'opacity-100' : 'opacity-0'
-        }`}
+        className={`max-w-7xl mx-auto w-full flex items-center justify-between pt-6 text-xs font-mono text-[#8e95a5] transition-all duration-800 delay-600 ease-out ${mounted ? 'opacity-100' : 'opacity-0'
+          }`}
       >
         <div className="flex items-center gap-2">
           <span className="w-1.5 h-1.5 rounded-full bg-white/40" />
           <span>SCROLL TO BEGIN NARRATIVE</span>
-        </div>
-        <div className="hidden sm:block uppercase tracking-wider">
-          CHAPTER 1 OF 8
         </div>
       </div>
     </section>
