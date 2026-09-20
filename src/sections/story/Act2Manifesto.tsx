@@ -82,8 +82,10 @@ export default function Act2Manifesto() {
           <div className="text-sm sm:text-base text-[#8e95a5] font-light">
             Bring your questions, your laptop, and the willingness to build.
           </div>
-          <button
-            onClick={() => {
+          <a
+            href="#story-odyssey"
+            onClick={(e) => {
+              e.preventDefault();
               const el = document.getElementById('story-odyssey');
               if (el) el.scrollIntoView({ behavior: 'smooth' });
             }}
@@ -91,7 +93,7 @@ export default function Act2Manifesto() {
           >
             <span>Enter Technical Odyssey</span>
             <ArrowRight size={14} />
-          </button>
+          </a>
         </div>
       </div>
     </StorySection>

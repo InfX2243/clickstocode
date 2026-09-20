@@ -79,7 +79,11 @@ export default function Act7Patronage() {
                 <div className="w-14 h-14 rounded-lg overflow-hidden border border-white/[0.08] bg-[#0c1017] p-1 flex items-center justify-center shrink-0">
                   <img
                     src={patron.image}
-                    alt={patron.name}
+                    alt={patron.isLogo ? `${patron.name} Official Emblem` : `${patron.name} — ${patron.title}`}
+                    width={56}
+                    height={56}
+                    loading="lazy"
+                    decoding="async"
                     className={patron.isLogo ? 'w-full h-full object-contain' : 'w-full h-full object-cover object-top rounded'}
                   />
                 </div>

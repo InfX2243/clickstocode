@@ -1,0 +1,8 @@
+# Production robots.txt for AWS From Clicks to Code
+# Canonical domain: https://clickstocode.awssbg-mhssce.in
+
+User-agent: *
+Allow: /
+
+# Canonical Sitemap Reference
+Sitemap: https://clickstocode.awssbg-mhssce.in/sitemap.xml

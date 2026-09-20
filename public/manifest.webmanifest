@@ -1,0 +1,17 @@
+{
+  "name": "AWS From Clicks to Code",
+  "short_name": "ClicksToCode",
+  "description": "AWS Fundamentals: Hands-On Cloud Journey organized by AWS Student Builder Group at M.H. Saboo Siddik College of Engineering.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#080b11",
+  "theme_color": "#080b11",
+  "icons": [
+    {
+      "src": "/images/awssbg-logo.png",
+      "sizes": "192x192 512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

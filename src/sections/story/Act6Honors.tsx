@@ -115,11 +115,19 @@ export default function Act6Honors() {
                   }
                   className="rounded-2xl border border-white/[0.12] bg-[#0a0e17] p-3 sm:p-4 group shadow-2xl cursor-pointer hover:border-[#00d26a]/50 transition-all duration-300"
                 >
-                  <div className="relative aspect-[16/10] sm:aspect-[21/9] rounded-xl overflow-hidden bg-black/40 flex items-center justify-center">
+                  <div className="relative aspect-[16/10] sm:aspect-[21/9] rounded-xl overflow-hidden swag-grid-bg border border-white/[0.06] flex items-center justify-center">
+                    {/* Ambient AWS Green light radiating from behind certificate */}
+                    <div className="absolute inset-0 flex items-center justify-center pointer-events-none" aria-hidden="true">
+                      <div className="w-96 h-48 rounded-full bg-[#00d26a]/20 blur-[50px] group-hover:bg-[#00d26a]/30 transition-all duration-500" />
+                    </div>
                     <img
                       src="/images/certificate.png"
-                      alt="Digital Certificate Sample Preview"
-                      className="w-full h-full object-contain filter contrast-105 group-hover:scale-[1.02] transition-transform duration-500"
+                      alt="AWS From Clicks to Code Official Certificate of Attendance Sample"
+                      width={700}
+                      height={400}
+                      loading="lazy"
+                      decoding="async"
+                      className="relative z-10 w-full h-full object-contain filter contrast-105 group-hover:scale-[1.02] transition-transform duration-500 drop-shadow-[0_0_20px_rgba(0,210,106,0.25)]"
                     />
                   </div>
                   <div className="flex flex-wrap items-center justify-between gap-2 pt-3 px-1 text-xs font-mono">
@@ -188,13 +196,21 @@ export default function Act6Honors() {
                   }
                   className="group border-b sm:border-b-0 sm:border-r border-white/[0.06] last:border-none pb-6 sm:pb-0 sm:pr-6 space-y-4 cursor-pointer"
                 >
-                  <div className="aspect-[4/3] rounded-xl bg-black/40 border border-white/[0.06] group-hover:border-[#00d26a]/50 overflow-hidden p-6 flex items-center justify-center relative transition-all duration-300">
+                  <div className="aspect-[4/3] rounded-xl swag-grid-bg border border-white/[0.08] group-hover:border-[#00d26a]/50 overflow-hidden p-6 flex items-center justify-center relative transition-all duration-300">
+                    {/* Ambient AWS Green light radiating from behind */}
+                    <div className="absolute inset-0 flex items-center justify-center pointer-events-none" aria-hidden="true">
+                      <div className="w-28 h-28 rounded-full bg-[#00d26a]/25 blur-[32px] group-hover:bg-[#00d26a]/40 group-hover:scale-110 transition-all duration-500" />
+                    </div>
                     <img
                       src={swag.image}
-                      alt={swag.name}
-                      className="w-full h-full object-contain filter group-hover:scale-105 transition-transform duration-300"
+                      alt={`${swag.name} — AWS Builder Swag Perk`}
+                      width={200}
+                      height={150}
+                      loading="lazy"
+                      decoding="async"
+                      className="relative z-10 w-full h-full object-contain filter group-hover:scale-105 transition-transform duration-300 drop-shadow-[0_0_14px_rgba(0,210,106,0.35)]"
                     />
-                    <div className="absolute top-2.5 right-2.5 p-1.5 rounded-full bg-black/70 border border-white/10 text-white/70 group-hover:text-[#00d26a] group-hover:border-[#00d26a]/40 transition-colors">
+                    <div className="absolute top-2.5 right-2.5 z-20 p-1.5 rounded-full bg-black/70 border border-white/10 text-white/70 group-hover:text-[#00d26a] group-hover:border-[#00d26a]/40 transition-colors">
                       <Maximize2 size={13} />
                     </div>
                   </div>
@@ -227,11 +243,17 @@ export default function Act6Honors() {
             className="relative max-w-3xl w-full bg-[#0d121c] border border-white/[0.15] rounded-2xl p-5 sm:p-8 shadow-[0_0_120px_rgba(0,0,0,0.95)] flex flex-col items-center max-h-[90vh] overflow-y-auto"
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="w-full flex justify-center items-center py-2">
+            <div className="w-full flex justify-center items-center py-6 px-4 rounded-xl swag-grid-bg border border-white/[0.08] relative overflow-hidden">
+              {/* Radiant AWS Green backlight emanating from behind the object */}
+              <div className="absolute inset-0 flex items-center justify-center pointer-events-none" aria-hidden="true">
+                <div className="w-64 sm:w-80 h-64 sm:h-80 rounded-full bg-[#00d26a]/30 blur-[64px]" />
+                <div className="w-36 sm:w-44 h-36 sm:h-44 rounded-full bg-[#00ff88]/25 blur-[40px]" />
+              </div>
               <img
                 src={expandedItem.image}
                 alt={expandedItem.name}
-                className="max-h-[52vh] sm:max-h-[58vh] w-auto max-w-full object-contain rounded-xl shadow-2xl ring-1 ring-white/10"
+                decoding="async"
+                className="relative z-10 max-h-[52vh] sm:max-h-[58vh] w-auto max-w-full object-contain rounded-xl shadow-2xl drop-shadow-[0_0_28px_rgba(0,210,106,0.45)]"
               />
             </div>
 

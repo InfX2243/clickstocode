@@ -3,32 +3,222 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#0a0e18" />
-    <meta name="description" content="AWS From Clicks to Code | AWS Fundamentals: Hands-On Cloud Journey" />
+    <meta name="theme-color" content="#080b11" />
+    <meta name="color-scheme" content="dark" />
+
+    <!-- Primary SEO Metadata -->
+    <title>AWS From Clicks to Code — Hands-On Cloud &amp; EC2 Automation Workshop | AWS SBG MHSSCE</title>
+    <meta
+      name="description"
+      content="Join AWS From Clicks to Code on 24 Sept 2026 at MHSSCE Mumbai. A free hands-on cloud workshop on Amazon EC2, AWS Systems Manager, and CloudFormation automation by AWS Student Builder Group."
+    />
+    <meta
+      name="keywords"
+      content="AWS From Clicks to Code, AWS workshop, AWS EC2 workshop, Automating EC2, AWS Student Builder Group, AWS SBG MHSSCE, AWS events, cloud computing workshop, AWS automation workshop, M.H. Saboo Siddik College of Engineering, Afreen Bano, CloudFormation"
+    />
+    <meta name="author" content="AWS Student Builder Group at M.H. Saboo Siddik College of Engineering" />
+    <meta
+      name="robots"
+      content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+    />
+
+    <!-- Canonical URL (Production Domain) -->
+    <link rel="canonical" href="https://clickstocode.awssbg-mhssce.in/" />
+
+    <!-- Favicon & Branding Icons -->
     <link rel="icon" type="image/png" href="/images/awssbg-logo.png" />
+    <link rel="apple-touch-icon" href="/images/awssbg-logo.png" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+
+    <!-- Open Graph Metadata (Facebook, LinkedIn, Discord, WhatsApp) -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="AWS From Clicks to Code" />
+    <meta
+      property="og:title"
+      content="AWS From Clicks to Code — Hands-On Cloud &amp; EC2 Automation Workshop"
+    />
+    <meta
+      property="og:description"
+      content="A practical cloud computing journey on 24 Sept 2026 at MHSSCE Mumbai. Move from AWS Console clicks to real EC2 compute, zero-trust Session Manager, and declarative CloudFormation automation."
+    />
+    <meta property="og:url" content="https://clickstocode.awssbg-mhssce.in/" />
+    <meta property="og:image" content="https://clickstocode.awssbg-mhssce.in/images/og-image.png" />
+    <meta property="og:image:secure_url" content="https://clickstocode.awssbg-mhssce.in/images/og-image.png" />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta
+      property="og:image:alt"
+      content="AWS From Clicks to Code — Hands-On Cloud &amp; EC2 Automation Workshop — 24 September 2026 at MHSSCE Mumbai"
+    />
+    <meta property="og:locale" content="en_IN" />
+
+    <!-- Twitter / X Cards -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="AWS From Clicks to Code — Hands-On Cloud &amp; EC2 Automation Workshop"
+    />
+    <meta
+      name="twitter:description"
+      content="Move from visual console setup to real Linux compute, zero-trust Session Manager access, and declarative CloudFormation automation. 24 Sept 2026 · MHSSCE Mumbai."
+    />
+    <meta name="twitter:image" content="https://clickstocode.awssbg-mhssce.in/images/og-image.png" />
+    <meta
+      name="twitter:image:alt"
+      content="AWS From Clicks to Code — Hands-On Cloud &amp; EC2 Automation Workshop"
+    />
+
+    <!-- Schema.org JSON-LD Structured Data for Event & Organizations -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "Event",
+            "@id": "https://clickstocode.awssbg-mhssce.in/#event",
+            "name": "AWS From Clicks to Code",
+            "description": "A practical, builder-focused cloud computing journey covering AWS fundamentals, Amazon EC2 provisioning, AWS Systems Manager Session Manager zero-trust access, web server deployment, and AWS CloudFormation Infrastructure as Code.",
+            "url": "https://clickstocode.awssbg-mhssce.in/",
+            "startDate": "2026-09-24T09:30:00+05:30",
+            "endDate": "2026-09-24T12:00:00+05:30",
+            "eventStatus": "https://schema.org/EventScheduled",
+            "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+            "isAccessibleForFree": true,
+            "typicalAgeRange": "18-25",
+            "image": [
+              "https://clickstocode.awssbg-mhssce.in/images/og-image.png",
+              "https://clickstocode.awssbg-mhssce.in/images/awssbg-logo.png"
+            ],
+            "location": {
+              "@type": "Place",
+              "name": "3rd Floor, Seminar Hall, M.H. Saboo Siddik College of Engineering",
+              "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "8, Saboo Siddik Polytechnic Road, Byculla",
+                "addressLocality": "Mumbai",
+                "addressRegion": "Maharashtra",
+                "postalCode": "400008",
+                "addressCountry": "IN"
+              }
+            },
+            "organizer": {
+              "@type": "Organization",
+              "@id": "https://awssbg-mhssce.in/#organization",
+              "name": "AWS Student Builder Group at M.H. Saboo Siddik College of Engineering",
+              "url": "https://awssbg-mhssce.in"
+            },
+            "performer": {
+              "@type": "Person",
+              "name": "Er. Afreen Bano",
+              "jobTitle": "Technology Leader & Lead at HerTechEra – Pune Chapter",
+              "sameAs": "https://in.linkedin.com/in/afreen-bano"
+            },
+            "offers": {
+              "@type": "Offer",
+              "price": "0",
+              "priceCurrency": "INR",
+              "availability": "https://schema.org/InStock",
+              "validFrom": "2026-09-20T00:00:00+05:30",
+              "url": "https://clickstocode.awssbg-mhssce.in/",
+              "description": "Free admission for students (100 seats limited) with hands-on AWS Academy Learner Lab access and digital certificates."
+            }
+          },
+          {
+            "@type": "Organization",
+            "@id": "https://awssbg-mhssce.in/#organization",
+            "name": "AWS Student Builder Group at M.H. Saboo Siddik College of Engineering",
+            "alternateName": "AWS SBG MHSSCE",
+            "url": "https://awssbg-mhssce.in",
+            "logo": "https://clickstocode.awssbg-mhssce.in/images/awssbg-logo.png",
+            "email": "awssbg@mhssce.ac.in",
+            "sameAs": [
+              "https://www.linkedin.com/company/awssbg-mhssce/",
+              "https://www.instagram.com/awssbg_mhssce"
+            ],
+            "parentOrganization": {
+              "@type": "EducationalOrganization",
+              "name": "M.H. Saboo Siddik College of Engineering",
+              "url": "https://mhssce.ac.in/"
+            }
+          },
+          {
+            "@type": "WebSite",
+            "@id": "https://clickstocode.awssbg-mhssce.in/#website",
+            "url": "https://clickstocode.awssbg-mhssce.in/",
+            "name": "AWS From Clicks to Code",
+            "publisher": {
+              "@type": "Organization",
+              "@id": "https://awssbg-mhssce.in/#organization",
+              "name": "AWS Student Builder Group at M.H. Saboo Siddik College of Engineering",
+              "url": "https://awssbg-mhssce.in"
+            }
+          },
+          {
+            "@type": "WebPage",
+            "@id": "https://clickstocode.awssbg-mhssce.in/#webpage",
+            "url": "https://clickstocode.awssbg-mhssce.in/",
+            "name": "AWS From Clicks to Code — Hands-On Cloud & EC2 Automation Workshop",
+            "isPartOf": {
+              "@id": "https://clickstocode.awssbg-mhssce.in/#website"
+            },
+            "about": {
+              "@id": "https://clickstocode.awssbg-mhssce.in/#event"
+            },
+            "description": "Event website for AWS From Clicks to Code workshop on 24 September 2026 at MHSSCE Mumbai.",
+            "breadcrumb": {
+              "@type": "BreadcrumbList",
+              "itemListElement": [
+                {
+                  "@type": "ListItem",
+                  "position": 1,
+                  "name": "AWS SBG MHSSCE",
+                  "item": "https://awssbg-mhssce.in"
+                },
+                {
+                  "@type": "ListItem",
+                  "position": 2,
+                  "name": "AWS From Clicks to Code",
+                  "item": "https://clickstocode.awssbg-mhssce.in/"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    </script>
+
     <!-- Local Amazon Ember Typography Only (No External Fonts) -->
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <script>
       tailwind.config = {
         darkMode: 'class',
-        theme: { extend: {
-          colors: {
-            background:'#080b11', surface:'#0d121c', 'surface-subtle':'rgba(255,255,255,0.025)',
-            'text-primary':'#ffffff', 'text-secondary':'#8e95a5', 'text-muted':'#5a6275',
-            'aws-green':'#00d26a', 'aws-green-dim':'rgba(0, 210, 106, 0.15)',
-            'aws-blue':'#0073bb', 'aws-blue-light':'#38bdf8', 'aws-blue-dim':'rgba(56, 189, 248, 0.15)',
-            'aws-squid':'#0f141f'
+        theme: {
+          extend: {
+            colors: {
+              background: '#080b11',
+              surface: '#0d121c',
+              'surface-subtle': 'rgba(255,255,255,0.025)',
+              'text-primary': '#ffffff',
+              'text-secondary': '#8e95a5',
+              'text-muted': '#5a6275',
+              'aws-green': '#00d26a',
+              'aws-green-dim': 'rgba(0, 210, 106, 0.15)',
+              'aws-blue': '#0073bb',
+              'aws-blue-light': '#38bdf8',
+              'aws-blue-dim': 'rgba(56, 189, 248, 0.15)',
+              'aws-squid': '#0f141f',
+            },
+            fontFamily: {
+              sans: ['Amazon Ember', 'system-ui', 'sans-serif'],
+              body: ['Amazon Ember', 'system-ui', 'sans-serif'],
+              mono: ['Amazon Ember Mono', 'monospace'],
+              duo: ['Amazon Ember Duospace', 'monospace'],
+            },
           },
-          fontFamily:{
-            sans: ['Amazon Ember', 'system-ui', 'sans-serif'],
-            body: ['Amazon Ember', 'system-ui', 'sans-serif'],
-            mono: ['Amazon Ember Mono', 'monospace'],
-            duo: ['Amazon Ember Duospace', 'monospace']
-          }
-        }}
+        },
       };
     </script>
-    <title>AWS From Clicks to Code | AWS Fundamentals: Hands-On Cloud Journey</title>
   </head>
   <body class="bg-[#0a0e18] text-[#dfe2f1] font-body antialiased">
     <div id="root"></div>

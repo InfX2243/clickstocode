@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import StorySection from '../../components/editorial/StorySection';
 import { MapPin, Laptop, BatteryCharging, IdCard, Ticket } from 'lucide-react';
-import { EVENT_DATE, VENUE, CHECKIN_LOCATION } from '../../constants/event';
+import { EVENT_DATE, VENUE, CHECKIN_LOCATION, MEETUP_EVENT_URL } from '../../constants/event';
 
 interface TimelineEntry {
   time: string;
@@ -250,10 +250,20 @@ export default function Act5Blueprint() {
             </div>
 
             {/* Registration Cap */}
-            <div className="p-7 rounded-2xl bg-[#00d26a]/[0.03] border border-[#00d26a]/20 space-y-2">
-              <div className="flex items-center gap-2 text-xs font-mono text-[#00d26a]">
-                <Ticket size={14} />
-                <span>LIMITED CAPACITY</span>
+            <div className="p-7 rounded-2xl bg-[#00d26a]/[0.03] border border-[#00d26a]/20 space-y-3">
+              <div className="flex items-center justify-between gap-2">
+                <div className="flex items-center gap-2 text-xs font-mono text-[#00d26a]">
+                  <Ticket size={14} />
+                  <span>LIMITED CAPACITY</span>
+                </div>
+                <a
+                  href={MEETUP_EVENT_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1 text-xs font-mono text-[#00d26a] hover:underline"
+                >
+                  <span>RSVP ON MEETUP ↗</span>
+                </a>
               </div>
               <div className="text-white font-medium text-base">
                 100 Free Registrations Maximum

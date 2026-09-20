@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { ArrowDown, Calendar, Clock, MapPin, Users, Ticket, ArrowUpRight } from 'lucide-react';
-import { EVENT_DATE, EVENT_TIME, VENUE } from '../../constants/event';
+import { EVENT_DATE, EVENT_TIME, VENUE, GOOGLE_CALENDAR_URL, MEETUP_EVENT_URL } from '../../constants/event';
 import { useScrollProgress } from '../../lib/useScrollProgress';
 
 export default function Act1Hero() {
@@ -43,14 +43,25 @@ export default function Act1Hero() {
         className={`max-w-7xl mx-auto w-full flex flex-wrap items-center justify-between gap-4 mb-8 sm:mb-12 transition-all duration-700 ease-out ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-3'
           }`}
       >
-        <div className="font-mono text-xs uppercase tracking-widest text-[#8e95a5]">
-          AWS Student Builder Group
-        </div>
+        <a
+          href="https://awssbg-mhssce.in"
+          target="_blank"
+          rel="noreferrer"
+          className="font-mono text-xs uppercase tracking-widest text-[#8e95a5] hover:text-[#00d26a] transition-colors"
+          title="Visit official AWS Student Builder Group portal"
+        >
+          AWS Student Builder Group ↗
+        </a>
         <div className="flex items-center gap-3">
-          {/* <span className="w-2 h-2 rounded-full bg-[#00d26a] animate-pulse" /> */}
-          <span className="font-mono text-xs uppercase tracking-widest text-[#8e95a5]">
-            M.H. Saboo Siddik College of Engineering
-          </span>
+          <a
+            href="https://mhssce.ac.in/"
+            target="_blank"
+            rel="noreferrer"
+            className="font-mono text-xs uppercase tracking-widest text-[#8e95a5] hover:text-white transition-colors"
+            title="Visit M.H. Saboo Siddik College of Engineering website"
+          >
+            M.H. Saboo Siddik College of Engineering ↗
+          </a>
         </div>
       </div>
 
@@ -119,6 +130,16 @@ export default function Act1Hero() {
               <span>DATE</span>
             </div>
             <div className="text-white font-medium text-sm sm:text-base tracking-tight">{EVENT_DATE}</div>
+            <a
+              href={GOOGLE_CALENDAR_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1 text-[11px] font-mono text-[#00d26a] hover:text-[#00e676] hover:underline transition-colors mt-1 group"
+              title="Add to Google Calendar"
+            >
+              <span>+ Add to Calendar</span>
+              <ArrowUpRight size={11} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+            </a>
           </div>
 
           <div>
@@ -151,24 +172,33 @@ export default function Act1Hero() {
           className={`flex flex-wrap items-center gap-4 transition-all duration-800 delay-500 ease-out ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
             }`}
         >
-          <button
-            onClick={() => {
-              const el = document.getElementById('story-blueprint');
-              if (el) el.scrollIntoView({ behavior: 'smooth' });
-            }}
-            className="group inline-flex items-center gap-3 px-7 py-4 rounded-full bg-[#00d26a] text-[#080b11] font-mono text-sm font-semibold tracking-wider uppercase hover:bg-[#00e676] hover:-translate-y-0.5 transition-all duration-300 shadow-xl shadow-[#00d26a]/20 cursor-pointer"
+          <a
+            href={MEETUP_EVENT_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group inline-flex items-center gap-2.5 sm:gap-3 px-5 sm:px-7 py-3.5 sm:py-4 rounded-full bg-[#00d26a] text-[#080b11] font-mono text-xs sm:text-sm font-semibold tracking-wider uppercase hover:bg-[#00e676] hover:-translate-y-0.5 transition-all duration-300 shadow-xl shadow-[#00d26a]/20 cursor-pointer"
           >
-            <span>RSVP FOR THE EVENT</span>
-            <ArrowUpRight size={16} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-          </button>
+            <img
+              src="/images/meetup-icon.png"
+              alt=""
+              className="w-4 h-4 sm:w-5 sm:h-5 object-contain shrink-0"
+              aria-hidden="true"
+            />
+            <span className="whitespace-nowrap">RSVP FOR THE EVENT</span>
+            <ArrowUpRight size={16} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 shrink-0" />
+          </a>
 
-          <button
-            onClick={scrollToStory}
+          <a
+            href="#story-manifesto"
+            onClick={(e) => {
+              e.preventDefault();
+              scrollToStory();
+            }}
             className="inline-flex items-center gap-2 px-6 py-4 rounded-full border border-white/[0.12] text-white/80 hover:text-white hover:border-white/30 font-mono text-xs uppercase tracking-widest transition-all cursor-pointer"
           >
             <span>Read The Story</span>
             <ArrowDown size={14} />
-          </button>
+          </a>
         </div>
       </div>
 

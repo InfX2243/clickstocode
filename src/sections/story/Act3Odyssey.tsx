@@ -267,7 +267,11 @@ export default function Act3Odyssey() {
                 </div>
                 <img
                   src={activeStage.image}
-                  alt={activeStage.title}
+                  alt={`${activeStage.title} - AWS Architecture Service Icon`}
+                  width={36}
+                  height={36}
+                  loading="lazy"
+                  decoding="async"
                   className="w-9 h-9 object-contain"
                 />
               </div>
@@ -362,8 +366,11 @@ export default function Act3Odyssey() {
               href="tel:+919967813266"
               className="inline-flex items-center gap-2 text-xs font-mono text-[#00d26a] hover:text-white uppercase tracking-wider transition-colors"
             >
-              <Phone size={13} />
-              <span>Contact Organizer Support: +91 99678 13266</span>
+              <Phone size={13} className="shrink-0" />
+              <span>
+                Contact Organizer Support:{' '}
+                <span className="whitespace-nowrap">+91 99678 13266</span>
+              </span>
             </a>
           </div>
         </div>

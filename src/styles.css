@@ -1092,3 +1092,14 @@ a:focus-visible,
     width: 100%;
   }
 }
+
+/* Swag & asset preview container with architectural grid background */
+.swag-grid-bg {
+  background-color: #0c1017;
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+  background-size: 20px 20px;
+  background-position: center center;
+}
+

@@ -107,7 +107,7 @@ export default function AudienceSection() {
             type="button"
             className="event-overview-register audience-register"
             aria-label="Open Meetup"
-            onClick={() => window.open('https://www.meetup.com/', '_blank', 'noopener,noreferrer')}
+            onClick={() => window.open('https://www.meetup.com/aws-sbg-at-m-h-saboo-siddik-college-of-engineering/events/316594304/', '_blank', 'noopener,noreferrer')}
           >
             <img src="/images/meetup-icon.png" alt="" aria-hidden="true" />
             <span>OPEN MEETUP</span>

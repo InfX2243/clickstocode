@@ -1,4 +1,5 @@
 import { useScrollObserver } from '../lib/useScrollObserver';
+import SEO from '../components/SEO';
 import EditorialNav from '../components/editorial/EditorialNav';
 import Act1Hero from '../sections/story/Act1Hero';
 import Act2Manifesto from '../sections/story/Act2Manifesto';
@@ -15,6 +16,9 @@ export default function Home() {
 
   return (
     <div className="relative min-h-screen bg-[#080b11] text-white selection:bg-[#00d26a]/30 selection:text-[#00ff88]">
+      {/* Runtime SEO Guard & Canonical Enforcer */}
+      <SEO />
+
       {/* Environmental Architectural Canvas Grid (Static & High-Performance) */}
       <div className="editorial-grid-canvas" aria-hidden="true" />
 

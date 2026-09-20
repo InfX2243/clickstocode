@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Menu, X, ArrowUpRight, Radio } from 'lucide-react';
 import { LinkedInIcon, InstagramIcon } from '../SocialIcons';
+import { MEETUP_EVENT_URL } from '../../constants/event';
 
 export default function EditorialNav() {
   const [scrolled, setScrolled] = useState(false);
@@ -57,11 +58,22 @@ export default function EditorialNav() {
       >
         <div className="max-w-7xl mx-auto px-5 sm:px-8 flex items-center justify-between">
           {/* Brand Monogram */}
-          <div className="flex items-center gap-3.5 group cursor-pointer" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
+          <a
+            href="#"
+            onClick={(e) => {
+              e.preventDefault();
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }}
+            className="flex items-center gap-3.5 group cursor-pointer no-underline text-inherit"
+            aria-label="AWS From Clicks to Code Home"
+          >
             <div className="relative">
               <img
                 src="/images/awssbg-logo.png"
-                alt="AWS SBG Logo"
+                alt="AWS Student Builder Group Logo — MHSSCE"
+                width={36}
+                height={36}
+                decoding="async"
                 className="w-8 h-8 sm:w-9 sm:h-9 object-contain filter drop-shadow-[0_0_8px_rgba(0,210,106,0.3)] transition-transform duration-300 group-hover:scale-105"
               />
             </div>
@@ -71,50 +83,74 @@ export default function EditorialNav() {
                   AWS From Clicks to Code
                 </span>
               </div>
-              <span className="text-[11px] font-mono uppercase tracking-widest text-[#8e95a5] hidden sm:block">
+              {/* <span className="text-[11px] font-mono uppercase tracking-widest text-[#8e95a5] hidden sm:block">
                 AWS Student Builder Group
-              </span>
+              </span> */}
             </div>
-          </div>
+          </a>
 
           {/* Minimal Floating Desktop Nav */}
-          <nav className="hidden lg:flex items-center gap-7 text-xs font-mono tracking-wider uppercase text-[#8e95a5]">
-            <button
-              onClick={() => scrollTo('story-manifesto')}
+          <nav aria-label="Main Navigation" className="hidden lg:flex items-center gap-7 text-xs font-mono tracking-wider uppercase text-[#8e95a5]">
+            <a
+              href="#story-manifesto"
+              onClick={(e) => {
+                e.preventDefault();
+                scrollTo('story-manifesto');
+              }}
               className="hover:text-white transition-colors cursor-pointer py-1"
             >
               STORY
-            </button>
-            <button
-              onClick={() => scrollTo('story-odyssey')}
+            </a>
+            <a
+              href="#story-odyssey"
+              onClick={(e) => {
+                e.preventDefault();
+                scrollTo('story-odyssey');
+              }}
               className="hover:text-white transition-colors cursor-pointer py-1"
             >
               TECH
-            </button>
-            <button
-              onClick={() => scrollTo('story-keynote')}
+            </a>
+            <a
+              href="#story-keynote"
+              onClick={(e) => {
+                e.preventDefault();
+                scrollTo('story-keynote');
+              }}
               className="hover:text-white transition-colors cursor-pointer py-1"
             >
               SPEAKER
-            </button>
-            <button
-              onClick={() => scrollTo('story-blueprint')}
+            </a>
+            <a
+              href="#story-blueprint"
+              onClick={(e) => {
+                e.preventDefault();
+                scrollTo('story-blueprint');
+              }}
               className="hover:text-white transition-colors cursor-pointer py-1"
             >
               SCHEDULE
-            </button>
-            <button
-              onClick={() => scrollTo('story-honors')}
+            </a>
+            <a
+              href="#story-honors"
+              onClick={(e) => {
+                e.preventDefault();
+                scrollTo('story-honors');
+              }}
               className="hover:text-white transition-colors cursor-pointer py-1"
             >
               HONORS
-            </button>
-            <button
-              onClick={() => scrollTo('story-inquiries')}
+            </a>
+            <a
+              href="#story-inquiries"
+              onClick={(e) => {
+                e.preventDefault();
+                scrollTo('story-inquiries');
+              }}
               className="hover:text-white transition-colors cursor-pointer py-1"
             >
               FAQ
-            </button>
+            </a>
           </nav>
 
           {/* Actions */}
@@ -142,13 +178,21 @@ export default function EditorialNav() {
             </div>
 
             {/* AWS Green RSVP Button */}
-            <button
-              onClick={() => scrollTo('story-blueprint')}
-              className="group relative inline-flex items-center gap-2 px-4 sm:px-5 py-2 sm:py-2.5 rounded-full text-xs font-mono font-semibold uppercase tracking-wider bg-[#00d26a] text-[#080b11] hover:bg-[#00e676] hover:-translate-y-0.5 transition-all duration-200 shadow-md shadow-[#00d26a]/20 cursor-pointer"
+            <a
+              href={MEETUP_EVENT_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group relative inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-5 py-2 sm:py-2.5 rounded-full text-[11px] sm:text-xs font-mono font-semibold uppercase tracking-wider bg-[#00d26a] text-[#080b11] hover:bg-[#00e676] hover:-translate-y-0.5 transition-all duration-200 shadow-md shadow-[#00d26a]/20 cursor-pointer shrink-0"
             >
-              <span>RSVP FOR THE EVENT</span>
-              <ArrowUpRight size={13} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-            </button>
+              <img
+                src="/images/meetup-icon.png"
+                alt=""
+                className="w-3.5 h-3.5 sm:w-4 sm:h-4 object-contain shrink-0"
+                aria-hidden="true"
+              />
+              <span className="whitespace-nowrap">RSVP NOW!</span>
+              <ArrowUpRight size={13} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 shrink-0" />
+            </a>
 
             {/* Mobile Menu Button */}
             <button
@@ -174,65 +218,114 @@ export default function EditorialNav() {
               <span className="text-[#00d26a]">ACTS 1–8</span>
             </div>
 
-            <button
-              onClick={() => scrollTo('story-hero')}
+            <a
+              href="#story-hero"
+              onClick={(e) => {
+                e.preventDefault();
+                scrollTo('story-hero');
+              }}
               className="text-left py-1.5 text-xl font-light text-white hover:text-[#00d26a] transition-colors cursor-pointer flex items-center"
             >
               <span className="font-mono text-xs text-[#00d26a] w-6 font-bold">1</span>
               <span>Prologue</span>
-            </button>
-            <button
-              onClick={() => scrollTo('story-manifesto')}
+            </a>
+            <a
+              href="#story-manifesto"
+              onClick={(e) => {
+                e.preventDefault();
+                scrollTo('story-manifesto');
+              }}
               className="text-left py-1.5 text-xl font-light text-white hover:text-[#00d26a] transition-colors cursor-pointer flex items-center"
             >
               <span className="font-mono text-xs text-[#00d26a] w-6 font-bold">2</span>
               <span>Story</span>
-            </button>
-            <button
-              onClick={() => scrollTo('story-odyssey')}
+            </a>
+            <a
+              href="#story-odyssey"
+              onClick={(e) => {
+                e.preventDefault();
+                scrollTo('story-odyssey');
+              }}
               className="text-left py-1.5 text-xl font-light text-white hover:text-[#00d26a] transition-colors cursor-pointer flex items-center"
             >
               <span className="font-mono text-xs text-[#00d26a] w-6 font-bold">3</span>
               <span>Tech</span>
-            </button>
-            <button
-              onClick={() => scrollTo('story-keynote')}
+            </a>
+            <a
+              href="#story-keynote"
+              onClick={(e) => {
+                e.preventDefault();
+                scrollTo('story-keynote');
+              }}
               className="text-left py-1.5 text-xl font-light text-white hover:text-[#00d26a] transition-colors cursor-pointer flex items-center"
             >
               <span className="font-mono text-xs text-[#00d26a] w-6 font-bold">4</span>
               <span>Speaker</span>
-            </button>
-            <button
-              onClick={() => scrollTo('story-blueprint')}
+            </a>
+            <a
+              href="#story-blueprint"
+              onClick={(e) => {
+                e.preventDefault();
+                scrollTo('story-blueprint');
+              }}
               className="text-left py-1.5 text-xl font-light text-white hover:text-[#00d26a] transition-colors cursor-pointer flex items-center"
             >
               <span className="font-mono text-xs text-[#00d26a] w-6 font-bold">5</span>
               <span>Schedule</span>
-            </button>
-            <button
-              onClick={() => scrollTo('story-honors')}
+            </a>
+            <a
+              href="#story-honors"
+              onClick={(e) => {
+                e.preventDefault();
+                scrollTo('story-honors');
+              }}
               className="text-left py-1.5 text-xl font-light text-white hover:text-[#00d26a] transition-colors cursor-pointer flex items-center"
             >
               <span className="font-mono text-xs text-[#00d26a] w-6 font-bold">6</span>
               <span>Honors</span>
-            </button>
-            <button
-              onClick={() => scrollTo('story-patronage')}
+            </a>
+            <a
+              href="#story-patronage"
+              onClick={(e) => {
+                e.preventDefault();
+                scrollTo('story-patronage');
+              }}
               className="text-left py-1.5 text-xl font-light text-white hover:text-[#00d26a] transition-colors cursor-pointer flex items-center"
             >
               <span className="font-mono text-xs text-[#00d26a] w-6 font-bold">7</span>
               <span>Patronage</span>
-            </button>
-            <button
-              onClick={() => scrollTo('story-inquiries')}
+            </a>
+            <a
+              href="#story-inquiries"
+              onClick={(e) => {
+                e.preventDefault();
+                scrollTo('story-inquiries');
+              }}
               className="text-left py-1.5 text-xl font-light text-white hover:text-[#00d26a] transition-colors cursor-pointer flex items-center"
             >
               <span className="font-mono text-xs text-[#00d26a] w-6 font-bold">8</span>
               <span>FAQ</span>
-            </button>
+            </a>
           </div>
 
           <div className="border-t border-white/[0.08] pt-4 flex flex-col gap-3 max-w-sm w-full mx-auto" onClick={(e) => e.stopPropagation()}>
+            <a
+              href={MEETUP_EVENT_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => setMobileMenuOpen(false)}
+              className="w-full py-3 rounded-full bg-[#00d26a] text-[#080b11] font-mono text-xs font-semibold uppercase tracking-wider flex items-center justify-center gap-2 shadow-md shadow-[#00d26a]/20 cursor-pointer"
+            >
+              <img
+                src="/images/meetup-icon.png"
+                alt=""
+                className="w-4 h-4 object-contain shrink-0"
+                aria-hidden="true"
+              />
+              <span>RSVP FOR THE EVENT</span>
+              <ArrowUpRight size={14} className="shrink-0" />
+            </a>
+
             <div className="flex items-center justify-between text-xs font-mono text-[#8e95a5]">
               <span>24 SEPT 2026 · MHSSCE</span>
               <span className="text-[#00d26a]">100 SEATS LIMITED</span>

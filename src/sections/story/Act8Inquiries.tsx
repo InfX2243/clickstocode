@@ -2,7 +2,7 @@ import { useState } from 'react';
 import StorySection from '../../components/editorial/StorySection';
 import { ChevronDown, Phone, Mail, ArrowUpRight, HeartHandshake, Ticket } from 'lucide-react';
 import { LinkedInIcon, InstagramIcon } from '../../components/SocialIcons';
-import { EVENT_DATE, EVENT_TIME } from '../../constants/event';
+import { EVENT_DATE, EVENT_TIME, MEETUP_EVENT_URL } from '../../constants/event';
 
 interface FaqItem {
   q: string;
@@ -200,15 +200,21 @@ export default function Act8Inquiries() {
           </p>
 
           <div className="pt-4 flex flex-col sm:flex-row items-center justify-center gap-4">
-            <button
-              onClick={() => {
-                window.open('https://www.meetup.com/', '_blank', 'noopener,noreferrer');
-              }}
-              className="px-9 py-4 rounded-full bg-[#00d26a] text-[#080b11] font-mono text-sm uppercase tracking-wider font-semibold hover:bg-[#00e676] hover:-translate-y-0.5 transition-all duration-300 shadow-2xl shadow-[#00d26a]/25 flex items-center gap-2 cursor-pointer"
+            <a
+              href={MEETUP_EVENT_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-6 sm:px-9 py-3.5 sm:py-4 rounded-full bg-[#00d26a] text-[#080b11] font-mono text-xs sm:text-sm uppercase tracking-wider font-semibold hover:bg-[#00e676] hover:-translate-y-0.5 transition-all duration-300 shadow-2xl shadow-[#00d26a]/25 flex items-center gap-2.5 cursor-pointer"
             >
-              <span>RSVP FOR THE EVENT</span>
-              <ArrowUpRight size={16} />
-            </button>
+              <img
+                src="/images/meetup-icon.png"
+                alt=""
+                className="w-4 h-4 sm:w-5 sm:h-5 object-contain shrink-0"
+                aria-hidden="true"
+              />
+              <span className="whitespace-nowrap">RSVP FOR THE EVENT</span>
+              <ArrowUpRight size={16} className="shrink-0" />
+            </a>
           </div>
         </div>
 

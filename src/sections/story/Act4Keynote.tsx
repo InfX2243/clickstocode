@@ -1,5 +1,5 @@
 import StorySection from '../../components/editorial/StorySection';
-import { ArrowUpRight, Award } from 'lucide-react';
+import { Award } from 'lucide-react';
 import { LinkedInIcon } from '../../components/SocialIcons';
 
 export default function Act4Keynote() {
@@ -29,11 +29,27 @@ export default function Act4Keynote() {
             <div className="relative aspect-[3/4] sm:aspect-[4/5] rounded-xl overflow-hidden bg-[#0c1017] border border-white/[0.08] shadow-2xl">
               <img
                 src="/images/speaker.png"
-                alt="Er. Afreen Bano"
+                alt="Er. Afreen Bano — Technology Leader, AWS Cloud & DevSecOps Speaker at AWS From Clicks to Code"
+                width={600}
+                height={750}
+                loading="lazy"
+                decoding="async"
                 className="w-full h-full object-cover object-top filter contrast-[1.03] transition-all duration-700 ease-out group-hover:scale-[1.02]"
               />
               {/* Subtle edge anchoring only at the base, never obscuring the face */}
               <div className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-[#080b11]/80 to-transparent pointer-events-none" />
+
+              {/* Round LinkedIn Icon Button placed directly on the image */}
+              <a
+                href="https://in.linkedin.com/in/afreen-bano"
+                target="_blank"
+                rel="noreferrer"
+                aria-label="Connect with Er. Afreen Bano on LinkedIn"
+                title="Connect with Er. Afreen Bano on LinkedIn"
+                className="absolute bottom-3.5 right-3.5 z-10 w-11 h-11 rounded-full bg-[#080b11]/80 hover:bg-[#0077b5] text-white border border-white/20 hover:border-[#0077b5] backdrop-blur-md flex items-center justify-center transition-all duration-300 shadow-xl hover:scale-110 active:scale-95 group/li"
+              >
+                <LinkedInIcon size={20} className="transition-transform group-hover/li:scale-110" />
+              </a>
             </div>
 
             {/* Editorial Caption Underneath */}
@@ -85,20 +101,6 @@ export default function Act4Keynote() {
                   <div className="text-xs text-[#8e95a5]">Hands-on confidence through practical cloud problem-solving.</div>
                 </div>
               </div>
-            </div>
-
-            {/* Connect on LinkedIn Action */}
-            <div className="pt-2">
-              <a
-                href="https://in.linkedin.com/in/afreen-bano"
-                target="_blank"
-                rel="noreferrer"
-                className="inline-flex items-center gap-3 px-6 py-3.5 rounded-full border border-white/[0.12] bg-white/[0.02] text-white hover:bg-white hover:text-black transition-all duration-300 font-mono text-xs uppercase tracking-wider group"
-              >
-                <LinkedInIcon size={14} className="text-[#00d26a] group-hover:text-black" />
-                <span>Connect with Afreen Bano on LinkedIn</span>
-                <ArrowUpRight size={14} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-              </a>
             </div>
           </div>
         </div>
