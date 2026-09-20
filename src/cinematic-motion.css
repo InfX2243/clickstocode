@@ -3789,3 +3789,215 @@
     padding:10px 14px;
   }
 }
+
+
+/* Screen 4 final polish: readable curriculum cards, balanced spacing, and a clean viewport fit. */
+.learning-chapter{
+  overflow:hidden;
+}
+
+.learning-chapter .cinematic-chapter-inner{
+  box-sizing:border-box;
+  width:min(1240px,calc(100vw - 64px));
+  min-height:100%;
+  padding-block:clamp(26px,3.2vh,42px);
+  justify-content:center;
+}
+
+.learning-chapter .cinematic-chapter-eyebrow{
+  margin-bottom:clamp(8px,1vh,12px);
+}
+
+.learning-chapter .cinematic-chapter-title{
+  max-width:1000px;
+  margin-bottom:clamp(16px,2vh,24px);
+}
+
+.learning-chapter .learning-scene{
+  width:100%;
+}
+
+.learning-chapter .learning-intro{
+  max-width:1120px;
+  gap:32px;
+  align-items:center;
+}
+
+.learning-chapter .learning-intro-badge{
+  font-size:11px;
+  letter-spacing:.13em;
+}
+
+.learning-chapter .learning-intro p{
+  max-width:820px;
+  font-size:clamp(15px,1.2vw,18px);
+  line-height:1.5;
+}
+
+.learning-chapter .learning-modules{
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:12px;
+  margin-top:clamp(16px,2vw,24px);
+  align-items:stretch;
+}
+
+.learning-chapter .learning-module{
+  box-sizing:border-box;
+  min-width:0;
+  min-height:clamp(148px,17vh,178px);
+  padding:16px;
+  justify-content:flex-end;
+  border-color:rgba(255,255,255,.11);
+  background:
+    linear-gradient(145deg,rgba(0,210,106,.065),rgba(8,11,19,.78) 72%),
+    rgba(8,11,19,.62);
+}
+
+.learning-chapter .learning-module-top{
+  top:14px;
+  left:15px;
+  right:15px;
+}
+
+.learning-chapter .learning-module-top>span{
+  font-size:11px;
+  color:rgba(255,255,255,.34);
+}
+
+.learning-chapter .learning-module-visual{
+  width:50px;
+  height:50px;
+  border-radius:11px;
+}
+
+.learning-chapter .learning-module-visual img{
+  width:36px;
+  height:36px;
+}
+
+.learning-chapter .learning-module strong{
+  font-size:14px;
+  line-height:1.22;
+  letter-spacing:.065em;
+}
+
+.learning-chapter .learning-module p{
+  margin-top:7px;
+  max-width:none;
+  color:rgba(255,255,255,.58);
+  font-size:12px;
+  line-height:1.45;
+}
+
+.learning-chapter .learning-strip{
+  min-height:50px;
+  box-sizing:border-box;
+  margin-top:12px;
+  padding:11px 16px;
+  gap:20px;
+}
+
+.learning-chapter .learning-strip span{
+  font-size:10px;
+}
+
+.learning-chapter .learning-strip strong{
+  font-size:13px;
+  line-height:1.35;
+}
+
+@media(max-width:900px){
+  .learning-chapter .cinematic-chapter-inner{
+    width:min(100% - 48px,1240px);
+  }
+
+  .learning-chapter .learning-modules{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
+}
+
+@media(max-height:820px) and (min-width:641px){
+  .learning-chapter .cinematic-chapter-inner{
+    padding-block:22px;
+  }
+
+  .learning-chapter .cinematic-chapter-title{
+    margin-bottom:14px;
+  }
+
+  .learning-chapter .learning-intro p{
+    font-size:15px;
+    line-height:1.4;
+  }
+
+  .learning-chapter .learning-modules{
+    gap:10px;
+    margin-top:14px;
+  }
+
+  .learning-chapter .learning-module{
+    min-height:136px;
+    padding:13px 14px;
+  }
+
+  .learning-chapter .learning-module-visual{
+    width:44px;
+    height:44px;
+  }
+
+  .learning-chapter .learning-module-visual img{
+    width:32px;
+    height:32px;
+  }
+
+  .learning-chapter .learning-module strong{
+    font-size:13px;
+  }
+
+  .learning-chapter .learning-module p{
+    margin-top:5px;
+    font-size:11px;
+    line-height:1.35;
+  }
+
+  .learning-chapter .learning-strip{
+    min-height:44px;
+    margin-top:10px;
+    padding:9px 14px;
+  }
+}
+
+@media(max-width:600px){
+  .learning-chapter .cinematic-chapter-inner{
+    width:calc(100% - 32px);
+    padding-block:24px;
+  }
+
+  .learning-chapter .learning-intro{
+    gap:9px;
+  }
+
+  .learning-chapter .learning-modules{
+    grid-template-columns:1fr;
+    gap:10px;
+    margin-top:14px;
+  }
+
+  .learning-chapter .learning-module{
+    min-height:138px;
+  }
+
+  .learning-chapter .learning-strip{
+    align-items:flex-start;
+    flex-direction:column;
+    gap:7px;
+  }
+}
+
+@media(prefers-reduced-motion:reduce){
+  .learning-chapter .learning-scene,
+  .learning-chapter .learning-module{
+    transform:none!important;
+    opacity:1!important;
+  }
+}
