@@ -400,9 +400,6 @@ export default function Home() {
                   <p>Internal speaker-session timings remain flexible so the technical session can follow the speaker's plan.</p>
                 </div>
 
-                <div className="event-overview-register event-overview-register-disabled timeline-register" aria-label={MEETUP_STATUS}>
-                  <img src="/images/meetup-icon.png" alt="" aria-hidden="true" />
-                  <span>{MEETUP_STATUS}</span><b aria-hidden="true">·</b></div>
               </div>
             </ChapterShell>
 
