@@ -3210,3 +3210,8 @@
     column-gap:6px;
   }
 }
+/* Keep the Web Server icon on the same vertical axis as the other Screen 2 icons. */
+.event-overview-steps article:nth-child(4) .event-service-badge{
+  position:relative;
+  left:-4px;
+}
