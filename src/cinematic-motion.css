@@ -4050,3 +4050,87 @@
     opacity:1!important;
   }
 }
+
+
+/* Screen 4 card composition: title owns the visual middle; numbered build cards use oversized free-floating icons. */
+.learning-chapter .learning-module{
+  grid-template-columns:minmax(0,1fr) auto;
+  grid-template-rows:auto minmax(58px,1fr) auto;
+  column-gap:12px;
+  row-gap:8px;
+  min-height:clamp(184px,19vh,214px);
+  padding:16px 18px 15px;
+}
+.learning-chapter .learning-module-top{
+  grid-column:1 / -1;
+  grid-row:1;
+  min-height:54px;
+  align-items:center;
+}
+.learning-chapter .learning-module-top>span{
+  font-size:clamp(30px,2.7vw,42px);
+  line-height:.9;
+}
+.learning-chapter .learning-module-visual{
+  width:62px;
+  height:62px;
+  border:0;
+  border-radius:0;
+  background:transparent;
+}
+.learning-chapter .learning-module-visual img{
+  width:50px;
+  height:50px;
+  object-fit:contain;
+  filter:drop-shadow(0 0 14px rgba(0,210,106,.16));
+}
+.learning-chapter .learning-module:nth-child(n+2) .learning-module-visual{
+  width:66px;
+  height:66px;
+}
+.learning-chapter .learning-module:nth-child(n+2) .learning-module-visual img{
+  width:58px;
+  height:58px;
+}
+.learning-chapter .learning-module strong{
+  grid-column:1 / -1;
+  grid-row:2;
+  align-self:center;
+  margin:0;
+  max-width:100%;
+  font-size:clamp(18px,1.45vw,21px);
+  line-height:1.08;
+  letter-spacing:.035em;
+}
+.learning-chapter .learning-module p{
+  grid-column:1 / -1;
+  grid-row:3;
+  margin:0;
+  font-size:13px;
+  line-height:1.4;
+  max-width:92%;
+}
+@media(max-height:820px) and (min-width:641px){
+  .learning-chapter .learning-module{
+    min-height:160px;
+    padding:13px 15px 12px;
+    grid-template-rows:auto minmax(48px,1fr) auto;
+  }
+  .learning-chapter .learning-module-top{min-height:46px}
+  .learning-chapter .learning-module-top>span{font-size:28px}
+  .learning-chapter .learning-module-visual{width:52px;height:52px}
+  .learning-chapter .learning-module-visual img{width:42px;height:42px}
+  .learning-chapter .learning-module:nth-child(n+2) .learning-module-visual{width:56px;height:56px}
+  .learning-chapter .learning-module:nth-child(n+2) .learning-module-visual img{width:50px;height:50px}
+  .learning-chapter .learning-module strong{font-size:16px}
+  .learning-chapter .learning-module p{font-size:12px;line-height:1.35}
+}
+@media(max-width:600px){
+  .learning-chapter .learning-module{min-height:158px;padding:14px 15px}
+  .learning-chapter .learning-module-top{min-height:48px}
+  .learning-chapter .learning-module-top>span{font-size:29px}
+  .learning-chapter .learning-module:nth-child(n+2) .learning-module-visual{width:58px;height:58px}
+  .learning-chapter .learning-module:nth-child(n+2) .learning-module-visual img{width:52px;height:52px}
+  .learning-chapter .learning-module strong{font-size:17px}
+  .learning-chapter .learning-module p{max-width:100%;font-size:13px}
+}
