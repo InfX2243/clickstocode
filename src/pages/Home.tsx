@@ -284,6 +284,11 @@ export default function Home() {
                   <div className="arrival-badge"><DoorOpen size={16} strokeWidth={2} /><span>YOUR FIRST 30 MINUTES</span></div>
                   <p>Check in, verify your AWS Academy Learner Lab access in the waiting room, then move into the Seminar Hall before the 10:00 AM program begins.</p>
                 </div>
+                <div className="arrival-window arrival-window-priority" aria-label="Key event timings">
+                  <div><span>09:30 — 09:50 AM</span><strong>CHECK-IN + LEARNER LAB CHECK</strong><small>ARRIVE ON TIME</small></div>
+                  <i aria-hidden="true" />
+                  <div><span>10:00 AM</span><strong>MAIN PROGRAM BEGINS</strong><small>BE IN THE SEMINAR HALL</small></div>
+                </div>
                 <div className="arrival-hero">
                   <div className="arrival-time-card">
                     <span>09:30 AM</span><strong>CHECK-IN OPENS</strong><small>Start at the Registration Desk on the Ground Floor, near the Staff Lift.</small>
@@ -310,10 +315,6 @@ export default function Home() {
                       <span>{number as string}</span><strong>{title as string}</strong><p>{description as string}</p>
                     </article>;
                   })}
-                </div>
-                <div className="arrival-window">
-                  <div><span>09:30 — 09:50</span><strong>CHECK-IN + LEARNER LAB CHECK</strong></div>
-                  <i aria-hidden="true" /><div><span>10:00 AM</span><strong>WORKSHOP BEGINS</strong></div>
                 </div>
                 <div className="arrival-note">
                   <span>MAIN VENUE · 10:00 AM</span><p>{VENUE}. Check-in and support remain at the {CHECKIN_LOCATION.toLowerCase()}.</p>
