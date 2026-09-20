@@ -257,7 +257,6 @@
   height:46px;
   display:grid;
   place-items:center;
-  border:1px solid rgba(0,210,106,.3);
   color:#00d26a!important;
   font:700 10px 'Amazon Ember Mono',monospace!important;
   letter-spacing:.05em;
@@ -348,10 +347,7 @@
 .event-service-badge{
   display:grid;
   place-items:center;
-  border:1px solid rgba(0,210,106,.42);
-  border-radius:12px;
   color:#00d26a!important;
-  background:rgba(0,210,106,.045);
   font:700 10px 'Amazon Ember Mono',monospace!important;
   letter-spacing:.05em;
 }
