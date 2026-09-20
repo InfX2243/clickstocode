@@ -3791,7 +3791,7 @@
 }
 
 
-/* Screen 4 final polish: darker, larger curriculum cards with stronger number hierarchy. */
+/* Screen 4 final polish: compact top row, no dead space, stronger card hierarchy. */
 .learning-chapter{
   overflow:hidden;
 }
@@ -3844,9 +3844,14 @@
 .learning-chapter .learning-module{
   box-sizing:border-box;
   min-width:0;
-  min-height:clamp(170px,18vh,205px);
-  padding:19px;
-  justify-content:flex-end;
+  min-height:clamp(176px,18vh,205px);
+  padding:17px 19px;
+  display:grid;
+  grid-template-columns:minmax(0,1fr) auto;
+  grid-template-rows:auto 1fr auto;
+  column-gap:14px;
+  row-gap:8px;
+  align-content:stretch;
   border:1px solid rgba(255,255,255,.1);
   border-top:2px solid rgba(0,210,106,.55);
   border-radius:14px;
@@ -3861,41 +3866,54 @@
 }
 
 .learning-chapter .learning-module-top{
-  top:15px;
-  left:17px;
-  right:17px;
+  position:static;
+  grid-column:1 / -1;
+  grid-row:1;
+  display:flex;
   align-items:center;
+  justify-content:space-between;
+  gap:12px;
 }
 
 .learning-chapter .learning-module-top>span{
-  font-size:13px;
-  font-weight:700;
+  display:block;
   color:#00d26a;
-  letter-spacing:.08em;
+  font:700 clamp(28px,2.5vw,38px)/1 'Amazon Ember Mono',monospace;
+  letter-spacing:-.07em;
 }
 
 .learning-chapter .learning-module-visual{
-  width:54px;
-  height:54px;
+  flex:0 0 auto;
+  width:52px;
+  height:52px;
   border-radius:12px;
   border-color:rgba(0,210,106,.25);
   background:rgba(0,210,106,.045);
 }
 
 .learning-chapter .learning-module-visual img{
-  width:39px;
-  height:39px;
+  width:38px;
+  height:38px;
 }
 
 .learning-chapter .learning-module strong{
+  grid-column:1 / -1;
+  grid-row:2;
+  align-self:end;
+  position:static;
+  color:#fff;
   font-size:17px;
-  line-height:1.2;
+  line-height:1.18;
   letter-spacing:.045em;
 }
 
 .learning-chapter .learning-module p{
-  margin-top:8px;
+  grid-column:1 / -1;
+  grid-row:3;
+  position:static;
+  margin:0;
   max-width:none;
+  align-self:start;
   color:rgba(255,255,255,.64);
   font-size:13px;
   line-height:1.48;
@@ -3951,27 +3969,22 @@
 
   .learning-chapter .learning-module{
     min-height:154px;
-    padding:15px;
-  }
-
-  .learning-chapter .learning-module-top{
-    top:13px;
-    left:14px;
-    right:14px;
+    padding:14px 15px;
+    row-gap:6px;
   }
 
   .learning-chapter .learning-module-top>span{
-    font-size:12px;
+    font-size:26px;
   }
 
   .learning-chapter .learning-module-visual{
-    width:48px;
-    height:48px;
+    width:46px;
+    height:46px;
   }
 
   .learning-chapter .learning-module-visual img{
-    width:35px;
-    height:35px;
+    width:34px;
+    height:34px;
   }
 
   .learning-chapter .learning-module strong{
@@ -3979,7 +3992,6 @@
   }
 
   .learning-chapter .learning-module p{
-    margin-top:6px;
     font-size:12px;
     line-height:1.4;
   }
@@ -4009,11 +4021,11 @@
 
   .learning-chapter .learning-module{
     min-height:154px;
-    padding:16px;
+    padding:15px;
   }
 
   .learning-chapter .learning-module-top>span{
-    font-size:12px;
+    font-size:27px;
   }
 
   .learning-chapter .learning-module strong{
