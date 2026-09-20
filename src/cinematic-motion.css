@@ -916,7 +916,7 @@
 .audience-profile li span{color:rgba(255,255,255,.5);font-size:12px;line-height:1.4}
 .audience-reassurance{
   margin-top:16px;
-  padding:18px 20px;
+  padding:12px 16px;
   border-left:2px solid #00d26a;
   background:rgba(0,210,106,.045);
   display:flex;
@@ -3217,27 +3217,32 @@
 }
 
 
-/* Screen 3: improve readability, card separation, and the Meetup CTA. */
+/* Screen 3: fit the complete audience scene inside the viewport while retaining the larger type. */
 .audience-chapter .cinematic-chapter-inner{
-  padding-top:clamp(42px,5vw,76px);
-  padding-bottom:clamp(42px,5vw,76px);
+  padding-top:clamp(18px,2.2vw,34px);
+  padding-bottom:clamp(18px,2.2vw,34px);
+  justify-content:center;
+}
+.audience-scene{
+  max-height:calc(100vh - clamp(36px,6vw,88px));
+  overflow:visible;
 }
 .audience-scene{
   width:min(1240px,100%);
   margin:0 auto;
   display:grid;
-  gap:clamp(20px,2.5vw,32px);
+  gap:clamp(10px,1.2vw,18px);
 }
 .audience-hero-copy p{
-  margin:12px 0 0;
+  margin:8px 0 0;
   max-width:900px;
   color:rgba(255,255,255,.78);
   font-size:clamp(18px,1.65vw,24px);
-  line-height:1.5;
+  line-height:1.35;
 }
 .audience-hero-copy p strong{color:#fff}
 .audience-panel{
-  padding:clamp(20px,2.5vw,32px);
+  padding:clamp(14px,1.6vw,22px);
   border:1px solid rgba(0,210,106,.2);
   background:rgba(8,11,19,.76);
   box-shadow:0 22px 70px rgba(0,0,0,.26),inset 0 0 0 1px rgba(0,210,106,.035);
@@ -3247,7 +3252,7 @@
   align-items:flex-start;
   justify-content:space-between;
   gap:20px;
-  padding-bottom:18px;
+  padding-bottom:10px;
   border-bottom:1px solid rgba(255,255,255,.1);
 }
 .audience-panel-heading h3{
@@ -3262,11 +3267,11 @@
   display:grid;
   grid-template-columns:repeat(4,minmax(0,1fr));
   gap:12px;
-  margin-top:16px;
+  margin-top:10px;
 }
 .audience-tile{
-  min-height:210px;
-  padding:20px;
+  min-height:0;
+  padding:14px;
   display:flex;
   flex-direction:column;
   border:1px solid rgba(255,255,255,.13);
@@ -3293,19 +3298,19 @@
   background:rgba(0,210,106,.06);
 }
 .audience-tile-number{
-  margin-top:16px;
+  margin-top:10px;
   color:#00d26a;
   font:700 clamp(26px,2.3vw,38px)/1 'Amazon Ember Mono',monospace;
   letter-spacing:-.06em;
 }
 .audience-tile strong{
-  margin-top:9px;
+  margin-top:6px;
   color:#fff;
   font-size:clamp(17px,1.35vw,20px);
   line-height:1.15;
 }
 .audience-tile p{
-  margin:8px 0 0;
+  margin:5px 0 0;
   color:rgba(255,255,255,.62);
   font-size:clamp(13px,1.05vw,15px);
   line-height:1.45;
@@ -3314,11 +3319,11 @@
   display:grid;
   grid-template-columns:repeat(4,minmax(0,1fr));
   gap:10px;
-  margin-top:16px;
+  margin-top:10px;
 }
 .audience-benefit{
-  min-height:118px;
-  padding:16px;
+  min-height:0;
+  padding:11px 13px;
   display:grid;
   grid-template-columns:30px 1fr;
   align-items:start;
