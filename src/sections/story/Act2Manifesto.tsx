@@ -5,7 +5,7 @@ export default function Act2Manifesto() {
   return (
     <StorySection
       id="story-manifesto"
-      actNumber="02"
+      actNumber="2"
       actLabel="THE MANIFESTO"
       eyebrow="WHY CLICKS TO CODE MATTERS"
     >
@@ -36,7 +36,7 @@ export default function Act2Manifesto() {
 
           <div className="lg:col-span-4 border-l border-white/[0.08] pl-6 sm:pl-8 space-y-4 reveal-init stagger-3">
             <div className="text-xs font-mono text-[#00d26a] uppercase tracking-widest">
-              // THE PRINCIPLE
+              THE PRINCIPLE
             </div>
             <h3 className="text-xl sm:text-2xl font-light text-white">
               Curiosity over credentials.
@@ -53,7 +53,7 @@ export default function Act2Manifesto() {
         {/* Three Editorial Theses: Pure Typography & Hairline Rules (No Cards) */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-14 pt-12 border-t border-white/[0.08]">
           <div className="space-y-3 reveal-init stagger-1">
-            <div className="font-mono text-3xl sm:text-4xl font-light text-white/30 tracking-tight">01</div>
+            <div className="font-mono text-3xl sm:text-4xl font-light text-white/30 tracking-tight">1</div>
             <div className="text-xs font-mono uppercase tracking-widest text-[#00d26a]">REAL LINUX COMPUTE</div>
             <p className="text-sm text-[#8e95a5] font-light leading-relaxed">
               No toy environments or simulated web consoles. You provision a genuine Amazon EC2 virtual machine running live in the AWS Cloud.
@@ -61,7 +61,7 @@ export default function Act2Manifesto() {
           </div>
 
           <div className="space-y-3 reveal-init stagger-2">
-            <div className="font-mono text-3xl sm:text-4xl font-light text-white/30 tracking-tight">02</div>
+            <div className="font-mono text-3xl sm:text-4xl font-light text-white/30 tracking-tight">2</div>
             <div className="text-xs font-mono uppercase tracking-widest text-[#00d26a]">ZERO-TRUST SECURITY</div>
             <p className="text-sm text-[#8e95a5] font-light leading-relaxed">
               Never leave port 22 open to the public internet. We configure AWS Systems Manager Session Manager for browser-based encrypted shell access.
@@ -69,7 +69,7 @@ export default function Act2Manifesto() {
           </div>
 
           <div className="space-y-3 reveal-init stagger-3">
-            <div className="font-mono text-3xl sm:text-4xl font-light text-white/30 tracking-tight">03</div>
+            <div className="font-mono text-3xl sm:text-4xl font-light text-white/30 tracking-tight">3</div>
             <div className="text-xs font-mono uppercase tracking-widest text-[#00d26a]">DECLARATIVE AUTOMATION</div>
             <p className="text-sm text-[#8e95a5] font-light leading-relaxed">
               Codify your architecture into AWS CloudFormation templates so an entire infrastructure stack can be deployed, tested, and torn down with code.

@@ -19,6 +19,9 @@ export default function StorySection({
   children,
   divider = true,
 }: StorySectionProps) {
+  // Strip any leading zeros to ensure natural integers (1, 2, 3...)
+  const cleanNumber = actNumber ? String(parseInt(actNumber, 10)) : undefined;
+
   return (
     <section
       id={id}
@@ -32,23 +35,26 @@ export default function StorySection({
 
       <div className="max-w-7xl mx-auto">
         {/* Act Header Marker */}
-        {(actNumber || actLabel || eyebrow) && (
-          <div className="flex flex-wrap items-center justify-between gap-4 mb-10 md:mb-16 pb-4 border-b border-white/[0.04]">
-            <div className="flex items-center gap-3">
-              {actNumber && (
-                <span className="font-mono text-xs text-[#00d26a] tracking-widest uppercase">
-                  [ ACT {actNumber} ]
+        {(cleanNumber || actLabel || eyebrow) && (
+          <div className="flex flex-wrap items-center justify-between gap-4 mb-10 md:mb-16 pb-4 border-b border-white/[0.06]">
+            <div className="flex items-center gap-2.5">
+              {cleanNumber && (
+                <span className="font-mono text-xs text-[#00d26a] font-bold tracking-widest">
+                  {cleanNumber}
                 </span>
               )}
+              {cleanNumber && actLabel && (
+                <span className="text-white/30 font-mono text-xs">—</span>
+              )}
               {actLabel && (
-                <span className="font-mono text-xs uppercase tracking-widest text-[#8e95a5]">
-                  / {actLabel}
+                <span className="font-mono text-xs uppercase tracking-widest text-white/80">
+                  {actLabel}
                 </span>
               )}
             </div>
 
             {eyebrow && (
-              <span className="font-mono text-[11px] uppercase tracking-widest text-[#8e95a5]/80">
+              <span className="font-mono text-[11px] uppercase tracking-widest text-[#8e95a5]">
                 {eyebrow}
               </span>
             )}

@@ -52,7 +52,7 @@ export default function Act7Patronage() {
   return (
     <StorySection
       id="story-patronage"
-      actNumber="07"
+      actNumber="7"
       actLabel="INSTITUTIONAL PATRONAGE"
       eyebrow="LEADERSHIP & PARTNERSHIP"
     >
@@ -122,7 +122,7 @@ export default function Act7Patronage() {
         <div className="pt-12 border-t border-white/[0.08] flex flex-col md:flex-row items-start md:items-center justify-between gap-8 reveal-init">
           <div className="max-w-2xl space-y-2">
             <div className="text-xs font-mono text-[#00d26a] uppercase tracking-widest">
-              // INDUSTRY & COMMUNITY PARTNERSHIP
+              INDUSTRY & COMMUNITY PARTNERSHIP
             </div>
             <h3 className="text-2xl sm:text-3xl font-light text-white tracking-tight">
               Support the next generation of cloud builders.
@@ -135,7 +135,7 @@ export default function Act7Patronage() {
           <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 shrink-0">
             <a
               href={SPONSOR_MAILTO}
-              className="inline-flex items-center gap-3 px-6 py-3.5 rounded-full bg-white text-black font-mono text-xs uppercase tracking-wider font-semibold hover:bg-[#00d26a] transition-all cursor-pointer shadow-lg"
+              className="inline-flex items-center gap-3 px-6 py-3.5 rounded-full bg-[#00d26a] text-[#080b11] font-mono text-xs uppercase tracking-wider font-semibold hover:bg-[#00e676] hover:-translate-y-0.5 transition-all cursor-pointer shadow-md shadow-[#00d26a]/20"
             >
               <span>Compose Partner Email</span>
               <ArrowUpRight size={14} />

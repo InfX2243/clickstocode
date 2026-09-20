@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import StorySection from '../../components/editorial/StorySection';
 import { MapPin, Laptop, BatteryCharging, IdCard, Ticket } from 'lucide-react';
-import { EVENT_DATE, VENUE, CHECKIN_LOCATION, MEETUP_STATUS } from '../../constants/event';
+import { EVENT_DATE, VENUE, CHECKIN_LOCATION } from '../../constants/event';
 
 interface TimelineEntry {
   time: string;
@@ -69,36 +69,42 @@ const BLUEPRINT_SCHEDULE: TimelineEntry[] = [
 export default function Act5Blueprint() {
   const timelineRef = useRef<HTMLDivElement | null>(null);
   const [activeStep, setActiveStep] = useState(0);
+  const [lineProgress, setLineProgress] = useState(0);
 
   useEffect(() => {
-    const items = timelineRef.current?.querySelectorAll('[data-timeline-item]');
-    if (!items) return;
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const index = Number(entry.target.getAttribute('data-timeline-item'));
-            setActiveStep((prev) => Math.max(prev, index));
+    let ticking = false;
+    const handleScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          if (timelineRef.current) {
+            const rect = timelineRef.current.getBoundingClientRect();
+            const viewportHeight = window.innerHeight;
+            const triggerStart = viewportHeight * 0.7;
+            const totalHeight = rect.height;
+            const distance = triggerStart - rect.top;
+            const progress = Math.min(1, Math.max(0, distance / totalHeight));
+            setLineProgress(progress);
+            const step = Math.min(
+              BLUEPRINT_SCHEDULE.length - 1,
+              Math.max(0, Math.floor(progress * BLUEPRINT_SCHEDULE.length))
+            );
+            setActiveStep(step);
           }
+          ticking = false;
         });
-      },
-      {
-        root: null,
-        rootMargin: '-20% 0px -40% 0px',
-        threshold: 0.2,
+        ticking = true;
       }
-    );
+    };
 
-    items.forEach((item) => observer.observe(item));
-
-    return () => observer.disconnect();
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   return (
     <StorySection
       id="story-blueprint"
-      actNumber="05"
+      actNumber="5"
       actLabel="THE EVENT BLUEPRINT"
       eyebrow="SCHEDULE & FIELD REQUIREMENTS"
     >
@@ -123,11 +129,11 @@ export default function Act5Blueprint() {
             </div>
 
             <div ref={timelineRef} className="relative pl-8 sm:pl-10 border-l border-white/[0.08] space-y-12">
-              {/* Dynamic Line Progress Indicator */}
+              {/* Bidirectional Line Progress Indicator (scroll-relative) */}
               <div
-                className="absolute left-0 top-0 w-0.5 bg-gradient-to-b from-[#00d26a] to-[#38bdf8] transition-all duration-500 ease-out pointer-events-none"
+                className="absolute left-0 top-0 w-0.5 bg-gradient-to-b from-[#00d26a] to-[#38bdf8] transition-all duration-300 ease-out pointer-events-none"
                 style={{
-                  height: `${Math.min(100, ((activeStep + 1) / BLUEPRINT_SCHEDULE.length) * 100)}%`,
+                  height: `${Math.min(100, Math.max(0, lineProgress * 100))}%`,
                 }}
               />
 
@@ -160,8 +166,8 @@ export default function Act5Blueprint() {
                         }`}>
                           {item.time}
                         </span>
-                        <span className="font-mono text-xs uppercase tracking-widest text-[#8e95a5]">
-                          // {item.category}
+                        <span className="font-mono text-xs uppercase tracking-widest text-[#38bdf8]">
+                          {item.category}
                         </span>
                       </div>
 
@@ -232,7 +238,7 @@ export default function Act5Blueprint() {
             {/* Venue & Desk */}
             <div className="p-7 rounded-2xl bg-white/[0.02] border border-white/[0.06] space-y-4">
               <div className="text-xs font-mono text-[#00d26a] uppercase">
-                // LOCATION SPECIFICATIONS
+                LOCATION SPECIFICATIONS
               </div>
               <div className="space-y-3 text-sm">
                 <div>
@@ -258,9 +264,6 @@ export default function Act5Blueprint() {
               <p className="text-xs text-[#8e95a5] font-light leading-relaxed">
                 Meetup capacity is capped at 100 RSVPs. Private WhatsApp group access will be distributed through Meetup post-registration.
               </p>
-              <div className="text-xs font-mono text-[#00d26a] pt-1">
-                Status: {MEETUP_STATUS}
-              </div>
             </div>
           </div>
         </div>

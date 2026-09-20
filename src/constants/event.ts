@@ -5,7 +5,7 @@ export const STORY_START = 0.008;
 export const STORY_HANDOFF_END = 0.055;
 export const STORY_END = 0.975;
 
-export const MEETUP_STATUS = 'MEETUP REGISTRATION COMING SOON';
+export const MEETUP_STATUS = 'RSVP FOR THE EVENT';
 export const EVENT_DATE = '24 September 2026';
 export const EVENT_TIME = '9:30 AM – 12:00 PM';
 export const VENUE = '3rd Floor, Seminar Hall, MHSSCE';

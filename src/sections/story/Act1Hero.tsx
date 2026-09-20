@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { ArrowDown, Calendar, Clock, MapPin, Users, Ticket, ArrowUpRight } from 'lucide-react';
-import { EVENT_DATE, EVENT_TIME, VENUE, MEETUP_STATUS } from '../../constants/event';
+import { EVENT_DATE, EVENT_TIME, VENUE } from '../../constants/event';
 import { useScrollProgress } from '../../lib/useScrollProgress';
 
 export default function Act1Hero() {
@@ -142,10 +142,9 @@ export default function Act1Hero() {
               const el = document.getElementById('story-blueprint');
               if (el) el.scrollIntoView({ behavior: 'smooth' });
             }}
-            title={MEETUP_STATUS}
-            className="group inline-flex items-center gap-3 px-7 py-4 rounded-full bg-white text-black font-mono text-sm font-semibold tracking-wider uppercase hover:bg-[#00d26a] transition-all duration-300 shadow-xl shadow-black/50 cursor-pointer"
+            className="group inline-flex items-center gap-3 px-7 py-4 rounded-full bg-[#00d26a] text-[#080b11] font-mono text-sm font-semibold tracking-wider uppercase hover:bg-[#00e676] hover:-translate-y-0.5 transition-all duration-300 shadow-xl shadow-[#00d26a]/20 cursor-pointer"
           >
-            <span>RSVP on Meetup</span>
+            <span>RSVP FOR THE EVENT</span>
             <ArrowUpRight size={16} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
           </button>
 
@@ -170,7 +169,7 @@ export default function Act1Hero() {
           <span>SCROLL TO BEGIN NARRATIVE</span>
         </div>
         <div className="hidden sm:block uppercase tracking-wider">
-          CHAPTER 01 OF 08
+          CHAPTER 1 OF 8
         </div>
       </div>
     </section>

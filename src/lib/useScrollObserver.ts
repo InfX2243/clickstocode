@@ -1,9 +1,9 @@
 import { useEffect } from 'react';
 
 /**
- * Universal Lightweight Viewport Reveal Observer
- * Uses native IntersectionObserver to trigger smooth CSS transitions
- * with zero layout thrashing or scroll polling overhead.
+ * Universal Bidirectional Viewport Reveal Observer
+ * Triggers smooth entrance when entering viewport and graceful exit
+ * when scrolling back out, delivering a reversible scroll experience.
  */
 export function useScrollObserver() {
   useEffect(() => {
@@ -20,15 +20,16 @@ export function useScrollObserver() {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             entry.target.classList.add('is-revealed');
-            // Unobserve once revealed for maximum performance
-            observer.unobserve(entry.target);
+          } else if (entry.boundingClientRect.top > 0) {
+            // Bidirectional: gracefully reverse when scrolling back up so it re-enters naturally
+            entry.target.classList.remove('is-revealed');
           }
         });
       },
       {
         root: null,
-        rootMargin: '0px 0px -8% 0px',
-        threshold: 0.1,
+        rootMargin: '0px 0px -4% 0px',
+        threshold: 0.05,
       }
     );
 

@@ -26,7 +26,7 @@ export default function Act6Honors() {
   return (
     <StorySection
       id="story-honors"
-      actNumber="06"
+      actNumber="6"
       actLabel="RECOGNITION & HONORS"
       eyebrow="CREDENTIALS & WORKSHOP PERKS"
     >
@@ -81,7 +81,7 @@ export default function Act6Honors() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-end p-5 pointer-events-none">
                   <div className="text-[11px] font-mono text-white/90">
-                    // VERIFIED CREDENTIAL PREVIEW
+                    VERIFIED CREDENTIAL SPECIFICATION
                   </div>
                 </div>
               </div>

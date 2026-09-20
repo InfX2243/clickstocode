@@ -2,7 +2,7 @@ import { useState } from 'react';
 import StorySection from '../../components/editorial/StorySection';
 import { ChevronDown, Phone, Mail, ArrowUpRight, HeartHandshake, Ticket } from 'lucide-react';
 import { LinkedInIcon, InstagramIcon } from '../../components/SocialIcons';
-import { EVENT_DATE, EVENT_TIME, MEETUP_STATUS } from '../../constants/event';
+import { EVENT_DATE, EVENT_TIME } from '../../constants/event';
 
 interface FaqItem {
   q: string;
@@ -68,7 +68,7 @@ export default function Act8Inquiries() {
   return (
     <StorySection
       id="story-inquiries"
-      actNumber="08"
+      actNumber="8"
       actLabel="INQUIRIES & FINAL CALL"
       eyebrow="FREQUENTLY ASKED QUESTIONS"
     >
@@ -96,8 +96,8 @@ export default function Act8Inquiries() {
                     className="w-full text-left flex items-start justify-between gap-6 group cursor-pointer focus:outline-none"
                   >
                     <div className="space-y-1">
-                      <span className="font-mono text-[10px] text-[#00d26a] uppercase tracking-widest">
-                        // {faq.category}
+                      <span className="font-mono text-[10px] text-[#38bdf8] uppercase tracking-widest">
+                        {faq.category}
                       </span>
                       <h3 className={`text-lg sm:text-xl font-normal transition-colors ${
                         isOpen ? 'text-[#00d26a]' : 'text-white group-hover:text-white/90'
@@ -191,15 +191,11 @@ export default function Act8Inquiries() {
               onClick={() => {
                 window.open('https://www.meetup.com/', '_blank', 'noopener,noreferrer');
               }}
-              title={MEETUP_STATUS}
-              className="px-9 py-4 rounded-full bg-white text-black font-mono text-sm uppercase tracking-wider font-semibold hover:bg-[#00d26a] transition-all duration-300 shadow-2xl shadow-black/80 flex items-center gap-2 cursor-pointer"
+              className="px-9 py-4 rounded-full bg-[#00d26a] text-[#080b11] font-mono text-sm uppercase tracking-wider font-semibold hover:bg-[#00e676] hover:-translate-y-0.5 transition-all duration-300 shadow-2xl shadow-[#00d26a]/25 flex items-center gap-2 cursor-pointer"
             >
-              <span>RSVP on Meetup</span>
+              <span>RSVP FOR THE EVENT</span>
               <ArrowUpRight size={16} />
             </button>
-            <div className="text-xs font-mono text-[#8e95a5]">
-              Status: <span className="text-[#00d26a]">{MEETUP_STATUS}</span>
-            </div>
           </div>
         </div>
 

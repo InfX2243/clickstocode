@@ -19,7 +19,7 @@ interface TechnicalStage {
 const STAGES: TechnicalStage[] = [
   {
     id: 'foundation',
-    stepNumber: '01',
+    stepNumber: '1',
     domain: 'CLOUD ENVIRONMENT',
     title: 'Cloud Computing & AWS',
     subtitle: 'Global Infrastructure & Identity',
@@ -32,7 +32,7 @@ const STAGES: TechnicalStage[] = [
   },
   {
     id: 'ec2',
-    stepNumber: '02',
+    stepNumber: '2',
     domain: 'ELASTIC COMPUTE',
     title: 'Amazon EC2',
     subtitle: 'Provisioning Virtual Linux Compute',
@@ -45,7 +45,7 @@ const STAGES: TechnicalStage[] = [
   },
   {
     id: 'ssm',
-    stepNumber: '03',
+    stepNumber: '3',
     domain: 'ZERO-TRUST ACCESS',
     title: 'AWS Systems Manager',
     subtitle: 'Session Manager Without Open SSH',
@@ -58,7 +58,7 @@ const STAGES: TechnicalStage[] = [
   },
   {
     id: 'webserver',
-    stepNumber: '04',
+    stepNumber: '4',
     domain: 'WEB HOSTING',
     title: 'Web Server Deployment',
     subtitle: 'Transforming Compute Into a Live Endpoint',
@@ -71,7 +71,7 @@ const STAGES: TechnicalStage[] = [
   },
   {
     id: 'iac',
-    stepNumber: '05',
+    stepNumber: '5',
     domain: 'DEVOPS & AUTOMATION',
     title: 'AWS CloudFormation',
     subtitle: 'Codifying Infrastructure as Code',
@@ -85,10 +85,10 @@ const STAGES: TechnicalStage[] = [
 ];
 
 const LAB_STEPS = [
-  { step: '06', title: 'Accept Course Invitation', desc: 'Open your AWS Academy student invitation email and accept enrollment.' },
-  { step: '07', title: 'Open Learner Lab Workspace', desc: 'Navigate to the course module list and locate the assigned Learner Lab.' },
-  { step: '08', title: 'Start Lab Environment', desc: 'Click "Start Lab" and monitor the AWS badge until it shifts from red to green.' },
-  { step: '09', title: 'Launch AWS Management Console', desc: 'Click the active AWS button to open the real cloud console sandbox.' },
+  { step: '6', title: 'Accept Course Invitation', desc: 'Open your AWS Academy student invitation email and accept enrollment.' },
+  { step: '7', title: 'Open Learner Lab Workspace', desc: 'Navigate to the course module list and locate the assigned Learner Lab.' },
+  { step: '8', title: 'Start Lab Environment', desc: 'Click "Start Lab" and monitor the AWS badge until it shifts from red to green.' },
+  { step: '9', title: 'Launch AWS Management Console', desc: 'Click the active AWS button to open the real cloud console sandbox.' },
   { step: '10', title: 'Verify Active Lab Session', desc: 'Confirm session timer is active and you have access before the workshop begins.' },
 ];
 
@@ -110,7 +110,7 @@ export default function Act3Odyssey() {
   return (
     <StorySection
       id="story-odyssey"
-      actNumber="03"
+      actNumber="3"
       actLabel="THE TECHNICAL JOURNEY"
       eyebrow="HANDS-ON WORKSHOP ARCHITECTURE"
     >
@@ -125,8 +125,8 @@ export default function Act3Odyssey() {
           </p>
         </div>
 
-        {/* Technical Architecture Connection Pipeline (AWS Green / Blue) */}
-        <div className="relative py-4 px-6 rounded-2xl bg-white/[0.02] border border-white/[0.06] overflow-x-auto reveal-init">
+        {/* Technical Architecture Connection Pipeline (AWS Blue structure, AWS Green progress) */}
+        <div className="relative py-4 px-6 rounded-2xl bg-white/[0.02] border border-[#0073bb]/20 overflow-x-auto reveal-init">
           <div className="min-w-[640px] flex items-center justify-between">
             {STAGES.map((s, idx) => {
               const isPastOrCurrent = idx <= activeStageIndex;
@@ -139,10 +139,10 @@ export default function Act3Odyssey() {
                   >
                     <div className={`w-8 h-8 rounded-full border flex items-center justify-center font-mono text-xs transition-all duration-300 ${
                       isCurrent
-                        ? 'bg-[#00d26a] border-[#00d26a] text-black font-bold shadow-[0_0_15px_rgba(0,210,106,0.4)]'
+                        ? 'bg-[#00d26a] border-[#00d26a] text-[#080b11] font-bold shadow-[0_0_12px_rgba(0,210,106,0.35)]'
                         : isPastOrCurrent
-                        ? 'bg-[#00d26a]/20 border-[#00d26a]/60 text-[#00d26a]'
-                        : 'bg-white/[0.04] border-white/[0.12] text-[#8e95a5]'
+                        ? 'bg-[#00d26a]/15 border-[#00d26a]/50 text-[#00d26a]'
+                        : 'bg-white/[0.03] border-[#0073bb]/30 text-[#8e95a5] group-hover:border-[#0073bb]/60'
                     }`}>
                       {s.stepNumber}
                     </div>
@@ -154,9 +154,9 @@ export default function Act3Odyssey() {
                   </button>
 
                   {idx < STAGES.length - 1 && (
-                    <div className="flex-1 mx-4 h-0.5 bg-white/[0.08] relative overflow-hidden">
+                    <div className="flex-1 mx-4 h-0.5 bg-[#0073bb]/20 relative overflow-hidden">
                       <div
-                        className="absolute inset-y-0 left-0 bg-gradient-to-r from-[#00d26a] to-[#38bdf8] transition-all duration-500"
+                        className="absolute inset-y-0 left-0 bg-[#00d26a] transition-all duration-500"
                         style={{
                           width: idx < activeStageIndex ? '100%' : '0%',
                         }}
@@ -175,7 +175,7 @@ export default function Act3Odyssey() {
           <div className="lg:col-span-5 space-y-3">
             <div className="text-xs font-mono uppercase tracking-widest text-[#8e95a5] mb-4 flex items-center justify-between">
               <span>WORKSHOP MILESTONES</span>
-              <span className="text-[#00d26a]">STAGE 0{activeStageIndex + 1} OF 05</span>
+              <span className="text-[#00d26a]">STAGE {activeStageIndex + 1} OF 5</span>
             </div>
 
             {STAGES.map((stage, idx) => {
@@ -196,7 +196,7 @@ export default function Act3Odyssey() {
                       {stage.stepNumber}
                     </span>
                     <div>
-                      <div className="text-[11px] font-mono text-[#8e95a5] uppercase">
+                      <div className="text-[11px] font-mono text-[#38bdf8] uppercase">
                         {stage.domain}
                       </div>
                       <div className={`text-base sm:text-lg font-medium tracking-tight transition-colors ${isSelected ? 'text-white' : 'text-white/80 group-hover:text-white'}`}>
@@ -232,10 +232,10 @@ export default function Act3Odyssey() {
               <div className="flex items-center justify-between gap-4 mb-6 pb-4 border-b border-white/[0.06]">
                 <div className="flex items-center gap-3">
                   <span className="font-mono text-xs text-[#00d26a] tracking-widest uppercase">
-                    STAGE {activeStage.stepNumber} // 05
+                    STAGE {activeStage.stepNumber} OF 5
                   </span>
                   <span className="text-white/20">|</span>
-                  <span className="font-mono text-xs uppercase tracking-widest text-[#8e95a5]">
+                  <span className="font-mono text-xs uppercase tracking-widest text-[#38bdf8]">
                     {activeStage.domain}
                   </span>
                 </div>
@@ -250,7 +250,7 @@ export default function Act3Odyssey() {
                 {activeStage.title}
               </h3>
               <div className="text-sm font-mono text-[#38bdf8] mb-6">
-                // {activeStage.subtitle}
+                {activeStage.subtitle}
               </div>
 
               <p className="text-sm sm:text-base text-white/80 font-light leading-relaxed mb-8">

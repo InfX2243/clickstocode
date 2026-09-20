@@ -6,7 +6,7 @@ export default function Act4Keynote() {
   return (
     <StorySection
       id="story-keynote"
-      actNumber="04"
+      actNumber="4"
       actLabel="THE KEYNOTE VOICE"
       eyebrow="INVITED INDUSTRY LEADER"
     >
@@ -22,20 +22,21 @@ export default function Act4Keynote() {
           </h2>
         </div>
 
-        {/* Magazine Editorial Composition: Large Image + Expansive Typography */}
+        {/* Magazine Editorial Composition: Immediately Recognizable Photograph + Expansive Typography */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
-          {/* Left: Magazine-Scale Photographic Moment */}
+          {/* Left: Magazine-Scale Photographic Moment — Always Recognizable */}
           <div className="lg:col-span-6 relative group reveal-init">
-            <div className="relative aspect-[3/4] sm:aspect-[4/5] rounded-xl overflow-hidden bg-[#0c1017] border border-white/[0.06] shadow-2xl">
+            <div className="relative aspect-[3/4] sm:aspect-[4/5] rounded-xl overflow-hidden bg-[#0c1017] border border-white/[0.08] shadow-2xl">
               <img
                 src="/images/speaker.png"
                 alt="Ms. Afreen Bano"
-                className="w-full h-full object-cover object-top filter grayscale contrast-105 group-hover:grayscale-0 transition-all duration-700 ease-out"
+                className="w-full h-full object-cover object-top filter contrast-[1.03] transition-all duration-700 ease-out group-hover:scale-[1.02]"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#080b11]/80 via-transparent to-transparent pointer-events-none" />
+              {/* Subtle edge anchoring only at the base, never obscuring the face */}
+              <div className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-[#080b11]/80 to-transparent pointer-events-none" />
             </div>
 
-            {/* Editorial Caption Underneath (Not Inside a Card) */}
+            {/* Editorial Caption Underneath */}
             <div className="pt-4 flex flex-wrap items-baseline justify-between gap-2 border-b border-white/[0.06] pb-3">
               <div>
                 <span className="text-lg font-medium text-white">Ms. Afreen Bano</span>
@@ -62,7 +63,7 @@ export default function Act4Keynote() {
             {/* Three Architectural Tenets: Clean Minimalist Rows */}
             <div className="space-y-4 pt-4 border-t border-white/[0.08]">
               <div className="flex items-start gap-4 py-3 border-b border-white/[0.04]">
-                <span className="font-mono text-xs text-[#00d26a] tracking-widest pt-1">01</span>
+                <span className="font-mono text-xs text-[#00d26a] tracking-widest pt-1">1</span>
                 <div>
                   <div className="text-base font-medium text-white">AWS Architecture</div>
                   <div className="text-xs text-[#8e95a5]">Production-grade foundational patterns that scale cleanly.</div>
@@ -70,7 +71,7 @@ export default function Act4Keynote() {
               </div>
 
               <div className="flex items-start gap-4 py-3 border-b border-white/[0.04]">
-                <span className="font-mono text-xs text-[#00d26a] tracking-widest pt-1">02</span>
+                <span className="font-mono text-xs text-[#00d26a] tracking-widest pt-1">2</span>
                 <div>
                   <div className="text-base font-medium text-white">DevSecOps</div>
                   <div className="text-xs text-[#8e95a5]">Secure-by-default habits embedded directly into code templates.</div>
@@ -78,7 +79,7 @@ export default function Act4Keynote() {
               </div>
 
               <div className="flex items-start gap-4 py-3 border-b border-white/[0.04]">
-                <span className="font-mono text-xs text-[#00d26a] tracking-widest pt-1">03</span>
+                <span className="font-mono text-xs text-[#00d26a] tracking-widest pt-1">3</span>
                 <div>
                   <div className="text-base font-medium text-white">Builder Culture</div>
                   <div className="text-xs text-[#8e95a5]">Hands-on confidence through practical cloud problem-solving.</div>
