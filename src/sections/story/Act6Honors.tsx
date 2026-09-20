@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import StorySection from '../../components/editorial/StorySection';
 import { Award, Sparkles, CheckCircle2, Maximize2, X } from 'lucide-react';
 
@@ -40,6 +41,17 @@ export default function Act6Honors() {
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, []);
+
+  useEffect(() => {
+    if (expandedItem) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [expandedItem]);
 
   return (
     <>
@@ -90,8 +102,8 @@ export default function Act6Honors() {
                 </div>
               </div>
 
-              {/* Certificate Preview Asset - Tap to Expand */}
-              <div className="pt-8">
+              {/* Certificate Preview Asset - Clean Frame & Tap to Expand */}
+              <div className="pt-6 sm:pt-8">
                 <div
                   onClick={() =>
                     setExpandedItem({
@@ -101,21 +113,23 @@ export default function Act6Honors() {
                       image: '/images/certificate.png',
                     })
                   }
-                  className="relative aspect-[16/9] sm:aspect-[21/9] rounded-xl overflow-hidden border border-white/[0.12] bg-[#0c1017] p-2 group shadow-2xl cursor-pointer hover:border-[#00d26a]/50 transition-all duration-300"
+                  className="rounded-2xl border border-white/[0.12] bg-[#0a0e17] p-3 sm:p-4 group shadow-2xl cursor-pointer hover:border-[#00d26a]/50 transition-all duration-300"
                 >
-                  <img
-                    src="/images/certificate.png"
-                    alt="Digital Certificate Sample Preview"
-                    className="w-full h-full object-cover rounded-lg filter contrast-105 group-hover:scale-[1.02] transition-transform duration-500"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-transparent to-transparent flex items-end justify-between p-4 sm:p-5 pointer-events-none">
-                    <div className="text-[11px] font-mono text-white/90">
+                  <div className="relative aspect-[16/10] sm:aspect-[21/9] rounded-xl overflow-hidden bg-black/40 flex items-center justify-center">
+                    <img
+                      src="/images/certificate.png"
+                      alt="Digital Certificate Sample Preview"
+                      className="w-full h-full object-contain filter contrast-105 group-hover:scale-[1.02] transition-transform duration-500"
+                    />
+                  </div>
+                  <div className="flex flex-wrap items-center justify-between gap-2 pt-3 px-1 text-xs font-mono">
+                    <span className="text-[11px] text-[#8e95a5] uppercase tracking-wider">
                       VERIFIED CREDENTIAL SPECIFICATION
-                    </div>
-                    <div className="flex items-center gap-1.5 text-[10px] font-mono text-[#00d26a] bg-black/60 px-2.5 py-1 rounded-full border border-[#00d26a]/30">
-                      <Maximize2 size={11} />
+                    </span>
+                    <span className="flex items-center gap-1.5 text-[11px] text-[#00d26a] font-medium group-hover:underline">
+                      <Maximize2 size={12} />
                       <span>TAP TO EXPAND</span>
-                    </div>
+                    </span>
                   </div>
                 </div>
               </div>
@@ -200,47 +214,63 @@ export default function Act6Honors() {
         </div>
       </StorySection>
 
-      {/* Fullscreen Expanded Lightbox Modal */}
-      {expandedItem && (
+      {/* Fullscreen Expanded Lightbox Modal Portaled to Body (Zero Nav Clipping) */}
+      {expandedItem && typeof document !== 'undefined' && createPortal(
         <div
-          className="fixed inset-0 z-[100] bg-black/92 backdrop-blur-2xl flex items-center justify-center p-4 sm:p-8 animate-in fade-in duration-200"
+          className="fixed inset-0 z-[99999] bg-black/95 backdrop-blur-2xl flex items-center justify-center p-4 sm:p-6 md:p-8 animate-in fade-in duration-200"
           onClick={() => setExpandedItem(null)}
+          role="dialog"
+          aria-modal="true"
         >
+          {/* Unmissable Floating Close Button fixed to top-right viewport */}
+          <button
+            onClick={() => setExpandedItem(null)}
+            className="fixed top-4 right-4 sm:top-6 sm:right-6 z-[100000] p-3 rounded-full bg-black/80 border border-white/25 text-white/90 hover:text-white hover:bg-white/20 active:scale-95 transition-all cursor-pointer shadow-2xl flex items-center justify-center"
+            aria-label="Close Fullscreen View"
+          >
+            <X size={22} />
+          </button>
+
+          {/* Modal Content Card */}
           <div
-            className="relative max-w-4xl w-full bg-[#0d121c] border border-white/[0.15] rounded-2xl p-6 sm:p-10 shadow-[0_0_100px_rgba(0,0,0,0.95)] flex flex-col items-center max-h-[92vh] overflow-y-auto"
+            className="relative max-w-3xl w-full bg-[#0d121c] border border-white/[0.15] rounded-2xl p-5 sm:p-8 shadow-[0_0_120px_rgba(0,0,0,0.95)] flex flex-col items-center max-h-[90vh] overflow-y-auto"
             onClick={(e) => e.stopPropagation()}
           >
-            <button
-              onClick={() => setExpandedItem(null)}
-              className="absolute top-4 right-4 sm:top-6 sm:right-6 p-2 rounded-full border border-white/20 text-white/70 hover:text-white hover:bg-white/10 transition-colors cursor-pointer"
-              aria-label="Close"
-            >
-              <X size={20} />
-            </button>
-
-            <div className="w-full flex justify-center items-center py-4">
+            <div className="w-full flex justify-center items-center py-2">
               <img
                 src={expandedItem.image}
                 alt={expandedItem.name}
-                className="max-h-[60vh] w-auto max-w-full object-contain rounded-xl shadow-2xl ring-1 ring-white/10"
+                className="max-h-[52vh] sm:max-h-[58vh] w-auto max-w-full object-contain rounded-xl shadow-2xl ring-1 ring-white/10"
               />
             </div>
 
-            <div className="w-full text-center space-y-2 pt-2">
+            <div className="w-full text-center space-y-2.5 pt-3">
               <div className="inline-flex items-center gap-2 text-xs font-mono text-[#00d26a] uppercase tracking-widest px-3 py-1 rounded-full bg-[#00d26a]/10 border border-[#00d26a]/30">
                 {expandedItem.tag}
               </div>
-              <h3 className="text-2xl sm:text-3xl font-light text-white tracking-tight">
+              <h3 className="text-xl sm:text-3xl font-light text-white tracking-tight">
                 {expandedItem.name}
               </h3>
               {expandedItem.spec && (
-                <p className="text-sm sm:text-base text-[#8e95a5] font-light max-w-xl mx-auto leading-relaxed">
+                <p className="text-xs sm:text-sm text-[#8e95a5] font-light max-w-xl mx-auto leading-relaxed">
                   {expandedItem.spec}
                 </p>
               )}
+
+              {/* Bottom Mobile-Friendly Close Action */}
+              <div className="pt-3">
+                <button
+                  onClick={() => setExpandedItem(null)}
+                  className="inline-flex items-center gap-2 px-6 py-2 rounded-full border border-white/20 bg-white/5 hover:bg-white/10 active:scale-95 text-xs font-mono text-white/80 uppercase tracking-wider transition-all cursor-pointer"
+                >
+                  <X size={13} />
+                  <span>Close Preview</span>
+                </button>
+              </div>
             </div>
           </div>
-        </div>
+        </div>,
+        document.body
       )}
     </>
   );

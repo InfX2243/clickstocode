@@ -53,7 +53,7 @@ export default function Act7Patronage() {
     <StorySection
       id="story-patronage"
       actNumber="7"
-      actLabel="INSTITUTIONAL PATRONAGE"
+      actLabel="PATRONAGE"
       eyebrow="LEADERSHIP & PARTNERSHIP"
     >
       <div className="space-y-20 sm:space-y-28">

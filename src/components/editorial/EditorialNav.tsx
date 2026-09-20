@@ -14,6 +14,25 @@ export default function EditorialNav() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setMobileMenuOpen(false);
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, []);
+
+  useEffect(() => {
+    if (mobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [mobileMenuOpen]);
+
   const scrollTo = (id: string) => {
     setMobileMenuOpen(false);
     const element = document.getElementById(id);
@@ -60,7 +79,7 @@ export default function EditorialNav() {
           </div>
 
           {/* Minimal Floating Desktop Nav */}
-          <nav className="hidden lg:flex items-center gap-8 text-xs font-mono tracking-wider uppercase text-[#8e95a5]">
+          <nav className="hidden lg:flex items-center gap-7 text-xs font-mono tracking-wider uppercase text-[#8e95a5]">
             <button
               onClick={() => scrollTo('story-manifesto')}
               className="hover:text-white transition-colors cursor-pointer py-1"
@@ -84,6 +103,12 @@ export default function EditorialNav() {
               className="hover:text-white transition-colors cursor-pointer py-1"
             >
               SCHEDULE
+            </button>
+            <button
+              onClick={() => scrollTo('story-honors')}
+              className="hover:text-white transition-colors cursor-pointer py-1"
+            >
+              HONORS
             </button>
             <button
               onClick={() => scrollTo('story-inquiries')}
@@ -129,7 +154,7 @@ export default function EditorialNav() {
             {/* Mobile Menu Button */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="lg:hidden p-2 rounded-full border border-white/[0.08] text-white hover:bg-white/5 transition-colors"
+              className="lg:hidden p-2 rounded-full border border-white/[0.08] text-white hover:bg-white/5 transition-colors cursor-pointer"
               aria-label="Toggle Navigation"
             >
               {mobileMenuOpen ? <X size={18} /> : <Menu size={18} />}
@@ -140,52 +165,78 @@ export default function EditorialNav() {
 
       {/* Mobile Drawer Menu */}
       {mobileMenuOpen && (
-        <div className="fixed inset-0 z-40 bg-[#080b11]/98 backdrop-blur-2xl flex flex-col justify-between px-6 pt-28 pb-10 lg:hidden animate-in fade-in duration-200">
-          <div className="flex flex-col gap-6">
-            <div className="text-[11px] font-mono uppercase tracking-widest text-[#8e95a5] border-b border-white/[0.08] pb-3">
-              Navigation Index
+        <div
+          className="fixed inset-0 z-40 bg-[#080b11]/98 backdrop-blur-2xl flex flex-col justify-between px-6 pt-24 pb-8 lg:hidden animate-in fade-in duration-200 overflow-y-auto"
+          onClick={() => setMobileMenuOpen(false)}
+        >
+          <div className="flex flex-col gap-4 max-w-sm w-full mx-auto" onClick={(e) => e.stopPropagation()}>
+            <div className="text-[11px] font-mono uppercase tracking-widest text-[#8e95a5] border-b border-white/[0.08] pb-2.5 flex items-center justify-between">
+              <span>NARRATIVE INDEX</span>
+              <span className="text-[#00d26a]">ACTS 1–8</span>
             </div>
+
+            <button
+              onClick={() => scrollTo('story-hero')}
+              className="text-left py-1.5 text-xl font-light text-white hover:text-[#00d26a] transition-colors cursor-pointer flex items-center"
+            >
+              <span className="font-mono text-xs text-[#00d26a] w-6 font-bold">1</span>
+              <span>Prologue</span>
+            </button>
             <button
               onClick={() => scrollTo('story-manifesto')}
-              className="text-left text-2xl font-light text-white hover:text-[#00d26a] transition-colors"
+              className="text-left py-1.5 text-xl font-light text-white hover:text-[#00d26a] transition-colors cursor-pointer flex items-center"
             >
-              <span className="font-mono text-xs text-[#00d26a] mr-3">1</span>
-              Story
+              <span className="font-mono text-xs text-[#00d26a] w-6 font-bold">2</span>
+              <span>Story</span>
             </button>
             <button
               onClick={() => scrollTo('story-odyssey')}
-              className="text-left text-2xl font-light text-white hover:text-[#00d26a] transition-colors"
+              className="text-left py-1.5 text-xl font-light text-white hover:text-[#00d26a] transition-colors cursor-pointer flex items-center"
             >
-              <span className="font-mono text-xs text-[#00d26a] mr-3">2</span>
-              Tech
+              <span className="font-mono text-xs text-[#00d26a] w-6 font-bold">3</span>
+              <span>Tech</span>
             </button>
             <button
               onClick={() => scrollTo('story-keynote')}
-              className="text-left text-2xl font-light text-white hover:text-[#00d26a] transition-colors"
+              className="text-left py-1.5 text-xl font-light text-white hover:text-[#00d26a] transition-colors cursor-pointer flex items-center"
             >
-              <span className="font-mono text-xs text-[#00d26a] mr-3">3</span>
-              Speaker
+              <span className="font-mono text-xs text-[#00d26a] w-6 font-bold">4</span>
+              <span>Speaker</span>
             </button>
             <button
               onClick={() => scrollTo('story-blueprint')}
-              className="text-left text-2xl font-light text-white hover:text-[#00d26a] transition-colors"
+              className="text-left py-1.5 text-xl font-light text-white hover:text-[#00d26a] transition-colors cursor-pointer flex items-center"
             >
-              <span className="font-mono text-xs text-[#00d26a] mr-3">4</span>
-              Schedule
+              <span className="font-mono text-xs text-[#00d26a] w-6 font-bold">5</span>
+              <span>Schedule</span>
+            </button>
+            <button
+              onClick={() => scrollTo('story-honors')}
+              className="text-left py-1.5 text-xl font-light text-white hover:text-[#00d26a] transition-colors cursor-pointer flex items-center"
+            >
+              <span className="font-mono text-xs text-[#00d26a] w-6 font-bold">6</span>
+              <span>Honors</span>
+            </button>
+            <button
+              onClick={() => scrollTo('story-patronage')}
+              className="text-left py-1.5 text-xl font-light text-white hover:text-[#00d26a] transition-colors cursor-pointer flex items-center"
+            >
+              <span className="font-mono text-xs text-[#00d26a] w-6 font-bold">7</span>
+              <span>Patronage</span>
             </button>
             <button
               onClick={() => scrollTo('story-inquiries')}
-              className="text-left text-2xl font-light text-white hover:text-[#00d26a] transition-colors"
+              className="text-left py-1.5 text-xl font-light text-white hover:text-[#00d26a] transition-colors cursor-pointer flex items-center"
             >
-              <span className="font-mono text-xs text-[#00d26a] mr-3">5</span>
-              FAQ
+              <span className="font-mono text-xs text-[#00d26a] w-6 font-bold">8</span>
+              <span>FAQ</span>
             </button>
           </div>
 
-          <div className="border-t border-white/[0.08] pt-6 flex flex-col gap-4">
+          <div className="border-t border-white/[0.08] pt-4 flex flex-col gap-3 max-w-sm w-full mx-auto" onClick={(e) => e.stopPropagation()}>
             <div className="flex items-center justify-between text-xs font-mono text-[#8e95a5]">
               <span>24 SEPT 2026 · MHSSCE</span>
-              <span className="text-[#00d26a]">100 SEATS MAXIMUM</span>
+              <span className="text-[#00d26a]">100 SEATS LIMITED</span>
             </div>
             <div className="flex items-center gap-3">
               <a

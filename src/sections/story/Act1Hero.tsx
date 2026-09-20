@@ -62,6 +62,27 @@ export default function Act1Hero() {
         }}
         className="max-w-7xl mx-auto w-full my-auto py-6 sm:py-10 transition-transform duration-100 ease-out"
       >
+        {/* Act 1 Header Marker */}
+        <div
+          className={`flex flex-wrap items-center justify-between gap-4 mb-8 sm:mb-10 pb-4 border-b border-white/[0.06] transition-all duration-700 ease-out ${
+            mounted ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-2'
+          }`}
+        >
+          <div className="flex items-center gap-2.5">
+            <span className="font-mono text-xs text-[#00d26a] font-bold tracking-widest">
+              1
+            </span>
+            <span className="text-white/30 font-mono text-xs">—</span>
+            <span className="font-mono text-xs uppercase tracking-widest text-white/80">
+              PROLOGUE
+            </span>
+          </div>
+
+          <span className="font-mono text-[11px] uppercase tracking-widest text-[#8e95a5]">
+            AN EVENT STORY YOU SCROLL THROUGH
+          </span>
+        </div>
+
         {/* Step 1: Badge Reveal */}
         <div
           className={`inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/[0.04] border border-white/[0.08] text-[#8e95a5] text-xs font-mono mb-6 sm:mb-8 transition-all duration-700 delay-100 ease-out ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'

@@ -5,6 +5,7 @@ import { Cloud, Server, ShieldCheck, Globe, Code2, Phone, CheckCircle2, ChevronR
 interface TechnicalStage {
   id: string;
   stepNumber: string;
+  shortLabel: string;
   domain: string;
   title: string;
   subtitle: string;
@@ -19,6 +20,7 @@ const STAGES: TechnicalStage[] = [
   {
     id: 'foundation',
     stepNumber: '1',
+    shortLabel: 'Cloud',
     domain: 'CLOUD ENVIRONMENT',
     title: 'Cloud Computing & AWS',
     subtitle: 'Global Infrastructure & Identity',
@@ -32,6 +34,7 @@ const STAGES: TechnicalStage[] = [
   {
     id: 'ec2',
     stepNumber: '2',
+    shortLabel: 'EC2',
     domain: 'ELASTIC COMPUTE',
     title: 'Amazon EC2',
     subtitle: 'Provisioning Virtual Linux Compute',
@@ -45,6 +48,7 @@ const STAGES: TechnicalStage[] = [
   {
     id: 'ssm',
     stepNumber: '3',
+    shortLabel: 'SSM',
     domain: 'ZERO-TRUST ACCESS',
     title: 'AWS Systems Manager',
     subtitle: 'Session Manager Without Open SSH',
@@ -58,6 +62,7 @@ const STAGES: TechnicalStage[] = [
   {
     id: 'webserver',
     stepNumber: '4',
+    shortLabel: 'Web',
     domain: 'WEB HOSTING',
     title: 'Web Server Deployment',
     subtitle: 'Transforming Compute Into a Live Endpoint',
@@ -71,6 +76,7 @@ const STAGES: TechnicalStage[] = [
   {
     id: 'iac',
     stepNumber: '5',
+    shortLabel: 'IaC',
     domain: 'DEVOPS & AUTOMATION',
     title: 'AWS CloudFormation',
     subtitle: 'Codifying Infrastructure as Code',
@@ -148,7 +154,7 @@ export default function Act3Odyssey() {
                     <span className={`text-xs font-mono tracking-wider transition-colors hidden sm:inline ${
                       isCurrent ? 'text-white font-medium' : 'text-[#8e95a5] group-hover:text-white'
                     }`}>
-                      {s.title.split(' ')[0]}
+                      {s.shortLabel}
                     </span>
                   </button>
 
@@ -183,7 +189,7 @@ export default function Act3Odyssey() {
                 }`}
               >
                 <div className="text-xs">{s.stepNumber}</div>
-                <div className="text-[10px] truncate">{s.title.split(' ')[0]}</div>
+                <div className="text-[10px] truncate tracking-tight">{s.shortLabel}</div>
               </button>
             );
           })}
