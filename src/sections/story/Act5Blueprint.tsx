@@ -1,6 +1,7 @@
+import { useState, useEffect, useRef } from 'react';
 import StorySection from '../../components/editorial/StorySection';
-import { Clock, MapPin, Laptop, BatteryCharging, IdCard, Ticket, CheckCircle2, ArrowRight } from 'lucide-react';
-import { EVENT_DATE, EVENT_TIME, VENUE, CHECKIN_LOCATION, MEETUP_STATUS } from '../../constants/event';
+import { Clock, MapPin, Laptop, BatteryCharging, IdCard, Ticket } from 'lucide-react';
+import { EVENT_DATE, VENUE, CHECKIN_LOCATION, MEETUP_STATUS } from '../../constants/event';
 
 interface TimelineEntry {
   time: string;
@@ -37,7 +38,7 @@ const BLUEPRINT_SCHEDULE: TimelineEntry[] = [
   {
     time: '10:00 AM',
     category: 'MAIN PROGRAM',
-    title: 'Opening Ceremony & Academic Addresses',
+    title: 'Opening Ceremony & Leadership Addresses',
     location: 'Seminar Hall Stage',
     description: 'Welcome by AWS Student Builder Group, felicitations, and addresses by college leadership.',
   },
@@ -66,6 +67,35 @@ const BLUEPRINT_SCHEDULE: TimelineEntry[] = [
 ];
 
 export default function Act5Blueprint() {
+  const timelineRef = useRef<HTMLDivElement | null>(null);
+  const [activeStep, setActiveStep] = useState(0);
+
+  useEffect(() => {
+    // Observe individual timeline items to activate nodes smoothly
+    const items = timelineRef.current?.querySelectorAll('[data-timeline-item]');
+    if (!items) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const index = Number(entry.target.getAttribute('data-timeline-item'));
+            setActiveStep((prev) => Math.max(prev, index));
+          }
+        });
+      },
+      {
+        root: null,
+        rootMargin: '-20% 0px -40% 0px',
+        threshold: 0.2,
+      }
+    );
+
+    items.forEach((item) => observer.observe(item));
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <StorySection
       id="story-blueprint"
@@ -75,7 +105,7 @@ export default function Act5Blueprint() {
     >
       <div className="space-y-16 sm:space-y-24">
         {/* Header */}
-        <div className="max-w-3xl">
+        <div className="max-w-3xl reveal-init">
           <h2 className="text-3xl sm:text-5xl md:text-6xl font-light tracking-[-0.03em] leading-[1.06] text-white mb-6">
             From arrival desk to the final build.
           </h2>
@@ -86,58 +116,85 @@ export default function Act5Blueprint() {
 
         {/* Two-Column Master Layout */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
-          {/* Left Column: Chronological Flow */}
-          <div className="lg:col-span-7 space-y-6">
+          {/* Left Column: Chronological Spine with Progressive Green Illumination */}
+          <div className="lg:col-span-7 space-y-6 reveal-init">
             <div className="flex items-center justify-between pb-3 border-b border-white/[0.08] text-xs font-mono text-[#8e95a5] uppercase">
               <span>CHRONOLOGICAL TIMELINE</span>
               <span>{EVENT_DATE}</span>
             </div>
 
-            <div className="relative pl-6 sm:pl-8 border-l border-white/[0.08] space-y-8">
-              {BLUEPRINT_SCHEDULE.map((item, idx) => (
-                <div key={idx} className="relative group">
-                  {/* Timeline dot */}
-                  <div className={`absolute -left-[31px] sm:-left-[39px] top-1 w-3.5 h-3.5 rounded-full border-2 border-[#080b11] transition-all duration-300 ${
-                    item.highlight ? 'bg-[#00d26a] ring-4 ring-[#00d26a]/20' : 'bg-white/40 group-hover:bg-white'
-                  }`} />
+            <div ref={timelineRef} className="relative pl-6 sm:pl-8 border-l border-white/[0.08] space-y-8">
+              {/* Dynamic Line Progress Indicator */}
+              <div
+                className="absolute left-0 top-0 w-0.5 bg-gradient-to-b from-[#00d26a] to-[#38bdf8] transition-all duration-500 ease-out pointer-events-none"
+                style={{
+                  height: `${Math.min(100, ((activeStep + 1) / BLUEPRINT_SCHEDULE.length) * 100)}%`,
+                }}
+              />
 
-                  <div className="space-y-1.5">
-                    <div className="flex flex-wrap items-center gap-2">
-                      <span className="font-mono text-xs text-[#00d26a] tracking-wider">
-                        {item.time}
-                      </span>
-                      <span className="text-white/20">·</span>
-                      <span className="font-mono text-[11px] uppercase tracking-widest text-[#8e95a5]">
-                        {item.category}
-                      </span>
+              {BLUEPRINT_SCHEDULE.map((item, idx) => {
+                const isActive = idx <= activeStep;
+                const isCurrent = idx === activeStep;
+                return (
+                  <div
+                    key={idx}
+                    data-timeline-item={idx}
+                    className="relative group transition-opacity duration-300"
+                    style={{ opacity: isActive ? 1 : 0.6 }}
+                  >
+                    {/* Node Dot */}
+                    <div
+                      className={`absolute -left-[31px] sm:-left-[39px] top-1 w-3.5 h-3.5 rounded-full border-2 border-[#080b11] transition-all duration-400 ${
+                        isCurrent
+                          ? 'bg-[#00d26a] ring-4 ring-[#00d26a]/30 scale-125'
+                          : isActive
+                          ? 'bg-[#00d26a]'
+                          : 'bg-white/30'
+                      }`}
+                    />
+
+                    <div className="space-y-1.5">
+                      <div className="flex flex-wrap items-center gap-2">
+                        <span className={`font-mono text-xs tracking-wider transition-colors ${
+                          isCurrent ? 'text-[#00d26a] font-bold' : 'text-[#8e95a5]'
+                        }`}>
+                          {item.time}
+                        </span>
+                        <span className="text-white/20">·</span>
+                        <span className="font-mono text-[11px] uppercase tracking-widest text-[#8e95a5]">
+                          {item.category}
+                        </span>
+                      </div>
+
+                      <h4 className={`text-lg sm:text-xl font-medium tracking-tight transition-colors ${
+                        isCurrent ? 'text-white' : 'text-white/80'
+                      }`}>
+                        {item.title}
+                      </h4>
+
+                      <div className="flex items-center gap-1.5 text-xs font-mono text-[#8e95a5]">
+                        <MapPin size={12} className={isActive ? 'text-[#00d26a]' : 'text-[#8e95a5]'} />
+                        <span>{item.location}</span>
+                      </div>
+
+                      <p className="text-sm text-[#8e95a5] font-light leading-relaxed pt-1">
+                        {item.description}
+                      </p>
                     </div>
-
-                    <h4 className="text-lg sm:text-xl font-medium text-white tracking-tight">
-                      {item.title}
-                    </h4>
-
-                    <div className="flex items-center gap-1.5 text-xs font-mono text-[#8e95a5]">
-                      <MapPin size={12} className="text-[#00d26a]" />
-                      <span>{item.location}</span>
-                    </div>
-
-                    <p className="text-sm text-[#8e95a5] font-light leading-relaxed pt-1">
-                      {item.description}
-                    </p>
                   </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
           </div>
 
           {/* Right Column: Field Kit & Registration Rules */}
-          <div className="lg:col-span-5 space-y-6">
+          <div className="lg:col-span-5 space-y-6 reveal-init stagger-2">
             <div className="text-xs font-mono uppercase tracking-widest text-[#8e95a5] pb-3 border-b border-white/[0.08]">
               Builder Field Requirements
             </div>
 
             {/* Laptop Requirement Card */}
-            <div className="p-7 rounded-2xl bg-white/[0.02] border border-white/[0.08] relative overflow-hidden">
+            <div className="p-7 rounded-2xl bg-white/[0.02] border border-white/[0.08] relative overflow-hidden hover:border-white/[0.14] transition-colors">
               <div className="flex items-center justify-between mb-4">
                 <div className="flex items-center gap-2.5 text-xs font-mono text-[#00d26a] uppercase">
                   <Laptop size={16} />
@@ -160,7 +217,7 @@ export default function Act5Blueprint() {
             </div>
 
             {/* Institutional Domain ID Card */}
-            <div className="p-7 rounded-2xl bg-white/[0.02] border border-white/[0.08]">
+            <div className="p-7 rounded-2xl bg-white/[0.02] border border-white/[0.08] hover:border-white/[0.14] transition-colors">
               <div className="flex items-center gap-2.5 text-xs font-mono text-[#00d26a] uppercase mb-3">
                 <IdCard size={16} />
                 <span>VERIFIED DOMAIN IDENTIFIER</span>

@@ -1,5 +1,5 @@
 import StorySection from '../../components/editorial/StorySection';
-import { Building2, Award, GraduationCap, Mail, ArrowUpRight } from 'lucide-react';
+import { Mail, ArrowUpRight } from 'lucide-react';
 import { LinkedInIcon } from '../../components/SocialIcons';
 import { SPONSOR_EMAIL, SPONSOR_MAILTO } from '../../constants/event';
 
@@ -58,7 +58,7 @@ export default function Act7Patronage() {
     >
       <div className="space-y-16 sm:space-y-24">
         {/* Editorial Heading */}
-        <div className="max-w-3xl">
+        <div className="max-w-3xl reveal-init">
           <h2 className="text-3xl sm:text-5xl md:text-6xl font-light tracking-[-0.03em] leading-[1.06] text-white mb-6">
             Guided by academic vision. Powered by institutional leadership.
           </h2>
@@ -72,7 +72,7 @@ export default function Act7Patronage() {
           {PATRONS.map((patron, idx) => (
             <div
               key={idx}
-              className="p-7 sm:p-8 rounded-2xl bg-white/[0.02] border border-white/[0.08] hover:border-white/[0.16] transition-all flex flex-col justify-between"
+              className={`p-7 sm:p-8 rounded-2xl bg-white/[0.02] border border-white/[0.08] hover:border-white/[0.16] transition-all flex flex-col justify-between reveal-init stagger-${idx + 1}`}
             >
               <div>
                 <div className="flex items-center justify-between mb-6">
@@ -121,7 +121,7 @@ export default function Act7Patronage() {
         </div>
 
         {/* Industry & Community Sponsorship Minimalist Callout */}
-        <div className="p-8 sm:p-12 rounded-2xl bg-gradient-to-r from-white/[0.03] to-transparent border border-white/[0.08] flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
+        <div className="p-8 sm:p-12 rounded-2xl bg-gradient-to-r from-white/[0.03] to-transparent border border-white/[0.08] flex flex-col md:flex-row items-start md:items-center justify-between gap-8 reveal-init stagger-3">
           <div className="max-w-2xl space-y-2">
             <div className="flex items-center gap-2 text-xs font-mono text-[#00d26a] uppercase tracking-widest">
               <Mail size={14} />

@@ -1,9 +1,7 @@
 import { createRoot } from 'react-dom/client';
 import Home from './pages/Home';
 import './styles.css';
-import './cinematic-scroll.css';
-import './cinematic-motion.css';
-import './screen15-fix.css';
-import './cinematic-performance.css';
+// Note: Legacy cinematic CSS files (cinematic-scroll.css, cinematic-motion.css, etc.)
+// are preserved on disk as deprecated per migration specification.
 
 createRoot(document.getElementById('root')!).render(<Home />);

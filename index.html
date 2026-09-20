@@ -6,23 +6,25 @@
     <meta name="theme-color" content="#0a0e18" />
     <meta name="description" content="AWS From Clicks to Code | AWS Fundamentals: Hands-On Cloud Journey" />
     <link rel="icon" type="image/png" href="/images/awssbg-logo.png" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+    <!-- Local Amazon Ember Typography Only (No External Fonts) -->
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <script>
       tailwind.config = {
         darkMode: 'class',
         theme: { extend: {
           colors: {
-            background:'#0f131d', surface:'#0f131d', 'surface-dark':'#0B0F19',
-            'surface-container-lowest':'#0a0e18', 'surface-container-low':'#171b26',
-            'surface-container':'#1c1f2a', 'surface-container-high':'#262a35',
-            'surface-container-highest':'#313540', 'surface-bright':'#353944',
-            'on-surface':'#dfe2f1', 'on-surface-variant':'#8e95a5', primary:'#00d26a',
-            'primary-container':'#005426', secondary:'#38bdf8'
+            background:'#080b11', surface:'#0d121c', 'surface-subtle':'rgba(255,255,255,0.025)',
+            'text-primary':'#ffffff', 'text-secondary':'#8e95a5', 'text-muted':'#5a6275',
+            'aws-green':'#00d26a', 'aws-green-dim':'rgba(0, 210, 106, 0.15)',
+            'aws-blue':'#0073bb', 'aws-blue-light':'#38bdf8', 'aws-blue-dim':'rgba(56, 189, 248, 0.15)',
+            'aws-squid':'#0f141f'
           },
-          fontFamily:{ body:['Amazon Ember','Inter','system-ui','sans-serif'], mono:['JetBrains Mono','monospace'] }
+          fontFamily:{
+            sans: ['Amazon Ember', 'system-ui', 'sans-serif'],
+            body: ['Amazon Ember', 'system-ui', 'sans-serif'],
+            mono: ['Amazon Ember Mono', 'monospace'],
+            duo: ['Amazon Ember Duospace', 'monospace']
+          }
         }}
       };
     </script>

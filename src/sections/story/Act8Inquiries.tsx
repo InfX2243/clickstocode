@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import StorySection from '../../components/editorial/StorySection';
-import { ChevronDown, Phone, Mail, ArrowUpRight, HeartHandshake, Ticket, MapPin, Calendar, Clock } from 'lucide-react';
+import { ChevronDown, Phone, Mail, ArrowUpRight, HeartHandshake, Ticket } from 'lucide-react';
 import { LinkedInIcon, InstagramIcon } from '../../components/SocialIcons';
-import { EVENT_DATE, EVENT_TIME, VENUE, MEETUP_STATUS } from '../../constants/event';
+import { EVENT_DATE, EVENT_TIME, MEETUP_STATUS } from '../../constants/event';
 
 interface FaqItem {
   q: string;
@@ -74,7 +74,7 @@ export default function Act8Inquiries() {
     >
       <div className="space-y-20 sm:space-y-28">
         {/* FAQ Header */}
-        <div className="max-w-3xl">
+        <div className="max-w-3xl reveal-init">
           <h2 className="text-3xl sm:text-5xl md:text-6xl font-light tracking-[-0.03em] leading-[1.06] text-white mb-6">
             Clear answers before you arrive.
           </h2>
@@ -86,14 +86,14 @@ export default function Act8Inquiries() {
         {/* Editorial Accordion Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
           {/* Left: Accordion List */}
-          <div className="lg:col-span-8 divide-y divide-white/[0.08] border-y border-white/[0.08]">
+          <div className="lg:col-span-8 divide-y divide-white/[0.08] border-y border-white/[0.08] reveal-init">
             {FAQS.map((faq, idx) => {
               const isOpen = openIndex === idx;
               return (
                 <div key={idx} className="py-6 sm:py-7">
                   <button
                     onClick={() => toggleFaq(idx)}
-                    className="w-full text-left flex items-start justify-between gap-6 group cursor-pointer"
+                    className="w-full text-left flex items-start justify-between gap-6 group cursor-pointer focus:outline-none"
                   >
                     <div className="space-y-1">
                       <span className="font-mono text-[10px] text-[#00d26a] uppercase tracking-widest">
@@ -106,24 +106,28 @@ export default function Act8Inquiries() {
                       </h3>
                     </div>
                     <div className={`p-2 rounded-full border border-white/[0.08] transition-transform duration-300 shrink-0 ${
-                      isOpen ? 'rotate-180 bg-white/10 border-white/20' : ''
+                      isOpen ? 'rotate-180 bg-white/10 border-white/20 text-[#00d26a]' : 'text-white/70'
                     }`}>
-                      <ChevronDown size={16} className="text-white/70" />
+                      <ChevronDown size={16} />
                     </div>
                   </button>
 
-                  {isOpen && (
-                    <div className="pt-4 text-sm sm:text-base text-[#8e95a5] font-light leading-relaxed animate-in fade-in duration-200">
+                  <div
+                    className={`grid transition-all duration-300 ease-out overflow-hidden ${
+                      isOpen ? 'grid-rows-[1fr] opacity-100 mt-4' : 'grid-rows-[0fr] opacity-0'
+                    }`}
+                  >
+                    <div className="overflow-hidden text-sm sm:text-base text-[#8e95a5] font-light leading-relaxed">
                       {faq.a}
                     </div>
-                  )}
+                  </div>
                 </div>
               );
             })}
           </div>
 
           {/* Right: Organizer Desk Card */}
-          <div className="lg:col-span-4 p-8 rounded-2xl bg-white/[0.02] border border-white/[0.08] space-y-6">
+          <div className="lg:col-span-4 p-8 rounded-2xl bg-white/[0.02] border border-white/[0.08] space-y-6 reveal-init stagger-2">
             <div className="flex items-center gap-2 text-xs font-mono text-[#00d26a] uppercase tracking-wider">
               <HeartHandshake size={15} />
               <span>DIRECT EVENT ASSISTANCE</span>
@@ -162,8 +166,8 @@ export default function Act8Inquiries() {
         </div>
 
         {/* Monolithic Final Call Section */}
-        <div className="p-10 sm:p-16 md:p-20 rounded-3xl bg-[#0d121c] border border-white/[0.08] relative overflow-hidden text-center space-y-8">
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[250px] bg-[#00d26a]/[0.05] blur-[100px] rounded-full pointer-events-none" />
+        <div className="p-10 sm:p-16 md:p-20 rounded-3xl bg-[#0d121c] border border-white/[0.08] relative overflow-hidden text-center space-y-8 reveal-init stagger-1">
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[250px] bg-[#00d26a]/[0.06] blur-[120px] rounded-full pointer-events-none" />
 
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/[0.04] border border-white/[0.08] text-xs font-mono text-[#8e95a5]">
             <Ticket size={14} className="text-[#00d26a]" />

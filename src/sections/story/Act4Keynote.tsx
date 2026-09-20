@@ -11,19 +11,19 @@ export default function Act4Keynote() {
       eyebrow="INVITED INDUSTRY LEADER"
     >
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-        {/* Left Column: Large Photographic Moment */}
-        <div className="lg:col-span-5 relative group">
-          <div className="relative aspect-[3/4] sm:aspect-[4/5] rounded-2xl overflow-hidden border border-white/[0.08] bg-[#0d121c]">
+        {/* Left Column: Photographic Moment with Mask Reveal & Settling Scale */}
+        <div className="lg:col-span-5 relative group reveal-init">
+          <div className="relative aspect-[3/4] sm:aspect-[4/5] rounded-2xl overflow-hidden border border-white/[0.08] bg-[#0d121c] shadow-2xl">
             <img
               src="/images/speaker.png"
               alt="Ms. Afreen Bano"
-              className="w-full h-full object-cover object-top filter grayscale contrast-110 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700 ease-out"
+              className="w-full h-full object-cover object-top filter grayscale contrast-105 group-hover:grayscale-0 group-hover:scale-102 transition-all duration-700 ease-out"
             />
             {/* Subtle Gradient Vignette */}
-            <div className="absolute inset-0 bg-gradient-to-t from-[#080b11] via-transparent to-transparent opacity-80" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#080b11] via-transparent to-transparent opacity-85" />
 
-            {/* Bottom Floating Badge */}
-            <div className="absolute bottom-6 left-6 right-6 p-4 rounded-xl bg-[#080b11]/80 backdrop-blur-md border border-white/[0.08]">
+            {/* Bottom Floating Identity Plaque */}
+            <div className="absolute bottom-6 left-6 right-6 p-4 rounded-xl bg-[#080b11]/85 backdrop-blur-md border border-white/[0.08]">
               <div className="text-[11px] font-mono uppercase tracking-widest text-[#00d26a] mb-1">
                 KEYNOTE SPEAKER & MENTOR
               </div>
@@ -33,8 +33,8 @@ export default function Act4Keynote() {
           </div>
         </div>
 
-        {/* Right Column: Editorial Profile & Authority */}
-        <div className="lg:col-span-7 space-y-8">
+        {/* Right Column: Editorial Authority & Biography */}
+        <div className="lg:col-span-7 space-y-8 reveal-init stagger-2">
           <div>
             <div className="inline-flex items-center gap-2 text-xs font-mono text-[#00d26a] uppercase tracking-widest mb-3">
               <Award size={14} />
@@ -59,19 +59,19 @@ export default function Act4Keynote() {
 
           {/* Three Key Tenets */}
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-4">
-            <div className="p-4 rounded-xl bg-white/[0.02] border border-white/[0.06]">
+            <div className="p-4 rounded-xl bg-white/[0.02] border border-white/[0.06] hover:border-white/[0.14] transition-colors">
               <Cloud size={18} className="text-[#00d26a] mb-2" />
               <div className="text-sm font-medium text-white mb-1">AWS Architecture</div>
               <div className="text-xs text-[#8e95a5] font-light">Foundations that scale cleanly in production.</div>
             </div>
 
-            <div className="p-4 rounded-xl bg-white/[0.02] border border-white/[0.06]">
+            <div className="p-4 rounded-xl bg-white/[0.02] border border-white/[0.06] hover:border-white/[0.14] transition-colors">
               <ShieldCheck size={18} className="text-[#00d26a] mb-2" />
               <div className="text-sm font-medium text-white mb-1">DevSecOps</div>
               <div className="text-xs text-[#8e95a5] font-light">Secure by default from the very first commit.</div>
             </div>
 
-            <div className="p-4 rounded-xl bg-white/[0.02] border border-white/[0.06]">
+            <div className="p-4 rounded-xl bg-white/[0.02] border border-white/[0.06] hover:border-white/[0.14] transition-colors">
               <Users size={18} className="text-[#00d26a] mb-2" />
               <div className="text-sm font-medium text-white mb-1">Builder Culture</div>
               <div className="text-xs text-[#8e95a5] font-light">Community, inclusion, and hands-on confidence.</div>

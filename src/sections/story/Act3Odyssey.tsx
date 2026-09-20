@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import StorySection from '../../components/editorial/StorySection';
-import { Cloud, Server, ShieldCheck, Globe, Code2, ExternalLink, CheckCircle2, ChevronRight } from 'lucide-react';
+import { Cloud, Server, ShieldCheck, Globe, Code2, ExternalLink, CheckCircle2, ChevronRight, Terminal } from 'lucide-react';
 import { LEARNER_LAB_GUIDE_URL } from '../../constants/event';
 
 interface TechnicalStage {
@@ -22,12 +22,12 @@ const STAGES: TechnicalStage[] = [
     stepNumber: '01',
     domain: 'CLOUD ENVIRONMENT',
     title: 'Cloud Computing & AWS',
-    subtitle: 'Understanding the Global Infrastructure',
+    subtitle: 'Global Infrastructure & Identity',
     narrative:
       'We deconstruct cloud architecture, availability zones, and IAM boundaries. You discover why modern applications no longer live on physical on-premise hardware, and how cloud identity secures multi-tenant workloads.',
     keypoint: 'AWS Console, IAM roles, and region isolation',
     image: '/images/aws-logo.png',
-    codeSnippet: '# Authenticate & Establish IAM Session\naws sts get-caller-identity\nexport AWS_REGION="ap-south-1"',
+    codeSnippet: '# 1. Authenticate & Verify IAM Session\naws sts get-caller-identity\nexport AWS_DEFAULT_REGION="ap-south-1"',
     Icon: Cloud,
   },
   {
@@ -40,7 +40,7 @@ const STAGES: TechnicalStage[] = [
       'Move past diagrams and spin up a real Amazon Elastic Compute Cloud (EC2) instance. Configure virtual networking, storage volumes, and operating system images tailored for high reliability.',
     keypoint: 'Instance lifecycle, Amazon Linux AMI, and security groups',
     image: '/images/ec2.png',
-    codeSnippet: 'aws ec2 run-instances \\\n  --image-id ami-0c55b159cbfafe1f0 \\\n  --count 1 --instance-type t3.micro',
+    codeSnippet: '# 2. Provision Virtual Machine\naws ec2 run-instances \\\n  --image-id ami-0c55b159cbfafe1f0 \\\n  --count 1 --instance-type t3.micro',
     Icon: Server,
   },
   {
@@ -53,7 +53,7 @@ const STAGES: TechnicalStage[] = [
       'The traditional habit of opening port 22 to 0.0.0.0/0 is a critical security risk. Learn how AWS Systems Manager (SSM) creates encrypted, auditable command-line access directly through the browser without exposing inbound firewall ports.',
     keypoint: 'Zero-trust architecture, encrypted shell sessions, no public IP needed',
     image: '/images/systemsmanager.png',
-    codeSnippet: '# Secure interactive shell without SSH keypairs\naws ssm start-session \\\n  --target i-0a1b2c3d4e5f6g7h8',
+    codeSnippet: '# 3. Secure interactive shell without open port 22\naws ssm start-session \\\n  --target i-0a1b2c3d4e5f6g7h8',
     Icon: ShieldCheck,
   },
   {
@@ -66,7 +66,7 @@ const STAGES: TechnicalStage[] = [
       'Configure an HTTP web server on your live Linux instance. Install necessary daemon packages, customize HTML content, and expose your builder application to the public internet.',
     keypoint: 'HTTP daemon initialization, systemd services, and customized landing',
     image: '/images/web-server-icon.png',
-    codeSnippet: '# Bootstrap web server on Amazon Linux\nyum update -y && yum install -y httpd\necho "<h1>Hello from AWS</h1>" > /var/www/html/index.html',
+    codeSnippet: '# 4. Bootstrap Web Server on Amazon Linux\nyum update -y && yum install -y httpd\necho "<h1>Hello from AWS</h1>" > /var/www/html/index.html\nsystemctl start httpd',
     Icon: Globe,
   },
   {
@@ -79,7 +79,7 @@ const STAGES: TechnicalStage[] = [
       'The final leap from Clicks to Code. Codify your entire architecture into a declarative YAML template. Deploy, inspect, and delete your complete cloud stack with a single reproducible command.',
     keypoint: 'Declarative CloudFormation stacks, repeatable CI/CD blueprints',
     image: '/images/cloudformation.png',
-    codeSnippet: 'AWSTemplateFormatVersion: "2010-09-09"\nResources:\n  WebServerInstance:\n    Type: "AWS::EC2::Instance"',
+    codeSnippet: '# 5. Declarative Stack Template\nAWSTemplateFormatVersion: "2010-09-09"\nResources:\n  WebServerInstance:\n    Type: "AWS::EC2::Instance"',
     Icon: Code2,
   },
 ];
@@ -94,6 +94,17 @@ const LAB_STEPS = [
 
 export default function Act3Odyssey() {
   const [activeStageIndex, setActiveStageIndex] = useState(0);
+  const [isTransitioning, setIsTransitioning] = useState(false);
+
+  const handleStageSelect = (idx: number) => {
+    if (idx === activeStageIndex) return;
+    setIsTransitioning(true);
+    setTimeout(() => {
+      setActiveStageIndex(idx);
+      setIsTransitioning(false);
+    }, 150);
+  };
+
   const activeStage = STAGES[activeStageIndex];
 
   return (
@@ -105,44 +116,90 @@ export default function Act3Odyssey() {
     >
       <div className="space-y-20 sm:space-y-28">
         {/* Editorial Heading */}
-        <div className="max-w-3xl">
+        <div className="max-w-3xl reveal-init">
           <h2 className="text-3xl sm:text-5xl md:text-6xl font-light tracking-[-0.03em] leading-[1.06] text-white mb-6">
             From raw compute to automated code.
           </h2>
           <p className="text-base sm:text-xl text-[#8e95a5] font-light leading-relaxed">
-            Five sequential architectural milestones that turn cloud theory into production habits. Every step is built on real AWS infrastructure inside your provided sandbox.
+            Five sequential architectural milestones that turn cloud theory into production habits. Explore each layer to see the exact CLI instructions you will run on event day.
           </p>
         </div>
 
-        {/* Interactive Architecture Stage Navigator */}
+        {/* Technical Architecture Connection Pipeline (AWS Green / Blue) */}
+        <div className="relative py-4 px-6 rounded-2xl bg-white/[0.02] border border-white/[0.06] overflow-x-auto reveal-init">
+          <div className="min-w-[640px] flex items-center justify-between">
+            {STAGES.map((s, idx) => {
+              const isPastOrCurrent = idx <= activeStageIndex;
+              const isCurrent = idx === activeStageIndex;
+              return (
+                <div key={s.id} className="flex items-center flex-1 last:flex-initial">
+                  <button
+                    onClick={() => handleStageSelect(idx)}
+                    className="flex items-center gap-3 cursor-pointer group focus:outline-none"
+                  >
+                    <div className={`w-8 h-8 rounded-full border flex items-center justify-center font-mono text-xs transition-all duration-300 ${
+                      isCurrent
+                        ? 'bg-[#00d26a] border-[#00d26a] text-black font-bold shadow-[0_0_15px_rgba(0,210,106,0.4)]'
+                        : isPastOrCurrent
+                        ? 'bg-[#00d26a]/20 border-[#00d26a]/60 text-[#00d26a]'
+                        : 'bg-white/[0.04] border-white/[0.12] text-[#8e95a5]'
+                    }`}>
+                      {s.stepNumber}
+                    </div>
+                    <span className={`text-xs font-mono tracking-wider transition-colors hidden sm:inline ${
+                      isCurrent ? 'text-white font-medium' : 'text-[#8e95a5] group-hover:text-white'
+                    }`}>
+                      {s.title.split(' ')[0]}
+                    </span>
+                  </button>
+
+                  {idx < STAGES.length - 1 && (
+                    <div className="flex-1 mx-4 h-0.5 bg-white/[0.08] relative overflow-hidden">
+                      <div
+                        className="absolute inset-y-0 left-0 bg-gradient-to-r from-[#00d26a] to-[#38bdf8] transition-all duration-500"
+                        style={{
+                          width: idx < activeStageIndex ? '100%' : '0%',
+                        }}
+                      />
+                    </div>
+                  )}
+                </div>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* Two-Column Interactive Workspace */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
-          {/* Step Selector List (Left Column) */}
-          <div className="lg:col-span-5 space-y-2">
-            <div className="text-xs font-mono uppercase tracking-widest text-[#8e95a5] mb-4">
-              Workshop Progression
+          {/* Milestone List (Left Column) */}
+          <div className="lg:col-span-5 space-y-3">
+            <div className="text-xs font-mono uppercase tracking-widest text-[#8e95a5] mb-4 flex items-center justify-between">
+              <span>WORKSHOP MILESTONES</span>
+              <span className="text-[#00d26a]">STAGE 0{activeStageIndex + 1} OF 05</span>
             </div>
+
             {STAGES.map((stage, idx) => {
               const isSelected = idx === activeStageIndex;
               const StageIcon = stage.Icon;
               return (
                 <button
                   key={stage.id}
-                  onClick={() => setActiveStageIndex(idx)}
+                  onClick={() => handleStageSelect(idx)}
                   className={`w-full text-left p-4 sm:p-5 rounded-xl border transition-all duration-300 flex items-center justify-between group cursor-pointer ${
                     isSelected
-                      ? 'bg-white/[0.05] border-[#00d26a] shadow-[0_0_25px_rgba(0,210,106,0.15)]'
-                      : 'bg-white/[0.01] border-white/[0.06] hover:bg-white/[0.03] hover:border-white/[0.12]'
+                      ? 'bg-white/[0.06] border-[#00d26a] shadow-[0_0_25px_rgba(0,210,106,0.15)] translate-x-1'
+                      : 'bg-white/[0.01] border-white/[0.06] hover:bg-white/[0.03] hover:border-white/[0.14]'
                   }`}
                 >
                   <div className="flex items-center gap-4">
-                    <span className={`font-mono text-sm ${isSelected ? 'text-[#00d26a]' : 'text-[#8e95a5]'}`}>
+                    <span className={`font-mono text-sm transition-colors ${isSelected ? 'text-[#00d26a] font-bold' : 'text-[#8e95a5]'}`}>
                       {stage.stepNumber}
                     </span>
                     <div>
-                      <div className="text-xs font-mono text-[#8e95a5] uppercase">
+                      <div className="text-[11px] font-mono text-[#8e95a5] uppercase">
                         {stage.domain}
                       </div>
-                      <div className={`text-base sm:text-lg font-medium tracking-tight ${isSelected ? 'text-white' : 'text-white/80 group-hover:text-white'}`}>
+                      <div className={`text-base sm:text-lg font-medium tracking-tight transition-colors ${isSelected ? 'text-white' : 'text-white/80 group-hover:text-white'}`}>
                         {stage.title}
                       </div>
                     </div>
@@ -163,56 +220,67 @@ export default function Act3Odyssey() {
             })}
           </div>
 
-          {/* Active Stage Detail Panel (Right Column) */}
+          {/* Active Stage Detail Specification (Right Column) with Smooth Transition */}
           <div className="lg:col-span-7 bg-[#0d121c] border border-white/[0.08] rounded-2xl p-6 sm:p-10 relative overflow-hidden shadow-2xl">
-            <div className="flex items-center justify-between gap-4 mb-6 pb-4 border-b border-white/[0.06]">
-              <div className="flex items-center gap-3">
-                <span className="font-mono text-xs text-[#00d26a] tracking-widest uppercase">
-                  MILESTONE {activeStage.stepNumber} OF 05
-                </span>
-                <span className="text-white/20">|</span>
-                <span className="font-mono text-xs uppercase tracking-widest text-[#8e95a5]">
-                  {activeStage.domain}
-                </span>
+            <div
+              className={`transition-all duration-200 ${
+                isTransitioning
+                  ? 'opacity-0 -translate-y-2'
+                  : 'opacity-100 translate-y-0'
+              }`}
+            >
+              <div className="flex items-center justify-between gap-4 mb-6 pb-4 border-b border-white/[0.06]">
+                <div className="flex items-center gap-3">
+                  <span className="font-mono text-xs text-[#00d26a] tracking-widest uppercase">
+                    STAGE {activeStage.stepNumber} // 05
+                  </span>
+                  <span className="text-white/20">|</span>
+                  <span className="font-mono text-xs uppercase tracking-widest text-[#8e95a5]">
+                    {activeStage.domain}
+                  </span>
+                </div>
+                <img
+                  src={activeStage.image}
+                  alt={activeStage.title}
+                  className="w-9 h-9 object-contain"
+                />
               </div>
-              <img
-                src={activeStage.image}
-                alt={activeStage.title}
-                className="w-8 h-8 object-contain"
-              />
-            </div>
 
-            <h3 className="text-2xl sm:text-3xl font-light text-white tracking-tight mb-2">
-              {activeStage.title}
-            </h3>
-            <div className="text-sm font-mono text-[#00d26a] mb-6">
-              // {activeStage.subtitle}
-            </div>
-
-            <p className="text-sm sm:text-base text-white/80 font-light leading-relaxed mb-8">
-              {activeStage.narrative}
-            </p>
-
-            {/* Code / Command Blueprint */}
-            <div className="rounded-xl bg-black/60 border border-white/[0.08] p-4 font-mono text-xs sm:text-sm text-stone-300 mb-6 overflow-x-auto">
-              <div className="text-[11px] text-[#8e95a5] border-b border-white/[0.08] pb-2 mb-3 flex items-center justify-between">
-                <span>TERMINAL INSTRUCTION SPEC</span>
-                <span className="text-[#00d26a]">BASH / CLI</span>
+              <h3 className="text-2xl sm:text-3xl font-light text-white tracking-tight mb-2">
+                {activeStage.title}
+              </h3>
+              <div className="text-sm font-mono text-[#38bdf8] mb-6">
+                // {activeStage.subtitle}
               </div>
-              <pre className="whitespace-pre-wrap leading-relaxed text-[#38bdf8]">
-                {activeStage.codeSnippet}
-              </pre>
-            </div>
 
-            <div className="flex items-center gap-2 text-xs font-mono text-[#8e95a5]">
-              <CheckCircle2 size={14} className="text-[#00d26a]" />
-              <span>Core Takeaway: {activeStage.keypoint}</span>
+              <p className="text-sm sm:text-base text-white/80 font-light leading-relaxed mb-8">
+                {activeStage.narrative}
+              </p>
+
+              {/* Terminal Specification Box */}
+              <div className="rounded-xl bg-black/70 border border-white/[0.08] p-4 font-mono text-xs sm:text-sm text-stone-300 mb-6 overflow-x-auto shadow-inner">
+                <div className="text-[11px] text-[#8e95a5] border-b border-white/[0.08] pb-2 mb-3 flex items-center justify-between">
+                  <div className="flex items-center gap-2">
+                    <Terminal size={12} className="text-[#00d26a]" />
+                    <span>TERMINAL INSTRUCTION SPEC</span>
+                  </div>
+                  <span className="text-[#00d26a]">BASH / AWS CLI</span>
+                </div>
+                <pre className="whitespace-pre-wrap leading-relaxed text-[#38bdf8]">
+                  {activeStage.codeSnippet}
+                </pre>
+              </div>
+
+              <div className="flex items-center gap-2 text-xs font-mono text-[#8e95a5] pt-2">
+                <CheckCircle2 size={14} className="text-[#00d26a]" />
+                <span>Core Takeaway: {activeStage.keypoint}</span>
+              </div>
             </div>
           </div>
         </div>
 
-        {/* AWS Academy Learner Lab Sandbox Section (Steps 6-10) */}
-        <div className="pt-12 border-t border-white/[0.08]">
+        {/* AWS Academy Learner Lab Sandbox (Steps 6-10) */}
+        <div className="pt-12 border-t border-white/[0.08] reveal-init">
           <div className="max-w-3xl mb-10">
             <div className="inline-flex items-center gap-2 text-xs font-mono text-[#00d26a] uppercase tracking-widest mb-3">
               <span>SANDBOX ENVIRONMENT</span>

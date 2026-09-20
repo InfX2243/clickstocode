@@ -1,13 +1,28 @@
+import { useEffect, useState } from 'react';
 import { ArrowDown, Calendar, Clock, MapPin, Users, Ticket, ArrowUpRight } from 'lucide-react';
 import { EVENT_DATE, EVENT_TIME, VENUE, MEETUP_STATUS } from '../../constants/event';
+import { useScrollProgress } from '../../lib/useScrollProgress';
 
 export default function Act1Hero() {
+  const scrollY = useScrollProgress();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    // Film opening sequence trigger
+    const t = setTimeout(() => setMounted(true), 60);
+    return () => clearTimeout(t);
+  }, []);
+
   const scrollToStory = () => {
     const el = document.getElementById('story-manifesto');
     if (el) {
       el.scrollIntoView({ behavior: 'smooth' });
     }
   };
+
+  // Macro-motion transformation: subtle upward ascend and ease to hand off to Act 02
+  const heroTranslate = Math.min(scrollY * 0.16, 50);
+  const heroOpacity = Math.max(0.35, 1 - scrollY / 700);
 
   return (
     <section
@@ -20,7 +35,15 @@ export default function Act1Hero() {
       <div className="absolute top-12 right-10 w-96 h-96 bg-[#38bdf8]/[0.03] blur-[120px] rounded-full pointer-events-none" />
 
       {/* Top Meta Bar */}
-      <div className="max-w-7xl mx-auto w-full flex flex-wrap items-center justify-between gap-4 mb-8 sm:mb-12">
+      <div
+        style={{
+          transform: `translate3d(0, -${heroTranslate * 0.4}px, 0)`,
+          opacity: heroOpacity,
+        }}
+        className={`max-w-7xl mx-auto w-full flex flex-wrap items-center justify-between gap-4 mb-8 sm:mb-12 transition-all duration-700 ease-out ${
+          mounted ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-3'
+        }`}
+      >
         <div className="flex items-center gap-3">
           <span className="w-2 h-2 rounded-full bg-[#00d26a] animate-pulse" />
           <span className="font-mono text-xs uppercase tracking-widest text-[#8e95a5]">
@@ -32,24 +55,49 @@ export default function Act1Hero() {
         </div>
       </div>
 
-      {/* Main Editorial Headline */}
-      <div className="max-w-7xl mx-auto w-full my-auto py-6 sm:py-10">
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/[0.04] border border-white/[0.08] text-[#8e95a5] text-xs font-mono mb-6 sm:mb-8">
+      {/* Main Editorial Headline with Macro Motion Layer */}
+      <div
+        style={{
+          transform: `translate3d(0, -${heroTranslate}px, 0)`,
+          opacity: heroOpacity,
+        }}
+        className="max-w-7xl mx-auto w-full my-auto py-6 sm:py-10 transition-transform duration-100 ease-out"
+      >
+        {/* Step 1: Badge Reveal */}
+        <div
+          className={`inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/[0.04] border border-white/[0.08] text-[#8e95a5] text-xs font-mono mb-6 sm:mb-8 transition-all duration-700 delay-100 ease-out ${
+            mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+          }`}
+        >
           <Ticket size={13} className="text-[#00d26a]" />
           <span>FREE ADMISSION · 100 SEATS LIMITED</span>
         </div>
 
-        <h1 className="text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-light tracking-[-0.04em] leading-[0.92] text-white text-balance mb-6 sm:mb-8">
+        {/* Step 2: Monolithic Display Headline Reveal */}
+        <h1
+          className={`text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-light tracking-[-0.04em] leading-[0.92] text-white text-balance mb-6 sm:mb-8 transition-all duration-1000 delay-200 ease-out ${
+            mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
+          }`}
+        >
           AWS From <br />
           <span className="italic font-normal text-[#00d26a] pr-2">Clicks to Code</span>
         </h1>
 
-        <p className="max-w-2xl text-lg sm:text-xl md:text-2xl text-[#8e95a5] font-light leading-relaxed mb-10 sm:mb-14">
+        {/* Step 3: Supporting Copy Reveal */}
+        <p
+          className={`max-w-2xl text-lg sm:text-xl md:text-2xl text-[#8e95a5] font-light leading-relaxed mb-10 sm:mb-14 transition-all duration-800 delay-300 ease-out ${
+            mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'
+          }`}
+        >
           Move from visual console setup to real Linux compute, zero-trust Session Manager access, and declarative CloudFormation automation in one guided builder session.
         </p>
 
-        {/* Essential Facts Minimalist Strip */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 py-6 border-y border-white/[0.08] mb-10 sm:mb-12">
+        {/* Step 4: Metadata Strip Settles */}
+        <div
+          className={`grid grid-cols-2 md:grid-cols-4 gap-6 py-6 border-y border-white/[0.08] mb-10 sm:mb-12 transition-all duration-800 delay-400 ease-out ${
+            mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'
+          }`}
+        >
           <div>
             <div className="flex items-center gap-1.5 text-xs font-mono text-[#8e95a5] uppercase mb-1">
               <Calendar size={13} className="text-[#00d26a]" />
@@ -83,8 +131,12 @@ export default function Act1Hero() {
           </div>
         </div>
 
-        {/* Primary Actions */}
-        <div className="flex flex-wrap items-center gap-4">
+        {/* Step 5: Primary Action CTAs Reveal */}
+        <div
+          className={`flex flex-wrap items-center gap-4 transition-all duration-800 delay-500 ease-out ${
+            mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+          }`}
+        >
           <button
             onClick={() => {
               const el = document.getElementById('story-blueprint');
@@ -107,8 +159,12 @@ export default function Act1Hero() {
         </div>
       </div>
 
-      {/* Bottom Editorial Scroll Cue */}
-      <div className="max-w-7xl mx-auto w-full flex items-center justify-between pt-6 text-xs font-mono text-[#8e95a5]">
+      {/* Step 6: Bottom Editorial Scroll Cue */}
+      <div
+        className={`max-w-7xl mx-auto w-full flex items-center justify-between pt-6 text-xs font-mono text-[#8e95a5] transition-all duration-800 delay-600 ease-out ${
+          mounted ? 'opacity-100' : 'opacity-0'
+        }`}
+      >
         <div className="flex items-center gap-2">
           <span className="w-1.5 h-1.5 rounded-full bg-white/40" />
           <span>SCROLL TO BEGIN NARRATIVE</span>

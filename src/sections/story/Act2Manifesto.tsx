@@ -1,5 +1,5 @@
 import StorySection from '../../components/editorial/StorySection';
-import { Sparkles, Terminal, ArrowRight } from 'lucide-react';
+import { Sparkles, ArrowRight } from 'lucide-react';
 
 export default function Act2Manifesto() {
   return (
@@ -10,17 +10,23 @@ export default function Act2Manifesto() {
       eyebrow="WHY CLICKS TO CODE MATTERS"
     >
       <div className="space-y-16 sm:space-y-24">
-        {/* Editorial Lead Statement */}
-        <div className="max-w-4xl">
-          <h2 className="text-3xl sm:text-5xl md:text-6xl font-light tracking-[-0.03em] leading-[1.08] text-white">
-            Most students start with visual buttons.<br />
-            <span className="text-[#8e95a5]">Industry engineers never touch them.</span>
-          </h2>
+        {/* Editorial Lead Statement with Line-by-Line Reveal */}
+        <div className="max-w-4xl space-y-2">
+          <div className="overflow-hidden">
+            <h2 className="text-3xl sm:text-5xl md:text-6xl font-light tracking-[-0.03em] leading-[1.08] text-white reveal-init">
+              Most students start with visual buttons.
+            </h2>
+          </div>
+          <div className="overflow-hidden">
+            <div className="text-3xl sm:text-5xl md:text-6xl font-light tracking-[-0.03em] leading-[1.08] text-[#8e95a5] reveal-init stagger-2">
+              Industry engineers <span className="text-[#00d26a] font-normal">never touch them.</span>
+            </div>
+          </div>
         </div>
 
         {/* Asymmetric Two-Column Editorial Narrative */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
-          <div className="lg:col-span-7 space-y-6 sm:space-y-8 text-base sm:text-lg text-white/80 font-light leading-relaxed">
+          <div className="lg:col-span-7 space-y-6 sm:space-y-8 text-base sm:text-lg text-white/80 font-light leading-relaxed reveal-init stagger-2">
             <p className="text-xl sm:text-2xl text-white font-normal leading-snug">
               Every year, thousands of students log into cloud portals, follow screenshots, click twenty dropdown menus, and hope their server stays alive.
             </p>
@@ -32,7 +38,7 @@ export default function Act2Manifesto() {
             </p>
           </div>
 
-          <div className="lg:col-span-5 bg-white/[0.02] border border-white/[0.08] p-7 sm:p-9 rounded-2xl relative">
+          <div className="lg:col-span-5 bg-white/[0.02] border border-white/[0.08] p-7 sm:p-9 rounded-2xl relative reveal-init stagger-3">
             <div className="flex items-center gap-2 text-xs font-mono text-[#00d26a] uppercase tracking-widest mb-4">
               <Sparkles size={14} />
               <span>THE PHILOSOPHY</span>
@@ -50,9 +56,9 @@ export default function Act2Manifesto() {
           </div>
         </div>
 
-        {/* Three Editorial Theses */}
+        {/* Three Editorial Theses with Staggered Entrance */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 pt-8 border-t border-white/[0.06]">
-          <div className="space-y-3">
+          <div className="space-y-3 reveal-init stagger-1">
             <div className="font-mono text-xs text-[#00d26a] tracking-widest">[ THESIS 01 ]</div>
             <h4 className="text-lg sm:text-xl font-medium text-white tracking-tight">Real Linux Compute</h4>
             <p className="text-sm text-[#8e95a5] font-light leading-relaxed">
@@ -60,7 +66,7 @@ export default function Act2Manifesto() {
             </p>
           </div>
 
-          <div className="space-y-3">
+          <div className="space-y-3 reveal-init stagger-2">
             <div className="font-mono text-xs text-[#00d26a] tracking-widest">[ THESIS 02 ]</div>
             <h4 className="text-lg sm:text-xl font-medium text-white tracking-tight">Zero-Trust Security</h4>
             <p className="text-sm text-[#8e95a5] font-light leading-relaxed">
@@ -68,7 +74,7 @@ export default function Act2Manifesto() {
             </p>
           </div>
 
-          <div className="space-y-3">
+          <div className="space-y-3 reveal-init stagger-3">
             <div className="font-mono text-xs text-[#00d26a] tracking-widest">[ THESIS 03 ]</div>
             <h4 className="text-lg sm:text-xl font-medium text-white tracking-tight">Declarative Automation</h4>
             <p className="text-sm text-[#8e95a5] font-light leading-relaxed">
@@ -77,8 +83,8 @@ export default function Act2Manifesto() {
           </div>
         </div>
 
-        {/* Minimalist Quote Banner */}
-        <div className="py-10 px-8 sm:px-12 rounded-2xl bg-gradient-to-r from-white/[0.03] to-transparent border border-white/[0.06] flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+        {/* Minimalist Action Callout */}
+        <div className="py-10 px-8 sm:px-12 rounded-2xl bg-gradient-to-r from-white/[0.03] to-transparent border border-white/[0.06] flex flex-col md:flex-row items-start md:items-center justify-between gap-6 reveal-init stagger-4">
           <div className="space-y-1">
             <div className="text-xs font-mono text-[#8e95a5] uppercase tracking-widest">
               BUILDER REASSURANCE

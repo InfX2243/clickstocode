@@ -1,5 +1,5 @@
 import StorySection from '../../components/editorial/StorySection';
-import { Award, Sparkles, CheckCircle2, Gift } from 'lucide-react';
+import { Award, Sparkles, CheckCircle2 } from 'lucide-react';
 
 const SWAGS = [
   {
@@ -32,7 +32,7 @@ export default function Act6Honors() {
     >
       <div className="space-y-16 sm:space-y-24">
         {/* Section Heading */}
-        <div className="max-w-3xl">
+        <div className="max-w-3xl reveal-init">
           <h2 className="text-3xl sm:text-5xl md:text-6xl font-light tracking-[-0.03em] leading-[1.06] text-white mb-6">
             Build it. Verify it. Leave with tangible proof.
           </h2>
@@ -41,8 +41,8 @@ export default function Act6Honors() {
           </p>
         </div>
 
-        {/* Certificate Feature Banner (Editorial Stagger) */}
-        <div className="p-8 sm:p-12 rounded-3xl bg-gradient-to-br from-white/[0.04] to-white/[0.01] border border-white/[0.08] grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+        {/* Certificate Feature Banner */}
+        <div className="p-8 sm:p-12 rounded-3xl bg-gradient-to-br from-white/[0.04] to-white/[0.01] border border-white/[0.08] grid grid-cols-1 lg:grid-cols-12 gap-10 items-center reveal-init stagger-1">
           <div className="lg:col-span-7 space-y-6">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#00d26a]/10 border border-[#00d26a]/30 text-xs font-mono text-[#00d26a]">
               <Award size={13} />
@@ -74,7 +74,7 @@ export default function Act6Honors() {
               <img
                 src="/images/certificate.png"
                 alt="Digital Certificate Sample Preview"
-                className="w-full h-full object-cover rounded-xl filter contrast-105 group-hover:scale-105 transition-transform duration-500"
+                className="w-full h-full object-cover rounded-xl filter contrast-105 group-hover:scale-103 transition-transform duration-500"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-end p-5">
                 <div className="text-[11px] font-mono text-white/90">
@@ -88,7 +88,7 @@ export default function Act6Honors() {
         {/* Live Cloud Trivia & Official Swags */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
           {/* Trivia Challenge Column */}
-          <div className="lg:col-span-4 p-8 rounded-2xl bg-white/[0.02] border border-white/[0.08] space-y-5">
+          <div className="lg:col-span-4 p-8 rounded-2xl bg-white/[0.02] border border-white/[0.08] space-y-5 reveal-init stagger-2">
             <div className="flex items-center gap-2 text-xs font-mono text-[#00d26a] uppercase tracking-wider">
               <Sparkles size={15} />
               <span>LIVE PARTICIPATION</span>
@@ -107,7 +107,7 @@ export default function Act6Honors() {
           </div>
 
           {/* Builder Gear Gallery */}
-          <div className="lg:col-span-8 space-y-6">
+          <div className="lg:col-span-8 space-y-6 reveal-init stagger-3">
             <div className="flex items-center justify-between pb-3 border-b border-white/[0.08] text-xs font-mono text-[#8e95a5] uppercase">
               <span>EXCLUSIVE BUILDER REWARDS</span>
               <span>TOP CONTRIBUTORS & TRIVIA</span>
@@ -117,13 +117,13 @@ export default function Act6Honors() {
               {SWAGS.map((swag, idx) => (
                 <div
                   key={idx}
-                  className="p-5 rounded-2xl bg-white/[0.02] border border-white/[0.06] hover:border-white/[0.16] transition-all group"
+                  className="p-5 rounded-2xl bg-white/[0.02] border border-white/[0.06] hover:border-white/[0.18] hover:-translate-y-1 transition-all duration-300 group"
                 >
                   <div className="aspect-square rounded-xl bg-black/40 border border-white/[0.06] mb-4 overflow-hidden p-4 flex items-center justify-center">
                     <img
                       src={swag.image}
                       alt={swag.name}
-                      className="w-full h-full object-contain filter group-hover:scale-110 transition-transform duration-300"
+                      className="w-full h-full object-contain filter group-hover:scale-108 transition-transform duration-300"
                     />
                   </div>
                   <div className="text-[10px] font-mono uppercase text-[#00d26a] tracking-widest mb-1">
