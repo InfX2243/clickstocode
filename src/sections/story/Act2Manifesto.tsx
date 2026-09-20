@@ -1,5 +1,5 @@
 import StorySection from '../../components/editorial/StorySection';
-import { Sparkles, ArrowRight } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 
 export default function Act2Manifesto() {
   return (
@@ -9,89 +9,78 @@ export default function Act2Manifesto() {
       actLabel="THE MANIFESTO"
       eyebrow="WHY CLICKS TO CODE MATTERS"
     >
-      <div className="space-y-16 sm:space-y-24">
-        {/* Editorial Lead Statement with Line-by-Line Reveal */}
-        <div className="max-w-4xl space-y-2">
-          <div className="overflow-hidden">
-            <h2 className="text-3xl sm:text-5xl md:text-6xl font-light tracking-[-0.03em] leading-[1.08] text-white reveal-init">
-              Most students start with visual buttons.
-            </h2>
-          </div>
-          <div className="overflow-hidden">
-            <div className="text-3xl sm:text-5xl md:text-6xl font-light tracking-[-0.03em] leading-[1.08] text-[#8e95a5] reveal-init stagger-2">
-              Industry engineers <span className="text-[#00d26a] font-normal">never touch them.</span>
-            </div>
+      <div className="space-y-20 sm:space-y-28">
+        {/* Editorial Lead Statement with Continuous Flow */}
+        <div className="max-w-4xl space-y-4">
+          <h2 className="text-4xl sm:text-6xl md:text-7xl font-light tracking-[-0.04em] leading-[1.02] text-white reveal-init">
+            Most students start with visual buttons.
+          </h2>
+          <div className="text-3xl sm:text-5xl md:text-6xl font-light tracking-[-0.035em] leading-[1.04] text-[#8e95a5] reveal-init stagger-2">
+            Industry engineers <span className="text-[#00d26a] font-normal italic">never touch them.</span>
           </div>
         </div>
 
-        {/* Asymmetric Two-Column Editorial Narrative */}
+        {/* Asymmetric Editorial Essay */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
-          <div className="lg:col-span-7 space-y-6 sm:space-y-8 text-base sm:text-lg text-white/80 font-light leading-relaxed reveal-init stagger-2">
+          <div className="lg:col-span-8 space-y-6 sm:space-y-8 text-base sm:text-xl text-white/80 font-light leading-relaxed reveal-init stagger-2">
             <p className="text-xl sm:text-2xl text-white font-normal leading-snug">
               Every year, thousands of students log into cloud portals, follow screenshots, click twenty dropdown menus, and hope their server stays alive.
             </p>
-            <p>
+            <p className="text-[#8e95a5]">
               When something breaks, they don&apos;t know why. When they need to duplicate the setup, they have to click twenty menus all over again. That isn&apos;t engineering — that&apos;s just clicking buttons.
             </p>
             <p>
-              <strong className="text-[#00d26a] font-medium">AWS From Clicks to Code</strong> is designed to change that exact relationship. We believe your very first encounter with cloud computing should show you how modern software actually ships: repeatable, declarative, and secure.
+              <strong className="text-white font-medium">AWS From Clicks to Code</strong> is designed to change that exact relationship. We believe your very first encounter with cloud computing should show you how modern software actually ships: repeatable, declarative, and secure.
             </p>
           </div>
 
-          <div className="lg:col-span-5 bg-white/[0.02] border border-white/[0.08] p-7 sm:p-9 rounded-2xl relative reveal-init stagger-3">
-            <div className="flex items-center gap-2 text-xs font-mono text-[#00d26a] uppercase tracking-widest mb-4">
-              <Sparkles size={14} />
-              <span>THE PHILOSOPHY</span>
+          <div className="lg:col-span-4 border-l border-white/[0.08] pl-6 sm:pl-8 space-y-4 reveal-init stagger-3">
+            <div className="text-xs font-mono text-[#00d26a] uppercase tracking-widest">
+              // THE PRINCIPLE
             </div>
-            <h3 className="text-xl sm:text-2xl font-light text-white mb-4">
+            <h3 className="text-xl sm:text-2xl font-light text-white">
               Curiosity over credentials.
             </h3>
-            <p className="text-sm sm:text-base text-[#8e95a5] font-light leading-relaxed mb-6">
-              You do not need to already be an AWS expert or know Linux inside out. We start from ground zero and construct every piece together in real time.
+            <p className="text-sm text-[#8e95a5] font-light leading-relaxed">
+              You do not need prior AWS experience or Linux mastery. We start from ground zero and construct every piece together in real time.
             </p>
-            <div className="pt-6 border-t border-white/[0.06] flex items-center justify-between text-xs font-mono text-[#8e95a5]">
-              <span>ZERO PREREQUISITES REQUIRED</span>
-              <span className="text-white">MHSSCE · 2026</span>
+            <div className="pt-4 text-xs font-mono text-[#5a6275]">
+              M.H. SABOO SIDDIK COLLEGE OF ENGINEERING · 2026
             </div>
           </div>
         </div>
 
-        {/* Three Editorial Theses with Staggered Entrance */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 pt-8 border-t border-white/[0.06]">
+        {/* Three Editorial Theses: Pure Typography & Hairline Rules (No Cards) */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-14 pt-12 border-t border-white/[0.08]">
           <div className="space-y-3 reveal-init stagger-1">
-            <div className="font-mono text-xs text-[#00d26a] tracking-widest">[ THESIS 01 ]</div>
-            <h4 className="text-lg sm:text-xl font-medium text-white tracking-tight">Real Linux Compute</h4>
+            <div className="font-mono text-3xl sm:text-4xl font-light text-white/30 tracking-tight">01</div>
+            <div className="text-xs font-mono uppercase tracking-widest text-[#00d26a]">REAL LINUX COMPUTE</div>
             <p className="text-sm text-[#8e95a5] font-light leading-relaxed">
-              No toy environments or mocked web consoles. You provision a genuine Amazon EC2 virtual machine running live in the AWS Cloud.
+              No toy environments or simulated web consoles. You provision a genuine Amazon EC2 virtual machine running live in the AWS Cloud.
             </p>
           </div>
 
           <div className="space-y-3 reveal-init stagger-2">
-            <div className="font-mono text-xs text-[#00d26a] tracking-widest">[ THESIS 02 ]</div>
-            <h4 className="text-lg sm:text-xl font-medium text-white tracking-tight">Zero-Trust Security</h4>
+            <div className="font-mono text-3xl sm:text-4xl font-light text-white/30 tracking-tight">02</div>
+            <div className="text-xs font-mono uppercase tracking-widest text-[#00d26a]">ZERO-TRUST SECURITY</div>
             <p className="text-sm text-[#8e95a5] font-light leading-relaxed">
-              Never leave port 22 open to the world. We use AWS Systems Manager (Session Manager) for browser-based encrypted shell sessions.
+              Never leave port 22 open to the public internet. We configure AWS Systems Manager Session Manager for browser-based encrypted shell access.
             </p>
           </div>
 
           <div className="space-y-3 reveal-init stagger-3">
-            <div className="font-mono text-xs text-[#00d26a] tracking-widest">[ THESIS 03 ]</div>
-            <h4 className="text-lg sm:text-xl font-medium text-white tracking-tight">Declarative Automation</h4>
+            <div className="font-mono text-3xl sm:text-4xl font-light text-white/30 tracking-tight">03</div>
+            <div className="text-xs font-mono uppercase tracking-widest text-[#00d26a]">DECLARATIVE AUTOMATION</div>
             <p className="text-sm text-[#8e95a5] font-light leading-relaxed">
-              Codify your architecture into AWS CloudFormation templates so an entire infrastructure stack can be summoned or deleted in seconds.
+              Codify your architecture into AWS CloudFormation templates so an entire infrastructure stack can be deployed, tested, and torn down with code.
             </p>
           </div>
         </div>
 
-        {/* Minimalist Action Callout */}
-        <div className="py-10 px-8 sm:px-12 rounded-2xl bg-gradient-to-r from-white/[0.03] to-transparent border border-white/[0.06] flex flex-col md:flex-row items-start md:items-center justify-between gap-6 reveal-init stagger-4">
-          <div className="space-y-1">
-            <div className="text-xs font-mono text-[#8e95a5] uppercase tracking-widest">
-              BUILDER REASSURANCE
-            </div>
-            <div className="text-lg sm:text-xl text-white font-light">
-              Bring your questions, your laptop, and the curiosity to build. We handle the rest.
-            </div>
+        {/* Quiet Reassurance Action */}
+        <div className="pt-8 border-t border-white/[0.06] flex flex-col md:flex-row items-start md:items-center justify-between gap-6 reveal-init stagger-4">
+          <div className="text-sm sm:text-base text-[#8e95a5] font-light">
+            Bring your questions, your laptop, and the willingness to build.
           </div>
           <button
             onClick={() => {
@@ -100,7 +89,7 @@ export default function Act2Manifesto() {
             }}
             className="inline-flex items-center gap-2 text-xs font-mono text-[#00d26a] hover:text-white uppercase tracking-wider transition-colors cursor-pointer shrink-0"
           >
-            <span>See The Technical Journey</span>
+            <span>Enter Technical Odyssey</span>
             <ArrowRight size={14} />
           </button>
         </div>

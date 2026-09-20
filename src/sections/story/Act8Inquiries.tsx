@@ -33,12 +33,12 @@ const FAQS: FaqItem[] = [
   },
   {
     q: 'How does the workshop sandbox environment work?',
-    a: 'We provide an official AWS Academy Learner Lab sandbox. Organizers will assist you in the waiting room at 9:30 AM to confirm you can access the AWS console before the keynote.',
+    a: 'We provide an official AWS Academy Learner Lab sandbox. Organizers will assist you in the waiting room at 09:30 AM to confirm you can access the AWS console before the keynote.',
     category: 'SANDBOX',
   },
   {
     q: 'Where and when is check-in on event day?',
-    a: 'Check-in begins at 9:30 AM at the Ground Floor Registration Desk, near the Staff Lift. At approximately 9:55 AM, attendees transition to the 3rd Floor Seminar Hall for the 10:00 AM start.',
+    a: 'Check-in begins at 09:30 AM at the Ground Floor Registration Desk, near the Staff Lift. At approximately 09:55 AM, attendees transition to the 3rd Floor Seminar Hall for the 10:00 AM start.',
     category: 'TIMING',
   },
   {
@@ -72,7 +72,7 @@ export default function Act8Inquiries() {
       actLabel="INQUIRIES & FINAL CALL"
       eyebrow="FREQUENTLY ASKED QUESTIONS"
     >
-      <div className="space-y-20 sm:space-y-28">
+      <div className="space-y-24 sm:space-y-36">
         {/* FAQ Header */}
         <div className="max-w-3xl reveal-init">
           <h2 className="text-3xl sm:text-5xl md:text-6xl font-light tracking-[-0.03em] leading-[1.06] text-white mb-6">
@@ -83,9 +83,9 @@ export default function Act8Inquiries() {
           </p>
         </div>
 
-        {/* Editorial Accordion Grid */}
+        {/* Utility FAQ List & Direct Helpline */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
-          {/* Left: Accordion List */}
+          {/* Left: Minimalist Accordion List */}
           <div className="lg:col-span-8 divide-y divide-white/[0.08] border-y border-white/[0.08] reveal-init">
             {FAQS.map((faq, idx) => {
               const isOpen = openIndex === idx;
@@ -126,19 +126,19 @@ export default function Act8Inquiries() {
             })}
           </div>
 
-          {/* Right: Organizer Desk Card */}
-          <div className="lg:col-span-4 p-8 rounded-2xl bg-white/[0.02] border border-white/[0.08] space-y-6 reveal-init stagger-2">
+          {/* Right: Direct Organizer Help Desk */}
+          <div className="lg:col-span-4 p-8 rounded-2xl bg-white/[0.02] border border-white/[0.06] space-y-6 reveal-init stagger-2">
             <div className="flex items-center gap-2 text-xs font-mono text-[#00d26a] uppercase tracking-wider">
               <HeartHandshake size={15} />
               <span>DIRECT EVENT ASSISTANCE</span>
             </div>
 
-            <h3 className="text-2xl font-light text-white tracking-tight">
+            <h3 className="text-xl sm:text-2xl font-light text-white tracking-tight">
               Have a specific question?
             </h3>
 
             <p className="text-sm text-[#8e95a5] font-light leading-relaxed">
-              Our student organizer team is on campus and available to help with check-in, registration verification, or accessibility requests.
+              Our student organizer team is on campus and available to assist with registration verification or accessibility requests.
             </p>
 
             <div className="space-y-4 pt-4 border-t border-white/[0.06] text-xs font-mono">
@@ -165,22 +165,25 @@ export default function Act8Inquiries() {
           </div>
         </div>
 
-        {/* Monolithic Final Call Section */}
-        <div className="p-10 sm:p-16 md:p-20 rounded-3xl bg-[#0d121c] border border-white/[0.08] relative overflow-hidden text-center space-y-8 reveal-init stagger-1">
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[250px] bg-[#00d26a]/[0.06] blur-[120px] rounded-full pointer-events-none" />
-
+        {/* Major Dramatic Whitespace Pause Before Climax */}
+        <div className="pt-20 sm:pt-28 pb-10 border-t border-white/[0.08] text-center space-y-10 reveal-init">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/[0.04] border border-white/[0.08] text-xs font-mono text-[#8e95a5]">
             <Ticket size={14} className="text-[#00d26a]" />
-            <span>FREE REGISTRATION · STRICTLY 100 SEATS</span>
+            <span>24 SEPTEMBER 2026 · MHSSCE MUMBAI</span>
           </div>
 
-          <h2 className="text-4xl sm:text-6xl md:text-7xl font-light tracking-[-0.04em] leading-[0.95] text-white max-w-4xl mx-auto">
-            You&apos;ve seen the clicks.<br />
-            <span className="italic text-[#00d26a]">Now write the code.</span>
-          </h2>
+          {/* The Definitive Visual Statement of the Entire Website */}
+          <div className="space-y-4 max-w-5xl mx-auto">
+            <h2 className="text-4xl sm:text-7xl md:text-8xl font-light tracking-[-0.04em] leading-[0.94] text-white">
+              You&apos;ve seen the clicks.
+            </h2>
+            <div className="text-4xl sm:text-7xl md:text-8xl font-light tracking-[-0.04em] leading-[0.94] text-[#00d26a] italic">
+              Now write the code.
+            </div>
+          </div>
 
           <p className="max-w-2xl mx-auto text-base sm:text-xl text-[#8e95a5] font-light leading-relaxed">
-            Join us on {EVENT_DATE} from {EVENT_TIME} at MHSSCE. Learn from industry leaders, provision live cloud systems, and leave with verifiable skills.
+            Join us on {EVENT_DATE} from {EVENT_TIME} at 3rd Floor Seminar Hall, MHSSCE. Move from cloud fundamentals to real automated infrastructure.
           </p>
 
           <div className="pt-4 flex flex-col sm:flex-row items-center justify-center gap-4">
@@ -189,7 +192,7 @@ export default function Act8Inquiries() {
                 window.open('https://www.meetup.com/', '_blank', 'noopener,noreferrer');
               }}
               title={MEETUP_STATUS}
-              className="px-8 py-4 rounded-full bg-white text-black font-mono text-sm uppercase tracking-wider font-semibold hover:bg-[#00d26a] transition-all duration-300 shadow-2xl shadow-black/80 flex items-center gap-2 cursor-pointer"
+              className="px-9 py-4 rounded-full bg-white text-black font-mono text-sm uppercase tracking-wider font-semibold hover:bg-[#00d26a] transition-all duration-300 shadow-2xl shadow-black/80 flex items-center gap-2 cursor-pointer"
             >
               <span>RSVP on Meetup</span>
               <ArrowUpRight size={16} />

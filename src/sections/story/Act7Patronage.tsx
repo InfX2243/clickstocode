@@ -56,8 +56,8 @@ export default function Act7Patronage() {
       actLabel="INSTITUTIONAL PATRONAGE"
       eyebrow="LEADERSHIP & PARTNERSHIP"
     >
-      <div className="space-y-16 sm:space-y-24">
-        {/* Editorial Heading */}
+      <div className="space-y-20 sm:space-y-28">
+        {/* Editorial Heading with Generous Space */}
         <div className="max-w-3xl reveal-init">
           <h2 className="text-3xl sm:text-5xl md:text-6xl font-light tracking-[-0.03em] leading-[1.06] text-white mb-6">
             Guided by academic vision. Powered by institutional leadership.
@@ -67,48 +67,46 @@ export default function Act7Patronage() {
           </p>
         </div>
 
-        {/* Leadership Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {/* Dignified Patron Columns: Delicate Hairlines & Subdued Presence */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-14 pt-8 border-t border-white/[0.08]">
           {PATRONS.map((patron, idx) => (
             <div
               key={idx}
-              className={`p-7 sm:p-8 rounded-2xl bg-white/[0.02] border border-white/[0.08] hover:border-white/[0.16] transition-all flex flex-col justify-between reveal-init stagger-${idx + 1}`}
+              className="space-y-6 reveal-init"
+              style={{ transitionDelay: `${idx * 100}ms` }}
             >
-              <div>
-                <div className="flex items-center justify-between mb-6">
-                  <div className="w-16 h-16 rounded-xl overflow-hidden border border-white/[0.08] bg-[#0c1017] p-1 flex items-center justify-center">
-                    <img
-                      src={patron.image}
-                      alt={patron.name}
-                      className={patron.isLogo ? 'w-full h-full object-contain' : 'w-full h-full object-cover object-top rounded-lg'}
-                    />
+              <div className="flex items-center gap-4">
+                <div className="w-14 h-14 rounded-lg overflow-hidden border border-white/[0.08] bg-[#0c1017] p-1 flex items-center justify-center shrink-0">
+                  <img
+                    src={patron.image}
+                    alt={patron.name}
+                    className={patron.isLogo ? 'w-full h-full object-contain' : 'w-full h-full object-cover object-top rounded'}
+                  />
+                </div>
+                <div>
+                  <div className="text-[10px] font-mono text-[#00d26a] uppercase tracking-widest">
+                    {patron.role}
                   </div>
-                  <span className="font-mono text-[10px] text-[#00d26a] uppercase tracking-widest px-2.5 py-1 rounded bg-[#00d26a]/10 border border-[#00d26a]/20">
-                    {idx === 0 ? 'INSTITUTION' : idx === 1 ? 'PRINCIPAL' : 'HOD · IT'}
-                  </span>
+                  <h3 className="text-lg font-medium text-white tracking-tight">
+                    {patron.name}
+                  </h3>
+                  <div className="text-xs text-[#8e95a5]">
+                    {patron.title}
+                  </div>
                 </div>
-
-                <div className="text-[11px] font-mono text-[#8e95a5] uppercase tracking-widest mb-1">
-                  {patron.role}
-                </div>
-                <h3 className="text-xl font-medium text-white tracking-tight mb-1">
-                  {patron.name}
-                </h3>
-                <div className="text-xs text-[#8e95a5] mb-4">
-                  {patron.title}
-                </div>
-                <p className="text-sm text-white/70 font-light leading-relaxed mb-6">
-                  {patron.citation}
-                </p>
               </div>
 
+              <p className="text-sm text-[#8e95a5] font-light leading-relaxed">
+                {patron.citation}
+              </p>
+
               {patron.link && (
-                <div className="pt-4 border-t border-white/[0.06]">
+                <div>
                   <a
                     href={patron.link}
                     target="_blank"
                     rel="noreferrer"
-                    className="inline-flex items-center gap-2 text-xs font-mono text-white/80 hover:text-[#00d26a] transition-colors"
+                    className="inline-flex items-center gap-2 text-xs font-mono text-white/70 hover:text-white transition-colors"
                   >
                     {idx > 0 && <LinkedInIcon size={12} />}
                     <span>{patron.linkText}</span>
@@ -120,12 +118,11 @@ export default function Act7Patronage() {
           ))}
         </div>
 
-        {/* Industry & Community Sponsorship Minimalist Callout */}
-        <div className="p-8 sm:p-12 rounded-2xl bg-gradient-to-r from-white/[0.03] to-transparent border border-white/[0.08] flex flex-col md:flex-row items-start md:items-center justify-between gap-8 reveal-init stagger-3">
+        {/* Calm Industry Partnership Callout */}
+        <div className="pt-12 border-t border-white/[0.08] flex flex-col md:flex-row items-start md:items-center justify-between gap-8 reveal-init">
           <div className="max-w-2xl space-y-2">
-            <div className="flex items-center gap-2 text-xs font-mono text-[#00d26a] uppercase tracking-widest">
-              <Mail size={14} />
-              <span>INDUSTRY & COMMUNITY PARTNERSHIP</span>
+            <div className="text-xs font-mono text-[#00d26a] uppercase tracking-widest">
+              // INDUSTRY & COMMUNITY PARTNERSHIP
             </div>
             <h3 className="text-2xl sm:text-3xl font-light text-white tracking-tight">
               Support the next generation of cloud builders.
