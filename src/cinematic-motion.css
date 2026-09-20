@@ -4527,3 +4527,135 @@
 @media(prefers-reduced-motion:reduce){
   .hands-on-scene,.hands-on-step{transform:none!important;opacity:1!important;}
 }
+
+/* Screen 5 Learner Lab extension: a second five-card preparation track, kept in the same visual system. */
+.hands-on-step strong,
+.hands-on-step p{
+  text-align:left;
+}
+.hands-on-step:nth-child(2) strong,
+.hands-on-step:nth-child(2) p,
+.hands-on-step:nth-child(4) strong,
+.hands-on-step:nth-child(4) p{
+  text-align:left;
+}
+
+.learner-lab-steps{
+  width:100%;
+  margin-top:clamp(20px,2.4vh,28px);
+  padding-top:clamp(16px,2vh,22px);
+  border-top:1px solid rgba(255,255,255,.08);
+}
+.learner-lab-heading{
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap:20px;
+  margin-bottom:14px;
+}
+.learner-lab-heading h3{
+  margin:5px 0 0;
+  color:#fff;
+  font-size:clamp(18px,1.55vw,23px);
+  line-height:1.08;
+  letter-spacing:.025em;
+}
+.learner-lab-heading>a{
+  flex:0 0 auto;
+  color:#00d26a;
+  font:700 9px/1 'Amazon Ember Mono',monospace;
+  letter-spacing:.11em;
+  text-decoration:none;
+  padding:9px 11px;
+  border:1px solid rgba(0,210,106,.28);
+  background:rgba(0,210,106,.035);
+}
+.learner-lab-grid{
+  display:grid;
+  grid-template-columns:repeat(5,minmax(0,1fr));
+  gap:clamp(12px,1.2vw,16px);
+  align-items:stretch;
+}
+.learner-lab-card{
+  min-width:0;
+  min-height:clamp(126px,13vh,150px);
+  box-sizing:border-box;
+  padding:14px 15px 13px;
+  display:grid;
+  grid-template-rows:auto minmax(34px,1fr) auto;
+  gap:7px;
+  border:1px solid rgba(255,255,255,.08);
+  border-top:1px solid rgba(0,210,106,.3);
+  background:linear-gradient(145deg,rgba(9,15,19,.92),rgba(5,9,14,.97));
+  box-shadow:inset 0 0 20px rgba(0,210,106,.015);
+}
+.learner-lab-card>span{
+  color:#00d26a;
+  font:700 18px/1 'Amazon Ember Mono',monospace;
+  letter-spacing:-.04em;
+}
+.learner-lab-card strong{
+  align-self:center;
+  min-width:0;
+  color:#fff;
+  font-size:clamp(12px,1vw,14px);
+  line-height:1.12;
+  letter-spacing:.055em;
+  text-align:left;
+}
+.learner-lab-card p{
+  margin:0;
+  color:rgba(255,255,255,.52);
+  font-size:10px;
+  line-height:1.35;
+  text-align:left;
+}
+@media(max-height:820px) and (min-width:1051px){
+  .learner-lab-steps{
+    margin-top:14px;
+    padding-top:12px;
+  }
+  .learner-lab-heading{
+    margin-bottom:10px;
+  }
+  .learner-lab-heading h3{
+    font-size:18px;
+  }
+  .learner-lab-card{
+    min-height:104px;
+    padding:10px 12px;
+    grid-template-rows:auto minmax(26px,1fr) auto;
+    gap:5px;
+  }
+  .learner-lab-card>span{font-size:15px}
+  .learner-lab-card strong{font-size:11px}
+  .learner-lab-card p{font-size:9px;line-height:1.3}
+}
+@media(max-width:1050px){
+  .learner-lab-grid{
+    grid-template-columns:repeat(3,minmax(0,1fr));
+    row-gap:12px;
+  }
+}
+@media(max-width:760px){
+  .learner-lab-heading{
+    align-items:flex-start;
+    flex-direction:column;
+    gap:10px;
+  }
+  .learner-lab-grid{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:10px;
+  }
+  .learner-lab-card{
+    min-height:130px;
+  }
+}
+@media(max-width:520px){
+  .learner-lab-grid{
+    grid-template-columns:1fr;
+  }
+  .learner-lab-card{
+    min-height:118px;
+  }
+}
