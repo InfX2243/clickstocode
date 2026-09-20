@@ -1,0 +1,289 @@
+/* ==========================================================================
+   GLOBAL SCROLL & CONTINUOUS CYBERNETIC CANVAS ARCHITECTURE
+   Guarantees ONE complete global scroll across the entire website.
+   STRICT RULE: Zero component-level scrollbars anywhere.
+   ========================================================================== */
+
+/* Timeline compositor variables */
+.cinematic-timeline {
+  --entry-fade: 0;
+  --event-handoff: 0;
+  --story-reveal: 1;
+}
+
+/* Subtle Hero scroll exit */
+.screen-1-glow {
+  opacity: calc(1 - var(--entry-fade) * 0.85) !important;
+}
+
+.screen-1-grid,
+.screen-1-brand,
+.screen-1-presents,
+.screen-1-scroll-hint {
+  opacity: calc(1 - var(--entry-fade)) !important;
+}
+
+.screen-1-brand {
+  transform: translate3d(0, calc(var(--entry-fade) * -28px), 0) !important;
+}
+
+.screen-1-presents {
+  transform: translate3d(0, calc(var(--entry-fade) * -20px), 0) !important;
+}
+
+.screen-1-scroll-hint {
+  transform: translate3d(0, calc(var(--entry-fade) * -14px), 0) !important;
+}
+
+/* UNIVERSAL RESET: All scenes and chapters in natural document flow */
+.cinematic-story-frame {
+  position: static !important;
+  inset: auto !important;
+  height: auto !important;
+  min-height: 0 !important;
+  overflow: visible !important;
+  background: transparent !important;
+  opacity: 1 !important;
+  transform: none !important;
+  display: block !important;
+}
+
+.cinematic-story-frame::before,
+.cinematic-story-frame::after {
+  display: none !important;
+}
+
+.cinematic-chapter {
+  position: relative !important;
+  inset: auto !important;
+  height: auto !important;
+  min-height: 0 !important;
+  max-height: none !important;
+  overflow: visible !important;
+  background: transparent !important;
+  opacity: 1 !important;
+  transform: none !important;
+  visibility: visible !important;
+  z-index: 2 !important;
+  pointer-events: auto !important;
+  box-sizing: border-box !important;
+  border-top: none !important;
+  border-bottom: none !important;
+}
+
+.cinematic-chapter-inner {
+  position: relative !important;
+  height: auto !important;
+  min-height: 0 !important;
+  max-height: none !important;
+  overflow: visible !important;
+  overflow-y: visible !important;
+  overflow-x: clip !important;
+  width: 100% !important;
+  max-width: 1360px !important;
+  margin-inline: auto !important;
+  box-sizing: border-box !important;
+  scrollbar-width: none !important;
+  user-select: text !important;
+  -webkit-user-select: text !important;
+}
+
+/* ZERO COMPONENT SCROLLBARS: Enforced with maximum specificity */
+.cinematic-chapter-inner::-webkit-scrollbar,
+.cinematic-chapter::-webkit-scrollbar,
+.cinematic-story-frame::-webkit-scrollbar,
+.cinematic-timeline-frame::-webkit-scrollbar,
+.cinematic-timeline::-webkit-scrollbar {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+}
+
+/* RESET ALL SCENE WRAPPERS: Prevent desktop translate3d/opacity from breaking layout */
+.event-overview-scene,
+.audience-scene,
+.learning-scene,
+.lab-scene,
+.arrival-scene,
+.registration-scene,
+.day-timeline-scene,
+.requirements-scene,
+.speaker-scene,
+.rewards-scene,
+.sponsor-scene,
+.faq-scene,
+.final-build-scene {
+  opacity: 1 !important;
+  transform: none !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  margin-inline: auto !important;
+  height: auto !important;
+  min-height: 0 !important;
+  max-height: none !important;
+  overflow: visible !important;
+}
+
+.cinematic-chapter-inner > * {
+  opacity: 1 !important;
+  transform: none !important;
+  max-width: 100%;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Universal text & card visibility */
+.event-overview-steps article,
+.audience-tile,
+.audience-benefit,
+.learning-module,
+.hands-on-step,
+.arrival-card,
+.registration-step,
+.timeline-block,
+.requirements-card,
+.speaker-card,
+.reward-card,
+.sponsor-tier,
+.faq-item {
+  opacity: 1 !important;
+  transform: none !important;
+  visibility: visible !important;
+}
+
+/* Ensure Event Overview elements don't shift sideways */
+.event-overview-chapter .event-overview-header,
+.event-overview-chapter .event-overview-copy,
+.event-overview-chapter .event-overview-steps,
+.event-overview-chapter .event-overview-register {
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+/* Ensure Audience elements don't translate vertically */
+.audience-chapter .audience-scene,
+.audience-chapter .audience-hero-copy,
+.audience-chapter .audience-profile,
+.audience-chapter .audience-reassurance {
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+/* ==========================================================================
+   MOBILE VIEWPORT OPTIMIZATIONS (≤ 768px)
+   Continuous single-canvas experience without artificial gaps or clipped cards.
+   ========================================================================== */
+@media (max-width: 768px) {
+  .cinematic-timeline {
+    min-height: 0 !important;
+    overflow-x: clip !important;
+    overflow-y: visible !important;
+    max-width: 100% !important;
+    width: 100% !important;
+  }
+
+  .cinematic-timeline-frame {
+    position: static !important;
+    height: auto !important;
+    min-height: 0 !important;
+    overflow: visible !important;
+    max-width: 100% !important;
+    width: 100% !important;
+  }
+
+  .cinematic-timeline-frame > #screen-1 {
+    position: relative !important;
+    inset: auto !important;
+    height: 100svh !important;
+    min-height: 100svh !important;
+    max-width: 100% !important;
+    width: 100% !important;
+    overflow: hidden !important;
+  }
+
+  .cinematic-story-frame {
+    position: static !important;
+    inset: auto !important;
+    height: auto !important;
+    min-height: 0 !important;
+    overflow: visible !important;
+    max-width: 100% !important;
+    width: 100% !important;
+  }
+
+  .cinematic-chapter {
+    position: relative !important;
+    inset: auto !important;
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    overflow: visible !important;
+    max-width: 100% !important;
+    width: 100% !important;
+    padding-block: clamp(36px, 6vh, 56px) !important;
+    border: none !important;
+  }
+
+  .cinematic-chapter-inner {
+    padding-inline: clamp(16px, 4vw, 24px) !important;
+    padding-block: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    overflow: visible !important;
+  }
+
+  .cinematic-chapter-eyebrow {
+    font-size: 11px !important;
+    letter-spacing: 0.16em !important;
+    margin-bottom: 8px !important;
+  }
+
+  .cinematic-chapter-title {
+    font-size: clamp(24px, 6.2vw, 34px) !important;
+    line-height: 1.18 !important;
+    word-break: break-word !important;
+    margin-bottom: 16px !important;
+  }
+
+  .cinematic-chapter::after {
+    display: none !important;
+  }
+
+  /* Mobile Grid Collapses for Readability */
+  .learning-modules {
+    grid-template-columns: 1fr !important;
+    gap: 14px !important;
+  }
+
+  .learning-module {
+    min-height: auto !important;
+    padding: 16px 18px !important;
+  }
+
+  .audience-profile-grid {
+    grid-template-columns: 1fr !important;
+    gap: 14px !important;
+  }
+
+  .event-overview-steps {
+    grid-template-columns: 1fr !important;
+    gap: 12px !important;
+  }
+
+  .event-overview-steps article {
+    min-height: auto !important;
+    padding: 14px 16px !important;
+  }
+
+  .event-overview-register {
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .final-build-facts {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 12px !important;
+  }
+}
+
