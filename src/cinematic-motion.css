@@ -5256,87 +5256,119 @@
 }
 
 
-/* Screen 6 final pass: remove the Meetup footer control and give Event Day content more visual weight. */
+/* Screen 6 final pass: remove the Meetup footer control and use the available vertical space more fully. */
+.arrival-chapter .cinematic-chapter-inner{
+  padding-block:clamp(30px,4.2vh,52px);
+}
+.arrival-chapter .cinematic-chapter-title{
+  max-width:1120px;
+  margin-bottom:clamp(18px,2.4vh,28px);
+  font-size:clamp(44px,5.5vw,78px);
+}
 .arrival-chapter .arrival-intro p{
-  font-size:clamp(15px,1.12vw,17px);
-  line-height:1.45;
+  font-size:clamp(16px,1.18vw,18px);
+  line-height:1.48;
+}
+.arrival-chapter .arrival-hero{
+  margin-top:clamp(20px,2.6vh,30px);
+  gap:14px;
 }
 .arrival-chapter .arrival-time-card,
 .arrival-chapter .arrival-location-card{
-  min-height:138px;
-  padding:18px 19px;
+  min-height:152px;
+  padding:20px 21px;
 }
 .arrival-chapter .arrival-time-card span{
-  font-size:clamp(32px,3vw,43px);
+  font-size:clamp(36px,3.25vw,46px);
 }
 .arrival-chapter .arrival-time-card strong,
 .arrival-chapter .arrival-location-card strong{
-  font-size:clamp(13px,1.08vw,15px);
-  line-height:1.18;
+  font-size:clamp(14px,1.16vw,16px);
+  line-height:1.2;
 }
 .arrival-chapter .arrival-time-card small,
 .arrival-chapter .arrival-location-card small{
-  font-size:12px;
-  line-height:1.4;
+  font-size:12.5px;
+  line-height:1.45;
+}
+.arrival-chapter .arrival-steps{
+  gap:14px;
+  margin-top:14px;
 }
 .arrival-chapter .arrival-step{
-  min-height:160px;
-  padding:16px 16px 15px;
-  grid-template-rows:44px minmax(40px,1fr) auto;
-  gap:9px;
+  min-height:176px;
+  padding:18px 18px 17px;
+  grid-template-rows:48px minmax(44px,1fr) auto;
+  gap:10px;
 }
 .arrival-chapter .arrival-step>span{
-  top:16px;
-  right:16px;
+  top:18px;
+  right:18px;
   color:#00d26a;
-  font:700 18px/1 'Amazon Ember Mono',monospace;
+  font:700 20px/1 'Amazon Ember Mono',monospace;
   letter-spacing:-.04em;
 }
 .arrival-chapter .arrival-step strong{
-  font-size:clamp(13px,1.08vw,15px);
-  line-height:1.2;
+  font-size:clamp(14px,1.16vw,16px);
+  line-height:1.22;
 }
 .arrival-chapter .arrival-step p{
-  font-size:12px;
-  line-height:1.42;
+  font-size:12.5px;
+  line-height:1.45;
 }
 .arrival-chapter .arrival-window{
-  margin-top:13px;
-  padding:13px 17px;
+  margin-top:15px;
+  padding:14px 18px;
 }
 .arrival-chapter .arrival-note{
-  margin-top:8px;
+  margin-top:10px;
 }
 .arrival-chapter .arrival-note p{
-  font-size:11px;
+  font-size:11.5px;
 }
 .arrival-chapter .arrival-register{
   display:none !important;
 }
 @media(max-height:820px) and (min-width:851px){
+  .arrival-chapter .cinematic-chapter-inner{
+    padding-block:22px;
+  }
+  .arrival-chapter .cinematic-chapter-title{
+    margin-bottom:14px;
+    font-size:clamp(40px,4.8vw,68px);
+  }
+  .arrival-chapter .arrival-hero{
+    margin-top:16px;
+    gap:12px;
+  }
   .arrival-chapter .arrival-time-card,
   .arrival-chapter .arrival-location-card{
-    min-height:116px;
-    padding:14px 15px;
+    min-height:124px;
+    padding:15px 16px;
   }
-  .arrival-chapter .arrival-time-card span{font-size:31px;}
+  .arrival-chapter .arrival-time-card span{font-size:33px;}
   .arrival-chapter .arrival-time-card strong,
-  .arrival-chapter .arrival-location-card strong{font-size:12px;}
+  .arrival-chapter .arrival-location-card strong{font-size:12.5px;}
   .arrival-chapter .arrival-time-card small,
-  .arrival-chapter .arrival-location-card small{font-size:10px;}
+  .arrival-chapter .arrival-location-card small{font-size:10.5px;}
+  .arrival-chapter .arrival-steps{
+    margin-top:11px;
+    gap:11px;
+  }
   .arrival-chapter .arrival-step{
-    min-height:132px;
-    padding:12px 13px;
-    grid-template-rows:36px minmax(30px,1fr) auto;
-    gap:6px;
+    min-height:138px;
+    padding:13px 14px;
+    grid-template-rows:38px minmax(30px,1fr) auto;
+    gap:7px;
   }
   .arrival-chapter .arrival-step>span{
-    top:13px;
-    right:13px;
-    font-size:16px;
+    top:14px;
+    right:14px;
+    font-size:17px;
   }
-  .arrival-chapter .arrival-step strong{font-size:11px;}
-  .arrival-chapter .arrival-step p{font-size:10px;line-height:1.35;}
+  .arrival-chapter .arrival-step strong{font-size:11.5px;}
+  .arrival-chapter .arrival-step p{font-size:10.5px;line-height:1.38;}
   .arrival-chapter .arrival-window{margin-top:10px;padding:10px 14px;}
+  .arrival-chapter .arrival-note{margin-top:6px;}
   .arrival-chapter .arrival-note p{font-size:10px;}
 }
