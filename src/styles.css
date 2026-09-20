@@ -82,3 +82,11 @@
   .event-overview-steps article .event-service-badge { transition: none; }
 }
 
+
+
+/* Screen 2 card width: give each workshop card a modest 4% horizontal expansion on desktop. */
+@media (min-width: 901px) {
+  .event-overview-steps {
+    width: 104%;
+  }
+}
