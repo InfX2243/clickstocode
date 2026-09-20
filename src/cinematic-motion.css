@@ -3195,3 +3195,22 @@
 .cinematic-timeline-frame > .final-chapter .cinematic-chapter-inner{
   z-index:7;
 }
+
+
+/* Screen 2 card alignment: keep the icon close to the number and the copy compact. */
+.event-overview-steps article{
+  grid-template-columns:24px 40px minmax(0,1fr);
+  column-gap:7px;
+}
+.event-overview-steps article > div{
+  min-width:0;
+}
+.event-overview-steps article:nth-child(3) div,
+.event-overview-steps article:nth-child(3) div span{
+  white-space:nowrap;
+}
+@media(max-width:900px){
+  .event-overview-steps article{
+    column-gap:6px;
+  }
+}
