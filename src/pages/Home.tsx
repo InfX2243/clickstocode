@@ -249,7 +249,6 @@ export default function Home() {
                       <span className="mono-label">AWS ACADEMY LEARNER LAB</span>
                       <h3 id="learner-lab-heading">Get your lab ready before the workshop.</h3>
                     </div>
-                    <a href={LEARNER_LAB_GUIDE_URL} target="_blank" rel="noreferrer" aria-label="Open AWS Academy Learner Lab enrollment guide">ENROLLMENT GUIDE ↗</a>
                   </div>
                   <div className="learner-lab-grid" aria-label="Learner Lab preparation steps">
                     {[
@@ -271,12 +270,11 @@ export default function Home() {
                 <div className="hands-on-sandbox">
                   <div className="hands-on-sandbox-icon"><Terminal size={20} /></div>
                   <div><span>SANDBOX ENVIRONMENT</span><strong>AWS Academy Learner Lab</strong><p>Provided by AWS Academy. Organizers verify in the waiting room that you received the resource and can access it before the program begins.</p></div>
-                  <a className="hands-on-guide" href={LEARNER_LAB_GUIDE_URL} target="_blank" rel="noreferrer"><span>ENROLLMENT GUIDE · STEPS 6–10</span><b aria-hidden="true">↗</b></a>
+                  <div className="hands-on-sandbox-register event-overview-register event-overview-register-disabled" aria-label={MEETUP_STATUS}>
+                    <img src="/images/meetup-icon.png" alt="" aria-hidden="true" />
+                    <span>{MEETUP_STATUS}</span><b aria-hidden="true">·</b>
+                  </div>
                 </div>
-
-                <div className="event-overview-register event-overview-register-disabled hands-on-register" aria-label={MEETUP_STATUS}>
-                  <img src="/images/meetup-icon.png" alt="" aria-hidden="true" />
-                  <span>{MEETUP_STATUS}</span><b aria-hidden="true">·</b></div>
               </div>
             </ChapterShell>
 
