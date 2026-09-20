@@ -286,11 +286,11 @@ export default function Home() {
                 </div>
                 <div className="arrival-hero">
                   <div className="arrival-time-card">
-                    <span>24 SEPTEMBER · 09:30 AM</span><strong>CHECK-IN OPENS</strong><small>Arrive early. Check in at the Registration Desk and get ready for the workshop.</small>
+                    <span>09:30 AM</span><strong>CHECK-IN OPENS</strong><small>Start at the Registration Desk on the Ground Floor, near the Staff Lift.</small>
                   </div>
                   <div className="arrival-location-card">
                     <MapPin size={24} strokeWidth={1.7} />
-                    <div><span>CHECK-IN LOCATION</span><strong>Registration Desk</strong><small>Ground Floor · Near the Staff Lift</small></div>
+                    <div><span>REGISTRATION + SUPPORT</span><strong>Registration Desk</strong><small>Ground Floor · Near the Staff Lift</small></div>
                   </div>
                   <div className="arrival-location-card">
                     <MapPin size={24} strokeWidth={1.7} />
@@ -299,10 +299,10 @@ export default function Home() {
                 </div>
                 <div className="arrival-steps" aria-label="Arrival checklist">
                   {[
-                    [ClipboardCheck, '1', 'CHECK IN', 'Show your Meetup QR ticket and complete event-day check-in.'],
-                    [Cloud, '2', 'GET ACCESS', 'In the waiting room, confirm that you received and can access AWS Academy Learner Lab.'],
-                    [Laptop, '3', 'SET UP', 'Get your laptop ready while organizers complete the access check.'],
-                    [MessageCircle, '4', 'CONNECT', 'After check-in and access verification, move toward the main venue around 9:55 AM.'],
+                    [ClipboardCheck, '1', 'QR CHECK-IN', 'Show your Meetup QR ticket and complete event-day check-in.'],
+                    [Cloud, '2', 'WAITING ROOM', 'Confirm that you received your AWS Academy Learner Lab resource and can access it.'],
+                    [MessageCircle, '3', 'MOVE TO THE VENUE', 'Around 9:55 AM, begin moving from the waiting room to the Seminar Hall.'],
+                    [DoorOpen, '4', 'PROGRAM BEGINS', 'Be in the 3rd Floor Seminar Hall for the 10:00 AM main program.'],
                   ].map(([Icon, number, title, description], index) => {
                     const ArrivalIcon = Icon as typeof ClipboardCheck;
                     return <article className="arrival-step" key={number as string} style={{ '--arrival-index': index } as CSSProperties}>
