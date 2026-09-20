@@ -222,15 +222,6 @@ export default function Act6Honors() {
           role="dialog"
           aria-modal="true"
         >
-          {/* Unmissable Floating Close Button fixed to top-right viewport */}
-          <button
-            onClick={() => setExpandedItem(null)}
-            className="fixed top-4 right-4 sm:top-6 sm:right-6 z-[100000] p-3 rounded-full bg-black/80 border border-white/25 text-white/90 hover:text-white hover:bg-white/20 active:scale-95 transition-all cursor-pointer shadow-2xl flex items-center justify-center"
-            aria-label="Close Fullscreen View"
-          >
-            <X size={22} />
-          </button>
-
           {/* Modal Content Card */}
           <div
             className="relative max-w-3xl w-full bg-[#0d121c] border border-white/[0.15] rounded-2xl p-5 sm:p-8 shadow-[0_0_120px_rgba(0,0,0,0.95)] flex flex-col items-center max-h-[90vh] overflow-y-auto"
