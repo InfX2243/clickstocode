@@ -64,7 +64,6 @@ export default function EditorialNav() {
                 alt="AWS SBG Logo"
                 className="w-8 h-8 sm:w-9 sm:h-9 object-contain filter drop-shadow-[0_0_8px_rgba(0,210,106,0.3)] transition-transform duration-300 group-hover:scale-105"
               />
-              <span className="absolute -bottom-0.5 -right-0.5 w-2 h-2 rounded-full bg-[#00d26a] ring-2 ring-[#080b11] animate-pulse" />
             </div>
             <div className="flex flex-col">
               <div className="flex items-center gap-2">

@@ -43,14 +43,14 @@ export default function Act1Hero() {
         className={`max-w-7xl mx-auto w-full flex flex-wrap items-center justify-between gap-4 mb-8 sm:mb-12 transition-all duration-700 ease-out ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-3'
           }`}
       >
+        <div className="font-mono text-xs uppercase tracking-widest text-[#8e95a5]">
+          AWS Student Builder Group
+        </div>
         <div className="flex items-center gap-3">
-          <span className="w-2 h-2 rounded-full bg-[#00d26a] animate-pulse" />
+          {/* <span className="w-2 h-2 rounded-full bg-[#00d26a] animate-pulse" /> */}
           <span className="font-mono text-xs uppercase tracking-widest text-[#8e95a5]">
             M.H. Saboo Siddik College of Engineering
           </span>
-        </div>
-        <div className="font-mono text-xs uppercase tracking-widest text-[#8e95a5]">
-          AWS Student Builder Group
         </div>
       </div>
 
@@ -64,9 +64,8 @@ export default function Act1Hero() {
       >
         {/* Act 1 Header Marker */}
         <div
-          className={`flex flex-wrap items-center justify-between gap-4 mb-8 sm:mb-10 pb-4 border-b border-white/[0.06] transition-all duration-700 ease-out ${
-            mounted ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-2'
-          }`}
+          className={`flex flex-wrap items-center justify-between gap-4 mb-8 sm:mb-10 pb-4 border-b border-white/[0.06] transition-all duration-700 ease-out ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-2'
+            }`}
         >
           <div className="flex items-center gap-2.5">
             <span className="font-mono text-xs text-[#00d26a] font-bold tracking-widest">
