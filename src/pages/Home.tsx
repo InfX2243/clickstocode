@@ -243,6 +243,31 @@ export default function Home() {
                   })}
                 </div>
 
+                <section className="learner-lab-steps" aria-labelledby="learner-lab-heading">
+                  <div className="learner-lab-heading">
+                    <div>
+                      <span className="mono-label">AWS ACADEMY LEARNER LAB</span>
+                      <h3 id="learner-lab-heading">Get your lab ready before the workshop.</h3>
+                    </div>
+                    <a href={LEARNER_LAB_GUIDE_URL} target="_blank" rel="noreferrer" aria-label="Open AWS Academy Learner Lab enrollment guide">ENROLLMENT GUIDE ↗</a>
+                  </div>
+                  <div className="learner-lab-grid" aria-label="Learner Lab preparation steps">
+                    {[
+                      ['01', 'CREATE YOUR ACCOUNT', 'Use the AWS Academy invitation to create or access your learner account.'],
+                      ['02', 'ACCEPT THE INVITATION', 'Join the assigned AWS Academy course before the lab begins.'],
+                      ['03', 'OPEN LEARNER LAB', 'Enter the Learner Lab from your AWS Academy course workspace.'],
+                      ['04', 'START THE LAB', 'Launch the lab environment and wait for the AWS Console access to become ready.'],
+                      ['05', 'CHECK YOUR ACCESS', 'Confirm you can reach the lab console before the hands-on session starts.'],
+                    ].map(([number, title, description]) => (
+                      <article className="learner-lab-card" key={number}>
+                        <span>{number}</span>
+                        <strong>{title}</strong>
+                        <p>{description}</p>
+                      </article>
+                    ))}
+                  </div>
+                </section>
+
                 <div className="hands-on-sandbox">
                   <div className="hands-on-sandbox-icon"><Terminal size={20} /></div>
                   <div><span>SANDBOX ENVIRONMENT</span><strong>AWS Academy Learner Lab</strong><p>Provided by AWS Academy. Organizers verify in the waiting room that you received the resource and can access it before the program begins.</p></div>
