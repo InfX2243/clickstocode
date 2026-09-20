@@ -53,7 +53,7 @@ const FAQS: FaqItem[] = [
   },
   {
     q: 'Who can I contact for questions or accessibility assistance?',
-    a: 'Contact Abid Ahmed Shaikh, AWS Student Builder Group Leader at MHSSCE, directly at +91 99678 13266 or email awssbg@mhssce.ac.in.',
+    a: 'Contact AWS Student Builder Group Leaders at MHSSCE: Abid Ahmed Shaikh (+91 99678 13266) or Prem Pagar (+91 84597 03601), or email awssbg@mhssce.ac.in.',
     category: 'CONTACT',
   },
 ];
@@ -142,20 +142,33 @@ export default function Act8Inquiries() {
             </p>
 
             <div className="space-y-4 pt-4 border-t border-white/[0.06] text-xs font-mono">
-              <div>
-                <div className="text-[#8e95a5] uppercase mb-1">ORGANIZER LEAD</div>
-                <div className="text-white font-medium text-sm">Abid Ahmed Shaikh</div>
-                <div className="text-[#8e95a5]">AWS Student Builder Group Leader at MHSSCE</div>
+              <div className="text-[#8e95a5] uppercase tracking-wider mb-2">ORGANIZER LEADS</div>
+
+              <div className="space-y-3">
+                <div>
+                  <div className="text-white font-medium text-sm">Abid Ahmed Shaikh</div>
+                  <div className="text-[#8e95a5] text-[11px]">AWS Student Builder Group Leader</div>
+                  <div className="flex items-center gap-2 pt-1 text-white">
+                    <Phone size={13} className="text-[#00d26a]" />
+                    <a href="tel:+919967813266" className="hover:text-[#00d26a] transition-colors">
+                      +91 99678 13266
+                    </a>
+                  </div>
+                </div>
+
+                <div className="pt-2 border-t border-white/[0.04]">
+                  <div className="text-white font-medium text-sm">Prem Pagar</div>
+                  <div className="text-[#8e95a5] text-[11px]">AWS Student Builder Group Leader</div>
+                  <div className="flex items-center gap-2 pt-1 text-white">
+                    <Phone size={13} className="text-[#00d26a]" />
+                    <a href="tel:+918459703601" className="hover:text-[#00d26a] transition-colors">
+                      +91 84597 03601
+                    </a>
+                  </div>
+                </div>
               </div>
 
-              <div className="flex items-center gap-2 pt-2 text-white">
-                <Phone size={14} className="text-[#00d26a]" />
-                <a href="tel:+919967813266" className="hover:text-[#00d26a] transition-colors">
-                  +91 99678 13266
-                </a>
-              </div>
-
-              <div className="flex items-center gap-2 text-white">
+              <div className="flex items-center gap-2 pt-2 border-t border-white/[0.06] text-white">
                 <Mail size={14} className="text-[#00d26a]" />
                 <a href="mailto:awssbg@mhssce.ac.in" className="hover:text-[#00d26a] transition-colors">
                   awssbg@mhssce.ac.in
