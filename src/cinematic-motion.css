@@ -4918,3 +4918,16 @@
 @media(prefers-reduced-motion:reduce){
   .arrival-scene,.arrival-step{transform:none!important;opacity:1!important;}
 }
+
+/* Screen 6 content pass: make the event-day cards mirror the confirmed arrival flow. */
+.arrival-hero{grid-template-columns:repeat(3,minmax(0,1fr));}
+.arrival-time-card,
+.arrival-location-card{min-height:132px;}
+.arrival-time-card span{font-size:clamp(30px,2.8vw,40px);}
+.arrival-time-card small,
+.arrival-location-card small{max-width:34ch;}
+.arrival-step strong{font-size:12px;line-height:1.2;}
+.arrival-step p{max-width:30ch;}
+@media(max-width:850px){
+  .arrival-hero{grid-template-columns:1fr;}
+}
