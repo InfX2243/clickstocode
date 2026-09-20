@@ -4659,3 +4659,52 @@
     min-height:118px;
   }
 }
+
+
+/* Screen 5 alignment and sandbox CTA cleanup. */
+.lab-chapter .hands-on-step:nth-child(2) strong,
+.lab-chapter .hands-on-step:nth-child(2) p,
+.lab-chapter .hands-on-step:nth-child(4) strong,
+.lab-chapter .hands-on-step:nth-child(4) p{
+  text-align:left !important;
+  justify-self:start;
+}
+.learner-lab-heading>a,
+.hands-on-guide{
+  display:none !important;
+}
+.hands-on-sandbox{
+  grid-template-columns:42px minmax(0,1fr) auto;
+}
+.hands-on-sandbox-register{
+  margin:0;
+  min-height:38px;
+  padding:9px 12px;
+}
+.hands-on-sandbox-register img{
+  width:20px;
+  height:20px;
+  object-fit:contain;
+}
+.hands-on-sandbox-register span{
+  font-size:9px;
+}
+@media(max-width:760px){
+  .hands-on-sandbox{
+    grid-template-columns:42px minmax(0,1fr);
+  }
+  .hands-on-sandbox-register{
+    grid-column:2;
+    width:max-content;
+    max-width:100%;
+    margin-top:8px;
+  }
+}
+@media(max-width:520px){
+  .hands-on-sandbox{
+    grid-template-columns:36px minmax(0,1fr);
+  }
+  .hands-on-sandbox-register{
+    width:100%;
+  }
+}
